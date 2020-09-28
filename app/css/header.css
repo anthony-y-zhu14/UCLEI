@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
+
+#header-container {
+  position: absolute;
+  width: 1440px;
+  height: 111px;
+  left: 0px;
+  top: -17px;
+
+  background: #6C9FF8;
+}
+
+#header-text {
+  line-height: 27px;
+  margin-left: 250px;
+  margin-top: 50px;
+
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+}
