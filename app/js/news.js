@@ -29,7 +29,8 @@ function displayNews(data) {
     let title = document.createElement("div");
     let desc = document.createElement("div");
 
-    link.href = data["articles"][i].source.url;
+    link.href = data["articles"][i].url;
+    link.id = "news-link";
     image.src = data["articles"][i].image;
     title.innerHTML = data["articles"][i].title;
     desc.innerHTML = data["articles"][i].description;
