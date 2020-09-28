@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
+
 body {
   background: #e2eaf2;
+}
+
+h3 {
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 20px;
 }
 
 #container {
@@ -27,38 +36,106 @@ body {
   flex-wrap: wrap;
   width: 50%;
   height: 25%;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
   border-radius: 5px;
+  position: relative;
+  top: -400px;
 }
 
 #news-container {
+  position: relative;
+  left: 10px;
   width: 50%;
-  height: 50%;
+  height: 100%;
+  background: #393b41;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
 
 #controls-container {
   width: 50%;
-  height: 25%;
+  height: 0%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
 
 #account-balance {
+  display: flex;
+  margin-top: 20px;
+  /* margin-left: 10px; */
   order: 1;
   width: 100%;
-  background: #4F4F50;
+  background: #393b41;
   height: 25%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
 }
 
 #account-growth {
+  display: flex;
+  margin-top: 20px;
+  /* margin-left: 10px; */
   order: 2;
   width: 100%;
-  background: #4F4F50;
+  background: #393b41;
   height: 25%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+}
+
+.text {
+  width: 80%;
+  padding-top: 15px;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#money {
+  width: 20%;
+}
+
+.fa-chevron-up {
+  color: #2ED47A;
+}
+
+.news-icon {
+  width: 250px;
+  height: 100%;
+}
+
+.news-item {
+  background: #6c9ff8;
+  border-radius: 5px;
+  margin: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  color: #393b41;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#news-title {
+  position: relative;
+  margin-left: 10px;
+}
+
+#news-desc {
+  position: relative;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.image-container {
+  width: 30%;
+}
+
+.text-container {
+  width: 70%;
+}
+
+a:hover {
+  position: relative;
+  left: 10px;
 }

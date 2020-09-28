@@ -6,8 +6,12 @@
     <link rel="stylesheet" href="../css/sidenav.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="../js/news.js"></script>
+    <script src="https://use.fontawesome.com/2254e3ae30.js"></script>
+    <script data-search-pseudo-elements src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
   </head>
-    <body>
+    <body onload="fetchNews()">
+    <!-- <body> -->
       <main>
         <div id="header-container">
           <h3 id="header-text">
@@ -17,7 +21,7 @@
         <div id="sidenav">
           <h3 class="sidenav-title">UCLEI</h3>
           <ul id="sidenav-list">
-            <li id="active"><a href="">Home</a></li>
+            <li id="active"><a href="./dashboard.html">Home</a></li>
             <li><a>Account</a></li>
             <li><a>Research</a></li>
             <li><a>Trading</a></li>
@@ -30,12 +34,24 @@
           <div id="chart-container">
             <div id="chart"></div>
           </div>
+          <div id="news-container">
+            <h3>Market News</h3>
+            <div id="news-items">
+            </div>
+          </div>
           <div id="account-container">
-            <div id=account-balance></div>
-            <div id="account-growth"></div>
+            <div id=account-balance>
+              <span class="text">Account Balance:</span>
+              <span class="text" id="money">$2020.28</span>
+            </div>
+            <div id="account-growth">
+              <span class="text">% Growth:</span>
+              <span class="text" id="money">
+                <i class='fa fa-chevron-up'></i>  20%</span>
+            </div>
           </div>
           <div id="controls-container"></div>
-          <div id="news-container"></div>
+
         </div>
       </main>
     </body>
