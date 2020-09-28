@@ -6,6 +6,7 @@
   height: 111px;
   left: 0px;
   top: -17px;
+  z-index: -1;
 
   background: #6C9FF8;
 }
