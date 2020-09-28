@@ -19,6 +19,15 @@ h3 {
   text-align: center;
 }
 
+a:visited {
+  color: inherit;
+}
+
+a {
+  color: #B8B9BD;
+  text-decoration: none;
+}
+
 .nuclei {
   position: absolute;
   width: 410px;
