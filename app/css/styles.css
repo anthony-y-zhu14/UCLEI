@@ -28,7 +28,7 @@ a {
   text-decoration: none;
 }
 
-.nuclei {
+.uclei {
   position: absolute;
   width: 410px;
   height: 62px;
@@ -108,11 +108,11 @@ a {
   height: 49px;
   left: 492px;
   top: 446px;
+  cursor: pointer;
 }
 
 .login:hover {
-  background: #393B41;
-  color: #ffffff;
+  background:  #6299f7;
 }
 
 .text-field-email:focus {
