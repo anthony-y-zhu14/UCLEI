@@ -1,56 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
 body {
     background: #e2eaf2;
 }
-
-#container {
-    display: flex;
+#container-left {
     position: absolute;
     justify-content: space-around;
-    width: 1203px;
+    width: 601px;
     height: 806px;
     left: 199px;
     top: 94px;
     margin: 15px;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
 }
 
 #account-container{
-    flex-wrap: wrap;
-    width: 50%;
-    height: 8%;
+    width: 80%;
+    height: 5%;
     background: #C4C4C4;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-
-    font-size: 20px;
-    font-style: normal;
-    font-weight: bold;
-    color: #000000;
-    font-family: 'Open Sans', sans-serif;
-    padding-left: 40px;
-    padding-top: 20px;
+    border-radius: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
 }
 
-#asset-allocation-container{
+#balance-container{
+    display: flex;
     flex-wrap: wrap;
-    width: 50%;
+    width: 100%;
+    height: 10%;
+    padding-top: 15px;
+}
+
+#text-box{
+    width: 25%;
+    height: 40%;
+    background: #C4C4C4;
+    border-radius: 15px;
+    text-align: center;
+}
+
+
+
+#asset-allocation-container{
+    width: 100%;
     height: 50%;
     background: #C4C4C4;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 15px;
+}
 
+.title{
     font-size: 20px;
     font-style: normal;
     font-weight: bold;
     color: #000000;
     font-family: 'Open Sans', sans-serif;
-    padding-left: 40px;
+}
+
+.title-small{
+    font-size: 14px;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.text{
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 20px;
     padding-top: 20px;
 }
 
-#username-container{
-    flex-wrap: wrap;
-    width: 50%;
-    height: 8%;
+#container-right{
+    position: absolute;
+    justify-content: space-around;
+    width: 601px;
+    height: 806px;
+    left: 840px;
+    top: 94px;
+    margin: 15px;
+}
+
+
+
+#username{
+    width: 40%;
+    height: 5%;
 
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
@@ -62,18 +106,21 @@ body {
     color: #6c9ff8;
 }
 
-#drop-down-box{
-    width: 50%;
-    height: 8%;
-    background: #ffffff;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-
+#button-holding{
+    border: 1px solid #6C9FF8;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
     font-size: 20px;
     font-style: normal;
-    font-weight: bold;
-    color: #000000;
-    font-family: 'Open Sans', sans-serif;
-    padding-left: 40px;
-    padding-top: 20px;
+    font-weight: 600;
+    line-height: 27px;
+    text-align: center;
+}
+
+.holding{
+    background: #6C9FF8;
+    width: 10%;
+    height: 5%;
+    cursor: pointer;
 }
