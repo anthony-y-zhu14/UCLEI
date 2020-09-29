@@ -2,11 +2,20 @@ body {
     background: #e2eaf2;
 }
 
-#account-container{
+#container {
+    display: flex;
     position: absolute;
-    left: 225px;
-    top: 20%;
-    width: 40%;
+    justify-content: space-around;
+    width: 1203px;
+    height: 806px;
+    left: 199px;
+    top: 94px;
+    margin: 15px;
+}
+
+#account-container{
+    flex-wrap: wrap;
+    width: 50%;
     height: 8%;
     background: #C4C4C4;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -22,10 +31,8 @@ body {
 }
 
 #asset-allocation-container{
-    position: absolute;
-    left: 225px;
-    top: 40%;
-    width: 40%;
+    flex-wrap: wrap;
+    width: 50%;
     height: 50%;
     background: #C4C4C4;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -41,10 +48,8 @@ body {
 }
 
 #username-container{
-    position: absolute;
-    left: 750px;
-    top: 18%;
-    width: 40%;
+    flex-wrap: wrap;
+    width: 50%;
     height: 8%;
 
     font-family: 'Open Sans', sans-serif;
@@ -58,10 +63,7 @@ body {
 }
 
 #drop-down-box{
-    position: absolute;
-    left: 850px;
-    top: 40%;
-    width: 40%;
+    width: 50%;
     height: 8%;
     background: #ffffff;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
