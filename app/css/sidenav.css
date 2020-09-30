@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
 
 #sidenav {
-  position: absolute;
+  position: fixed;
   width: 203px;
   height: 1039px;
   left: -4px;
@@ -15,19 +15,22 @@
   position: absolute;
   width: 143px;
   height: 22px;
-  left: 40px;
   top: 142px;
   margin-top: -25px;
 
-  color: #B8B9BD;
-  font-size: 18px;
+  color: #fff;
+  font-size: 16px;
   font-family: 'Open Sans', sans-serif;
   list-style: none;
-  text-align: left;
+  text-align: center;
 }
 
 #active {
-  color: #B4E2FC;
+  color: #35363C;
+  background: #6C9FF8;
+  border-radius: 35px;
+  padding: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 li {
@@ -35,7 +38,7 @@ li {
 }
 
 a {
-  color: #B8B9BD;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -51,14 +54,49 @@ a:visited {
   color: inherit;
 }
 
+a:visited:hover {
+  color: #B4E2FC;
+}
+
 .sidenav-title {
   position: absolute;
-  left: 40px;
+  left: 20px;
   top: -20px;
 
-  color: #ffffff;
+  color: #fff;
   font-size: 40px;
   font-family: 'Lato', sans-serif;
   line-height: 48px;
   text-align: center;
+}
+
+#add-funds {
+  background: #6C9FF8;
+  position: absolute;
+  top: 700px;
+  width: 150px;
+  padding: 20px;
+  border-radius: 0px 35px 35px 0px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.add-funds-link {
+  margin-left: 40px;
+  color: #35363C;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.add-funds-link:hover {
+  color: #B4E2FC;
+  cursor: pointer;
+}
+
+.add-funds-link:visited:hover {
+  color: #B4E2FC;
+  cursor: pointer;
+}
+
+.fa {
+  padding-right: 8px;
 }

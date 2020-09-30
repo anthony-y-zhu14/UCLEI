@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/dashboard.css">
     <script src="../js/news.js"></script>
-    <script src="https://use.fontawesome.com/2254e3ae30.js"></script>
-    <script data-search-pseudo-elements src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"></script>
+    <script src="https://use.fontawesome.com/eba8e70204.js"></script>
   </head>
     <body onload="fetchNews()">
       <main>
@@ -17,15 +16,33 @@
             Dashboard
           </h3>
         </div>
+
         <div id="sidenav">
           <h3 class="sidenav-title">UCLEI</h3>
           <ul id="sidenav-list">
-            <li id="active"><a href="./dashboard.html">Home</a></li>
-            <li><a href="./account.html">Account</a></li>
-            <li><a href="./research.html">Research</a></li>
-            <li><a href="./trading.html">Trading</a></li>
-            <li><a href="./market.html">Market</a></li>
+            <li id="active">
+              <a href="./dashboard.html">
+                <i class='fa fa-dashboard'></i>
+                Dashboard</a></li>
+            <li>
+              <a href="./account.html">
+                <i class="fa fa-credit-card" aria-hidden="true"></i>
+                Account</a>
+              </li>
+            <li><a href="./trading.html">
+              <i class="fa fa-exchange" aria-hidden="true"></i>
+              Trading</a></li>
+            <li>
+              <a href="./market.html">
+                <i class="fa fa-area-chart" aria-hidden="true"></i>
+                Market</a>
+            </li>
           </ul>
+          <div id="add-funds">
+            <a class="add-funds-link">
+              <i class='fa fa-plus-circle'></i>
+              Add Funds</a>
+          </div>
         </div>
 
 
@@ -35,7 +52,9 @@
             </div>
           </div>
           <div id="news-container">
-            <h3>Market News</h3>
+            <span class="subtitle">Market News</span>
+            <a><i class='fa fa-refresh'></i>
+            </a>
             <div id="news-items">
               <!-- uncomment this code to display an empty news item for debugging -->
 

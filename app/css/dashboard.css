@@ -150,3 +150,22 @@ h3 {
   left: 10px;
   cursor: pointer;
 }
+
+.subtitle {
+  position: absolute;
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 20px;
+  top: 20px;
+}
+
+.fa-refresh {
+  position: absolute;
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  top: 25px;
+  left: 150px;
+  cursor: pointer;
+}
