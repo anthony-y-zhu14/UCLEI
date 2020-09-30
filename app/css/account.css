@@ -3,6 +3,17 @@
 body {
     background: #e2eaf2;
 }
+
+
+
+
+
+
+
+
+
+/*left side*/
+
 #container-left {
     position: absolute;
     justify-content: space-around;
@@ -11,15 +22,13 @@ body {
     left: 199px;
     top: 94px;
     margin: 15px;
-    background: #FFFFFF;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
 }
 
 #account-container{
     width: 80%;
     height: 5%;
-    background: #C4C4C4;
+    margin: auto;
+    background: #393b41;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     padding-top: 15px;
@@ -32,33 +41,104 @@ body {
     width: 100%;
     height: 10%;
     padding-top: 15px;
+    margin-left: 10%;
+    margin-top: 5%;
 }
 
-#text-box{
+#total-balance{
     width: 25%;
     height: 40%;
-    background: #C4C4C4;
-    border-radius: 15px;
-    text-align: center;
 }
 
+#investment{
+    width: 25%;
+    height: 40%;
+}
 
+#cash-balance{
+    width: 25%;
+    height: 40%;
+}
 
 #asset-allocation-container{
     width: 100%;
-    height: 50%;
-    background: #C4C4C4;
+    height: 70%;
+    background: #393b41;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     text-align: center;
     padding-top: 15px;
 }
 
+
+
+
+
+
+
+
+
+/*right side*/
+
+
+#container-right{
+    position: absolute;
+    justify-content: space-around;
+    width: 601px;
+    height: 806px;
+    left: 840px;
+    top: 94px;
+    margin: 15px;
+}
+
+#username{
+    width: 100%;
+    height: 15%;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 48px;
+    text-align: center;
+    margin-top: 10%;
+
+    color: #6c9ff8;
+}
+
+#option-container {
+    width: 100%;
+    height: 5%;
+    margin-top: 5%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#table-container{
+    width: 100%;
+    height: 50%;
+    margin-top: 15%;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
 .title{
     font-size: 20px;
     font-style: normal;
     font-weight: bold;
-    color: #000000;
+    color: #FFFFFF;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -71,56 +151,45 @@ body {
 }
 
 .text{
-    font-size: 20px;
+    font-size: 14px;
     font-style: normal;
-    font-weight: bold;
-    color: #000000;
+    color: #FFFFFF;
     font-family: 'Open Sans', sans-serif;
-    padding-left: 20px;
-    padding-top: 20px;
 }
 
-#container-right{
-    position: absolute;
-    justify-content: space-around;
-    width: 601px;
-    height: 806px;
-    left: 840px;
-    top: 94px;
-    margin: 15px;
-}
-
-
-
-#username{
-    width: 40%;
-    height: 5%;
-
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 48px;
-    text-align: center;
-
-    color: #6c9ff8;
-}
-
-#button-holding{
-    border: 1px solid #6C9FF8;
-    box-sizing: border-box;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+.text-box{
+    width: 119px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    background: #393b41;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 27px;
     text-align: center;
+
+    font-size: 14px;
+    font-style: normal;
+    color: #FFFFFF;
+    font-family: 'Open Sans', sans-serif;
 }
 
-.holding{
-    background: #6C9FF8;
-    width: 10%;
-    height: 5%;
-    cursor: pointer;
+.option-box{
+    width: 225px;
+    height: 40px;
+    margin-left: 10%;
+    background: #FFFFFF;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 15px;
+    text-align: center;
+
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+    color: #393b41;
+    font-family: 'Open Sans', sans-serif;
 }
+
+.stock-list{
+
+}
+
