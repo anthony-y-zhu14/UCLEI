@@ -45,18 +45,23 @@ body {
     margin-top: 5%;
 }
 
+#investments-cash-container {
+  width: 60%;
+}
+
 #total-balance{
-    width: 25%;
+    width: 40%;
     height: 40%;
 }
 
 #investment{
-    width: 25%;
+    width: 80%;
     height: 40%;
+    margin-left: 12px;
 }
 
 #cash-balance{
-    width: 25%;
+    width: 80%;
     height: 40%;
 }
 
@@ -160,6 +165,7 @@ body {
 .text-box{
     width: 119px;
     height: 24px;
+    padding: 1px;
     display: inline-block;
     vertical-align: middle;
     background: #393b41;
@@ -192,4 +198,3 @@ body {
 .stock-list{
 
 }
-
