@@ -21,7 +21,7 @@ async function getData(today, query) {
 function displayNews(data) {
   let newsItems = document.getElementById("news-items");
 
-  for(let i = 0; i < 4; i++) {
+  for(let i = 0; i < 7; i++) {
     let link = document.createElement("a");
     let div = document.createElement("div");
     let tDiv = document.createElement("div");
@@ -49,7 +49,7 @@ function displayNews(data) {
     div.appendChild(image);
     tDiv.appendChild(title);
     tDiv.appendChild(source);
-    tDiv.appendChild(desc);
+    // tDiv.appendChild(desc);
     div.appendChild(tDiv);
     link.appendChild(div);
     newsItems.appendChild(link);

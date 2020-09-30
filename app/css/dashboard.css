@@ -102,19 +102,19 @@ h3 {
 }
 
 .news-icon {
-  width: 250px;
+  width: 25%;
   border-radius: 5px 0px 0px 5px;
   height: 100%;
 }
 
 .news-item {
-  background: #fff;
-  height: 160px;
+  background: #35363C;
+  height: 80px;
   border-radius: 5px;
   margin: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
-  color: #393b41;
+  color: #fff;
   font-size: 18px;
   font-family: 'Open Sans', sans-serif;
 }
@@ -133,19 +133,20 @@ h3 {
 #news-source {
   position: relative;
   font-size: 14px;
-  color: #393b41;
+  color: #fff;
   margin: 5px;
 }
 
 #image-container {
-  width: 30%;
+  width: 20%;
 }
 
 .text-container {
   width: 70%;
 }
 
-#news-link:hover {
+.news-item:hover {
   position: relative;
   left: 10px;
+  cursor: pointer;
 }
