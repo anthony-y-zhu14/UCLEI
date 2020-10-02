@@ -1,5 +1,5 @@
 import json
-from Scapper.yahoo_scrapper import stock
+from stock import Stock
 
 
 def update_database(database_path):

@@ -1,4 +1,4 @@
-from Scapper.yahoo_scrapper import scrapper
+from scrapper import scrapper
 import json
 import os
 from datetime import datetime
