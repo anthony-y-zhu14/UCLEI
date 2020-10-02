@@ -1,4 +1,5 @@
-from Scapper.yahoo_scrapper import database_updater, stock
+import database_updater
+import Stock
 
 
 # just a tester for now, plan to write the stock info into a json file so the front end will be able to extract info
@@ -43,4 +44,3 @@ def print_stock_info(s):
 stock_list = []
 add(input("Enter a stock symbol or name: "))
 database_updater.update_url("stock_url.json", stock_list)
-

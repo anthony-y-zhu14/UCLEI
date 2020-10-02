@@ -1,4 +1,4 @@
-from scrapper import scrapper
+import scrapper
 import json
 import os
 from datetime import datetime

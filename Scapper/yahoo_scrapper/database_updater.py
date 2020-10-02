@@ -1,5 +1,5 @@
 import json
-from stock import Stock
+import stock
 
 
 def update_database(database_path):
@@ -11,7 +11,10 @@ def update_database(database_path):
     for s in stock_list:
         s.update_info()
         data[s.name] = s.__dict__
+        print("Updating: ")
         print(data[s.name])
+        print("\n")
+
     with open(database_path, "w+") as database:
         json.dump(data, database, indent=4)
 
