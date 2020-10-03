@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  justify-content: space-around;
+  width: 1203px;
+  height: 806px;
+  left: 199px;
+  top: 94px;
+  margin: 15px;
+}
+
+.title {
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 20px;
+}
+
+
+/* chart divs */
+#main-container {
+  width: 68%;
+  height: 68%;
+  background: #393b41;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 1%;
+}
+
+#head-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 20%;
+  background: #393b41;
+  border-radius: 5px;
+}
+
+#title-container {
+  width: 50%;
+  height: 40%;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+#value-container {
+  background: #393b41;
+  width: 50%;
+  height: 40%;
+  border-radius: 5px;
+}
+
+#controls-container {
+  background: #393b41;
+  width: 50%;
+  height: 60%;
+  border-radius: 5px;
+}
+
+#chart-container {
+  background: #35363C;
+  margin: 1%;
+  width: 98%;
+  height: 77%;
+  border-radius: 5px;
+  box-shadow: 4px 8px 4px rgba(0, 0, 0, 0.25);
+}
+
+.stock-price {
+  width: 80%;
+  padding-top: 15px;
+  padding-left: 20px;
+  font-size: 16px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.stock-change {
+  width: 80%;
+  padding-top: 15px;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.ticker {
+  width: 80%;
+  padding-top: 15px;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.controls {
+  list-style: none;
+}
+
+.controls-li {
+  font-family: 'Open Sans', sans-serif;
+  margin: 2px;
+  display: inline;
+  cursor: pointer;
+  color: #fff;
+  padding: 4px;
+  background-color: #35363C;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+
+}
+
+.fa-chevron-up {
+  color: #2ED47A;
+}
+
+.fa-chevron-down {
+  color: #F7685B;
+}
+/* chart divs styling ends */
+
+/* stock view styling */
+#quickview-container {
+  width: 68%;
+  height: 38%;
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 1%;
+}
+
+#stock-container {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#stock-card {
+  width: 20%;
+  height: 50%;
+  margin: 2%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  background: #35363C;
+}
+
+#stock-card:hover {
+  /* box-shadow: 0px 4px 4px #000; */
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+.stock-name {
+  font-size: 14px;
+  padding: 10px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.stock-percent {
+  font-size: 10px;
+  padding: 10px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.stock-cost {
+  font-size: 12px;
+  padding: 10px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.stock-tick {
+  padding-left: 10px;
+  font-size: 10px;
+  color: #979797;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.titletwo {
+  font-size: 18px;
+  color: #35363C;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 20px;
+}
+
+
+/* stock view styling ends */
+
+/* news view styling */
+
+#news-container {
+  width: 28%;
+  height: 48%;
+  background: #35363C;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: 1%;
+}
+
+.news-icon {
+  width: 25%;
+  border-radius: 5px 0px 0px 5px;
+  height: 100%;
+}
+
+.news-item {
+  background: #35363C;
+  height: 80px;
+  border-radius: 5px;
+  margin: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  color: #fff;
+  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#news-title {
+  position: relative;
+  margin-left: 5px;
+}
+
+#news-desc {
+  position: relative;
+  font-size: 12px;
+  margin: 5px;
+}
+
+#news-source {
+  position: relative;
+  font-size: 14px;
+  color: #fff;
+  margin: 5px;
+}
+
+#image-container {
+  width: 20%;
+}
+
+#news-items {
+  margin-top: 50px;
+}
+
+.text-container {
+  width: 70%;
+}
+
+.news-item:hover {
+  position: relative;
+  left: 10px;
+  cursor: pointer;
+}
+
+.subtitle {
+  position: absolute;
+  font-size: 18px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  padding-left: 20px;
+  top: 20px;
+}
+
+/* news view styling ends */
+
+
+#invest-container {
+  width: 28%;
+  height: 48%;
+  background: red;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  margin: -10% 1% 1% 1%;
+}

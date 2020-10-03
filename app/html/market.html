@@ -4,7 +4,9 @@
   <title>UCLEI</title>
   <link rel="stylesheet" href="../css/sidenav.css">
   <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/market.css">
   <script src="https://use.fontawesome.com/eba8e70204.js"></script>
+  <script src="../js/news.js"></script>
 </head>
 <body>
   <main>
@@ -41,6 +43,81 @@
             <i class='fa fa-plus-circle'></i>
             Add Funds</a>
         </div>
+      </div>
+
+      <div id="container">
+        <div id="main-container">
+          <div id="head-container">
+            <div id="title-container">
+              <span class="title">Tesla, Inc.</span>
+              <span class="ticker">TSLA</span>
+            </div>
+            <div id="controls-container">
+              <ul class="controls">
+                <li class="controls-li">1d</li>
+                <li class="controls-li">1w</li>
+                <li class="controls-li">1m</li>
+                <li class="controls-li">3m</li>
+                <li class="controls-li">6m</li>
+                <li class="controls-li">1y</li>
+                <li class="controls-li">5y</li>
+              </ul>
+            </div>
+            <div id="value-container">
+              <span class="stock-price">$415,09 USD</span>
+              <span class="stock-change"><i class='fa fa-chevron-down'></i>-7.38%</span>
+            </div>
+          </div>
+          <div id="chart-container"></div>
+        </div>
+
+        <div id="news-container">
+            <span class="subtitle">Market News</span>
+            <div id="news-items">
+              <!-- uncomment this code to display an empty news item for debugging -->
+
+              <div class="news-item">
+                <div class="text-container">
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div id="quickview-container">
+          <h3 class="titletwo">Popular Stocks</h3>
+          <div id="stock-container">
+            <div id="stock-card">
+              <div class="stock-name">Alphabet, Inc.</div>
+              <div class="stock-tick">GOOG</div>
+              <div class="stock-cost">$1,458.42 USD</div>
+              <span class="stock-percent">
+                <i class='fa fa-chevron-down'></i>-2.13%</span>
+            </div>
+            <div id="stock-card">
+              <div class="stock-name">Shopify, Inc.</div>
+              <div class="stock-tick">SHOP</div>
+              <div class="stock-cost">$1,028.99 USD</div>
+              <span class="stock-percent">
+                <i class='fa fa-chevron-down'></i>-2.41%</span>
+            </div>
+            <div id="stock-card">
+              <div class="stock-name">SolarEdge Technologies, Inc.</div>
+              <div class="stock-tick">SEDG</div>
+              <div class="stock-cost">$251.58 USD</div>
+              <span class="stock-percent">
+                <i class='fa fa-chevron-up'></i>+1.09%</span>
+            </div>
+            <div id="stock-card">
+              <div class="stock-name">Facebook, Inc.</div>
+              <div class="stock-tick">FB</div>
+              <div class="stock-cost">$259.94USD</div>
+              <span class="stock-percent">
+                <i class='fa fa-chevron-down'></i>-2.51%</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="invest-container"></div>
       </div>
 
 
