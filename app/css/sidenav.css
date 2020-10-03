@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
 
 #sidenav {
-  position: fixed;
+  position: absolute;
   width: 203px;
   height: 1039px;
   left: -4px;

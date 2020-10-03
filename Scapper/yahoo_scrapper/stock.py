@@ -2,7 +2,7 @@ import scrapper
 import json
 import os
 from datetime import datetime
-database_filename = 'stock_url.json'
+database_filename = '../database/stock_url.json'
 
 
 class Stock:
