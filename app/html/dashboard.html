@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/dashboard.css">
     <script src="../js/news.js"></script>
     <script src="https://use.fontawesome.com/eba8e70204.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
   </head>
     <body onload="fetchNews()">
       <main>
@@ -47,10 +49,54 @@
 
 
         <div id="container">
-          <div id="chart-container">
-            <div id="chart">
+          <div id="main-container">
+            <div id="head-container">
+              <div id="title-container">
+                <span class="subtitle">NASDAQ</span>
+                <span class="ticker"></span>
+              </div>
+              <div id="controls-container">
+                <ul class="controls">
+                  <li id="selected" class="controls-li">1d</li>
+                  <li class="controls-li">1w</li>
+                  <li class="controls-li">1m</li>
+                  <li class="controls-li">3m</li>
+                  <li class="controls-li">6m</li>
+                  <li class="controls-li">1y</li>
+                  <li class="controls-li">5y</li>
+                </ul>
+              </div>
+              <div id="value-container">
+                <span class="stock-price">$11,075.02</span>
+                <span class="stock-change"><i class='fa fa-chevron-down'></i>-2.22%</span>
+              </div>
+            </div>
+            <div id="chart-container">
+              <canvas id="myChart"></canvas>
+              <script>
+              var ctx = document.getElementById('myChart').getContext('2d');
+              var chart = new Chart(ctx, {
+                  // The type of chart we want to create
+                  type: 'line',
+
+                  // The data for our dataset
+                  data: {
+                      labels: ['9AM', '10AM', '12PM', '2PM', '4PM'],
+                      datasets: [{
+                          label: 'NASDAQ',
+                          backgroundColor: '#6C9FF8',
+                          borderColor: '#35363C',
+                          data: [11130.62, 11209.82, 11058.33, 11137.76, 11075.02]
+                      }]
+                  },
+
+                  // Configuration options go here
+                  options: {}
+              });
+            </script>
             </div>
           </div>
+
           <div id="news-container">
             <span class="subtitle">Market News</span>
             <a><i id="refresh" class='fa fa-refresh'></i>
@@ -75,7 +121,6 @@
                 <i class='fa fa-chevron-up'></i>  20%</span>
             </div>
           </div>
-          <div id="controls-container"></div>
 
         </div>
       </main>
