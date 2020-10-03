@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/sidenav.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/trading.css">
+    <link rel="stylesheet" href="../css/styles.css">
     <script src="https://use.fontawesome.com/eba8e70204.js"></script>
 </head>
 <body>
@@ -46,7 +47,50 @@
     </div>
 
     <container>
-      <h1>Welcome to Trading Platform</h1>
+      <div id="trade-container">
+        <div id="accountInfo" type="text">TFSA Account CAD 25MBJ</div>
+        <details>
+          <summary id="fundsAvialable">Funds Avialable to Trade</summary>
+          <ul id="fundsContainer">
+            <p>Cash Balance: $2000.00</p>
+          </ul></details>
+        <div id="searchContainer">
+          <input id="inputField" type="text" placeholder="AMZN"></input>
+          <button id="searchBtn">search</button>
+          <div id="searchResult">
+            <span>Search Result</span>
+          </div>
+        </div>
+
+        <div id="Action">
+          <input placeholder="200"></input>
+          <button id="buyBtn">Buy</button>
+          <button id="sellBtn">Sell</button>
+        </div>
+      </div>
+
+      <div id="holding-container">
+
+        <div id="stockInfo">
+          <h2>Current Holding</h2>
+          <ul id="stock-list">
+            <li>American Airlines Group Inc.</li>
+            <li>Apple Inc.</li>
+            <li>Air Canada</li>
+            <li>Advanced Micro Devices, Inc.</li>
+            <li>Amazon.com, Inc.</li>
+            <li>Alibaba Group Holding Limited</li>
+            <li>Bank of America Corporation</li>
+          </ul>
+        </div>
+      </div>
+
+
+
+
+
+
+
 
     </container>
 

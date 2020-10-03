@@ -1,16 +1,129 @@
-body {
-  background: #e2eaf2; }
-
 container {
-  display: flex;
-  flex-wrap: wrap;
   position: absolute;
-  justify-content: space-around;
+  display: flex;
   width: 1203px;
   height: 806px;
   left: 199px;
   top: 94px;
   margin: 15px;
-  background: white; }
+  padding: 20px; }
+
+input {
+  padding: 1em;
+  background: #B4E2FC;
+  margin: 2em;
+  cursor: pointer;
+  outline: none;
+  border-radius: .3em;
+  font-weight: bold;
+  transition: background-color .3s; }
+  input:hover {
+    background: #C3D6E7; }
+
+button {
+  padding: 0.46em;
+  border-radius: 0.12em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  background-color: #FFFFFF;
+  text-align: center;
+  transition: all 0.15s; }
+  button:hover {
+    text-shadow: 0 0 2em white;
+    color: #FFFFFF;
+    border-color: #FFFFFF; }
+
+summary {
+  padding: 1em;
+  width: 80%;
+  margin-bottom: 1em;
+  cursor: pointer;
+  outline: none;
+  border-radius: .3em;
+  background: #393b41;
+  color: white;
+  transition: background-color .3s, color .3s; }
+  summary:hover {
+    background: aliceblue;
+    color: black; }
+
+details[open] summary ~ * {
+  animation: sweep .5s ease-in-out; }
+
+@keyframes sweep {
+  from {
+    opacity: 0;
+    margin-top: -10px; }
+  to {
+    opacity: 1;
+    margin-top: 0; } }
+#trade-container {
+  position: absolute;
+  width: 601px;
+  height: 806px; }
+
+#accountInfo {
+  padding: 1em;
+  width: 40%;
+  margin-bottom: 4em;
+  outline: none;
+  border-radius: .3em;
+  background: #393b41;
+  color: white;
+  text-align: center; }
+
+#searchBtn {
+  width: 4em;
+  height: 3em; }
+
+#searchResult {
+  padding: 1em;
+  width: 50%;
+  margin-left: 2em;
+  outline: none;
+  border-radius: .3em;
+  background: cornflowerblue;
+  cursor: pointer;
+  color: white;
+  text-align: center; }
+
+#buyBtn {
+  margin: 1em;
+  padding: 2em;
+  width: 8em;
+  height: 4em;
+  background: #2ed47a; }
+
+#sellBtn {
+  margin: 1em;
+  padding: 2em;
+  width: 8em;
+  height: 4em;
+  background: indianred; }
+
+#holding-container {
+  position: absolute;
+  width: 601px;
+  height: 806px;
+  left: 601px; }
+
+#stockInfo {
+  width: 80%;
+  height: 80%;
+  margin-top: 5%;
+  padding: 2em;
+  background: #393b41;
+  outline: none;
+  border-radius: .3em;
+  color: white; }
+
+#stock-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
 
 /*# sourceMappingURL=trading.css.map */
