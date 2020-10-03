@@ -110,7 +110,10 @@
   background-color: #35363C;
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
 
+#selected {
+  background-color: #6C9FF8;
 }
 
 .fa-chevron-up {
@@ -270,7 +273,7 @@
 /* news view styling ends */
 
 
-#invest-container {
+#watchlist-container {
   width: 28%;
   height: 48%;
   background: red;
