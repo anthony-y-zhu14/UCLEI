@@ -60,7 +60,7 @@ a:visited:hover {
   color: #B4E2FC;
 }
 
-.sidenav-title {
+#sidenav-title {
   position: absolute;
   left: 20px;
   top: -20px;
