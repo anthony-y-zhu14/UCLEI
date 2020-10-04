@@ -29,12 +29,12 @@ button {
   font-weight: 300;
   color: #000000;
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  background-color: #FFFFFF;
+  background-color: aliceblue;
   text-align: center;
   transition: all 0.15s; }
   button:hover {
     text-shadow: 0 0 2em white;
-    color: #FFFFFF;
+    color: #FFFFFf;
     border-color: #FFFFFF; }
 
 summary {
@@ -66,10 +66,11 @@ details[open] summary ~ * {
   width: 601px;
   height: 806px; }
 
-#accountInfo {
+#account-container {
   padding: 1em;
   width: 40%;
   margin-bottom: 4em;
+  margin-left: 4em;
   outline: none;
   border-radius: .3em;
   background: #393b41;
@@ -83,12 +84,12 @@ details[open] summary ~ * {
 #searchResult {
   padding: 1em;
   width: 50%;
-  margin-left: 2em;
+  margin-left: 4em;
   outline: none;
   border-radius: .3em;
-  background: cornflowerblue;
+  background: white;
   cursor: pointer;
-  color: white;
+  color: black;
   text-align: center; }
 
 #buyBtn {
@@ -96,14 +97,28 @@ details[open] summary ~ * {
   padding: 2em;
   width: 8em;
   height: 4em;
-  background: #2ed47a; }
+  transition: background-color; }
+  #buyBtn:hover {
+    text-shadow: 0 0 2em white;
+    color: #FFFFFf;
+    border-color: #FFFFFF;
+    background: darkgreen; }
+  #buyBtn:active {
+    background: #2ed47a; }
 
 #sellBtn {
   margin: 1em;
   padding: 2em;
   width: 8em;
   height: 4em;
-  background: indianred; }
+  transition: background-color; }
+  #sellBtn:hover {
+    text-shadow: 0 0 2em white;
+    color: #FFFFFf;
+    border-color: #FFFFFF;
+    background: darkred; }
+  #sellBtn:active {
+    background: indianred; }
 
 #holding-container {
   position: absolute;
@@ -111,19 +126,23 @@ details[open] summary ~ * {
   height: 806px;
   left: 601px; }
 
-#stockInfo {
+#stock-container {
   width: 80%;
   height: 80%;
   margin-top: 5%;
   padding: 2em;
-  background: #393b41;
+  background: white;
   outline: none;
   border-radius: .3em;
-  color: white; }
+  color: black; }
 
 #stock-list {
   list-style-type: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  color: black; }
+
+.stock-holding {
+  color: black; }
 
 /*# sourceMappingURL=trading.css.map */
