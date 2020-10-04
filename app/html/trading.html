@@ -18,7 +18,7 @@
     </div>
 
     <div id="sidenav">
-      <h3 class="sidenav-title">UCLEI</h3>
+      <h3 id="sidenav-title">UCLEI</h3>
       <ul id="sidenav-list">
         <li>
           <a href="./dashboard.html">
@@ -65,11 +65,12 @@
           </details>
         </div>
 
-        <div id="action">
-          <input placeholder="200"></input>
+        <form id="action">
+          <input name="quantity" placeholder="0" value="" type="text" id="trading-quantity"></input>
+
           <button id="buyBtn">Buy</button>
           <button id="sellBtn">Sell</button>
-        </div>
+        </form>
       </div>
 
       <div id="holding-container">
