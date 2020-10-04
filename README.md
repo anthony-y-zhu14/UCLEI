@@ -87,7 +87,7 @@ index.html
 Use for practicing and having fun only, despite of using real market data, balance changes during the usage of the website are not real.
 Therefore, any monetary loss or gain occurred are not materialized thus are not available for withdrawn.  
 
-##Additional Functionality
+## Additional Functionality
 
 -Included a Web Scrapper to scrap market data from Yahoo Finance and store them in the local database storage.
 
