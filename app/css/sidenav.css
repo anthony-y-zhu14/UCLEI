@@ -12,6 +12,18 @@
   /* box-shadow: 2px 1px 9px 1px #000000; */
 }
 
+#sidenav-title {
+  position: absolute;
+  left: 20px;
+  top: -20px;
+
+  color: #fff;
+  font-size: 40px;
+  font-family: 'Lato', sans-serif;
+  line-height: 48px;
+  text-align: center;
+}
+
 #sidenav-list {
   position: absolute;
   width: 143px;
@@ -60,17 +72,7 @@ a:visited:hover {
   color: #B4E2FC;
 }
 
-.sidenav-title {
-  position: absolute;
-  left: 20px;
-  top: -20px;
 
-  color: #fff;
-  font-size: 40px;
-  font-family: 'Lato', sans-serif;
-  line-height: 48px;
-  text-align: center;
-}
 
 #add-funds {
   background: #6C9FF8;
