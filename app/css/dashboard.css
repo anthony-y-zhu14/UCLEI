@@ -4,12 +4,12 @@ body {
   background: #e2eaf2;
 }
 
-h3 {
+/* h3 {
   font-size: 18px;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   padding-left: 20px;
-}
+} */
 
 #container {
   display: flex;

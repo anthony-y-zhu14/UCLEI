@@ -11,6 +11,36 @@
   background: #6C9FF8;
 }
 
+#search-bar {
+  position: absolute;
+  background: #35363C;
+  color: #fff;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 8px;
+  left: 400px;
+  top: 49px;
+}
+
+.search-bar:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #35363C;
+}
+
+#search-button {
+  position: absolute;
+  left: 620px;
+  top: 55px;
+}
+
+.fa-search {
+  color: #35363C;
+  cursor: pointer;
+}
+
+
 #header-text {
   position: absolute;
   line-height: 27px;
