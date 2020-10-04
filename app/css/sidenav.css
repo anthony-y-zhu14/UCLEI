@@ -88,23 +88,161 @@ a:visited:hover {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.add-funds-link {
+#add-funds-link {
   margin-left: 40px;
   color: #35363C;
   font-size: 14px;
   font-family: 'Open Sans', sans-serif;
 }
 
-.add-funds-link:hover {
+#add-funds-link:hover {
   color: #B4E2FC;
   cursor: pointer;
 }
 
-.add-funds-link:visited:hover {
+#add-funds-link:visited:hover {
   color: #B4E2FC;
   cursor: pointer;
 }
 
 .fa {
   padding-right: 8px;
+}
+
+/* The Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.8);
+}
+
+#modal-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Modal Content */
+.modal-content {
+  display: block;
+  position: relative;
+  color: #fff;
+  background-color: #18181b;
+  margin: 5% auto;
+  padding: 20px;
+  border: 0.5px solid #000;
+  width: 60%;
+  height: 60%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  animation-name: move-from-top;
+  animation-duration: 0.3s;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#modal-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.modal-text {
+  width: 80%;
+  font-size: 14px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#modal-account-balance {
+  background: #35363c;
+  display: flex;
+  order: 1;
+  padding: 10px;
+  width: 80%;
+  height: 25%;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+#money-form {
+  margin-left: 20px;
+  background: #35363C;
+  color: #fff;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+#money-form:focus {
+  outline: none;
+  box-shadow: 0 0 0 1px #35363C;
+}
+
+/* Modal Animation */
+@keyframes move-from-top {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
+#buttons-modal {
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2px;
+  margin-left: 22px;
+}
+
+#info-box {
+  width: 400px;
+  margin-top: -7.5%;
+}
+
+.info-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  padding-bottom: 10px;
+}
+
+.funds {
+  color: #35363c;
+  border-radius: 10px;
+  width: 25%;
+  margin: 5px;
+  padding: 5px;
+  background: #6C9FF8;
+  cursor: pointer;
+}
+
+.funds:hover {
+  background:  #6299f7;
+}
+
+#info-text {
+  font-size: 14px;
+  font-style: italic;
+  color: #8c8c8c;
+  font-family: 'Open Sans', sans-serif;
 }
