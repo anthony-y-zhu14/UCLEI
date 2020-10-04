@@ -73,8 +73,8 @@ details[open] summary ~ * {
   margin-left: 4em;
   outline: none;
   border-radius: .3em;
-  background: #393b41;
-  color: white;
+  background: white;
+  color: black;
   text-align: center; }
 
 #searchBtn {
@@ -91,6 +91,9 @@ details[open] summary ~ * {
   cursor: pointer;
   color: black;
   text-align: center; }
+
+#action {
+  align-content: center; }
 
 #buyBtn {
   margin: 1em;
