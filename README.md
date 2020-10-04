@@ -13,72 +13,73 @@ index.html
 ## Files
 
 ```bash
-│   .DS_Store
-│   README.md
-│
-├───.idea
-│   │   .gitignore
-│   │   jsLibraryMappings.xml
-│   │   misc.xml
-│   │   modules.xml
-│   │   Nuclei---Stock-Trading-Platform-Sandbox.iml
-│   │   vcs.xml
-│   │
-│   └───inspectionProfiles
-│           Project_Default.xml
-│
-├───app
-│   │   .DS_Store
-│   │   index.html
-│   │   readme.md
-│   │
-│   ├───css
-│   │       account.css
-│   │       dashboard.css
-│   │       header.css
-│   │       market.css
-│   │       sidenav.css
-│   │       styles.css
-│   │       trading.css
-│   │       trading.css.map
-│   │       trading.scss
-│   │
-│   ├───html
-│   │       account.html
-│   │       dashboard.html
-│   │       market.html
-│   │       trading.html
-│   │
-│   └───js
-│           login.js
-│           myChart.js
-│           news.js
-│
-├───project spec
-│       Changelog.txt
-│       COMP2406-F20-Stock-Broker-Project.pdf
-│       Screenshot 2020-09-20 162534.png
-│       symbols.txt
-│
-└───scapper
-    ├───chromedriver
-    │       chromedriver
-    │       chromedriver.exe
+└───UCLEI---Stock-Trading-Platform-Sandbox
+    │   .DS_Store
+    │   README.md
     │
-    ├───database
-    │       data.json
-    │       stock_url.json
+    ├───.idea
+    │   │   .gitignore
+    │   │   jsLibraryMappings.xml
+    │   │   misc.xml
+    │   │   modules.xml
+    │   │   Nuclei---Stock-Trading-Platform-Sandbox.iml
+    │   │   vcs.xml
+    │   │
+    │   └───inspectionProfiles
+    │           Project_Default.xml
     │
-    └───yahoo_scrapper
-        │   database_updater.py
-        │   scrapper.py
-        │   stock.py
-        │   terminal.py
+    ├───app
+    │   │   .DS_Store
+    │   │   index.html
+    │   │   readme.md
+    │   │
+    │   ├───css
+    │   │       account.css
+    │   │       dashboard.css
+    │   │       header.css
+    │   │       market.css
+    │   │       sidenav.css
+    │   │       styles.css
+    │   │       trading.css
+    │   │       trading.css.map
+    │   │       trading.scss
+    │   │
+    │   ├───html
+    │   │       account.html
+    │   │       dashboard.html
+    │   │       market.html
+    │   │       trading.html
+    │   │
+    │   └───js
+    │           login.js
+    │           myChart.js
+    │           news.js
+    │
+    ├───project spec
+    │       Changelog.txt
+    │       COMP2406-F20-Stock-Broker-Project.pdf
+    │       Screenshot 2020-09-20 162534.png
+    │       symbols.txt
+    │
+    └───scapper
+        ├───chromedriver
+        │       chromedriver
+        │       chromedriver.exe
         │
-        └───__pycache__
-                database_updater.cpython-38.pyc
-                scrapper.cpython-38.pyc
-                stock.cpython-38.pyc
+        ├───database
+        │       data.json
+        │       stock_url.json
+        │
+        └───yahoo_scrapper
+            │   database_updater.py
+            │   scrapper.py
+            │   stock.py
+            │   terminal.py
+            │
+            └───__pycache__
+                    database_updater.cpython-38.pyc
+                    scrapper.cpython-38.pyc
+                    stock.cpython-38.pyc
 
 ```
 
