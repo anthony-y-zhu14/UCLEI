@@ -133,6 +133,8 @@
   flex-wrap: wrap;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  background: #393b41;
+
   margin: 1%;
 }
 
@@ -188,7 +190,7 @@
 
 .titletwo {
   font-size: 18px;
-  color: #35363C;
+  color: #fff;
   font-family: 'Open Sans', sans-serif;
   padding-left: 20px;
 }
@@ -276,8 +278,51 @@
 #watchlist-container {
   width: 28%;
   height: 48%;
-  background: #fff;
+  background: #393b41;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
   margin: -10% 1% 1% 1%;
+}
+
+.watchlist {
+  list-style: none;
+  height: 40%;
+}
+
+.watch-item {
+  display: flex;
+  flex-wrap: wrap;
+  background: #35363C;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 80%;
+}
+
+.watch-text {
+  width: 60%;
+  margin-bottom: 5px;
+  display: inline;
+  color: #fff;
+  font-size: 12px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#button {
+  width: 15%;
+  text-align: center;
+  cursor: pointer;
+  border-left: 1px solid #000;
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+#button:hover {
+  background: #6C9FF8;
+}
+
+.fa-eye {
+  margin-top: 10px;
+}
+
+.fa-close {
+  margin-top: 10px;
 }
