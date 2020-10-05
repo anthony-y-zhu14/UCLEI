@@ -45,56 +45,58 @@
       </div>
     </div>
 
-    <div id="container-left">
+    <div id="account-asset-container">
         <div id="account-container">
-            <span class="text">TFSA Account CAD</span>
-            <span class="text">25MBJ7</span>
+            <span>TFSA Account CAD</span>
+            <span>25MBJ7</span>
         </div>
 
-        <div id="balance-container">
-            <div id="total-balance">
-                <span class="title-small">Total Balance: </span>
-                <span class="text-box">$2000.00</span>
-            </div>
-            <div id="investments-cash-container">
-              <div id="investment">
-                  <span class="title-small">Investment: </span>
-                  <span class="text-box">$0</span>
-              </div>
-
-              <div id="cash-balance">
-                  <span class="title-small">Cash Balance: </span>
+        <details>
+          <summary>Account Balance</summary>
+          <div id="balance-container">
+              <div id="total-balance">
+                  <span class="title-small">Total Balance: </span>
                   <span class="text-box">$2000.00</span>
               </div>
-            </div>
+              <div id="investments-cash-container">
+                <div id="investment">
+                    <span class="title-small">Investment: </span>
+                    <span class="text-box">$0</span>
+                </div>
 
+                <div id="cash-balance">
+                    <span class="title-small">Cash Balance: </span>
+                    <span class="text-box">$2000.00</span>
+                </div>
+              </div>
+          </div>
+        </details>
 
-        </div>
-
-        <div class="title" id="asset-allocation-container">
-            <h3 id="title-container" class="title">Asset Allocation</h3>
-            <div id="chart-container">
-                <span class="chart"></span>
-                <span class="chart-legend">
-                <h1 class="title-small">legend</h1></span>
-            </div>
-
-
+        <div id="asset-allocation-container">
+            <h3>Asset Allocation</h3>
+            <span id="donut-chart"></span>
+            <span id="donut-chart-legend"></span>
         </div>
 
     </div>
 
-    <div id="container-right">
-        <div id="username">Margin Secured</div>
+    <div id="account-activity-container">
+        <div id="username">Double Down Debbie</div>
 
         <div id="option-container">
-            <span class="option-box">Holdings</span>
-            <span class="option-box">Activity</span>
+            <span id="holdingBtn">Holdings</span>
+            <span id="activityBtn">Activity</span>
         </div>
 
-        <div id="table-container">
-
-        </div>
+        <ul id="table-container">
+          <li class="stock-holding">American Airlines Group Inc.</li>
+          <li class="stock-holding">Apple Inc.</li>
+          <li class="stock-holding">Air Canada</li>
+          <li class="stock-holding">Advanced Micro Devices, Inc.</li>
+          <li class="stock-holding">Amazon.com, Inc.</li>
+          <li class="stock-holding">Alibaba Group Holding Limited</li>
+          <li class="stock-holding">Bank of America Corporation</li>
+        </ul>
 
 
     </div>
