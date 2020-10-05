@@ -96,6 +96,10 @@ Therefore, any monetary loss or gain occurred are not materialized thus are not 
 - Market News cards fetch news based on user-selected queries related to stocks. The market news is fetched using JS, JSON, and the GNews API. 
 - Stock charts are displayed using the chart.js library
 
+## Libraries Used
+- Font Awesome (https://fontawesome.com)
+- Chart.js (https://www.chartjs.org)
+
 ## Contributing
 Contributor:
 
