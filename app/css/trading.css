@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+/* imports open sans font */
 container {
   position: absolute;
   display: flex;
@@ -6,7 +8,11 @@ container {
   left: 199px;
   top: 94px;
   margin: 15px;
-  padding: 20px; }
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif; }
+
+body {
+  background: #e2eaf2; }
 
 input {
   padding: 1em;
@@ -20,23 +26,6 @@ input {
   input:hover {
     background: #C3D6E7; }
 
-button {
-  padding: 0.46em;
-  border-radius: 0.12em;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto',sans-serif;
-  font-weight: 300;
-  color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  background-color: aliceblue;
-  text-align: center;
-  transition: all 0.15s; }
-  button:hover {
-    text-shadow: 0 0 2em white;
-    color: #FFFFFf;
-    border-color: #FFFFFF; }
-
 summary {
   padding: 1em;
   width: 80%;
@@ -46,10 +35,14 @@ summary {
   border-radius: .3em;
   background: #393b41;
   color: white;
+  font-family: 'Open Sans', sans-serif;
   transition: background-color .3s, color .3s; }
   summary:hover {
     background: aliceblue;
     color: black; }
+
+summary::-webkit-details-marker {
+  color: #B4E2FC; }
 
 details[open] summary ~ * {
   animation: sweep .5s ease-in-out; }
@@ -75,33 +68,16 @@ details[open] summary ~ * {
   border-radius: .3em;
   background: white;
   color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
   text-align: center; }
 
 #searchBtn {
   width: 4em;
-  height: 3em; }
-
-#searchResult {
-  padding: 1em;
-  width: 50%;
-  margin-left: 4em;
-  outline: none;
-  border-radius: .3em;
-  background: white;
+  height: 3em;
+  padding: 0.5em;
   cursor: pointer;
-  color: black;
-  text-align: center; }
-
-#action {
-  align-content: center; }
-
-#buyBtn {
-  margin: 1em;
-  padding: 2em;
-  width: 8em;
-  height: 4em;
-  transition: background-color;
-  border-radius: 0.12em;
+  border-radius: 0.8em;
   box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto',sans-serif;
@@ -110,6 +86,42 @@ details[open] summary ~ * {
   text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
   background-color: aliceblue;
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.15s; }
+  #searchBtn:hover {
+    text-shadow: 0 0 2em white;
+    color: #FFFFFf;
+    border-color: #FFFFFF; }
+  #searchBtn:active {
+    background: #B4E2FC; }
+
+#searchResult {
+  padding: 1em;
+  width: 80%;
+  outline: none;
+  border-radius: .3em;
+  background: white;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif; }
+
+#buyBtn {
+  margin: 1em;
+  padding: 2em;
+  width: 8em;
+  height: 4em;
+  cursor: pointer;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  background-color: aliceblue;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
   transition: all 0.15s; }
   #buyBtn:hover {
     text-shadow: 0 0 2em white;
@@ -124,7 +136,19 @@ details[open] summary ~ * {
   padding: 2em;
   width: 8em;
   height: 4em;
-  transition: background-color; }
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  background-color: aliceblue;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.15s; }
   #sellBtn:hover {
     text-shadow: 0 0 2em white;
     color: #FFFFFf;
@@ -132,6 +156,33 @@ details[open] summary ~ * {
     background: darkred; }
   #sellBtn:active {
     background: indianred; }
+
+#CompleteTransactionBtn {
+  margin: 1em;
+  padding: 2em;
+  width: 16em;
+  height: 8em;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color: #000000;
+  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  background-color: #6C9FF8;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.15s; }
+  #CompleteTransactionBtn:hover {
+    text-shadow: 0 0 2em white;
+    color: #FFFFFf;
+    border-color: #FFFFFF;
+    background: royalblue; }
+  #CompleteTransactionBtn:active {
+    background: cornflowerblue; }
 
 #holding-container {
   position: absolute;
@@ -147,13 +198,15 @@ details[open] summary ~ * {
   background: white;
   outline: none;
   border-radius: .3em;
-  color: black; }
+  color: black;
+  font-family: 'Open Sans', sans-serif; }
 
 #stock-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  color: black; }
+  color: black;
+  font-family: 'Open Sans', sans-serif; }
 
 .stock-holding {
   color: black; }

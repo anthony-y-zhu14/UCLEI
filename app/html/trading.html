@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../css/sidenav.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/trading.css">
-    <link rel="stylesheet" href="../css/styles.css">
     <script src="https://use.fontawesome.com/eba8e70204.js"></script>
 </head>
 <body>
@@ -47,29 +46,36 @@
     </div>
 
     <container>
+
       <div id="trade-container">
         <div id="account-container" type="text">TFSA Account CAD 25MBJ</div>
         <details>
           <summary id="fundsAvialable">Funds Avialable to Trade</summary>
           <ul id="funds-list">
             <p>Cash Balance: $2000.00</p>
-          </ul></details>
-        <div id="search-container">
-          <input id="inputField" type="text" placeholder="AMZN"></input>
-          <button id="searchBtn">search</button>
+          </ul>
+        </details>
+
+        <form id="search-container">
+          <input name="search-name" placeholder="Enter a name or symbol" value="" type="text" id="inputField"></input>
+          <span id="searchBtn">Search</span>
+
           <details>
-            <summary id="searchResult">AMZN</summary>
+            <summary id="searchResult">Search Result</summary>
             <ul id="stcok-result-list">
-              <p>Amazon.com, Inc. Amazon NASDAQ USD</p>
+              <p>Info</p>
             </ul>
           </details>
-        </div>
+        </form>
 
         <form id="action">
           <input name="quantity" placeholder="0" value="" type="text" id="trading-quantity"></input>
           <span id="buyBtn">Buy</span>
           <span id="sellBtn">sell</span>
         </form>
+
+        <div id="CompleteTransactionBtn">Complete Transaction</div>
+
       </div>
 
       <div id="holding-container">

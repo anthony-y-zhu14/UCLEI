@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
+
+
 container{
   position: absolute;
   display: flex;
@@ -7,6 +10,11 @@ container{
   top: 94px;
   margin: 15px;
   padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+body {
+  background: #e2eaf2;
 }
 
 input{
@@ -24,41 +32,27 @@ input{
   }
 }
 
-button{
-    padding: 0.46em;
-    border-radius: 0.12em;
-    box-sizing: border-box;
-    text-decoration:none;
-    font-family:'Roboto',sans-serif;
-    font-weight:300;
-    color:#000000;
-    text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-    background-color: aliceblue;
-    text-align:center;
-    transition: all 0.15s;
-
-    &:hover{
-      text-shadow: 0 0 2em rgba(255,255,255,1);
-      color: #FFFFFf;
-      border-color:#FFFFFF;
-    }
-}
 
 summary{
   padding: 1em;
   width: 80%;
   margin-bottom: 1em;
+
   cursor: pointer;
   outline: none;
   border-radius: .3em;
   background: #393b41;
   color: white;
+  font-family: 'Open Sans', sans-serif;
   transition: background-color .3s, color .3s;
 
   &:hover{
     background: aliceblue;
     color: black;
   }
+}
+summary::-webkit-details-marker {
+    color: #B4E2FC;
 }
 
 details[open] summary ~ *{
@@ -89,38 +83,20 @@ details[open] summary ~ *{
   border-radius: .3em;
   background: white;
   color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
   text-align: center;
+
 }
 
 #searchBtn{
   width: 4em;
   height: 3em;
-}
-
-#searchResult{
-  padding: 1em;
-  width: 50%;
-  margin-left: 4em;
-  outline: none;
-  border-radius: .3em;
-  background: white;
+  padding: 0.5em;
   cursor: pointer;
-  color: black;
-  text-align: center;
-}
 
-#action{
-  align-content: center;
-}
 
-#buyBtn{
-  margin: 1em;
-  padding: 2em;
-  width: 8em;
-  height: 4em;
-  transition: background-color;
-
-  border-radius: 0.12em;
+  border-radius: 0.8em;
   box-sizing: border-box;
   text-decoration:none;
   font-family:'Roboto',sans-serif;
@@ -129,6 +105,49 @@ details[open] summary ~ *{
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
   background-color: aliceblue;
   text-align:center;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.15s;
+
+  &:hover{
+    text-shadow: 0 0 2em rgba(255,255,255,1);
+    color: #FFFFFf;
+    border-color:#FFFFFF;
+  }
+
+  &:active{
+    background: #B4E2FC;
+  }
+
+}
+
+#searchResult{
+  padding: 1em;
+  width: 80%;
+  outline: none;
+  border-radius: .3em;
+  background: white;
+  cursor: pointer;
+  color: black;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#buyBtn{
+  margin: 1em;
+  padding: 2em;
+  width: 8em;
+  height: 4em;
+  cursor: pointer;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family: 'Open Sans', sans-serif;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color: aliceblue;
+  text-align:center;
+  font-family: 'Open Sans', sans-serif;
   transition: all 0.15s;
 
   &:hover{
@@ -149,7 +168,19 @@ details[open] summary ~ *{
   padding: 2em;
   width: 8em;
   height: 4em;
-  transition: background-color;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color: aliceblue;
+  text-align:center;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.15s;
 
   &:hover{
     text-shadow: 0 0 2em rgba(255,255,255,1);
@@ -160,6 +191,38 @@ details[open] summary ~ *{
 
   &:active{
     background: rgb(205, 92, 92);
+  }
+}
+
+#CompleteTransactionBtn{
+  margin: 1em;
+  padding: 2em;
+  width: 16em;
+  height: 8em;
+  font-family: 'Open Sans', sans-serif;
+  cursor: pointer;
+  border-radius: 0.8em;
+  box-sizing: border-box;
+  text-decoration:none;
+  font-family:'Roboto',sans-serif;
+  font-weight:300;
+  color:#000000;
+  text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
+  background-color: #6C9FF8;
+  text-align:center;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  transition: all 0.15s;
+
+  &:hover{
+    text-shadow: 0 0 2em rgba(255,255,255,1);
+    color: #FFFFFf;
+    border-color:#FFFFFF;
+    background: royalblue;
+  }
+
+  &:active{
+    background: cornflowerblue;
   }
 }
 
@@ -179,6 +242,7 @@ details[open] summary ~ *{
   outline: none;
   border-radius: .3em;
   color: black;
+  font-family: 'Open Sans', sans-serif;
 }
 
 #stock-list{
@@ -186,6 +250,7 @@ details[open] summary ~ *{
   margin: 0;
   padding: 0;
   color: black;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .stock-holding{
