@@ -9,7 +9,7 @@
     <script src="https://use.fontawesome.com/eba8e70204.js"></script>
 </head>
 <body>
-<main>
+<main id="body">
     <div id="header-container">
         <h3 id="header-text">
             Trade Management
@@ -24,11 +24,11 @@
             <i class='fa fa-dashboard'></i>
             Dashboard</a></li>
           <li><a href="./account.html">
-              <i class="fa fa-exchange" aria-hidden="true"></i>
+              <i class="fa fa-credit-card" aria-hidden="true"></i>
               Account</a></li>
         <li id="active">
           <a href="./trading.html">
-            <i class="fa fa-credit-card" aria-hidden="true"></i>
+            <i class="fa fa-exchange" aria-hidden="true"></i>
             Trading</a>
           </li>
 
@@ -58,11 +58,11 @@
 
         <form id="search-container">
           <input name="search-name" placeholder="Enter a name or symbol" value="" type="text" id="inputField"></input>
-          <span id="searchBtn">Search</span>
+          <span id="searchBtn"><i class='fa fa-search'></i></span>
 
           <details>
             <summary id="searchResult">Search Result</summary>
-            <ul id="stcok-result-list">
+            <ul id="stock-result-list">
               <p>Info</p>
             </ul>
           </details>
@@ -93,54 +93,45 @@
           </ul>
         </div>
 
-        <!-- The Modal -->
-        <div id="add-funds-modal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3 id="modal-title">Add funds</h3>
-            <form>
-              <div id="modal-account-balance">
-                <span class="modal-text">Account Balance:</span>
-                <span class="modal-text" id="money">$2020.28</span>
-              </div>
-
-              <p id="text-labels" class="text">Input Dollar Amount</p>
-              <input name="money" value="" type="text" id="money-form" class="text-field-email"></input>
-              <div id="modal-container">
-                <div id="buttons-modal">
-                  <div class="funds">Deposit</div>
-                  <div class="funds">Withdrawl</div>
-                </div>
-                <div id="info-box">
-                  <div class="info-box">
-                    <div class="info-title">Add and Remove Funds</div>
-                    <div id="info-text">Type the amount of cash you would
-                      like to add or remove in the box to
-                      the left and select to deposit or withdrawl
-                      funds from your account.</div>
-                  </div>
-                </div>
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
-
-
-
-
-
-
-
 
     </container>
 
-
-
-
-
 </main>
+
+<!-- The Modal -->
+<div id="add-funds-modal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3 id="modal-title">Add funds</h3>
+    <form>
+      <div id="modal-account-balance">
+        <span class="modal-text">Account Balance:</span>
+        <span class="modal-text" id="money">$2020.28</span>
+      </div>
+
+      <p id="text-labels" class="text">Input Dollar Amount</p>
+      <input name="money" value="" type="text" id="money-form" class="text-field-email"></input>
+      <div id="modal-container">
+        <div id="buttons-modal">
+          <div class="funds">Deposit</div>
+          <div class="funds">Withdrawl</div>
+        </div>
+        <div id="info-box">
+          <div class="info-box">
+            <div class="info-title">Add and Remove Funds</div>
+            <div id="info-text">Type the amount of cash you would
+              like to add or remove in the box to
+              the left and select to deposit or withdrawl
+              funds from your account.</div>
+          </div>
+        </div>
+    </div>
+    </form>
+  </div>
+</div>
+</div>
+
 </body>
 <script src="../js/modal.js"></script>
 
