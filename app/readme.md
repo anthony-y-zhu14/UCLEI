@@ -1,4 +1,4 @@
-/app/readme.md
+ ## README (Frontend Documentation) 
 The app folder contains all front end work for the UCLEI stock trading platform. The following directories seperate the files into HTML, CSS, and JS. 
 This readme provides insight into what each document contains and its functionality. 
  
