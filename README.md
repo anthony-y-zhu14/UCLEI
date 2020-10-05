@@ -55,6 +55,7 @@ index.html
     │           login.js
     │           myChart.js
     │           news.js
+    |           modal.js
     │
     ├───project spec
     │       Changelog.txt
@@ -91,7 +92,7 @@ Therefore, any monetary loss or gain occurred are not materialized thus are not 
 
 ## Additional Functionality
 
-- Included a Web Scrapper to scrap market data from Yahoo Finance and store them in the local database storage.
+- Included a Web Scrapper to scrape market data from Yahoo Finance and store them in the local database storage.
 - Market News cards fetch news based on user-selected queries related to stocks. The market news is fetched using JS, JSON, and the GNews API. 
 - Stock charts are displayed using the chart.js library
 
