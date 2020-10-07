@@ -17,22 +17,6 @@ body {
   background: #e2eaf2;
 }
 
-input{
-  padding: 1em;
-  background: #B4E2FC;
-  margin: 2em;
-  cursor: pointer;
-  outline: none;
-  border-radius: .3em;
-  font-weight: bold;
-  transition: background-color .3s;
-
-  &:hover{
-    background: #C3D6E7;
-  }
-}
-
-
 summary{
   padding: 1em;
   width: 80%;
@@ -81,17 +65,35 @@ details[open] summary ~ *{
   margin-left: 4em;
   outline: none;
   border-radius: .3em;
-  background: white;
-  color: black;
+  background: #393b41;
+  color: white;
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   text-align: center;
 
 }
 
+#search-input{
+  padding: 1em;
+  background: #B4E2FC;
+  margin: 2em;
+  margin-left: 8em;
+  cursor: pointer;
+  outline: none;
+  border-radius: .3em;
+  font-weight: bold;
+  transition: background-color .3s;
+
+  &:hover{
+    background: #C3D6E7;
+  }
+}
+
 #searchBtn{
   width: 4em;
   height: 3em;
+  padding: 1em;
+  padding-left: 1.5em;
   cursor: pointer;
 
   border-radius: 0.8em;
@@ -123,11 +125,44 @@ details[open] summary ~ *{
   width: 80%;
   outline: none;
   border-radius: .3em;
-  background: white;
+  background: #393b41;
   cursor: pointer;
-  color: black;
+  color: white;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
+
+}
+
+#stock-result-list{
+  list-style-type: none;
+  text-align: center;
+}
+
+#stockFound{
+  color: white;
+  padding: 0.5em;
+  margin: 2em;
+  width: 60%;
+  background: slategrey;
+  outline: none;
+  border-radius: .3em;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#trading-quantity-input{
+  padding: 1em;
+  background: #B4E2FC;
+  margin: 2em;
+  cursor: pointer;
+  outline: none;
+  border-radius: .3em;
+  font-weight: bold;
+  transition: background-color .3s;
+
+  &:hover{
+    background: #C3D6E7;
+  }
 }
 
 #buyBtn{
@@ -207,7 +242,7 @@ details[open] summary ~ *{
   font-weight:300;
   color:#000000;
   text-shadow: 0 0.04em 0.04em rgba(0,0,0,0.35);
-  background-color: #6C9FF8;
+  background-color: aliceblue;
   text-align:center;
   font-weight: bold;
   font-family: 'Open Sans', sans-serif;
@@ -237,21 +272,26 @@ details[open] summary ~ *{
   height: 80%;
   margin-top: 5%;
   padding: 2em;
-  background: white;
+  background: #393b41;
   outline: none;
   border-radius: .3em;
-  color: black;
+  color: white;
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
 }
 
 #stock-list{
   list-style-type: none;
-  margin: 0;
-  padding: 0;
   color: black;
   font-family: 'Open Sans', sans-serif;
 }
 
 .stock-holding{
-  color: black;
+  color: white;
+  padding: 0.5em;
+  background: slategrey;
+  outline: none;
+  border-radius: .3em;
+  font-family: 'Open Sans', sans-serif;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
