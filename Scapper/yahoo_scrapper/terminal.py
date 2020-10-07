@@ -1,5 +1,5 @@
 import database_updater
-import Stock
+import stock
 
 
 # just a tester for now, plan to write the stock info into a json file so the front end will be able to extract info
