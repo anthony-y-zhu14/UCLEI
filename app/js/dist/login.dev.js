@@ -53,7 +53,16 @@ function sendLoginInfo() {
     password: document.getElementsByClassName("text-field-password"),
     submit: document.getElementById("button-focus")
   };
+  var formData = {
+    "username": form.username.innerHTML,
+    "password": form.password.innerHTML
+  };
   form.submit.addEventListener("click", function () {
     var request = new XMLHttpRequest();
+    var url = "some url";
+    request.open("post", url);
+    request.setRequestHeader("Content-Tyoe", "multipart/form-data");
+    var data = JSON.stringify(formData);
+    request.send(dataData);
   });
 }

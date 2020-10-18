@@ -17,8 +17,14 @@ function sendLoginInfo(){
     submit: document.getElementById("button-focus")
   }; 
 
+  let formData = {"username": form.username.innerHTML, "password": form.password.innerHTML};
+
   form.submit.addEventListener("click", function(){
-    const request = new XMLHttpRequest();
-    
+    let request = new XMLHttpRequest();
+    let url = "some url";
+    request.open("post", url);
+    request.setRequestHeader("Content-Tyoe", "multipart/form-data");
+    let data = JSON.stringify(formData);
+    request.send(dataData);    
   });
 }
