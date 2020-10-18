@@ -51,19 +51,19 @@ details[open] summary ~ *{
 }
 
 #account-container{
-    width: 80%;
+    width: 100%;
     height: 2em;
     margin: 2em;
+    margin-left: 0;
     background: #393b41;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
     padding: 1em;
     font-size: 20px;
     font-family: 'Open Sans', sans-serif;
-    background: white;
     font-weight: bold;
     text-align: center;
-    color: black;
+    color: white;
 }
 
 #balance-container{
@@ -139,6 +139,7 @@ details[open] summary ~ *{
 #account-activity-container{
   position: absolute;
   justify-content: space-around;
+  text-align: center;
   width: 601px;
   height: 806px;
   left: 840px;
@@ -233,32 +234,20 @@ details[open] summary ~ *{
     height: 50%;
     margin-left: 1em;
     margin-top: 5em;
-    background: #FFFFFF;
+    padding: 2em;
+    background: #393b41;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 15px;
+    list-style-type: none;
 
 }
 
-.title{
-    font-size: 20px;
-    font-style: normal;
-    font-weight: bold;
-    color: #FFFFFF;
-    font-family: 'Open Sans', sans-serif;
-}
 
 .title-small{
     font-size: 14px;
     font-style: normal;
     font-weight: bold;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-}
-
-.text{
-    font-size: 14px;
-    font-style: normal;
-    color: #FFFFFF;
+    color: black;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -279,26 +268,12 @@ details[open] summary ~ *{
     font-family: 'Open Sans', sans-serif;
 }
 
-.option-box{
-    width: 225px;
-    height: 40px;
-    margin-left: 10%;
-    background: #FFFFFF;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 15px;
-    text-align: center;
-
-    font-size: 20px;
-    font-style: normal;
-    font-weight: bold;
-    color: #393b41;
-    font-family: 'Open Sans', sans-serif;
-}
-
 .stock-holding{
-  color: black;
-  font-size: 14px;
-  font-style: normal;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
+    color: white;
+    padding: 0.5em;
+    background: slategrey;
+    outline: none;
+    border-radius: .3em;
+    font-family: 'Open Sans', sans-serif;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
