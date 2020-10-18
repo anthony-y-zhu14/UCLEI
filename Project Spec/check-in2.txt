@@ -1,0 +1,32 @@
+Fuction:
+    deposit money (amount, user) --> boolean
+    withdraw money (amount, user) --> boolean
+
+    place order(quantity, limit price, stock, user) --> boolean
+        produces an orderID
+    cancel order (orderID) --> boolean
+
+    add/remove watchlust stocks (user/watchlist, stock) --> boolean
+    add/remove watchlists (userID) --> boolean
+
+    check if user owns a specific stock (user, stock) --> int (quantity)
+        if yes, how many?
+
+    updarte market data and refreshing the users view (whole market) --> boolean
+        can use setInterval() to refresh every x secs
+
+    matching orders(orderID, orderID2, user1, user2) --> boolean
+    matchingOrder(stock)
+        implies stock holds a list of all orders
+        every time this stock is bought or sold, callthis function
+    register for event subscription (user, stock, minPercentChange) --> boolean
+    
+Template Engine:
+    body
+        view of all stocks on the market
+
+        would you want to view all pending oders? public/private info?
+            view only specified stock orders
+
+subscription
+        
