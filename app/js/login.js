@@ -1,11 +1,11 @@
 
 async function loadHome() {
   const contentDiv = document.getElementById("content");
-  contentDiv.innerHTML = await fetchHtmlAsText('./html/dashboard.html');
+  contentDiv.innerHTML = await fetchHtmlAsText();//'./html/dashboard.html'
 }
 
 async function fetchHtmlAsText() {
-  url = loadHome();
+  let url = loadHome();
   const response = await fetch(url);
   return await response.text();
 }
@@ -25,6 +25,6 @@ function sendLoginInfo(){
     request.open("post", url);
     request.setRequestHeader("Content-Tyoe", "multipart/form-data");
     let data = JSON.stringify(formData);
-    request.send(dataData);    
+    request.send(data);    
   });
 }
