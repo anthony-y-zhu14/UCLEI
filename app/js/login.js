@@ -1,30 +1,30 @@
+function sendLoginInfo() {
+  console.log("Fooo");
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let formData = {"username": username.value, "password": password.value};
+  let request = new XMLHttpRequest();
+  let url = "/authentication";
+  request.open("post", url);
+  request.setRequestHeader("Content-Type", "multipart/form-data");
+  let data = JSON.stringify(formData);
+  request.send(data);
 
-async function loadHome() {
-  const contentDiv = document.getElementById("content");
-  contentDiv.innerHTML = await fetchHtmlAsText();//'./html/dashboard.html'
+  if (request.responseText == "false") {
+    handleBadLogin();
+  }
+  else {
+    let newUrl = request.responseText;
+    window.location = newUrl;
+  }
 }
 
-async function fetchHtmlAsText() {
-  let url = loadHome();
-  const response = await fetch(url);
-  return await response.text();
+function handleBadLogin() {
+  let parent = document.getElementById("button-focus");
+  let message = document.createElement("div");
+  message.innerHTML = "Invaild username / password, please try again.";
+  message.style.color = "red";
+  parent.appendChild(message);
 }
 
-function sendLoginInfo(){
-  const form = {
-    username: document.getElementsByClassName("text-field-email"),
-    password: document.getElementsByClassName("text-field-password"),
-    submit: document.getElementById("button-focus")
-  }; 
-
-  let formData = {"username": form.username.innerHTML, "password": form.password.innerHTML};
-
-  form.submit.addEventListener("click", function(){
-    let request = new XMLHttpRequest();
-    let url = "some url";
-    request.open("post", url);
-    request.setRequestHeader("Content-Tyoe", "multipart/form-data");
-    let data = JSON.stringify(formData);
-    request.send(data);    
-  });
-}
+document.getElementById("button-focus").addEventListener("click", sendLoginInfo);

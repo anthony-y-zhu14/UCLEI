@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html>
   <head>
     <meta charset="utf-8">
     <title>NUCLEI</title>
     <link rel="stylesheet" href="./css/styles.css">
-    <script src="../js/login.js"></script>
   </head>
     <body>
       <h1 class="nuclei">UCLEI</h1>
@@ -13,12 +11,11 @@
           <h3 class="welcome">Welcome,<h3>
           <span class="welcome-message-text">We're happy to see you back.</span>
           <form>
-            <p id="text-labels" class="email">EMAIL</p>
-            <input name="email" value="" type="text" id="login-text-form" class="text-field-email"></input>
-            <p id="text-labels" class="password">PASSWORD</p>
-            <input name="password" value="" type="text" id="login-text-form" class="text-field-password"></input>
-            <button class="login" id="button-focus"><a href="./html/dashboard.html">Login</a></button>
-            <!-- <button class="register" id="button-unfocused">Register</button> -->
+            <p class="text-labels" class="email">USERNAME</p>
+            <input id="username" name="email" value="" type="text" id="login-text-form" class="text-field-email"></input>
+            <p class="text-labels" class="password">PASSWORD</p>
+            <input id="password" name="password" value="" type="text" id="login-text-form" class="text-field-password"></input>
+            <div class="login" id="button-focus">Login</div>
             <a href="" class="text-forgot-password">Forgot your password?</a>
           </form>
         </div>
@@ -35,5 +32,6 @@
           514,320C480,320,446,320,411,320C377.1,320,343,320,309,320C274.3,320,240,320,206,320C171.4,
           320,137,320,103,320C68.6,320,34,320,17,320L0,320Z"></path></svg>
       </main>
+      <script src="../js/login.js"></script>
     </body>
   </html>
