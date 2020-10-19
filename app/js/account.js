@@ -38,10 +38,10 @@ function renderAccountInfo(accountInfo){
     //code goes here
 
     document.getElementById("holdingBtn").addEventListener("click", function(){
-
+        //render the list of stock holding
     });
     document.getElementById("activityBtn").addEventListener("click", function(){
-
+        //render the list of activity
     });
 
 }
