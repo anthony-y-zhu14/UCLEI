@@ -87,8 +87,7 @@ app.get('/', (request, response) => {
     }
 });
 
-app.post('/', (request, response) => {
-    console.log("foo");
+app.post('/authentication', (request, response) => {
     if(request.url === "/authentication") {
         let data = "";
         request.on('data', (chunk) => {
@@ -98,16 +97,16 @@ app.post('/', (request, response) => {
     request.on('end', () => {
         let username = data.username;
         let password = data.password;
-        console.log("bar");
+        console.log(username);
+        console.log(password);
         authenticate(username, password);
         });
     }
 
     function authenticate(username, password) {      
-        console.log("foo");   
         if(users.username === username && users.password === password) {
             console.log("Authenticated");
-            response.write("http://127.0.0.1:3001/html/dashboard.html");
+            response.write("/html/dashboard.html");
         }
         else { 
             response.write("false");

@@ -76,6 +76,7 @@ a {
   font-size: 20px;
   line-height: 27px;
   text-align: center;
+  padding: 0.5em;  
 }
 
 #button-unfocused {

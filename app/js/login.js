@@ -1,30 +1,45 @@
-function sendLoginInfo() {
+function getLoginInfo() {
   console.log("Fooo");
   let username = document.getElementById("username");
   let password = document.getElementById("password");
   let formData = {"username": username.value, "password": password.value};
+  sendLoginInfo(formData);
+}
+
+function sendLoginInfo(formData) {
   let request = new XMLHttpRequest();
   let url = "/authentication";
+
   request.open("post", url);
   request.setRequestHeader("Content-Type", "multipart/form-data");
-  let data = JSON.stringify(formData);
-  request.send(data);
+  let data = formData;
+  request.send(JSON.stringify(data));
 
-  if (request.responseText == "false") {
-    handleBadLogin();
-  }
-  else {
-    let newUrl = request.responseText;
-    window.location = newUrl;
+  request.onreadystatechange = function () {    
+    if (request.responseText == "false") {        
+      handleBadLogin();
+    }
+    else {
+      let newUrl = request.responseText;
+      console.log(newUrl);
+      if(newUrl != "") {
+        window.location = newUrl;
+      }
+    }
   }
 }
 
 function handleBadLogin() {
-  let parent = document.getElementById("button-focus");
-  let message = document.createElement("div");
-  message.innerHTML = "Invaild username / password, please try again.";
+  let message = document.getElementById("response-text"); 
+  message.innerHTML = "Invaild username / password";
+  message.style.background = "#35363C";
+  message.style.fontSize = "16px";
   message.style.color = "red";
-  parent.appendChild(message);
+  message.style.border = "1px solid red";
+  message.style.width = "30%";
+  message.style.height = "2.5em";
+  message.style.marginLeft = "15%";
+  message.style.textAlign = "center";  
 }
 
-document.getElementById("button-focus").addEventListener("click", sendLoginInfo);
+document.getElementById("button-focus").addEventListener("click", getLoginInfo);

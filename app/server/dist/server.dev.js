@@ -92,9 +92,7 @@ app.get('/', function (request, response) {
     });
   }
 });
-app.post('/', function (request, response) {
-  console.log("foo");
-
+app.post('/authentication', function (request, response) {
   if (request.url === "/authentication") {
     var data = "";
     request.on('data', function (chunk) {
@@ -103,17 +101,16 @@ app.post('/', function (request, response) {
     request.on('end', function () {
       var username = data.username;
       var password = data.password;
-      console.log("bar");
+      console.log(username);
+      console.log(password);
       authenticate(username, password);
     });
   }
 
   function authenticate(username, password) {
-    console.log("foo");
-
     if (users.username === username && users.password === password) {
       console.log("Authenticated");
-      response.write("http://127.0.0.1:3001/html/dashboard.html");
+      response.write("/html/dashboard.html");
     } else {
       response.write("false");
       console.log("Invalid.");

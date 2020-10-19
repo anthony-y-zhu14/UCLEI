@@ -1,6 +1,6 @@
 "use strict";
 
-function sendLoginInfo() {
+function getLoginInfo() {
   console.log("Fooo");
   var username = document.getElementById("username");
   var password = document.getElementById("password");
@@ -8,27 +8,42 @@ function sendLoginInfo() {
     "username": username.value,
     "password": password.value
   };
+  sendLoginInfo(formData);
+}
+
+function sendLoginInfo(formData) {
   var request = new XMLHttpRequest();
   var url = "/authentication";
   request.open("post", url);
   request.setRequestHeader("Content-Type", "multipart/form-data");
-  var data = JSON.stringify(formData);
-  request.send(data);
+  var data = formData;
+  request.send(JSON.stringify(data));
 
-  if (request.responseText == "false") {
-    handleBadLogin();
-  } else {
-    var newUrl = request.responseText;
-    window.location = newUrl;
-  }
+  request.onreadystatechange = function () {
+    if (request.responseText == "false") {
+      handleBadLogin();
+    } else {
+      var newUrl = request.responseText;
+      console.log(newUrl);
+
+      if (newUrl != "") {
+        window.location = newUrl;
+      }
+    }
+  };
 }
 
 function handleBadLogin() {
-  var parent = document.getElementById("button-focus");
-  var message = document.createElement("div");
-  message.innerHTML = "Invaild username / password, please try again.";
+  var message = document.getElementById("response-text");
+  message.innerHTML = "Invaild username / password";
+  message.style.background = "#35363C";
+  message.style.fontSize = "16px";
   message.style.color = "red";
-  parent.appendChild(message);
+  message.style.border = "1px solid red";
+  message.style.width = "30%";
+  message.style.height = "2.5em";
+  message.style.marginLeft = "15%";
+  message.style.textAlign = "center";
 }
 
-document.getElementById("button-focus").addEventListener("click", sendLoginInfo);
+document.getElementById("button-focus").addEventListener("click", getLoginInfo);
