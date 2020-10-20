@@ -31,6 +31,13 @@ function sendLoginInfo(formData) {
 
 function handleBadLogin() {
   let message = document.getElementById("response-text"); 
+  // message.className = "yourClassName";
+  //message.style.display = "block";
+  /*
+  className {
+    display: none;
+  }
+  */
   message.innerHTML = "Invaild username / password";
   message.style.background = "#35363C";
   message.style.fontSize = "16px";
