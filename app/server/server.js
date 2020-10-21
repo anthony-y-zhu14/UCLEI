@@ -5,8 +5,8 @@ const path = require('path');
 const app = express();
 
 // let users = fs.readFile("../database/user.json");
-const users = {
-    username: "jerry137", 
+let users = {
+    username: "jerry137",
     password : "123456",
 
     name: "Jerry Smith",
@@ -87,7 +87,7 @@ app.get('/', (request, response) => {
             response.end();
         });
     }
-    
+
     else if(request.url === "/trading" || request.url === "../trading") {
         fs.readFile("../trading.html", function(err, data){
             if(err) {
@@ -102,34 +102,20 @@ app.get('/', (request, response) => {
             response.end();
         });
     }
-    else if(request.url === "/getBalance") {
-        let data = users.account.cashBalance;
-        response.statusCode = 200;
-		response.setHeader("Content-Type", "application/JSON");
-        response.write(data);
-        response.end();
-    }
 });
 
-// app.get('/getBalance', (request, response) => {
-//     console.log(request.url);
-//         fs.readFile("../index.html", function(err, data){
-//             if(err) {
-//                 response.statusCode = 500;
-//                 response.write("Server error.");
-//                 response.end();
-//                 return;
-//             }
-//             response.statusCode = 200;
-//             response.setHeader("Content-Type", "text/html");
-//             response.write(data);
-//             response.end();
-//     });
+app.get('/getBalance', (request, response) => {
+    let data = users.account.cashBalance;
+    response.statusCode = 200;
+    response.setHeader("Content-Type", "application/JSON");
+    response.write(data);
+    response.end();
+});
 
 app.post('/authentication', (request, response) => {
     let data = "";
     request.on('data', (chunk) => {
-        data = JSON.parse(chunk);            
+        data = JSON.parse(chunk);
     });
 
     request.on('end', () => {
@@ -140,14 +126,14 @@ app.post('/authentication', (request, response) => {
     authenticate(username, password);
     });
 
-    function authenticate(username, password) {      
+    function authenticate(username, password) {
         if(users.username === username && users.password === password) {
             console.log("Authenticated");
             response.write("/html/dashboard.html");
         }
-        else { 
+        else {
             response.write("false");
-            console.log("Invalid.");         
+            console.log("Invalid.");
         }
     }
  });
@@ -155,11 +141,11 @@ app.post('/authentication', (request, response) => {
  app.post('/updateBalance', (request, response) => {
     let data = "";
     request.on('data', (chunk) => {
-        data = JSON.parse(chunk);            
+        data = JSON.parse(chunk);
     });
 
     request.on('end', () => {
-    users.account.cashbalance = data;
+    users.account["cashBalance"] = parseInt(data);
     console.log(users);
     });
 });

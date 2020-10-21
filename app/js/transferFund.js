@@ -4,21 +4,20 @@ function getUserInfo(){
 
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            
+
             let currentCashBalance = JSON.parse(request.responseText);
-            renderAccountInfo(currentCashBalance);          
+            renderAccountInfo(parseInt(currentCashBalance));
 
         }
     };
     request.open("GET", url);
     request.send();
-    
+
 }
 
 function renderAccountInfo(currentCashBalance){
     let cashBalance = document.getElementById("money");
     cashBalance.innerHTML = currentCashBalance;
-
 }
 
 /* deposit
@@ -27,18 +26,21 @@ function renderAccountInfo(currentCashBalance){
 - out: boolean
 */
 function deposit() {
+  console.log("foo");
 
-    //get user balance 
-    let cashBalance = document.getElementById("money");
+    //get user balance
+    let cashBalance = document.getElementById("money").innerHTML;
 
-    //get user input for added funds amount 
-    let userInput = document.getElementById("money-form");
-    let data = cashBalance - userInput.value;
+    //get user input for added funds amount
+    let userInput = document.getElementById("money-form").value;
+    let data = parseInt(cashBalance + userInput);
+    console.log(data);
+    console.log(typeof(data));
 
-    //post request to server and update the user balance 
+    //post request to server and update the user balance
     let request = new XMLHttpRequest();
     let url = "/updateBalance";
-  
+
     request.open("post", url);
     request.setRequestHeader("Content-Type", "multipart/form-data");
     request.send(JSON.stringify(data));
@@ -52,17 +54,18 @@ withdraw
 */
 function withdraw() {
 
-    //get user balance 
-    let cashBalance = document.getElementById("money");
+    //get user balance
+    let cashBalance = document.getElementById("money").innerHTML;
+    console.log(cashBalance);
     let data;
 
-    //get user input for added funds amount 
+    //get user input for added funds amount
     let userInput = document.getElementById("money-form");
     if(userInput.value < cashBalance) {
         data = cashBalance - userInput.value;
         let request = new XMLHttpRequest();
         let url = "/updateBalance";
-  
+
         request.open("post", url);
     request.setRequestHeader("Content-Type", "multipart/form-data");
     request.send(JSON.stringify(data));
@@ -73,7 +76,7 @@ function withdraw() {
     }
 }
 
-    
+
 
 document.getElementById("money-deposit").addEventListener("click", deposit);
 document.getElementById("money-withdraw").addEventListener("click", withdraw);
