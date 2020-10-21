@@ -12,7 +12,7 @@ let users = {
     name: "Jerry Smith",
     UID: "c117",
     watchlist: {},
-    ownedStock: {},
+    ownedStocks: {},
     activity: {},
     account: {
         accountName: "TFSA",

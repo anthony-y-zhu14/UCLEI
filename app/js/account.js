@@ -39,6 +39,12 @@ function renderAccountInfo(user){
 
     document.getElementById("holdingBtn").addEventListener("click", function(){
         //render the list of stock holding
+        let parent = document.getElementById("table-container");
+        user.ownedStock.forEach(element => {
+            let child = document.createElement("li");
+            child.id= element.symbol;
+            child.innerHTML = element.name;            
+        });
     });
     document.getElementById("activityBtn").addEventListener("click", function(){
         //render the list of activity
