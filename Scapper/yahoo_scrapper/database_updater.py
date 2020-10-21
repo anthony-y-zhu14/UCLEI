@@ -41,13 +41,11 @@ def json_sort(file_name):
     with open(file_name, "w+") as database:
         json.dump(sorted_obj, database, indent=4)
 
-def main():   
-    data_path = "../database/data.json"
-    url_path = "../database/stock_url.json"
+def main():
+    data_path = "../../app/database/stocks/data.json"
+    url_path = "../../app/database/stocks/stock_url.json"
     update_database(data_path, url_path)
     json_sort(url_path)
 
 if __name__ == "__main__":
     main()
-    
-    
