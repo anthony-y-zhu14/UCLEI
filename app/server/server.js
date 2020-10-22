@@ -23,7 +23,12 @@ let users = {
     }
 ],
     activity: [
+<<<<<<< HEAD
+        "Brought 26 shares of TSLA",
+        "Sold 26 shares of AAL"
+=======
 
+>>>>>>> 952fdcaf948898eac1b0087031c4670693fca938
     ],
     account: {
         accountName: "TFSA",
