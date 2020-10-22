@@ -13,7 +13,7 @@ let users = {
 
     name: "Jerry Smith",
     UID: "c117",
-    watchlist: ["AAL", "TSLA"],
+    watchlist: ["AAL", "TSLA", "FB", "SHOP"],
     ownedStocks: [
         {
             name: "American Airlines Group Inc.",
@@ -114,22 +114,21 @@ app.post('/authentication', (request, response) => {
 
 app.get('/stock-data', (request, response) => {
   fs.readFile("../database/stocks/data.json", function(err, file){
-      if(err) {
-        console.log("Error reading file.")
-        return;
-      }
 
       let lis = JSON.parse(file);
       let data = [];
+      response.setHeader("Content-Type", "application/JSON");
 
-      for(let j = 0; j < user.watchlist.length; j++) {
-        item = user.watchlist[j];
+      for(let j = 0; j < users.watchlist.length; j++) {
+        item = users.watchlist[j];
+
         data.push(lis[item]);
-        response.setHeader("Content-Type", "application/JSON");
-        response.write(JSON.stringify(data));
 
       }
+      console.log(data);
+      response.write(JSON.stringify(data));
       response.end();
+
     });
 });
 
