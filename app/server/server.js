@@ -112,24 +112,24 @@ app.post('/authentication', (request, response) => {
 });
 
 app.get('/stock-data', (request, response) => {
-  fs.readFile("../database/stocks/data.json", function(err, data){
+  fs.readFile("../database/stocks/data.json", function(err, file){
       if(err) {
         console.log("Error reading file.")
         return;
       }
-      lis = JSON.parse(data)
-      console.log("bar");
-      for (let i = 0; i < 1000; i++) {
-        console.log(lis..name);
-        for(let j = 0; j < user.watchlist.length; j++) {
-          if (lis[i] === user.watchlist[j]) {
-            console.log(list[i]);
-          }
-        }
+
+      lis = JSON.parse(file);
+      data = [];
+
+      for(let j = 0; j < user.watchlist.length; j++) {
+        item = user.watchlist[j];
+        data.push(lis[item]);
+        response.setHeader("Content-Type", "application/JSON");
+        response.write(JSON.stringify(data));
+
       }
       response.end();
-
-});
+    });
 });
 
 app.listen(3000);
