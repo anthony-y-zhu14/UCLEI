@@ -13,7 +13,7 @@ let users = {
 
     name: "Jerry Smith",
     UID: "c117",
-    watchlist: [],
+    watchlist: ["AAL", "TSLA"],
     ownedStocks: [
         {
             name: "American Airlines Group Inc.",
@@ -22,7 +22,9 @@ let users = {
             share: 20
     }
 ],    
-    activity: [],
+    activity: [
+        
+    ],
     account: {
         accountName: "TFSA",
         cashBalance: 4048.28,
@@ -67,8 +69,8 @@ app.get('/getAccount', (request, response) => {
     response.setHeader("Content-Type", "application/JSON");
     console.log(`\nClient ${users.username} account info sent.\n`)
     response.write(data);
-
-    response.end;
+    console.log(users);
+    response.end();
 });
 
 app.post('/authentication', (request, response) => {

@@ -3,11 +3,9 @@ function getAccountInfo(){
     let url = "/getAccount";
 
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){    
-            console.log("called!");        
+        if (this.readyState == 4 && this.status == 200){               
             let user = JSON.parse(request.responseText);
-            console.log(user);
-            renderAccountInfo(user);
+            renderInfo(user);            
         }
     };
     request.open("GET", url);
@@ -22,13 +20,12 @@ render account info
 - out: N/A
 */
 
-function renderAccountInfo(user){
-  
+function renderInfo(user) {
 
     let name = document.getElementById("account-container");
-    let totalBalance = document.getElementById("total-balance");
-    let investmentBalance = document.getElementById("investment");
-    let cashBalance = document.getElementById("cash-balance");
+    let totalBalance = document.getElementById("total-balance-text");
+    let investmentBalance = document.getElementById("investment-text");
+    let cashBalance = document.getElementById("cash-balance-text");
 
     name.innerHTML = user.account.accountName;
     cashBalance.innerHTML = user.account.cashBalance;
@@ -41,16 +38,17 @@ function renderAccountInfo(user){
 
 
 
-    //render the chart legend
+    // render the chart legend
 
-    //code goes here
+    // code goes here
 
     document.getElementById("holdingBtn").addEventListener("click", function(){
         //render the list of stock holding
         // let parent = document.getElementById("table-container");
-        user.ownedStock.forEach(element => {
-            console.log(element.name);            
-        });
+        for (let index = 0; index < user.ownedStocks.length; index++) {
+            const element = user.ownedStocks[index];        
+            console.log(element);
+        }
     });
     document.getElementById("activityBtn").addEventListener("click", function(){
         //render the list of activity
