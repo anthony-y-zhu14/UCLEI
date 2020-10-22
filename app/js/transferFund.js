@@ -7,7 +7,6 @@ function getUserInfo(){
 
             let currentCashBalance = JSON.parse(request.responseText);
             renderAccountInfo(parseFloat(currentCashBalance));
-
         }
     };
     request.open("GET", url);

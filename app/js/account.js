@@ -3,9 +3,9 @@ function getAccountInfo(){
     let url = "/getAccount";
 
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){               
+        if (this.readyState == 4 && this.status == 200){
             let user = JSON.parse(request.responseText);
-            renderInfo(user);            
+            renderInfo(user);
         }
     };
     request.open("GET", url);
@@ -33,7 +33,7 @@ function renderInfo(user) {
     totalBalance.innerHTML = (user.account.cashBalance + user.account.investmentBalance);
 
     //render the donut chart
-    
+
     //code goes here
 
 
@@ -46,7 +46,7 @@ function renderInfo(user) {
         //render the list of stock holding
         // let parent = document.getElementById("table-container");
         for (let index = 0; index < user.ownedStocks.length; index++) {
-            const element = user.ownedStocks[index];        
+            const element = user.ownedStocks[index];
             console.log(element);
         }
     });
@@ -54,7 +54,7 @@ function renderInfo(user) {
         //render the list of activity
 
         user.activity.forEach(element => {
-            console.log(element.name);            
+            console.log(element.name);
         });
     });
 
