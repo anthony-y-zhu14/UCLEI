@@ -11,9 +11,16 @@ let users = {
 
     name: "Jerry Smith",
     UID: "c117",
-    watchlist: {},
-    ownedStocks: {},
-    activity: {},
+    watchlist: [],
+    ownedStocks: [
+        {
+            name: "American Airlines Group Inc.",
+            quote: "12.74",
+            symbol: "AAL",
+            share: 20
+    }
+],    
+    activity: [],
     account: {
         accountName: "TFSA",
         cashBalance: 2020.28,

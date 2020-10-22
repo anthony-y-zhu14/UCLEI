@@ -3,8 +3,7 @@ function getAccountInfo(){
     let url = "/account-info";
 
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){
-            
+        if (this.readyState == 4 && this.status == 200){            
             let user = JSON.parse(request.responseText);
             renderAccountInfo(user);
         }
@@ -13,6 +12,14 @@ function getAccountInfo(){
     request.open("GET", url);
     request.send();
 }
+
+
+/*
+render account info
+- purpose: display user account info and stock holding
+- in: user
+- out: N/A
+*/
 
 function renderAccountInfo(user){
     const form = {
@@ -39,15 +46,17 @@ function renderAccountInfo(user){
 
     document.getElementById("holdingBtn").addEventListener("click", function(){
         //render the list of stock holding
-        let parent = document.getElementById("table-container");
+        // let parent = document.getElementById("table-container");
         user.ownedStock.forEach(element => {
-            let child = document.createElement("li");
-            child.id= element.symbol;
-            child.innerHTML = element.name;            
+            console.log(element.name);            
         });
     });
     document.getElementById("activityBtn").addEventListener("click", function(){
         //render the list of activity
+
+        user.activity.forEach(element => {
+            console.log(element.name);            
+        });
     });
 
 }
