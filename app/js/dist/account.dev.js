@@ -23,31 +23,40 @@ render account info
 
 
 function renderInfo(user) {
-  var name = document.getElementById("account-container");
+  var account = document.getElementById("account-container");
   var totalBalance = document.getElementById("total-balance-text");
   var investmentBalance = document.getElementById("investment-text");
   var cashBalance = document.getElementById("cash-balance-text");
-  name.innerHTML = user.account.accountName;
+  var username = document.getElementById("username");
+  account.innerHTML = user.account.accountName;
   cashBalance.innerHTML = user.account.cashBalance;
   investmentBalance.innerHTML = user.account.investmentBalance;
-  totalBalance.innerHTML = user.account.cashBalance + user.account.investmentBalance; //render the donut chart
+  totalBalance.innerHTML = user.account.cashBalance + user.account.investmentBalance;
+  username.innerHTML = user.name; //render the donut chart
   //code goes here
   // render the chart legend
   // code goes here
 
   document.getElementById("holdingBtn").addEventListener("click", function () {
     //render the list of stock holding
-    // let parent = document.getElementById("table-container");
+    var holdings = document.getElementById("table-container");
+    holdings.innerHTML = '';
+
     for (var index = 0; index < user.ownedStocks.length; index++) {
       var element = user.ownedStocks[index];
-      console.log(element);
+      var stock = document.createElement("li");
+      stock.id = element.name;
+      stock.className = "stock-holding";
+      stock.innerHTML = element.name;
+      holdings.appendChild(stock);
     }
   });
   document.getElementById("activityBtn").addEventListener("click", function () {
     //render the list of activity
-    user.activity.forEach(function (element) {
-      console.log(element.name);
-    });
+    for (var index = 0; index < user.activity.length; index++) {
+      var element = user.activity[index];
+      console.log(element);
+    }
   });
 }
 

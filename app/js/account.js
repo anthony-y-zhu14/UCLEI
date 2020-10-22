@@ -22,15 +22,17 @@ render account info
 
 function renderInfo(user) {
 
-    let name = document.getElementById("account-container");
+    let account = document.getElementById("account-container");
     let totalBalance = document.getElementById("total-balance-text");
     let investmentBalance = document.getElementById("investment-text");
     let cashBalance = document.getElementById("cash-balance-text");
+    let username = document.getElementById("username");
 
-    name.innerHTML = user.account.accountName;
+    account.innerHTML = user.account.accountName;
     cashBalance.innerHTML = user.account.cashBalance;
     investmentBalance.innerHTML = user.account.investmentBalance;
     totalBalance.innerHTML = (user.account.cashBalance + user.account.investmentBalance);
+    username.innerHTML = user.name;
 
     //render the donut chart
     
@@ -44,18 +46,25 @@ function renderInfo(user) {
 
     document.getElementById("holdingBtn").addEventListener("click", function(){
         //render the list of stock holding
-        // let parent = document.getElementById("table-container");
+       
+        let holdings = document.getElementById("table-container");    
+        holdings.innerHTML = '';
+
         for (let index = 0; index < user.ownedStocks.length; index++) {
-            const element = user.ownedStocks[index];        
-            console.log(element);
+            const element = user.ownedStocks[index];
+            let stock = document.createElement("li");
+            stock.id = element.name;     
+            stock.className = "stock-holding";
+            stock.innerHTML = element.name;
+            holdings.appendChild(stock);                          
         }
     });
     document.getElementById("activityBtn").addEventListener("click", function(){
         //render the list of activity
-
-        user.activity.forEach(element => {
-            console.log(element.name);            
-        });
+        for (let index = 0; index < user.activity.length; index++){
+            const element = user.activity[index];
+            console.log(element);
+        }
     });
 
 }

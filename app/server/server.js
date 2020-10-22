@@ -23,7 +23,8 @@ let users = {
     }
 ],    
     activity: [
-        
+        "Brought 26 shares of TSLA",
+        "Sold 26 shares of AAL"
     ],
     account: {
         accountName: "TFSA",
