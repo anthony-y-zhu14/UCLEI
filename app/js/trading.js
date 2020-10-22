@@ -4,6 +4,10 @@ place order
 - in: quantity, limit price, stock, user
 - out: order ID, int
 */
+function placeOrder(){
+
+}
+
 
 /*
 cancel order
