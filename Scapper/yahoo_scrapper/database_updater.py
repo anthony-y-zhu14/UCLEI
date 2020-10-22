@@ -10,9 +10,9 @@ def update_database(database_path, url_path):
         stock_list.append(stock.Stock(symbol))
     for s in stock_list:
         s.update_info()
-        data[s.name] = s.__dict__
+        data[s.symbol] = s.__dict__
         print("Fetching Data: ")
-        print(data[s.name])
+        print(data[s.symbol])
         print("\n")
 
     with open(database_path, "w+") as database:
