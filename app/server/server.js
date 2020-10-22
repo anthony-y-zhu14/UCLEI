@@ -23,12 +23,8 @@ let users = {
     }
 ],
     activity: [
-<<<<<<< HEAD
         "Brought 26 shares of TSLA",
         "Sold 26 shares of AAL"
-=======
-
->>>>>>> 952fdcaf948898eac1b0087031c4670693fca938
     ],
     account: {
         accountName: "TFSA",
@@ -123,8 +119,8 @@ app.get('/stock-data', (request, response) => {
         return;
       }
 
-      lis = JSON.parse(file);
-      data = [];
+      let lis = JSON.parse(file);
+      let data = [];
 
       for(let j = 0; j < user.watchlist.length; j++) {
         item = user.watchlist[j];
