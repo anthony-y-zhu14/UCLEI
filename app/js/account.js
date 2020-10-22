@@ -3,9 +3,9 @@ function getAccountInfo(){
     let url = "/getAccount";
 
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){               
+        if (this.readyState == 4 && this.status == 200){
             let user = JSON.parse(request.responseText);
-            renderInfo(user);            
+            renderInfo(user);
         }
     };
     request.open("GET", url);
@@ -35,7 +35,7 @@ function renderInfo(user) {
     username.innerHTML = user.name;
 
     //render the donut chart
-    
+
     //code goes here
 
 
@@ -52,19 +52,30 @@ function renderInfo(user) {
 
         for (let index = 0; index < user.ownedStocks.length; index++) {
             const element = user.ownedStocks[index];
+<<<<<<< HEAD
             let stock = document.createElement("li");
             stock.id = element.name;     
             stock.className = "stock-holding";
             stock.innerHTML = element.name;
             holdings.appendChild(stock);                          
+=======
+            console.log(element);
+>>>>>>> 952fdcaf948898eac1b0087031c4670693fca938
         }
     });
     document.getElementById("activityBtn").addEventListener("click", function(){
         //render the list of activity
+<<<<<<< HEAD
         for (let index = 0; index < user.activity.length; index++){
             const element = user.activity[index];
             console.log(element);
         }
+=======
+
+        user.activity.forEach(element => {
+            console.log(element.name);
+        });
+>>>>>>> 952fdcaf948898eac1b0087031c4670693fca938
     });
 
 }

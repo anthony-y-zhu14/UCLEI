@@ -21,10 +21,14 @@ let users = {
             symbol: "AAL",
             share: 20
     }
-],    
+],
     activity: [
+<<<<<<< HEAD
         "Brought 26 shares of TSLA",
         "Sold 26 shares of AAL"
+=======
+
+>>>>>>> 952fdcaf948898eac1b0087031c4670693fca938
     ],
     account: {
         accountName: "TFSA",
@@ -110,6 +114,27 @@ app.post('/authentication', (request, response) => {
     console.log(`\nClient ${users.username} balance updated to ${data}.\n`)
     response.end();
     });
+});
+
+app.get('/stock-data', (request, response) => {
+  fs.readFile("../database/stocks/data.json", function(err, data){
+      if(err) {
+        console.log("Error reading file.")
+        return;
+      }
+      lis = JSON.parse(data)
+      console.log("bar");
+      for (let i = 0; i < 1000; i++) {
+        console.log(lis..name);
+        for(let j = 0; j < user.watchlist.length; j++) {
+          if (lis[i] === user.watchlist[j]) {
+            console.log(list[i]);
+          }
+        }
+      }
+      response.end();
+
+});
 });
 
 app.listen(3000);
