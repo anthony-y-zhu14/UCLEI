@@ -2,6 +2,8 @@ const http = require('http');
 const fs = require("fs"); //reads files
 const express = require('express');
 const path = require('path');
+const { response } = require('express');
+const { json } = require('body-parser');
 const app = express();
 
 // let users = fs.readFile("../database/user.json");
@@ -23,7 +25,7 @@ let users = {
     activity: [],
     account: {
         accountName: "TFSA",
-        cashBalance: 2020.28,
+        cashBalance: 4048.28,
         investmentBalance: "0"
     },
     balanceGrowth: "-20%"
@@ -54,8 +56,19 @@ app.get('/getBalance', (request, response) => {
     let data = users.account.cashBalance;
     response.statusCode = 200;
     response.setHeader("Content-Type", "application/JSON");
+    console.log(`\nClient ${users.username} balance info sent.\n`)
     response.write(data.toString());
     response.end();
+});
+
+app.get('/getAccount', (request, response) => {
+    let data = JSON.stringify(users);
+    response.statusCode = 200;
+    response.setHeader("Content-Type", "application/JSON");
+    console.log(`\nClient ${users.username} account info sent.\n`)
+    response.write(data);
+
+    response.end;
 });
 
 app.post('/authentication', (request, response) => {

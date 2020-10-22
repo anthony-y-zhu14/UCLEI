@@ -6,9 +6,7 @@ function getUserInfo(){
         if (this.readyState == 4 && this.status == 200){
 
             let currentCashBalance = JSON.parse(request.responseText);
-            renderAccountInfo(currentCashBalance);
-            renderAccountInfo(parseInt(currentCashBalance));
-
+            renderAccountInfo(parseFloat(currentCashBalance));
 
         }
     };

@@ -1,14 +1,15 @@
 function getAccountInfo(){
     let request = new XMLHttpRequest();
-    let url = "/account-info";
+    let url = "/getAccount";
 
     request.onreadystatechange = function(){
-        if (this.readyState == 4 && this.status == 200){            
+        if (this.readyState == 4 && this.status == 200){    
+            console.log("called!");        
             let user = JSON.parse(request.responseText);
+            console.log(user);
             renderAccountInfo(user);
         }
     };
-
     request.open("GET", url);
     request.send();
 }
@@ -22,17 +23,17 @@ render account info
 */
 
 function renderAccountInfo(user){
-    const form = {
-        name: document.getElementById("account-container"),
-        totalBalance: document.getElementById("total-balance"),
-        investmentBalance: document.getElementById("investment"),
-        cashBalance: document.getElementById("cash-balance")       
-    };
+  
 
-    form.name.innerHTML = user.account.accountName;
-    form.cashBalance.innerHTML = user.account.cashBalance;
-    form.investmentBalance.innerHTML = user.account.investmentBalance;
-    form.totalBalance.innerHTML = (user.account.cashBalance + user.account.investmentBalance);
+    let name = document.getElementById("account-container");
+    let totalBalance = document.getElementById("total-balance");
+    let investmentBalance = document.getElementById("investment");
+    let cashBalance = document.getElementById("cash-balance");
+
+    name.innerHTML = user.account.accountName;
+    cashBalance.innerHTML = user.account.cashBalance;
+    investmentBalance.innerHTML = user.account.investmentBalance;
+    totalBalance.innerHTML = (user.account.cashBalance + user.account.investmentBalance);
 
     //render the donut chart
     
@@ -60,3 +61,5 @@ function renderAccountInfo(user){
     });
 
 }
+
+getAccountInfo();
