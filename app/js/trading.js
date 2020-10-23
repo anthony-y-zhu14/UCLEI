@@ -5,12 +5,27 @@ function getAccountInfo_trading(){
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){               
             let user = JSON.parse(request.responseText);
-            renderHoldingInfo(user);            
+            renderHoldingInfo(user);   
+            return user;        
         }
     };
     request.open("GET", url);
     request.send();
 }
+
+function getStockInfo(search_term) {
+    let request = new XMLHttpRequest();
+    let url = `/stock-data?search=${search_term}`;      
+  
+    request.onreadystatechange = function(){
+        if (this.readyState == 4 && this.status == 200){
+            let s = JSON.parse(request.responseText);
+            console.log(s);
+        }
+    };
+    request.open("GET", url);    
+    request.send(JSON.stringify(search_term));    
+  }
 
 /*
 render account info
@@ -42,15 +57,10 @@ place order
 - in: quantity, limit price, stock, user
 - out: order ID, int
 */
-function placeOrder(stock){
+function placeOrder(stock, user){
     let quantity = document.getElementById("trading-quantity-input").value;
-    document.getElementById("searchBtn").addEventListener("click", searchStock);
-
-    function searchStock(){
-        let search_term = document.getElementById("search-input").value;
-        let result_list = document.getElementById("stock-result-list");
-        
-    }
+    
+   
 
     function buy(quantity, limitPrice, stock, user){
     
@@ -117,3 +127,12 @@ function cancelOrder(orderID){
 }
 
 getAccountInfo_trading();
+
+document.getElementById("searchBtn").addEventListener("click", searchStock);
+
+function searchStock(){   
+
+    let search_term = document.getElementById("search-input").value;
+    getStockInfo(search_term);
+    
+}

@@ -2,6 +2,9 @@ const http = require('http');
 const fs = require("fs"); //reads files
 const express = require('express');
 const path = require('path');
+const url = require('url');
+const bodyParser = require('body-parser');
+const querystring = require('querystring');
 const { response } = require('express');
 const { json } = require('body-parser');
 const app = express();
@@ -124,24 +127,62 @@ app.post('/removeWatchItem', (request, response) => {
    });
 });
 
-app.get('/stock-data', (request, response) => {
+app.post('/addWatchItem', (request, response) => {
+    let data = "";
+    request.on('data', (chunk) => {
+        data = JSON.parse(chunk);
+    });
+ 
+    request.on('end', () => {
+        if(!users.watchlist.includes(data)) {
+            users.watchlist.push(data);
+        }
+    response.end();
+    });
+ });
+
+app.get("/stock-data", (request, response) => {
   fs.readFile("../database/stocks/data.json", function(err, file){
 
+    
+    let search = request.query['search'];
+    request.on('data', (chunk) => {
+        search = JSON.parse(chunk);
+    });
+
+    
       let lis = JSON.parse(file);
       let data = [];
       response.setHeader("Content-Type", "application/JSON");
 
-      for(let j = 0; j < users.watchlist.length; j++) {
-        item = users.watchlist[j];
-
-        data.push(lis[item]);
-
+      if(lis[search] != null) {
+        data.push(lis[search]);
       }
+
       response.write(JSON.stringify(data));
       response.end();
 
     });
 });
+
+app.get('/stock-data-w', (request, response) => {
+    fs.readFile("../database/stocks/data.json", function(err, file){
+  
+        let lis = JSON.parse(file);
+        let data = [];
+        response.setHeader("Content-Type", "application/JSON");
+  
+        for(let j = 0; j < users.watchlist.length; j++) {
+          item = users.watchlist[j];
+  
+          data.push(lis[item]);
+  
+        }
+        response.write(JSON.stringify(data));
+        response.end();
+  
+      });
+  });
 
 app.listen(3000);
 console.log('\nServer running at http://127.0.0.1:3000/\n');
