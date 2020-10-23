@@ -31,7 +31,7 @@ function renderInfo(user) {
     account.innerHTML = user.account.accountName;
     cashBalance.innerHTML = "$" + (Math.round( parseFloat(user.account.cashBalance) * 100) / 100).toFixed(2);
     investmentBalance.innerHTML = "$" + (Math.round( parseFloat(user.account.investmentBalance) * 100) / 100).toFixed(2);
-    totalBalance.innerHTML = "$" + (Math.round( parseFloat((user.account.cashBalance + user.account.investmentBalance) * 100) / 100).toFixed(2)) ;
+    totalBalance.innerHTML = "$" + (Math.round( (parseFloat(user.account.cashBalance) + parseFloat(user.account.investmentBalance)) * 100) / 100).toFixed(2) ;
     username.innerHTML = user.name;
 
     //render the donut chart

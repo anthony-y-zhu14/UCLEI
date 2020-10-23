@@ -32,7 +32,7 @@ let users = {
     account: {
         accountName: "TFSA",
         cashBalance: 4048.28,
-        investmentBalance: "0"
+        investmentBalance: 0
     },
     balanceGrowth: "-20%"
 
@@ -143,26 +143,19 @@ app.post('/addWatchItem', (request, response) => {
 
 app.get("/stock-data", (request, response) => {
   fs.readFile("../database/stocks/data.json", function(err, file){
+        let search = request.query['search'];   
+        let lis = JSON.parse(file);
+        let data = [];
+        response.setHeader("Content-Type", "application/JSON");
 
-    
-    let search = request.query['search'];
-    request.on('data', (chunk) => {
-        search = JSON.parse(chunk);
-    });
+        if(lis[search] != null) {
+            data.push(lis[search]);
+        }
 
-    
-      let lis = JSON.parse(file);
-      let data = [];
-      response.setHeader("Content-Type", "application/JSON");
+        response.write(JSON.stringify(data));
+        response.end();
 
-      if(lis[search] != null) {
-        data.push(lis[search]);
-      }
-
-      response.write(JSON.stringify(data));
-      response.end();
-
-    });
+        });
 });
 
 app.get('/stock-data-w', (request, response) => {
