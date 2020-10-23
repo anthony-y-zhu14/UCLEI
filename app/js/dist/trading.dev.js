@@ -45,9 +45,9 @@ place order
 */
 
 
-function placeOrder() {
+function placeOrder(stock) {
   var quantity = document.getElementById("trading-quantity-input").value;
-  var stock = {};
+  document.getElementById("searchBtn").addEventListener("click", searchStock);
 
   function searchStock() {
     var search_term = document.getElementById("search-input").value;

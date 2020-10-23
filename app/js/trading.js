@@ -42,9 +42,9 @@ place order
 - in: quantity, limit price, stock, user
 - out: order ID, int
 */
-function placeOrder(){
+function placeOrder(stock){
     let quantity = document.getElementById("trading-quantity-input").value;
-    let stock = {};
+    document.getElementById("searchBtn").addEventListener("click", searchStock);
 
     function searchStock(){
         let search_term = document.getElementById("search-input").value;
