@@ -25,6 +25,12 @@ function displayWatchList(w) {
       v.className = "fa fa-eye";
       viewBtn.appendChild(v);
 
+      let eventBtn = document.createElement("div");
+      eventBtn.className = "event";
+      let e = document.createElement("i");
+      e.className = "fa fa-bell";
+      eventBtn.appendChild(e);
+
 
       text1.innerHTML = watchlist[i].symbol;
       text2.innerHTML = watchlist[i].quote;
@@ -35,12 +41,14 @@ function displayWatchList(w) {
       lisDiv.appendChild(text3);
       lisItem.appendChild(lisDiv);
       lisItem.appendChild(x);
+      lisItem.appendChild(e);
       lisItem.appendChild(v);
 
       main.appendChild(lisItem);
     }
 
       document.querySelectorAll(".fa-close").forEach((item, i) => {
+
         item.addEventListener("click", function() {
           let data = item.parentNode.id;
           let request = new XMLHttpRequest();
@@ -53,11 +61,45 @@ function displayWatchList(w) {
           getStockInfo();
         });
       });
+
+
+      document.querySelectorAll(".fa-bell").forEach((item, i) => {
+
+        item.addEventListener("click", function() {
+          let data = item.parentNode.id;
+          let request = new XMLHttpRequest();
+          let url = "/addEventNotify";
+
+          request.open("post", url);
+          request.setRequestHeader("Content-Type", "text/plain");
+          request.send(JSON.stringify(data));
+          console.log(data);
+          getStockInfo();
+
+        });
+      });
+
+      document.querySelectorAll(".fa-bookmark").forEach((item, i) => {
+        item.addEventListener("click", function() {
+          let data = item.parentNode.parentNode.childNodes[3].textContent;
+          let request = new XMLHttpRequest();
+          let url = "/addWatchItem";
+          console.log(data);
+
+          request.open("post", url);
+          request.setRequestHeader("Content-Type", "text/plain");
+          request.send(JSON.stringify(data));
+          console.log(JSON.stringify(data));
+
+          getStockInfo();
+
+        });
+      });
 }
 
 function getStockInfo() {
   let request = new XMLHttpRequest();
-  let url = "/stock-data";
+  let url = "/stock-data-w";
   console.log("");
 
   request.onreadystatechange = function(){
