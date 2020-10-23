@@ -1,17 +1,3 @@
-// function getAccount() {
-//     let request = new XMLHttpRequest();
-//     let url = "/getAccount";
-//
-//     request.onreadystatechange = function(){
-//         if (this.readyState == 4 && this.status == 200){
-//             let user = JSON.parse(request.responseText);
-//             displayWatchList(user);
-//         }
-//     };
-//     request.open("GET", url);
-//     request.send();
-// }
-
 function displayWatchList(w) {
   let watchlist = w;
   let main = document.getElementById("watchlist");
@@ -26,6 +12,19 @@ function displayWatchList(w) {
       let text2 = document.createElement("span");
       let text3 = document.createElement("span");
 
+      let rmvBtn = document.createElement("div");
+      rmvBtn.className = "removeBtn";
+      let x = document.createElement("i");
+      x.className = "fa fa-close";
+      rmvBtn.appendChild(x);
+
+      let viewBtn = document.createElement("div");
+      viewBtn.className = "view";
+      let v = document.createElement("i");
+      v.className = "fa fa-eye";
+      viewBtn.appendChild(v);
+
+
       text1.innerHTML = watchlist[i].symbol;
       text2.innerHTML = watchlist[i].quote;
       text3.innerHTML = watchlist[i].percentage;
@@ -34,6 +33,9 @@ function displayWatchList(w) {
       lisDiv.appendChild(text2);
       lisDiv.appendChild(text3);
       lisItem.appendChild(lisDiv);
+      lisItem.appendChild(x);
+      lisItem.appendChild(v);
+
       main.appendChild(lisItem);
       }
 }
@@ -54,4 +56,3 @@ function getStockInfo() {
 }
 
 getStockInfo();
-// getAccount();
