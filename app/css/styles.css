@@ -19,6 +19,20 @@ h3 {
   text-align: center;
 }
 
+input {  
+  background: whitesmoke;    
+  cursor: pointer;
+  outline: none;
+  border-radius: .3em;
+  font-weight: bold;
+  -webkit-transition: background-color .3s;
+  transition: background-color .3s;
+}
+
+input:hover {
+  background: #C3D6E7;
+}
+
 a:visited {
   color: inherit;
 }
@@ -192,15 +206,15 @@ a {
   color: #6C9FF8;
 }
 
-.email {
+#email {
   position: absolute;
   width: 91px;
   height: 32px;
-  left: 105px;
+  left: 125px;
   top: 120px;
 }
 
-.password {
+#password2 {
   position: absolute;
   width: 91px;
   height: 32px;

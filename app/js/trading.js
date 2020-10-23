@@ -2,11 +2,11 @@ function getAccountInfo_trading(){
     let request = new XMLHttpRequest();
     let url = "/getAccount";
 
-    request.onreadystatechange = function(){
+    request.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200){               
-            let user = JSON.parse(request.responseText);
-            renderHoldingInfo(user);   
-            return (user);        
+            let user = JSON.parse(request.responseText);            
+            renderHoldingInfo(user);    
+            action(user);        
         }
     };
     request.open("GET", url);
@@ -15,14 +15,12 @@ function getAccountInfo_trading(){
 
 function getStockInfo(search_term) {
     let request = new XMLHttpRequest();
-    let url = `/stock-data?search=${search_term}`; 
-    let s = [];     
+    let url = `/stock-data?search=${search_term}`;         
   
     request.onreadystatechange = function(){
         if (this.readyState == 4 && this.status == 200){
-            s = JSON.parse(request.responseText);
-            renderSearchResult(s);
-            return s;
+            let s = JSON.parse(request.responseText);
+            renderSearchResult(s);         
         }
     };
     request.open("GET", url);    
@@ -35,7 +33,6 @@ render account info
 - in: user object
 - out: N/A
 */
-
 function renderHoldingInfo(user){
     let holdings = document.getElementById("stock-list");
     holdings.innerHTML = '';
@@ -59,10 +56,9 @@ render search result
 - in: user object
 - out: N/A
 */
-
 function renderSearchResult(stock){
     let search_result = document.getElementById("stockFound");
-    search_result.innerHTML = stock[0].name;
+    search_result.innerHTML = stock[0].symbol;
 }
 
 /*
@@ -71,60 +67,90 @@ place order
 - in: quantity, limit price, stock, user
 - out: order ID, int
 */
-function placeOrder(stock, user){
-    let quantity = document.getElementById("trading-quantity-input").value;
+function action(user){
+    document.getElementById("searchBtn").addEventListener("click", function(){
+        let search_term = document.getElementById("search-input").value;  
+        getStockInfo(search_term);  
+        let result = document.getElementById("searchResult");    
+        result.click();
+    });
+     
+          
     
-   
+    
+    let buyBtn = document.getElementById("buyBtn");
+    let sellBtn = document.getElementById("sellBtn");
+    let completeOrderBtn = document.getElementById("CompleteTransactionBtn");
+    buyBtn.addEventListener("click", function(){
+        if (sellBtn.classList.contains("selected")){
+            sellBtn.classList.remove("selected");  
+            sellBtn.style.background = "aliceblue";                   
+        }     
+        this.classList.add("selected");
+        this.style.background = "#2ed47a"; 
+    });
+    
+    sellBtn.addEventListener("click", function(){
+        if (buyBtn.classList.contains("selected")){
+            buyBtn.classList.remove("selected");  
+            buyBtn.style.background = "aliceblue";                   
+        } 
+        this.classList.add("selected");
+        this.style.background = "indianred";         
+    });
 
-    function buy(quantity, limitPrice, stock, user){
+    completeOrderBtn.addEventListener("click", function(){
+        let quantity = parseInt(document.getElementById("trading-quantity-input").value);
+        if (buyBtn.classList.contains("selected")){
+            buy(quantity);
+        }
+        else if(sellBtn.classList.contains("selected")){
+            sell(quantity);
+        }
+        else{
+            alert("please choose buy or sell");
+            return;
+        }
+    });
+    
     
 
-        /*
-        if quantity * stock.price is more than user.account.cashBalance:
-            -   alert ("you don't have enough money!")
-            -   return
-        */
-    
+    function buy(q){
+
+        console.log(`Client ${user.username} tried to buy ${q} of stock.`);
         
-        /*
-        if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-            -   remove quantity * stock.price amount of cash from user.cashBalance
-            -   add stock to users stock holding
-            -   update stock shares in user       
-        */
-    
-        /*
-        else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-            -   remove quantity * stock.price amount of cash from user.cashBalance       
-            -   update stock shares in user       
-        */
-    
-        //generate an orderID and add that to user activity and return that
-    
+       
+        let stockSymbol = document.getElementById("stockFound").innerHTML;
+        let data = {
+            name: stockSymbol, 
+            n: q
+        };
+        let request = new XMLHttpRequest();
+        let url = "/buyStock";
+
+        request.open("post", url);
+        request.setRequestHeader("Content-Type", "text/plain");
+        request.send(JSON.stringify(data));
+        console.log(data);
     }
     
-    function sell(quantity, limitPrice, stock, user){  
+    function sell(q){  
+        console.log(`Client ${user.username} tried to sell ${q} of stock.`);
         
-        /*
-        if stock not in user.ownedstock:
-            -   alert ("You don't own that stock")
-            -   return    
-        */
+       let stockSymbol = document.getElementById("stockFound").innerHTML;
+       let data = {
+           name: stockSymbol, 
+           n: q
+       };
+       let request = new XMLHttpRequest();
+       let url = "/sellStock";
+
+       request.open("post", url);
+       request.setRequestHeader("Content-Type", "text/plain");
+       request.send(JSON.stringify(data));
+       console.log(data);
     
-        /*
-        if stock in user.ownedstock and quantity is less or equal to user.stock.shares:
-            -   add quantity * stock.price amount of cash to user.cashBalance   
-            -   remove quantity * stock.price amount of cash from user.investment     
-            -   update stock shares in user       
-        */
-    
-        /*
-        if stock in user.ownedstock and quantity is more to user.stock.shares:
-            -   alert ("You don't own enough of that stock")
-            -   return         
-        */
-    
-        //generate an orderID and add that to user activity and return that
+       
     }
 }
 
@@ -142,15 +168,12 @@ function cancelOrder(orderID){
 
 
 
+
 getAccountInfo_trading();
 
 
-document.getElementById("searchBtn").addEventListener("click", searchStock);
 
-function searchStock(){   
 
-    let search_term = document.getElementById("search-input").value;   
-    
-    getStockInfo(search_term);      
-    
-}
+
+
+

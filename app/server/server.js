@@ -17,6 +17,7 @@ let users = {
     name: "Jerry Smith",
     UID: "c117",
     watchlist: ["AAL", "TSLA", "FB", "SHOP"],
+    eventList: ["AAL", "SE"],
     ownedStocks: [
         {
             name: "American Airlines Group Inc.",
@@ -127,6 +128,30 @@ app.post('/removeWatchItem', (request, response) => {
    });
 });
 
+app.post('/addEventNotify', (request, response) => {
+    let data = "";
+    request.on('data', (chunk) => {
+        data = JSON.parse(chunk);
+    });
+
+    request.on('end', () => {
+    if(!users.eventList.includes(data)) { users.eventList.push(data); }
+    response.end();
+    });
+ });
+
+ app.post('/rmvEventNotify', (request, response) => {
+     let data = "";
+     request.on('data', (chunk) => {
+         data = JSON.parse(chunk);
+     });
+
+     request.on('end', () => {
+     if(!users.eventList.includes(data)) { users.eventList.splice(users.eventList.indexOf(data, 1)) }
+     response.end();
+     });
+  });
+
 app.post('/addWatchItem', (request, response) => {
     let data = "";
     request.on('data', (chunk) => {
@@ -158,6 +183,125 @@ app.get("/stock-data", (request, response) => {
         });
 });
 
+app.post('/buyStock', (request, response) => {
+    let data = "";
+    request.on('data', (chunk) => {
+        data = JSON.parse(chunk);
+    });   
+     
+    request.on('end', () => {
+        let quantity = data.n;
+        let stockSymbol = data.name;
+        buyStock(quantity, stockSymbol);
+    response.end();
+    });
+
+    function buyStock(quantity, symbol) {
+        
+    fs.readFile("../database/stocks/data.json", function(err, file) {
+        let lis = JSON.parse(file);
+        let stockPrice = parseFloat(lis[symbol]["quote"]);
+        
+        /*
+        if quantity * stock.price is more than user.account.cashBalance:
+            -   alert ("you don't have enough money!")
+            -   return
+        */
+        if(quantity * stockPrice > users.account.cashBalance) {
+            console.log("Order not complete");
+        }
+        
+        /*
+        if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
+            -   remove quantity * stock.price amount of cash from user.cashBalance
+            -   add stock to users stock holding
+            -   update stock shares in user       
+        */
+       for (let index = 0; index < users.ownedStocks.length; index++) {
+            let element = users.ownedStocks[index];
+            if (element.symbol == symbol){                
+                users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));                
+                users.account.investmentBalance += (stockPrice * parseFloat(quantity));
+                element.share += quantity;
+                return;
+        }
+    }
+        /*
+        else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
+            -   remove quantity * stock.price amount of cash from user.cashBalance       
+            -   update stock shares in user       
+        */
+        
+        let stock = {
+            name: lis[symbol].name,
+            quote: lis[symbol].quote,
+            shares: quantity
+        };
+
+        users.ownedStocks.push(stock);
+        users.account["cashBalance"] -= (stockPrice * parseFloat(quantity));
+        users.account.investmentBalance += (stockPrice * parseFloat(quantity));
+
+        console.log(users);
+        
+    });
+        //generate an orderID and add that to user activity and return that
+ }
+});
+ 
+
+app.post('/sellStock', (request, response) => {
+    let data = "";
+    request.on('data', (chunk) => {
+        data = JSON.parse(chunk);
+    });   
+     
+    request.on('end', () => {
+        let quantity = data.n;
+        let stockSymbol = data.name;
+        sellStock(quantity, stockSymbol);
+    response.end();
+    });
+
+    function sellStock(quantity, symbol) {
+        
+    fs.readFile("../database/stocks/data.json", function(err, file) {
+        let lis = JSON.parse(file);
+        let stock = lis[symbol];
+        let stockPrice = parseFloat(lis[symbol]["quote"]);
+        
+      /*
+        if stock not in user.ownedstock:
+            -   alert ("You don't own that stock")
+            -   return    
+        */
+      
+    
+        /*
+        if stock in user.ownedstock and quantity is less or equal to user.stock.shares:
+            -   add quantity * stock.price amount of cash to user.cashBalance   
+            -   remove quantity * stock.price amount of cash from user.investment     
+            -   update stock shares in user       
+        */
+        for (let index = 0; index < users.ownedStocks.length; index++) {
+            let element = users.ownedStocks[index];
+            if (stock.name === element.name && element.share >= quantity) {                
+                users.account["cashBalance"] += (stockPrice * parseFloat(quantity));
+                users.account.investmentBalance -= (stockPrice * parseFloat(quantity));
+                element.share -= quantity;
+                if(element.share === 0) {
+                    users.ownedStocks.splice(index, 1);
+                }
+            }
+        }       
+
+        console.log(users);
+        
+    });
+        //generate an orderID and add that to user activity and return that
+ }
+});
+
 app.get('/stock-data-w', (request, response) => {
     fs.readFile("../database/stocks/data.json", function(err, file){
   
@@ -166,7 +310,7 @@ app.get('/stock-data-w', (request, response) => {
         response.setHeader("Content-Type", "application/JSON");
   
         for(let j = 0; j < users.watchlist.length; j++) {
-          item = users.watchlist[j];
+          let item = users.watchlist[j];
   
           data.push(lis[item]);
   

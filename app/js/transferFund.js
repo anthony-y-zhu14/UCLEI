@@ -11,7 +11,6 @@ function getUserInfo(){
     };
     request.open("GET", url);
     request.send();
-
 }
 
 function renderAccountInfo(currentCashBalance){

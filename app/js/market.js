@@ -84,7 +84,6 @@ function displayWatchList(w) {
           let data = item.parentNode.parentNode.childNodes[3].textContent;
           let request = new XMLHttpRequest();
           let url = "/addWatchItem";
-          console.log(data);
 
           request.open("post", url);
           request.setRequestHeader("Content-Type", "text/plain");

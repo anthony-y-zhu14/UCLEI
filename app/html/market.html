@@ -7,12 +7,12 @@
   <link rel="stylesheet" href="../css/market.css">
   <script src="https://use.fontawesome.com/eba8e70204.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
-  <script src="../js/news.js"></script>
+  <script src="../js/marketNews.js"></script>
   <!-- <script src="../js/myChart.js"></script> -->
 
 </head>
 <body>
-  <main id="body">
+  <main id="body" onload="fetchMarketNews()">
       <div id="header-container">
           <h3 id="header-text">
             Market Update
@@ -98,7 +98,7 @@
           </div>
         </div>
 
-        <div id="news-container">
+        <div id="news-container" onload="fetchMarketNews()">
             <span class="subtitle">Market News</span>
             <div id="news-items">
               <!-- uncomment this code to display an empty news item for debugging -->

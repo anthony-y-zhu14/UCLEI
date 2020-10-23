@@ -6,82 +6,86 @@ However, do be careful, press the wrong button, you could lose everything...
 
 ## Installation
 
-No installation required! Simple extract the file and open the file named:
+To ensure a proper installation please verfiy that your system has Node.js, npm, and Express installed correctly. 
+For more instructions on this please refer to: https://nodejs.org/en/.
 
+To use the app:
 ```bash
-index.html
+ clone this repo (if you downloaded this as a zip, extract and cd to the extracted folder).
+ cd to /UCLEI---Stock-Trading-Platform-Sandbox/app/server
+ run: node server.js
+ navigate to http://127.0.0.1:3000/
+ use the following login credentials: 
+    user: jerry137
+    password: 123456
+
+Happy trading :-)
+
 ```
 ## Files
 
 ```bash
 └───UCLEI---Stock-Trading-Platform-Sandbox
-    │   .DS_Store
-    │   README.md
+|
+│   index.html
+│   readme.md
+│
+├───css
+│   │   account.css
+│   │   account.css.map
+│   │   account.scss
+│   │   dashboard.css
+│   │   header.css
+│   │   market.css
+│   │   sidenav.css
+│   │   styles.css
+│   │   trading.css
+│   │   trading.css.map
+│   │   trading.scss
+│   │
+│   └───dist
+│           trading.css
+│
+├───database
+│   ├───stocks
+│   │       data.json
+│   │       stock_url.json
+│   │
+│   └───users
+│           user.json
+│
+├───html
+│       account.html
+│       dashboard.html
+│       market.html
+│       trading.html
+│
+├───js
+│   │   account.js
+│   │   login.js
+│   │   market.js
+│   │   marketNews.js
+│   │   modal.js
+│   │   myChart.js
+│   │   news.js
+│   │   trading.js
+│   │   transferFund.js
+│   │
+│   └───dist
+│           market.dev.js
+│           marketNews.dev.js
+│           news.dev.js
+│           trading.dev.js
+│           transferFund.dev.js
+│
+└───server
+    │   package-lock.json
+    │   server.js
     │
-    ├───.idea
-    │   │   .gitignore
-    │   │   jsLibraryMappings.xml
-    │   │   misc.xml
-    │   │   modules.xml
-    │   │   Nuclei---Stock-Trading-Platform-Sandbox.iml
-    │   │   vcs.xml
-    │   │
-    │   └───inspectionProfiles
-    │           Project_Default.xml
+    ├───dist
+    │       server.dev.js
     │
-    ├───app
-    │   │   .DS_Store
-    │   │   index.html
-    │   │   readme.md
-    │   │
-    │   ├───css
-    │   │       account.css
-    │   │       dashboard.css
-    │   │       header.css
-    │   │       market.css
-    │   │       sidenav.css
-    │   │       styles.css
-    │   │       trading.css
-    │   │       trading.css.map
-    │   │       trading.scss
-    │   │
-    │   ├───html
-    │   │       account.html
-    │   │       dashboard.html
-    │   │       market.html
-    │   │       trading.html
-    │   │
-    │   └───js
-    │           login.js
-    │           myChart.js
-    │           news.js
-    |           modal.js
-    │
-    ├───project spec
-    │       Changelog.txt
-    │       COMP2406-F20-Stock-Broker-Project.pdf
-    │       Screenshot 2020-09-20 162534.png
-    │       symbols.txt
-    │
-    └───scapper
-        ├───chromedriver
-        │       chromedriver
-        │       chromedriver.exe
-        │
-        ├───database
-        │       data.json
-        │       stock_url.json
-        │
-        └───yahoo_scrapper
-            │   database_updater.py
-            │   scrapper.py
-            │   stock.py
-            │   terminal.py
-            │
-            └───__pycache__
-                    database_updater.cpython-38.pyc
-                    scrapper.cpython-38.pyc
-                    stock.cpython-38.pyc
+    └───node_modules
 
 ```
 

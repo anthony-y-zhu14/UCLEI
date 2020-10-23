@@ -22,6 +22,31 @@ async function getData(today, query) {
   displayNews(data);
 }
 
+function fetchMarketNews() {
+  console.log("foo");
+  let date = new Date();
+  let today = date.toISOString().slice(0,10);
+  getUserInfo(date, today);
+}
+
+function getUserInfo(date, today){
+  let request = new XMLHttpRequest();
+  let url = "/getAccount";
+
+  request.onreadystatechange = function(){
+      if (this.readyState == 4 && this.status == 200){
+
+          let data = JSON.parse(request.responseText);
+          console.log(data);
+
+          getData(today, query);
+
+      }
+  };
+  request.open("GET", url);
+  request.send();
+}
+
 function displayNews(data) {
   let newsItems = document.getElementById("news-items");
 

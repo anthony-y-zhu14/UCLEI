@@ -30,7 +30,8 @@ function sendLoginInfo(formData) {
 }
 
 function handleBadLogin() {
-  let message = document.getElementById("response-text"); 
+  let message = document.createElement("div");
+  let login = document.getElementById("login-container"); 
   // message.className = "yourClassName";
   //message.style.display = "block";
   /*
@@ -46,7 +47,11 @@ function handleBadLogin() {
   message.style.width = "30%";
   message.style.height = "2.5em";
   message.style.marginLeft = "15%";
-  message.style.textAlign = "center";  
+  message.style.textAlign = "center"; 
+
+  login.appendChild(message);
+
+
 }
 
 document.getElementById("button-focus").addEventListener("click", getLoginInfo);
