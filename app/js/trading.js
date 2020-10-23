@@ -38,57 +38,72 @@ function renderHoldingInfo(user){
 
 /*
 place order
-- purpose: allows a user to make a market buy
+- purpose: allows a user to make a market buy or sell
 - in: quantity, limit price, stock, user
 - out: order ID, int
 */
-function placeBuyOrder(quantity, limitPrice, stock, user){
-    /*
-    if quantity * stock.price is more than user.account.cashBalance:
-        -   alert ("you don't have enough money!")
-        -   return
-    */
+function placeOrder(){
+    let quantity = document.getElementById("trading-quantity-input").value;
+    let stock = {};
+
+    function searchStock(){
+        let search_term = document.getElementById("search-input").value;
+        let result_list = document.getElementById("stock-result-list");
+        
+    }
+
+    function buy(quantity, limitPrice, stock, user){
     
-    /*
-    if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-        -   remove quantity * stock.price amount of cash from user.cashBalance
-        -   add stock to users stock holding
-        -   update stock shares in user       
-    */
 
-    /*
-    else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-        -   remove quantity * stock.price amount of cash from user.cashBalance       
-        -   update stock shares in user       
-    */
-
-    //generate an orderID and add that to user activity and return that
-
+        /*
+        if quantity * stock.price is more than user.account.cashBalance:
+            -   alert ("you don't have enough money!")
+            -   return
+        */
+    
+        
+        /*
+        if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
+            -   remove quantity * stock.price amount of cash from user.cashBalance
+            -   add stock to users stock holding
+            -   update stock shares in user       
+        */
+    
+        /*
+        else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
+            -   remove quantity * stock.price amount of cash from user.cashBalance       
+            -   update stock shares in user       
+        */
+    
+        //generate an orderID and add that to user activity and return that
+    
+    }
+    
+    function sell(quantity, limitPrice, stock, user){  
+        
+        /*
+        if stock not in user.ownedstock:
+            -   alert ("You don't own that stock")
+            -   return    
+        */
+    
+        /*
+        if stock in user.ownedstock and quantity is less or equal to user.stock.shares:
+            -   add quantity * stock.price amount of cash to user.cashBalance   
+            -   remove quantity * stock.price amount of cash from user.investment     
+            -   update stock shares in user       
+        */
+    
+        /*
+        if stock in user.ownedstock and quantity is more to user.stock.shares:
+            -   alert ("You don't own enough of that stock")
+            -   return         
+        */
+    
+        //generate an orderID and add that to user activity and return that
+    }
 }
 
-function placeSellOrder(quantity, limitPrice, stock, user){  
-    
-    /*
-    if stock not in user.ownedstock:
-        -   alert ("You don't own that stock")
-        -   return    
-    */
-
-    /*
-    if stock in user.ownedstock and quantity is less or equal to user.stock.shares:
-        -   add quantity * stock.price amount of cash to user.cashBalance   
-        -   remove quantity * stock.price amount of cash from user.investment     
-        -   update stock shares in user       
-    */
-
-    /*
-    if stock in user.ownedstock and quantity is more to user.stock.shares:
-        -   alert ("You don't own enough of that stock")
-        -   return         
-    */
-
-    //generate an orderID and add that to user activity and return that
-}
 
 
 /*
