@@ -5,11 +5,13 @@ body {
 
 summary {
   padding: 1em;
-  width: 80%;
+  width: 100%;
   margin-bottom: 1em;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
   cursor: pointer;
   outline: none;
-  border-radius: .3em;
   background: #393b41;
   color: white;
   font-family: 'Open Sans', sans-serif;
@@ -106,14 +108,14 @@ details[open] summary ~ * {
 #investment {
   width: 80%;
   height: 40%;
-  margin-left: 2em;
+  margin-left: 6em;
 }
 
 #cash-balance {
   width: 80%;
   height: 40%;
   margin-top: 0.5em;
-  margin-left: 1.25em;
+  margin-left: 5.25em;
 }
 
 #asset-allocation-container {
@@ -274,7 +276,7 @@ details[open] summary ~ * {
 }
 
 .text-box {
-  width: 119px;
+  width: 150px;
   height: 24px;
   padding: 1px;
   display: inline-block;

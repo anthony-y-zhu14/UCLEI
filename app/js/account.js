@@ -16,7 +16,7 @@ function getAccountInfo(){
 /*
 render account info
 - purpose: display user account info and stock holding
-- in: user
+- in: user object
 - out: N/A
 */
 
@@ -29,9 +29,9 @@ function renderInfo(user) {
     let username = document.getElementById("username");
 
     account.innerHTML = user.account.accountName;
-    cashBalance.innerHTML = user.account.cashBalance;
-    investmentBalance.innerHTML = user.account.investmentBalance;
-    totalBalance.innerHTML = (user.account.cashBalance + user.account.investmentBalance);
+    cashBalance.innerHTML = "$" + (Math.round( parseFloat(user.account.cashBalance) * 100) / 100).toFixed(2);
+    investmentBalance.innerHTML = "$" + (Math.round( parseFloat(user.account.investmentBalance) * 100) / 100).toFixed(2);
+    totalBalance.innerHTML = "$" + (Math.round( parseFloat((user.account.cashBalance + user.account.investmentBalance) * 100) / 100).toFixed(2)) ;
     username.innerHTML = user.name;
 
     //render the donut chart

@@ -16,7 +16,7 @@ function getUserInfo(){
 
 function renderAccountInfo(currentCashBalance){
   document.querySelectorAll("#money").forEach((item, i) => {
-    item.innerHTML = currentCashBalance;
+    item.innerHTML = (Math.round( parseFloat(currentCashBalance) * 100) / 100).toFixed(2);
   });
 
     // let cashBalance = document.getElementById("money");
