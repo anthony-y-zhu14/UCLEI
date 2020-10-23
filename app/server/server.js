@@ -112,6 +112,18 @@ app.post('/authentication', (request, response) => {
     });
 });
 
+app.post('/removeWatchItem', (request, response) => {
+   let data = "";
+   request.on('data', (chunk) => {
+       data = JSON.parse(chunk);
+   });
+
+   request.on('end', () => {
+   users.watchlist.splice(users.watchlist.indexOf(data), 1);
+   response.end();
+   });
+});
+
 app.get('/stock-data', (request, response) => {
   fs.readFile("../database/stocks/data.json", function(err, file){
 
@@ -125,7 +137,6 @@ app.get('/stock-data', (request, response) => {
         data.push(lis[item]);
 
       }
-      console.log(data);
       response.write(JSON.stringify(data));
       response.end();
 

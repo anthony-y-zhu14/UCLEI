@@ -5,12 +5,13 @@ function displayWatchList(w) {
 
     for(let i = 0; i < watchlist.length; i++) {
       let lisItem = document.createElement("li");
+      lisItem.id = watchlist[i].symbol;
       lisItem.className = "watch-item";
       let lisDiv = document.createElement("div");
       lisDiv.className = "watch-text";
-      let text1 = document.createElement("span");
-      let text2 = document.createElement("span");
-      let text3 = document.createElement("span");
+      let text1 = document.createElement("div");
+      let text2 = document.createElement("div");
+      let text3 = document.createElement("div");
 
       let rmvBtn = document.createElement("div");
       rmvBtn.className = "removeBtn";
@@ -37,7 +38,21 @@ function displayWatchList(w) {
       lisItem.appendChild(v);
 
       main.appendChild(lisItem);
-      }
+    }
+
+      document.querySelectorAll(".fa-close").forEach((item, i) => {
+        item.addEventListener("click", function() {
+          let data = item.parentNode.id;
+          let request = new XMLHttpRequest();
+          let url = "/removeWatchItem";
+
+          request.open("post", url);
+          request.setRequestHeader("Content-Type", "text/plain");
+          request.send(JSON.stringify(data));
+          console.log(data);
+          getStockInfo();
+        });
+      });
 }
 
 function getStockInfo() {
