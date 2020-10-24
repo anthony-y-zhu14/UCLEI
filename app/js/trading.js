@@ -36,6 +36,8 @@ render account info
 function renderHoldingInfo(user){
     let holdings = document.getElementById("stock-list");
     holdings.innerHTML = '';
+    let accountName = document.getElementById("account-container");
+    accountName.innerHTML = user.account.accountName;
     let cashBalance = document.getElementById("cash");
     cashBalance.innerHTML = "Cash Balance: $" + (Math.round( parseFloat(user.account.cashBalance) * 100) / 100).toFixed(2);
     

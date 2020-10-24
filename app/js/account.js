@@ -22,6 +22,8 @@ render account info
 
 function renderInfo(user) {
 
+    
+
     let account = document.getElementById("account-container");
     let totalBalance = document.getElementById("total-balance-text");
     let investmentBalance = document.getElementById("investment-text");
@@ -43,8 +45,15 @@ function renderInfo(user) {
     // render the chart legend
 
     // code goes here
-
-    document.getElementById("holdingBtn").addEventListener("click", function(){
+    let holdingBtn = document.getElementById("holdingBtn");
+    
+    holdingBtn.addEventListener("click", function(){
+        if (activityBtn.classList.contains("selected")){
+            activityBtn.classList.remove("selected");  
+            activityBtn.style.background = "aliceblue";                   
+        } 
+        this.classList.add("selected");
+        this.style.background = "cornflowerblue";  
         //render the list of stock holding
        
         let holdings = document.getElementById("table-container");    
@@ -61,8 +70,16 @@ function renderInfo(user) {
 
         }
     });
-    document.getElementById("activityBtn").addEventListener("click", function(){
+    let activityBtn = document.getElementById("activityBtn");    
+    activityBtn.addEventListener("click", function(){
         //render the list of activity
+        if (holdingBtn.classList.contains("selected")){
+            holdingBtn.classList.remove("selected");  
+            holdingBtn.style.background = "aliceblue";                   
+        } 
+        this.classList.add("selected");
+        this.style.background = "cornflowerblue";  
+
 
         for (let index = 0; index < user.activity.length; index++){
             const element = user.activity[index];
@@ -74,3 +91,4 @@ function renderInfo(user) {
 }
 
 getAccountInfo();
+

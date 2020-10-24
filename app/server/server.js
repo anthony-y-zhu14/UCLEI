@@ -31,7 +31,7 @@ let users = {
         "Sold 26 shares of AAL"
     ],
     account: {
-        accountName: "TFSA",
+        accountName: "TFSA Account CAD 25MBJ",
         cashBalance: 4048.28,
         investmentBalance: 0
     },
@@ -219,7 +219,7 @@ app.post('/buyStock', (request, response) => {
         */
        for (let index = 0; index < users.ownedStocks.length; index++) {
             let element = users.ownedStocks[index];
-            if (element.symbol == symbol){                
+            if (element.symbol === symbol){                
                 users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));                
                 users.account.investmentBalance += (stockPrice * parseFloat(quantity));
                 element.share += quantity;

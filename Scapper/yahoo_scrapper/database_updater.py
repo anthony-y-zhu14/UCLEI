@@ -11,9 +11,8 @@ def update_database(database_path, url_path):
     for s in stock_list:
         s.update_info()
         data[s.symbol] = s.__dict__
-        print("Fetching Data: ")
-        print(data[s.symbol])
-        print("\n")
+        print("Fetching Data: " + data[s.symbol]["name"])    
+        
 
     with open(database_path, "w+") as database:
         json.dump(data, database, indent=4)
