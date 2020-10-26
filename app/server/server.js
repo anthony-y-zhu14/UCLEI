@@ -157,7 +157,7 @@ app.post('/addWatchItem', (request, response) => {
     request.on('data', (chunk) => {
         data = JSON.parse(chunk);
     });
- 
+
     request.on('end', () => {
         if(!users.watchlist.includes(data)) {
             users.watchlist.push(data);
@@ -168,7 +168,7 @@ app.post('/addWatchItem', (request, response) => {
 
 app.get("/stock-data", (request, response) => {
   fs.readFile("../database/stocks/data.json", function(err, file){
-        let search = request.query['search'];   
+        let search = request.query['search'];
         let lis = JSON.parse(file);
         let data = [];
         response.setHeader("Content-Type", "application/JSON");
@@ -187,8 +187,8 @@ app.post('/buyStock', (request, response) => {
     let data = "";
     request.on('data', (chunk) => {
         data = JSON.parse(chunk);
-    });   
-     
+    });
+
     request.on('end', () => {
         let quantity = data.n;
         let stockSymbol = data.name;
@@ -197,11 +197,11 @@ app.post('/buyStock', (request, response) => {
     });
 
     function buyStock(quantity, symbol) {
-        
+
     fs.readFile("../database/stocks/data.json", function(err, file) {
         let lis = JSON.parse(file);
         let stockPrice = parseFloat(lis[symbol]["quote"]);
-        
+
         /*
         if quantity * stock.price is more than user.account.cashBalance:
             -   alert ("you don't have enough money!")
@@ -210,17 +210,17 @@ app.post('/buyStock', (request, response) => {
         if(quantity * stockPrice > users.account.cashBalance) {
             console.log("Order not complete");
         }
-        
+
         /*
         if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
             -   remove quantity * stock.price amount of cash from user.cashBalance
             -   add stock to users stock holding
-            -   update stock shares in user       
+            -   update stock shares in user
         */
        for (let index = 0; index < users.ownedStocks.length; index++) {
             let element = users.ownedStocks[index];
-            if (element.symbol === symbol){                
-                users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));                
+            if (element.symbol === symbol){
+                users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));
                 users.account.investmentBalance += (stockPrice * parseFloat(quantity));
                 element.share += quantity;
                 return;
@@ -228,10 +228,10 @@ app.post('/buyStock', (request, response) => {
     }
         /*
         else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-            -   remove quantity * stock.price amount of cash from user.cashBalance       
-            -   update stock shares in user       
+            -   remove quantity * stock.price amount of cash from user.cashBalance
+            -   update stock shares in user
         */
-        
+
         let stock = {
             name: lis[symbol].name,
             quote: lis[symbol].quote,
@@ -243,19 +243,19 @@ app.post('/buyStock', (request, response) => {
         users.account.investmentBalance += (stockPrice * parseFloat(quantity));
 
         console.log(users);
-        
+
     });
         //generate an orderID and add that to user activity and return that
  }
 });
- 
+
 
 app.post('/sellStock', (request, response) => {
     let data = "";
     request.on('data', (chunk) => {
         data = JSON.parse(chunk);
-    });   
-     
+    });
+
     request.on('end', () => {
         let quantity = data.n;
         let stockSymbol = data.name;
@@ -264,28 +264,28 @@ app.post('/sellStock', (request, response) => {
     });
 
     function sellStock(quantity, symbol) {
-        
+
     fs.readFile("../database/stocks/data.json", function(err, file) {
         let lis = JSON.parse(file);
         let stock = lis[symbol];
         let stockPrice = parseFloat(lis[symbol]["quote"]);
-        
+
       /*
         if stock not in user.ownedstock:
             -   alert ("You don't own that stock")
-            -   return    
+            -   return
         */
-      
-    
+
+
         /*
         if stock in user.ownedstock and quantity is less or equal to user.stock.shares:
-            -   add quantity * stock.price amount of cash to user.cashBalance   
-            -   remove quantity * stock.price amount of cash from user.investment     
-            -   update stock shares in user       
+            -   add quantity * stock.price amount of cash to user.cashBalance
+            -   remove quantity * stock.price amount of cash from user.investment
+            -   update stock shares in user
         */
         for (let index = 0; index < users.ownedStocks.length; index++) {
             let element = users.ownedStocks[index];
-            if (stock.name === element.name && element.share >= quantity) {                
+            if (stock.name === element.name && element.share >= quantity) {
                 users.account["cashBalance"] += (stockPrice * parseFloat(quantity));
                 users.account.investmentBalance -= (stockPrice * parseFloat(quantity));
                 element.share -= quantity;
@@ -293,10 +293,10 @@ app.post('/sellStock', (request, response) => {
                     users.ownedStocks.splice(index, 1);
                 }
             }
-        }       
+        }
 
         console.log(users);
-        
+
     });
         //generate an orderID and add that to user activity and return that
  }
@@ -304,20 +304,20 @@ app.post('/sellStock', (request, response) => {
 
 app.get('/stock-data-w', (request, response) => {
     fs.readFile("../database/stocks/data.json", function(err, file){
-  
+
         let lis = JSON.parse(file);
         let data = [];
         response.setHeader("Content-Type", "application/JSON");
-  
+
         for(let j = 0; j < users.watchlist.length; j++) {
           let item = users.watchlist[j];
-  
+
           data.push(lis[item]);
-  
+
         }
         response.write(JSON.stringify(data));
         response.end();
-  
+
       });
   });
 
