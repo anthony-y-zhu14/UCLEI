@@ -321,5 +321,5 @@ app.get('/stock-data-w', (request, response) => {
       });
   });
 
-app.listen(3000);
+app.listen(3001);
 console.log('\nServer running at http://127.0.0.1:3000/\n');
