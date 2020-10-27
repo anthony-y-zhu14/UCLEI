@@ -6,7 +6,6 @@ import Sidenav from "./components/SideNav.js"
 import Login from "./components/pages/Login.js"
 import SearchAppBar from './components/Header.js';
 
-
 class App extends React.Component {
 
   render() {
@@ -15,13 +14,13 @@ class App extends React.Component {
         <div>
           <Route exact path= "/" render={props => (
             <React.Fragment>
-              <div className="main">                  
-                <SearchAppBar /> 
-                <Sidenav />          
+              <div className="main">
+                <SearchAppBar />
+                <Sidenav />
               </div>
             </React.Fragment>
           )} />
-    
+
 
           <Route path="/login" component={Login} />
         </div>

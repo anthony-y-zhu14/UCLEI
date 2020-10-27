@@ -2,19 +2,19 @@ import React from "react";
 import "./css/SideNav.css";
 
 
-class Sidenav extends React.Component {  
-        
-    
+class Sidenav extends React.Component {
+
+
     render() {
     return(
-            
+
             <div id="sidenav">
                 <h3 id="sidenav-title">UCLEI</h3>
                 <ul id="sidenav-list">
-                <li>                
+                <li>
                     <i className='fa fa-dashboard'></i>
                     Dashboard</li>
-                <li>                
+                <li>
                     <i className="fa fa-credit-card" aria-hidden="true"></i>
                     Account
                     </li>
@@ -30,17 +30,14 @@ class Sidenav extends React.Component {
                 <a id="add-funds-link">
                     <i className='fa fa-plus-circle'></i>
                     Add Funds</a>
-                </div>            
+                </div>
             </div>
         );
     }
 
-    
-
-   
 }
 
 
-  
+
 
 export default Sidenav;

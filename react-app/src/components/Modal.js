@@ -1,7 +1,7 @@
 import React from "react";
 // import Sidenav from "./sidenav.js";
 
-class Modal extends React.Component {   
+class Modal extends React.Component {
     state = {
         display: false
     };
@@ -9,10 +9,10 @@ class Modal extends React.Component {
     modal   = ()  =>   {
         // Get the modal
     }
-    
+
     render() {
-    return(          
-        <div id="add-funds-modal" style={addFundsModalStyle} > 
+    return(
+        <div id="add-funds-modal" style={addFundsModalStyle} >
             <div class="modal-content">
           <span class="close">&times;</span>
           <h3 id="modal-title">Add funds</h3>
