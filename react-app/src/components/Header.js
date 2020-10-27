@@ -70,7 +70,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+const SearchAppBar = ({currentPage}) => {
+
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
@@ -95,7 +96,7 @@ export default function SearchAppBar() {
 
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Current Page
+            {currentPage}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -122,3 +123,5 @@ export default function SearchAppBar() {
     </div>
   );
 }
+
+export default SearchAppBar;

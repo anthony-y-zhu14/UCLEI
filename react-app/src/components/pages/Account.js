@@ -1,25 +1,25 @@
 import React from 'react';
 import { Button, ButtonGroup, Container } from '@material-ui/core';
 import Header from "../Header";
-import "../css/Account.css" 
+import "../css/Account.css"
 
 
-      
- 
 
-  export default function account(){   
-      
+
+
+  export default function account(){
+
     /*
 render account info
 - purpose: display user account info and stock holding
 - in: user object
 - out: N/A
 */
-const handleAccountBalance = () =>{    
+const handleAccountBalance = () =>{
     const user = {
         username: "jerry137",
         password : "123456",
-    
+
         name: "Jerry Smith",
         UID: "c117",
         watchlist: ["AAL", "TSLA", "FB", "SHOP"],
@@ -42,9 +42,9 @@ const handleAccountBalance = () =>{
             investmentBalance: 0
         },
         balanceGrowth: "-20%"
-    
+
     };
-    
+
 
     let accountName = document.getElementById("account-info");
     let totalBalance = document.getElementById("total-balance-text");
@@ -58,41 +58,41 @@ const handleAccountBalance = () =>{
     totalBalance.innerHTML = "$" + (Math.round( (parseFloat(user.account.cashBalance) + parseFloat(user.account.investmentBalance)) * 100) / 100).toFixed(2) ;
     username.innerHTML = user.name;
 
-    
+
     let holdingBtn = document.getElementById("holdingBtn");
-    
+
     holdingBtn.addEventListener("click", function(){
         if (activityBtn.classList.contains("selected")){
-            activityBtn.classList.remove("selected");  
-            activityBtn.style.background = "aliceblue";                   
-        } 
+            activityBtn.classList.remove("selected");
+            activityBtn.style.background = "aliceblue";
+        }
         this.classList.add("selected");
-        this.style.background = "cornflowerblue";  
+        this.style.background = "cornflowerblue";
         //render the list of stock holding
-       
-        let holdings = document.getElementById("table-container");    
+
+        let holdings = document.getElementById("table-container");
         holdings.innerHTML = '';
 
         for (let index = 0; index < user.ownedStocks.length; index++) {
             const element = user.ownedStocks[index];
 
             let stock = document.createElement("li");
-            stock.id = element.name;     
+            stock.id = element.name;
             stock.className = "stock-holding";
             stock.innerHTML = element.name;
-            holdings.appendChild(stock);                          
+            holdings.appendChild(stock);
 
         }
     });
-    let activityBtn = document.getElementById("activityBtn");    
+    let activityBtn = document.getElementById("activityBtn");
     activityBtn.addEventListener("click", function(){
-        
+
         if (holdingBtn.classList.contains("selected")){
-            holdingBtn.classList.remove("selected");  
-            holdingBtn.style.background = "aliceblue";                   
-        } 
+            holdingBtn.classList.remove("selected");
+            holdingBtn.style.background = "aliceblue";
+        }
         this.classList.add("selected");
-        this.style.background = "cornflowerblue";  
+        this.style.background = "cornflowerblue";
 
 
         for (let index = 0; index < user.activity.length; index++){
@@ -103,16 +103,16 @@ const handleAccountBalance = () =>{
     });
 }
 
-        
+
     return(
     <div >
-            <Header />
-            <Container maxWidth="sm">     
-            <div id="username">Username</div>  
-            <br/>         
-            <div id="account-info"></div>    
-            <br />              
-            
+            <Header currentPage={`Account`}/>
+            <Container maxWidth="sm">
+            <div id="username">Username</div>
+            <br/>
+            <div id="account-info"></div>
+            <br />
+
 
             <details>
             <summary>Account Balance</summary>
@@ -134,12 +134,12 @@ const handleAccountBalance = () =>{
                 </div>
             </div>
             </details>
-        
 
-            
 
-            <div id="account-activity-container">     
-                <br/>               
+
+
+            <div id="account-activity-container">
+                <br/>
 
                 <ButtonGroup disableElevation variant="outlined" color="primary" id="option-group">
                     <Button id="holdingBtn">Holdings</Button>
@@ -149,8 +149,7 @@ const handleAccountBalance = () =>{
 
             </div>
             </Container>
-            
+
         </div>
     )
   };
- 
