@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState  } from 'react';
+import TemporaryDrawer from "./Menu.js"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -7,6 +8,7 @@ import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { Menu } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -70,21 +72,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchAppBar() {
   const classes = useStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleMenu = () => {
+    setOpen(true)
+  }
+
 
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar style={{background: "#6C9FF8"}}>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={handleMenu}
           >
-            <MenuIcon />
+            <MenuIcon />            
+                      
+            
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            UCLEI
+            Current Page
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -101,6 +112,15 @@ export default function SearchAppBar() {
           </div>
         </Toolbar>
       </AppBar>
+
+      <Menu
+        anchor='left'
+        open = {open}
+        onClose={()=>setOpen(false)}
+      >
+        <TemporaryDrawer />
+        
+      </Menu>
     </div>
   );
 }

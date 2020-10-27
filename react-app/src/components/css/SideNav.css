@@ -3,10 +3,9 @@
 
 #sidenav {
   position: fixed;
-  width: 203px;
-  height: 1039px;
-  left: -4px;
-  top: -1px;
+  width: 250px;
+  height: 100%;
+  
 
   background: #393B41;
   /* box-shadow: 2px 1px 9px 1px #000000; */
