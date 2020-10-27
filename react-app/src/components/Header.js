@@ -70,13 +70,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SearchAppBar() {
+export default function SearchAppBar(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
 
   const handleMenu = () => {
     setOpen(true)
   }
+
+  
 
 
   return (
@@ -95,7 +97,7 @@ export default function SearchAppBar() {
 
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
-            Current Page
+            {props.page}
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
