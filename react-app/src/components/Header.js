@@ -90,9 +90,9 @@ export default function SearchAppBar() {
             aria-label="open drawer"
             onClick={handleMenu}
           >
-            <MenuIcon />            
-                      
-            
+            <MenuIcon />
+
+
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Current Page
@@ -113,11 +113,11 @@ export default function SearchAppBar() {
         </Toolbar>
       </AppBar>
 
-      <Menu        
+      <Menu
         open = {open}
         onClose={()=>setOpen(false)}
       >
-        <TemporaryDrawer />        
+        <TemporaryDrawer />
       </Menu>
     </div>
   );
