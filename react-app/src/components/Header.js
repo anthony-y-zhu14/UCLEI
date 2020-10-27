@@ -82,7 +82,7 @@ export default function SearchAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar style={{background: "#6C9FF8"}}>
+        <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
@@ -113,13 +113,11 @@ export default function SearchAppBar() {
         </Toolbar>
       </AppBar>
 
-      <Menu
-        anchor='left'
+      <Menu        
         open = {open}
         onClose={()=>setOpen(false)}
       >
-        <TemporaryDrawer />
-        
+        <TemporaryDrawer />        
       </Menu>
     </div>
   );

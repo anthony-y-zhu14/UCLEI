@@ -7,7 +7,6 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core";
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 import { makeStyles } from '@material-ui/core/styles';
 
-
 const theme = createMuiTheme({
   palette:
   {
