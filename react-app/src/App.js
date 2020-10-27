@@ -1,9 +1,10 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
-// import Header from "./components/Header.js"
+import "./components/Header.js"
 import Sidenav from "./components/SideNav.js"
 import Login from "./components/pages/Login.js"
+import SearchAppBar from './components/Header.js';
 
 
 class App extends React.Component {
@@ -14,8 +15,9 @@ class App extends React.Component {
         <div>
           <Route exact path= "/" render={props => (
             <React.Fragment>
-              <div className="main">
-                <Sidenav />
+              <div className="main">                  
+                <SearchAppBar /> 
+                <Sidenav />          
               </div>
             </React.Fragment>
           )} />
