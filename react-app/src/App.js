@@ -16,8 +16,7 @@ class App extends React.Component {
           <Route exact path= "/" render={props => (
             <React.Fragment>
               <div className="main">                  
-                <SearchAppBar /> 
-                <Sidenav />          
+                <SearchAppBar />                         
               </div>
             </React.Fragment>
           )} />
