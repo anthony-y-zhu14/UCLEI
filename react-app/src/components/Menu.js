@@ -3,12 +3,6 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import DashboardRoundedIcon from '@material-ui/icons/DashboardRounded';
 import SideNav from "./SideNav.js"
 
 const useStyles = makeStyles({
@@ -34,8 +28,9 @@ export default function TemporaryDrawer() {
       return;
     }
 
-    setState({ ...state, [anchor]: open });
+    setState({ ...state, [anchor]: open });  
   };
+ 
 
   const list = (anchor) => (
     <div
@@ -45,15 +40,7 @@ export default function TemporaryDrawer() {
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
-    >
-      {/* <List>
-        {['Dashboard', 'Account', 'Trading', 'Market'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <DashboardRoundedIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>       */}
+    >      
       <SideNav />
     </div>
   );

@@ -56,22 +56,8 @@ details[open] summary ~ * {
   }
 }
 
-#account-asset-container {
-  position: absolute;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  width: 601px;
-  height: 806px;
-  left: 199px;
-  top: 94px;
-  margin: 15px;
-}
-
-#account-container {
-  width: 100%;
-  height: 2em;
-  margin: 2em;
-  margin-left: 0;
+#account-info {
+  width: 100%;     
   background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -83,6 +69,7 @@ details[open] summary ~ * {
   text-align: center;
   color: white;
 }
+
 
 #balance-container {
   display: -webkit-box;
@@ -118,57 +105,6 @@ details[open] summary ~ * {
   margin-left: 5.25em;
 }
 
-#asset-allocation-container {
-  width: 100%;
-  height: 70%;
-  background: #393b41;
-  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 15px;
-  padding: 1em;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: bold;
-  color: #FFFFFF;
-  font-family: 'Open Sans', sans-serif;
-}
-
-#chart-container {
-  width: 80%;
-  height: 80%;
-  margin-top: 10%;
-  margin-left: 10%;
-}
-
-#donut-chart {
-  width: 40%;
-  height: 40%;
-  margin-top: 5%;
-  background: #B4E2FC;
-  display: inline-block;
-  border-radius: 50%;
-}
-
-#donut-chart-legend {
-  width: 80%;
-  height: 40%;
-  margin-top: 5%;
-  border-radius: 15px;
-  display: inline-block;
-}
-
-#account-activity-container {
-  position: absolute;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
-  text-align: center;
-  place-items: auto center;
-  width: 601px;
-  height: 806px;
-  left: 840px;
-  top: 94px;
-  margin: 15px;
-}
 
 #username {
   width: 100%;
@@ -183,16 +119,14 @@ details[open] summary ~ * {
   color: #6c9ff8;
 }
 
-#option-container {
-  width: 100%;
-  height: 5%;
-  margin-top: 5%;
-  place-items: auto center;
+#account-activity-container{  
+  text-align: center;  
+  
 }
 
-#holdingBtn {
-  margin: 1em;
-  padding: 2em;
+
+#holdingBtn, #activityBtn {  
+  display: inline-block;
   width: 8em;
   height: 4em;
   cursor: pointer;
@@ -211,60 +145,27 @@ details[open] summary ~ * {
   transition: all 0.15s;
 }
 
-#holdingBtn:hover {
+#holdingBtn:hover, #activityBtn:hover {
   text-shadow: 0 0 2em white;
   color: #FFFFFf;
   border-color: #FFFFFF;
   background: royalblue;
 }
 
-#holdingBtn:active {
-  background: cornflowerblue;
-}
-
-#activityBtn {
-  margin: 1em;
-  padding: 2em;
-  width: 8em;
-  height: 4em;
-  cursor: pointer;
-  border-radius: 0.8em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  background-color: aliceblue;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-transition: all 0.15s;
-  transition: all 0.15s;
-}
-
-#activityBtn:hover {
-  text-shadow: 0 0 2em white;
-  color: #FFFFFf;
-  border-color: #FFFFFF;
-  background: royalblue;
-}
-
-#activityBtn:active {
+#holdingBtn:active, #activityBtn:active {
   background: cornflowerblue;
 }
 
 #table-container {
   width: 80%;
-  height: 50%;
-  margin-left: 1em;
-  margin-top: 5em;
+  height: 50%; 
   padding: 2em;
+  margin-left: 8%;
   background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  list-style-type: none;
+  list-style-type: none;  
 }
 
 .title-small {
