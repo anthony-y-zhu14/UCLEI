@@ -10,40 +10,42 @@ import Trading from './components/pages/Trading';
 
 class App extends React.Component {
   state = {
-    data: null
+    user: undefined
   };
 
+
   componentDidMount() {
-    // Call our fetch function below once the component mounts
+    // Calls our fetch below once the component mounts
   this.callBackendAPI()
-    .then(res => this.setState({ data: res.express }))
+    .then(res => this.setState({ user: res }))
     .catch(err => console.log(err));
   }
-  // Fetches our GET route from the Express server. (Note the route we are fetching matches the GET route from server.js
+  // Fetches our GET route to account info from server.js
   callBackendAPI = async () => {
     const response = await fetch('/getAccount');
     const body = await response.json();
-
     if (response.status !== 200) {
-      throw Error(body.message) 
+      throw Error(body.message)
     }
     return body;
   };
 
   render() {
-    console.log(this.state);
 
+    //returns loading state
+    if(!this.state.user) {
+      return (
+        <h1>Loading...</h1>
+      );
+    }
+
+    //returns new state once loading is complete
     return (
+
       <Router>
         <div>
-          <Route exact path= "/login" render={props => (
-            <React.Fragment>
-              <div className="main">
-                <SearchAppBar />  
-              </div>
-            </React.Fragment>
-          )} />
-
+          <Route exact path= "/" render={(props) =>
+              <Dashboard {...props} user={`Jerry`} />} />
 
           <Route path="/login" component={Login} />
 
@@ -52,8 +54,6 @@ class App extends React.Component {
           <Route path="/account" component={Account} />
 
           <Route path="/trading" component={Trading} />
-
-
 
         </div>
       </Router>

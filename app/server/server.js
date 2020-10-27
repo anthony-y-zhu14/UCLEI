@@ -68,14 +68,14 @@ app.get('/getBalance', (request, response) => {
     response.end();
 });
 
-app.get('/getAccount', (request, response) => {
+app.get('/getAccount', (req, res) => {
     let data = JSON.stringify(users);
-    response.statusCode = 200;
-    response.setHeader("Content-Type", "application/JSON");
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/JSON");
     console.log(`\nClient ${users.username} account info sent.\n`)
-    response.write(data);
+    res.write(data);
     console.log(users);
-    response.end();
+    res.end();
 });
 
 app.post('/authentication', (request, response) => {
