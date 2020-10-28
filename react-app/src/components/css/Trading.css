@@ -72,13 +72,15 @@ details[open] summary ~ * {
   position: absolute;
   width: 601px;
   height: 806px;
+  
 }
 
 #account-container {
   padding: 1em;
-  width: 40%;
-  margin-bottom: 4em;
-  margin-left: 4em;
+  width: 100%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+
   outline: none;
   border-radius: .3em;
   background: #393b41;

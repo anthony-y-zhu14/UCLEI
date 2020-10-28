@@ -16,13 +16,13 @@ const useStyles = makeStyles({
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
-  const [state, setState] = React.useState({
+  const [state, setState] = React.useState({    
     top: false,
     left: false,
     bottom: false,
     right: false,
-  });
-
+  }); 
+  
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
@@ -39,14 +39,17 @@ export default function TemporaryDrawer() {
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >      
+      onKeyDown={toggleDrawer(anchor, false)}    > 
       <SideNav />
     </div>
   );
 
-  return (
-    <div>      
+ 
+ 
+
+  const content = (     
+    
+    <div>         
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>            
           <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>           
@@ -54,8 +57,11 @@ export default function TemporaryDrawer() {
             {list(anchor)}
           </Drawer>
         </React.Fragment>
-      ))}    
-      
+      ))}          
     </div>
+  )
+
+  return (
+    content
   );
 }

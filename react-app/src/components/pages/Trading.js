@@ -1,63 +1,90 @@
-import { Container } from '@material-ui/core';
+import { Button, ButtonGroup, Container } from '@material-ui/core';
 import React from 'react';
 import Header from "../Header";
+import '../css/Trading.css'
 
 class Trading extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            user: undefined,
+            buyBtn: false,
+            sellBtn: false
+          };
+    }
+
+    componentDidMount() {
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+      }
+  
+      callBackendAPI = async () => {
+          const response = await fetch('/getAccount');
+          const body = await response.json();
+          if (response.status !== 200) {
+            throw Error(body.message)
+          }
+          return body;
+      };
 
 
     render() {
-      return (
-          <div>
-                <Header currentPage={`Trading`} usrName={`jerry137`}/> //this is temp
-                <Container>
-                <div id="trade-container">
-                    <div id="account-container" type="text">TFSA Account CAD 25MBJ</div>
-                    <details>
-                    <summary id="fundsAvialable">Funds Avialable to Trade</summary>
-                    <ul id="funds-list">
-                        <p id="cash">Cash Balance: $2000.00</p>
-                    </ul>
-                    </details>
 
-                    <form id="search-container">
-                    <input name="search-name" placeholder="Enter a name or symbol" value="" type="text" id="search-input"></input>
-                    <span id="searchBtn"><i class='fa fa-search'></i></span>
+        if(!this.state.user) {
+            return (
+              <h1>Loading...</h1>
+            );
+        }
 
-                    <details>
-                        <summary id="searchResult">Search Result</summary>
-                        <ul id="stock-result-list">
-                        <div id="stockFound"></div>
+        return (
+            <div>
+                    <Header currentPage={`Trading`} usrName={this.state.user.username}/> 
+                    <Container maxWidth='sm'>
+                    <div id="trade-container">
+                        <div id="account-container" type="text">{this.state.user.account.accountName}</div>
+                        <details>
+                        <summary id="fundsAvialable">Funds Avialable to Trade</summary>
+                        <ul id="funds-list">
+                            <p id="cash">
+                            {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
+                            </p>
                         </ul>
-                    </details>
-                    </form>
+                        </details>
 
-                    <form id="action">
-                    <input name="quantity" placeholder="0" value="" type="text" id="trading-quantity-input"></input>
-                    <span id="buyBtn">Buy</span>
-                    <span id="sellBtn">sell</span>
-                    </form>
+                        <form id="search-container">
+                        <input name="search-name" placeholder="Enter a name or symbol" value="" type="text" id="search-input"></input>
+                        <Button id="searchBtn"><i class='fa fa-search'></i></Button>
 
-                    <div id="CompleteTransactionBtn">Complete Transaction</div>
+                        <details>
+                            <summary id="searchResult">Search Result</summary>
+                            <ul id="stock-result-list">
+                            <div id="stockFound"></div>
+                            </ul>
+                        </details>
+                        </form>
 
-                </div>
+                        <form id="action">
+                        <input name="quantity" placeholder="0" value="" type="text" id="trading-quantity-input"></input>
+                        <Button id="buyBtn">Buy</Button>
+                        <Button id="sellBtn">sell</Button>
+                        </form>
 
-                <div id="holding-container">
-                    <div id="stock-container">
-                        <h2>Current Holding</h2>
-                        <ul id="stock-list"></ul>
-                        </div>
-                </div>
-                </Container>
+                        <Button id="CompleteTransactionBtn">Complete Transaction</Button>
 
-
-
-
-
-
-    </div>
+                    </div>
+                    
+                    </Container>
 
 
-      );
+
+
+
+
+        </div>
+
+
+        );
     }
   }
 

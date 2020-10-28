@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Button, ButtonGroup, Container } from '@material-ui/core';
 import Header from "../Header";
-import ContainedButtons from "../Button.js"
+
 import "../css/Account.css"
 
 class Account extends React.Component {
