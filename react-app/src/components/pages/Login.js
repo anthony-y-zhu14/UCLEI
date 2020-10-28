@@ -4,6 +4,8 @@ import { TextField } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
 import "../css/Styles.css";
 import UncontrolledLottie from "../UncontrolledLottie";
+import {withRouter} from 'react-router-dom';
+import compose from 'recompose/compose'
 
 const styles = {
   root: {
@@ -37,8 +39,31 @@ class Login extends React.Component {
         super(props);
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            authenticated: false
         };
+    }
+
+    componentDidMount = async () => {
+        // POST request using fetch with async/await
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: this.state.username, password: this.state.password })
+        };
+        console.log(requestOptions);
+        const response = await fetch('/authentication', requestOptions);
+        const data = await response.json();
+        console.log(response)
+        this.setState({ authenticated: data });
+        console.log(this.state.authenticated)
+        if(this.state.authenticated) {
+          this.navToDsh();
+        }
+    }
+
+    navToDsh = (value) => {
+      this.props.history.push('/dashboard');
     }
 
     setUsername = event => {
@@ -86,9 +111,7 @@ class Login extends React.Component {
             </div>
 
             <div >
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={() => {
-                    alert(this.state.username + " " + this.state.password);
-                  }}>
+              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.componentDidMount}>
               Login
               </Button>
             </div>
@@ -99,4 +122,6 @@ class Login extends React.Component {
     }
   };
 
-  export default withStyles(styles)(Login);
+  export default compose(
+     withStyles(styles),
+  )(withRouter(Login))

@@ -85,6 +85,8 @@ app.post('/authentication', (request, response) => {
     });
 
     request.on('end', () => {
+      console.log(data);
+
     let username = data.username;
     let password = data.password;
     authenticate(username, password);
@@ -94,7 +96,7 @@ app.post('/authentication', (request, response) => {
     function authenticate(username, password) {
         if(users.username === username && users.password === password) {
             console.log(`\nClient ${username} authenticated succesfully.\n`);
-            response.write("/html/dashboard.html");
+            response.write("true");
         }
         else {
             response.write("false");
