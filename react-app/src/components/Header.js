@@ -79,7 +79,7 @@ const SearchAppBar = ({currentPage}) => {
     setOpen(true)
   }
 
-  
+
 
 
   return (
