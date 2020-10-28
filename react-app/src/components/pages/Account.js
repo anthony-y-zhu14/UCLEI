@@ -12,9 +12,9 @@ class Account extends React.Component {
             holdingBtn: false,
             activityBtn: false
           };
-        
+
     }
-    
+
     componentDidMount() {
       this.callBackendAPI()
         .then(res => this.setState({ user: res }))
@@ -30,7 +30,7 @@ class Account extends React.Component {
         return body;
     };
 
-    handleHolding = (e) =>{              
+    handleHolding = (e) =>{
         this.setState({
             holdingBtn: true
         })
@@ -39,7 +39,7 @@ class Account extends React.Component {
         })
     }
 
-    handleActivity = (e) =>{        
+    handleActivity = (e) =>{
         this.setState({
             holdingBtn: false
         })
@@ -47,28 +47,28 @@ class Account extends React.Component {
             activityBtn: true
         })
     }
-    
+
 
     render() {
 
-       
+
 
         if(!this.state.user) {
             return (
               <h1>Loading...</h1>
             );
-        }        
-          
+        }
+
         return(
             <div>
-                    <Header currentPage={`Account`}/>
+                    <Header currentPage={`Account`} usrName={this.state.user.username}/>
                     <Container maxWidth="sm">
                     <div id="username">{this.state.user.name}</div>
                     <br/>
                     <div id="account-info">{this.state.user.account.accountName}</div>
                     <br />
-    
-    
+
+
                     <details>
                     <summary>Account Balance</summary>
                     <div id="balance-container">
@@ -85,7 +85,7 @@ class Account extends React.Component {
                                     {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
                                 </span>
                             </div>
-    
+
                             <div id="cash-balance">
                                 <span class="title-small">Cash Balance: </span>
                                 <span class="text-box" id="cash-balance-text">
@@ -95,10 +95,10 @@ class Account extends React.Component {
                         </div>
                     </div>
                     </details>
-    
-    
-    
-    
+
+
+
+
                     <div id="account-activity-container">
                         <br/>
                         <ButtonGroup disableElevation variant="outlined"  id="option-group">
@@ -106,7 +106,7 @@ class Account extends React.Component {
                             <Button id= "activityBtn" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
                         </ButtonGroup>
                         <ul id="table-container">
-                            
+
                         <div>
                             {this.state.holdingBtn && (
                                 <React.Fragment>
@@ -123,23 +123,14 @@ class Account extends React.Component {
                                 </React.Fragment>
                             )}
                         </div>
-                        </ul>                       
-    
+                        </ul>
+
                     </div>
                     </Container>
-    
+
                 </div>
             )
     }
 }
 
   export default Account;
-
-      
-
-  
-        
-
-
-    
-  

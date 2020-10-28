@@ -51,12 +51,9 @@ class Login extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username: this.state.username, password: this.state.password })
         };
-        console.log(requestOptions);
         const response = await fetch('/authentication', requestOptions);
         const data = await response.json();
-        console.log(response)
         this.setState({ authenticated: data });
-        console.log(this.state.authenticated)
         if(this.state.authenticated) {
           this.navToDsh();
         }

@@ -3,12 +3,12 @@ import React from 'react';
 import Header from "../Header";
 
 class Trading extends React.Component {
-       
+
 
     render() {
       return (
           <div>
-                <Header/>
+                <Header currentPage={`Trading`} usrName={`jerry137`}/> //this is temp
                 <Container>
                 <div id="trade-container">
                     <div id="account-container" type="text">TFSA Account CAD 25MBJ</div>
@@ -48,14 +48,14 @@ class Trading extends React.Component {
                         </div>
                 </div>
                 </Container>
-                
 
 
-                    
 
-                            
+
+
+
     </div>
-        
+
 
       );
     }

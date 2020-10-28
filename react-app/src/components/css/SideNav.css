@@ -5,7 +5,7 @@
   position: fixed;
   width: 250px;
   height: 100%;
-  
+
 
   background: #393B41;
   /* box-shadow: 2px 1px 9px 1px #000000; */
@@ -55,19 +55,20 @@ a {
   text-decoration: none;
 }
 
-a:active {
+li:active {
   color: #B4E2FC;
 }
 
-a:hover {
+li:hover {
   color: #B4E2FC;
+  cursor: pointer;
 }
 
-a:visited {
+li:visited {
   color: inherit;
 }
 
-a:visited:hover {
+li:visited:hover {
   color: #B4E2FC;
 }
 
