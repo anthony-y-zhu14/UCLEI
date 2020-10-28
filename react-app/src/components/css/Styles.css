@@ -27,7 +27,6 @@
 }
 
 h1 {
-  margin-left: 3%;
   font-style: normal;
   font-weight: normal;
   font-size: 60px;
@@ -52,8 +51,7 @@ h1 {
 .txtFld {
   flex: 0 0 auto;
   display: inline-block;
-  margin: 10%;
-  width: 40%;
+  width: 90%;
 }
 
 .lgnBtn {
