@@ -159,7 +159,7 @@ details[open] summary ~ * {
 #table-container {
   width: 80%;
   height: 50%; 
-  padding: 2em;
+  padding: 1em;
   margin-left: 8%;
   background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);

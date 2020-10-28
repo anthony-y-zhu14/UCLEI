@@ -30,27 +30,34 @@ class Account extends React.Component {
         return body;
     };
 
-    handleHolding() {
-        console.log('foo');
-        this.setState.holdingBtn(true);
-        this.setState.activityBtn(false);
+    handleHolding = (e) =>{              
+        this.setState({
+            holdingBtn: true
+        })
+        this.setState({
+            activityBtn: false
+        })
     }
 
-    handleActivity() {
-        console.log('bar');
-        this.setState.activityBtn(true);
-        this.setState.holdingBtn(false);
+    handleActivity = (e) =>{        
+        this.setState({
+            holdingBtn: false
+        })
+        this.setState({
+            activityBtn: true
+        })
     }
+    
 
     render() {
 
-        let btnClass = this.state.holdingBtn ?  'selected' : 'unselected';
+       
 
         if(!this.state.user) {
             return (
               <h1>Loading...</h1>
             );
-          }
+        }        
           
         return(
             <div>
@@ -95,10 +102,28 @@ class Account extends React.Component {
                     <div id="account-activity-container">
                         <br/>
                         <ButtonGroup disableElevation variant="outlined"  id="option-group">
-                            <ContainedButtons className={btnClass} id="holdingBtn" text={'Holding'} toggle={this.state.holdingBtn} onClick={this.handleHolding}/>
-                            <ContainedButtons className={btnClass} id="activityBtn" text={'Activity'} toggle={this.state.activityBtn} onClick={this.handleActivity}/>
+                            <Button id="holdingBtn" style={this.state.holdingBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleHolding}>Holding</Button>
+                            <Button id= "activityBtn" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
                         </ButtonGroup>
-                        <ul id="table-container"></ul>
+                        <ul id="table-container">
+                            
+                        <div>
+                            {this.state.holdingBtn && (
+                                <React.Fragment>
+                                    {this.state.user.ownedStocks.map(stock => (
+                                        <li id={stock.name} className="stock-holding">{stock.name}</li>
+                                    ))}
+                                </React.Fragment>
+                            )}
+                            {this.state.activityBtn && (
+                                <React.Fragment>
+                                    {this.state.user.activity.map(activity => (
+                                        <li id={activity} className="stock-holding">{activity}</li>
+                                    ))}
+                                </React.Fragment>
+                            )}
+                        </div>
+                        </ul>                       
     
                     </div>
                     </Container>
@@ -110,75 +135,9 @@ class Account extends React.Component {
 
   export default Account;
 
-
-
       
 
-    // /*
-    // render account info
-    // - purpose: display user account info and stock holding
-    // - in: user object
-    // - out: N/A
-    // */
-    // const handleAccountBalance = () =>{        
-
-
-    //     let accountName = document.getElementById("account-info");
-    //     let totalBalance = document.getElementById("total-balance-text");
-    //     let investmentBalance = document.getElementById("investment-text");
-    //     let cashBalance = document.getElementById("cash-balance-text");
-    //     let username = document.getElementById("username");
-
-    //     accountName.innerHTML = user.account.accountName;
-    //     cashBalance.innerHTML = "$" + (Math.round( parseFloat(user.account.cashBalance) * 100) / 100).toFixed(2);
-    //     investmentBalance.innerHTML = "$" + (Math.round( parseFloat(user.account.investmentBalance) * 100) / 100).toFixed(2);
-    //     totalBalance.innerHTML = "$" + (Math.round( (parseFloat(user.account.cashBalance) + parseFloat(user.account.investmentBalance)) * 100) / 100).toFixed(2) ;
-    //     username.innerHTML = user.name;
-
-
-    //     let holdingBtn = document.getElementById("holdingBtn");
-
-    //     holdingBtn.addEventListener("click", function(){
-    //         if (activityBtn.classList.contains("selected")){
-    //             activityBtn.classList.remove("selected");
-    //             activityBtn.style.background = "aliceblue";
-    //         }
-    //         this.classList.add("selected");
-    //         this.style.background = "cornflowerblue";
-    //         //render the list of stock holding
-
-    //         let holdings = document.getElementById("table-container");
-    //         holdings.innerHTML = '';
-
-    //         for (let index = 0; index < user.ownedStocks.length; index++) {
-    //             const element = user.ownedStocks[index];
-
-    //             let stock = document.createElement("li");
-    //             stock.id = element.name;
-    //             stock.className = "stock-holding";
-    //             stock.innerHTML = element.name;
-    //             holdings.appendChild(stock);
-
-    //         }
-    //     });
-    //     let activityBtn = document.getElementById("activityBtn");
-    //     activityBtn.addEventListener("click", function(){
-
-    //         if (holdingBtn.classList.contains("selected")){
-    //             holdingBtn.classList.remove("selected");
-    //             holdingBtn.style.background = "aliceblue";
-    //         }
-    //         this.classList.add("selected");
-    //         this.style.background = "cornflowerblue";
-
-
-    //             for (let index = 0; index < user.activity.length; index++){
-    //                 const element = user.activity[index];
-    //                 console.log(element);
-    //             }
-
-    //         });
-    //     }
+  
         
 
 
