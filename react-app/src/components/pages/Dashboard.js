@@ -13,7 +13,7 @@ const styles = {
     flexWrap: 'wrap',
     width: 'md',
     justifyContent: 'space-between',
-    margin: '1%',
+    margin: '2%',
     zIndex: 2
   },
   font: {
