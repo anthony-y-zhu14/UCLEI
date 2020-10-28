@@ -24,6 +24,14 @@ const useStyles = makeStyles((theme) => ({
       display: 'block',
     },
   },
+  subTitle: {
+    flexGrow: 2,
+    display: 'none',
+    [theme.breakpoints.up('sm')]: {
+      display: 'block',
+      marginLeft: theme.spacing(120)
+    },
+  },
   palette: {
     primary: {
         main: '#1e88e5',
@@ -70,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SearchAppBar = ({currentPage}) => {
+const SearchAppBar = ({currentPage, usrName}) => {
 
   const classes = useStyles();
   const [open, setOpen] = useState(false);
@@ -100,6 +108,9 @@ const SearchAppBar = ({currentPage}) => {
           <Typography className={classes.title} variant="h6" noWrap>
             {currentPage}
           </Typography>
+          <Typography className={classes.subTitle} variant="p" noWrap>
+            {usrName}
+          </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -112,6 +123,7 @@ const SearchAppBar = ({currentPage}) => {
               }}
               inputProps={{ 'aria-label': 'search' }}
             />
+
           </div>
         </Toolbar>
       </AppBar>

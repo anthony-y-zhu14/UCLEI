@@ -125,15 +125,19 @@ class Dashboard extends React.Component {
 
     const { classes } = this.props;
 
+
     if(!this.state.user) {
       return (
         <h1>Loading...</h1>
       );
     }
 
+    let crtPg = 'Dashboard';
+    let username = this.state.user.username;
+
     return (
         <div>
-          <Header currentPage={`Dashboard`}/>
+          <Header currentPage={crtPg} usrName={username}/>
           <div className={classes.main}>
             <div className={classes.chartContainer}>
             <h3 className={classes.font}>NASDAQ</h3>

@@ -45,7 +45,7 @@ class App extends React.Component {
       <Router>
         <React.Fragment>
           <Route exact path= "/" render={(props) =>
-              <Dashboard user={`Jerry`} />} />
+              <Login user={`Jerry`} />} />
 
           <Route path="/login" component={Login} />
 
