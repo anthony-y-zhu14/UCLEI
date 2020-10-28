@@ -43,9 +43,9 @@ class App extends React.Component {
     return (
 
       <Router>
-        <div>
+        <React.Fragment>
           <Route exact path= "/" render={(props) =>
-              <Dashboard {...props} user={`Jerry`} />} />
+              <Dashboard user={`Jerry`} />} />
 
           <Route path="/login" component={Login} />
 
@@ -55,7 +55,7 @@ class App extends React.Component {
 
           <Route path="/trading" component={Trading} />
 
-        </div>
+        </React.Fragment>
       </Router>
     );
   }
