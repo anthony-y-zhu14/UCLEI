@@ -68,14 +68,7 @@ details[open] summary ~ * {
   }
 }
 
-#trade-container {
-  position: absolute;
-  width: 601px;
-  height: 806px;
-  
-}
-
-#account-container {
+#fundsAvialable {
   padding: 1em;
   width: 100%;
   margin-top: 2%;
@@ -86,26 +79,34 @@ details[open] summary ~ * {
   background: #393b41;
   color: white;
   font-family: 'Open Sans', sans-serif;
+  font-size: 18px;  
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#trade-container {
+  position: absolute;
+  width: 601px;
+  height: 806px;
+  
+}
+
+#account-container {
+  padding: 1em;
+  width: 50%;
+  margin: 0 auto;
+
+  outline: none;
+  border-radius: .3em;
+  background: #393b41;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   text-align: center;
 }
 
-#search-input {
-  padding: 1em;
-  background: #B4E2FC;
-  margin: 2em;
-  margin-left: 8em;
-  cursor: pointer;
-  outline: none;
-  border-radius: .3em;
-  font-weight: bold;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
-}
 
-#search-input:hover {
-  background: #C3D6E7;
-}
 
 #searchBtn {
   width: 4em;
@@ -169,21 +170,20 @@ details[open] summary ~ * {
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#trading-quantity-input {
-  padding: 1em;
-  background: #B4E2FC;
-  margin: 2em;
-  cursor: pointer;
-  outline: none;
-  border-radius: .3em;
-  font-weight: bold;
-  -webkit-transition: background-color .3s;
-  transition: background-color .3s;
+#trading-quantity-input {  
+  background: aliceblue;  
+  margin: 0 auto;
+  cursor: pointer; 
 }
 
-#trading-quantity-input:hover {
-  background: #C3D6E7;
+#search-input {
+  background: aliceblue;  
+  margin: 0 auto;
+  cursor: pointer; 
 }
+
+
+
 
 #buyBtn {
   margin: 1em;

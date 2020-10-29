@@ -143,7 +143,7 @@ class Dashboard extends React.Component {
 
     return (
         <div>
-          <Header currentPage={crtPg} usrName={username}/>
+          <Header currentPage={crtPg} userName={username}/>
           <div className={classes.main}>
             <div className={classes.chartContainer}>
             <h3 className={classes.font}>NASDAQ</h3>

@@ -1,7 +1,8 @@
-import { Button, ButtonGroup, Container } from '@material-ui/core';
+import { Button, Container, TextField } from '@material-ui/core';
 import React from 'react';
 import Header from "../Header";
 import '../css/Trading.css'
+
 
 class Trading extends React.Component {
     constructor() {
@@ -9,7 +10,8 @@ class Trading extends React.Component {
         this.state = {
             user: undefined,
             buyBtn: false,
-            sellBtn: false
+            sellBtn: false,
+            completeBtn: false
           };
     }
 
@@ -19,7 +21,7 @@ class Trading extends React.Component {
           .catch(err => console.log(err));
       }
   
-      callBackendAPI = async () => {
+    callBackendAPI = async () => {
           const response = await fetch('/getAccount');
           const body = await response.json();
           if (response.status !== 200) {
@@ -28,8 +30,34 @@ class Trading extends React.Component {
           return body;
       };
 
+    handleBuyBtn = (e) =>{
+        this.setState({
+            buyBtn: true
+        })
+        this.setState({
+            sellBtn: false
+        })
+    }
 
-    render() {
+    handleSellBtn = (e) =>{
+        this.setState({
+            sellBtn: true
+        })
+        this.setState({
+            buyBtn: false
+        })
+    }
+
+    handleCompleteBtn = (e) =>{
+        
+    }
+
+    handleSearch = (e) =>{
+        
+    }
+
+
+    render() {      
 
         if(!this.state.user) {
             return (
@@ -39,38 +67,41 @@ class Trading extends React.Component {
 
         return (
             <div>
-                    <Header currentPage={`Trading`} usrName={this.state.user.username}/> 
+                    <Header currentPage={`Trading`} userName={this.state.user.username}/> 
                     <Container maxWidth='sm'>
                     <div id="trade-container">
+                        <br />
                         <div id="account-container" type="text">{this.state.user.account.accountName}</div>
-                        <details>
-                        <summary id="fundsAvialable">Funds Avialable to Trade</summary>
-                        <ul id="funds-list">
-                            <p id="cash">
-                            {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
-                            </p>
-                        </ul>
-                        </details>
+                        <br/>
+
+                       
+                        <div id="fundsAvialable">
+                            <span style={{width: "80%"}}>Cash Balance: </span> 
+                            <span id="cash">{"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</span>
+                            </div> 
+                       
 
                         <form id="search-container">
-                        <input name="search-name" placeholder="Enter a name or symbol" value="" type="text" id="search-input"></input>
-                        <Button id="searchBtn"><i class='fa fa-search'></i></Button>
+                            <TextField id="search-input" label="Enter a name or symbol" variant="outlined" />    
 
-                        <details>
-                            <summary id="searchResult">Search Result</summary>
-                            <ul id="stock-result-list">
-                            <div id="stockFound"></div>
-                            </ul>
-                        </details>
+                            <Button id="searchBtn" onClick={this.handleSearch}><i class='fa fa-search'></i></Button>
+
+                            <details>
+                                <summary id="searchResult">Search Result</summary>
+                                <ul id="stock-result-list">
+                                <div id="stockFound"></div>
+                                </ul>
+                            </details>
                         </form>
 
                         <form id="action">
-                        <input name="quantity" placeholder="0" value="" type="text" id="trading-quantity-input"></input>
-                        <Button id="buyBtn">Buy</Button>
-                        <Button id="sellBtn">sell</Button>
+                            <TextField id="trading-quantity-input" label="quantity" variant="outlined" />     
+                        
+                            <Button id="buyBtn" style={this.state.buyBtn ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                            <Button id="sellBtn" style={this.state.sellBtn ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
                         </form>
 
-                        <Button id="CompleteTransactionBtn">Complete Transaction</Button>
+                        <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn} >Complete Transaction</Button>
 
                     </div>
                     

@@ -16,6 +16,7 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import TemporaryDrawer from "./Menu.js"
 import { Avatar } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
+import {withRouter} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -105,6 +106,10 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const logout = (value) => {
+    alert("Logout");
+  }
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -129,7 +134,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       open={isMenuOpen}
       onClose={handleMenuClose}    >
 
-      <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
+      <MenuItem onClick={handleMenuClose} onClick={logout}>Sign Out</MenuItem>
     </Menu>
   );
 

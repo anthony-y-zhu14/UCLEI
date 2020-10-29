@@ -3,6 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route} from 'react-router-dom';
 import "./components/Header.js"
 import Login from "./components/pages/Login.js"
+import Market from "./components/pages/Market.js"
 import Dashboard from "./components/pages/Dashboard.js"
 import SearchAppBar from './components/Header.js';
 import Account from "./components/pages/Account.js"
@@ -54,6 +55,8 @@ class App extends React.Component {
           <Route path="/account" component={Account} />
 
           <Route path="/trading" component={Trading} />
+
+          <Route path="/market" component={Market} />
 
         </React.Fragment>
       </Router>

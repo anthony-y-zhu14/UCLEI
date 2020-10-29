@@ -23,6 +23,10 @@ class Sidenav extends React.Component {
     this.props.history.push(links.trd);
   }
 
+  navToMrk = (value) => {
+    this.props.history.push(links.mrk);
+  }
+
     render() {
     return(
 
@@ -39,7 +43,7 @@ class Sidenav extends React.Component {
                 <li onClick={this.navToTrd}>
                     <i className="fa fa-exchange" aria-hidden="true"></i>
                     Trading</li>
-                <li>
+                <li onClick={this.navToMrk}>
                     <i className="fa fa-area-chart" aria-hidden="true"></i>
                     Market
                 </li>
