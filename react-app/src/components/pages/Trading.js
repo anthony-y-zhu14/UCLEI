@@ -9,9 +9,12 @@ class Trading extends React.Component {
         super();
         this.state = {
             user: undefined,
-            buyBtn: false,
-            sellBtn: false,
-            completeBtn: false
+            target_stock: undefined,
+            quantity: undefined,
+            orderBuy: false,
+            orderSell: false,
+            completeBtn: false            
+
           };
     }
 
@@ -32,10 +35,10 @@ class Trading extends React.Component {
 
     handleBuyBtn = (e) =>{
         this.setState({
-            buyBtn: true
+            orderBuy: true
         })
         this.setState({
-            sellBtn: false
+            orderSellBtn: false
         })
     }
 
@@ -97,8 +100,8 @@ class Trading extends React.Component {
                         <form id="action">
                             <TextField id="trading-quantity-input" label="quantity" variant="outlined" />     
                         
-                            <Button id="buyBtn" style={this.state.buyBtn ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
-                            <Button id="sellBtn" style={this.state.sellBtn ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
+                            <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                            <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
                         </form>
 
                         <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn} >Complete Transaction</Button>

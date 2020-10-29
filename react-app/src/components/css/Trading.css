@@ -186,8 +186,7 @@ details[open] summary ~ * {
 
 
 #buyBtn {
-  margin: 1em;
-  padding: 2em;
+  margin: 0 auto;
   width: 8em;
   height: 4em;
   cursor: pointer;
