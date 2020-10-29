@@ -1,8 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap'); /* imports open sans font */
 
 .login {
-  margin: 10%;
-  padding: 2%;
+  margin: 10% auto;
+  padding-top: 1%;
+  padding-bottom: 4%;
+  width: 55%;
   font-family: 'Open Sans', sans-serif;
   font-style: normal;
   font-weight: normal;

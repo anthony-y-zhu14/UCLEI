@@ -16,21 +16,21 @@ const useStyles = makeStyles({
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
-  const [state, setState] = React.useState({    
+  const [state, setState] = React.useState({
     top: false,
     left: true,
     bottom: false,
     right: false,
-  }); 
-  
+  });
+
   const toggleDrawer = (anchor, open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift' || event.type === 'onclick')) {
       return;
     }
 
-    setState({ ...state, [anchor]: open });  
+    setState({ ...state, [anchor]: open });
   };
- 
+
 
   const list = (anchor) => (
     <div
@@ -39,15 +39,15 @@ export default function TemporaryDrawer() {
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}> 
+      onKeyDown={toggleDrawer(anchor, false)}>
       <SideNav />
     </div>
   );
 
- 
- 
 
-  const content = (     
+
+
+  const content = (
 
 
     // {['left', 'right', 'top', 'bottom'].map((anchor) => (
@@ -64,19 +64,19 @@ export default function TemporaryDrawer() {
             variant="temporary"
             anchor={'left'}
             open={state.left}
-            onClose={toggleDrawer('left', false)}            
+            onClose={toggleDrawer('left', false)}
             classes={{
               paper: classes.drawerPaper,
-            }}           
+            }}
           >
-             {list('left')}              
-            
+             {list('left')}
+
         </Drawer>
 
     </React.Fragment>
-    
-    
-    
+
+
+
   )
 
   return (
