@@ -78,6 +78,16 @@ app.get('/getAccount', (req, res) => {
     res.end();
 });
 
+app.get('/getWatchlist', (req, res) => {
+    let data = JSON.stringify(users.watchlist);
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/JSON");
+    console.log(`\nClient ${users.username} watchlist info sent.\n`)
+    res.write(data);
+    console.log(users.watchlist);
+    res.end();
+});
+
 app.post('/authentication', (request, response) => {
     let data = "";
     request.on('data', (chunk) => {
@@ -118,7 +128,7 @@ app.post('/authentication', (request, response) => {
     });
 });
 
-app.post('/removeWatchItem', (request, response) => {
+app.post('/delWatchItem', (request, response) => {
    let data = "";
    request.on('data', (chunk) => {
        data = JSON.parse(chunk);

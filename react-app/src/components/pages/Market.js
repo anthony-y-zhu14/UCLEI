@@ -42,6 +42,7 @@ const styles = {
         flexWrap: 'wrap',
         width: '35%',
         height: '92%',
+        overflowY: 'auto',
         borderRadius: '10px',
         position: 'relative',
         background: '#393b41',

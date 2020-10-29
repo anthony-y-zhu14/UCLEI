@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -9,53 +9,92 @@ import QueueIcon from '@material-ui/icons/Queue';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const useStyles = makeStyles((theme) => ({
+const styles = {
   root: {
     width: '100%',
-    margin: '2% auto',
+    margin: '1% auto',
     maxWidth: 360,
     borderRadius: '2%',
     color: '#000',
-    backgroundColor: theme.palette.background.paper,
   },
-}));
+  inner: {
+    marginTop: '-4%',
+    padding: '4%',
+    backgroundColor: '#fff',
+    color: '#000',
+    borderRadius: '4%'
+  }
+};
 
-export default function CheckboxList() {
-  const classes = useStyles();
-  const [checked, setChecked] = React.useState([0]);
+class CheckboxList extends React.Component {
+  constructor() {
+      super();
+      this.state = {
+          userWatchlist: undefined
+        };
+  }
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
+  componentDidMount() {
+    // Calls our fetch below once the component mounts
+  this.callBackendAPI()
+    .then(res => this.setState({ userWatchlist: res }))
+    .catch(err => console.log(err));
+  }
+  // Fetches our GET route to account info from server.js
+  callBackendAPI = async () => {
+    const response = await fetch('/getWatchlist');
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message)
     }
-
-    setChecked(newChecked);
+    console.log(body)
+    return body;
   };
 
-  return (
-    <List className={classes.root}>
-      {[0, 1, 2, 3].map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
+  delWatchItem = async() => {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ watchlist: this.state.watchlist })
+    };
+    const response = await fetch('/delWatchItem', requestOptions);
+    const data = await response.json();
 
-        return (
-          <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
-            <ListItemIcon>
-              <QueueIcon/>
-            </ListItemIcon>
-            <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="delete">
-                <DeleteIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        );
-      })}
-    </List>
-  );
+  }
+
+
+  render() {
+    const { classes } = this.props;
+
+    if(!this.state.userWatchlist) {
+      return (
+        <h1>Loading...</h1>
+      )
+    }
+
+    return (
+      <List className={classes.root}>
+        {this.state.userWatchlist.map((value) => {
+          const labelId = ``;
+
+
+          return (
+            <ListItem className={classes.inner}>
+              <ListItemIcon>
+                <QueueIcon/>
+              </ListItemIcon>
+              <ListItemText id={labelId} primary={value} />
+              <ListItemSecondaryAction>
+                <IconButton edge="end" aria-label="delete">
+                  <DeleteIcon onClick={this.delWatchItem}/>
+                </IconButton>
+              </ListItemSecondaryAction>
+            </ListItem>
+          );
+        })}
+      </List>
+    );
+  }
 }
+
+export default  withStyles(styles)(CheckboxList);

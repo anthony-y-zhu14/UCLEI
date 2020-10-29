@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import Lottie from 'react-lottie'
-import animationData from './lf30_editor_gucsxhof.json'
+import animationData from './images/lf30_editor_gucsxhof.json'
 
 class UncontrolledLottie extends Component {
 
