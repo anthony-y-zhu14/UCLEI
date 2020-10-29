@@ -8,9 +8,10 @@ class Account extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: undefined,
+            user: undefined,            
             holdingBtn: false,
             activityBtn: false
+
           };
 
     }
@@ -61,7 +62,7 @@ class Account extends React.Component {
 
         return(
             <div>
-                    <Header currentPage={`Account`} usrName={this.state.user.username}/>
+                    <Header currentPage={`Account`} userName={this.state.user.name}/>
                     <Container maxWidth="sm">
                     <div id="username">{this.state.user.name}</div>
                     <br/>

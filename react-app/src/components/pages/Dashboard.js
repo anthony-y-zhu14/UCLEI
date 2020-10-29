@@ -2,7 +2,8 @@ import React from 'react';
 import GridList from "../GridList.js";
 import Header from "../Header.js";
 import SpacingGrid from "../Grid.js";
-import SimpleContainer from "../Container.js"
+import SimpleContainer from "../Container.js";
+import NewsList from '../NewsList.js';
 import Typography from '@material-ui/core/Typography';
 
 import { withStyles } from "@material-ui/core/styles";
@@ -144,6 +145,8 @@ class Dashboard extends React.Component {
             </div>
             <div className={classes.newsContainer}>
             <h3 className={classes.font}>Market News</h3>
+            <NewsList />
+
             </div>
             <div className={classes.accountContainer}>
             <h3 className={classes.font}>Account Details</h3>

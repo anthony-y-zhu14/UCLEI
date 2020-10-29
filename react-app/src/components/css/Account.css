@@ -6,7 +6,7 @@ body {
 summary {
   padding: 1em;
   width: 100%;
-  margin-bottom: 1em;
+  margin: 0 auto;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
@@ -57,21 +57,27 @@ details[open] summary ~ * {
 }
 
 #account-info {
-  width: 100%;     
+  margin: 0 auto;
+  width: 50%;     
+  display: flex;
   background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
-  padding: 1em;
-  font-size: 20px;
+  font-size: 20px;  
+  height: 5em;
+  align-items: center;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
+  justify-content: center;
   text-align: center;
   color: white;
+  
 }
 
 
 #balance-container {
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -159,8 +165,8 @@ details[open] summary ~ * {
 #table-container {
   width: 80%;
   height: 50%; 
-  padding: 1em;
-  margin-left: 8%;
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 10% auto;
   background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -195,6 +201,7 @@ details[open] summary ~ * {
 
 .stock-holding {
   color: white;
+  margin: 4% auto;
   padding: 0.5em;
   background: slategrey;
   outline: none;

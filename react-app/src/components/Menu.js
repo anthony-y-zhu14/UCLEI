@@ -60,10 +60,11 @@ export default function TemporaryDrawer() {
     // ))}
 
     <React.Fragment key={'left'}>
+      {toggleDrawer("left", true)}
       <Drawer
             variant="temporary"
             anchor={'left'}
-            open={state.left}
+            open={"left"}
             onClose={toggleDrawer('left', false)}
             classes={{
               paper: classes.drawerPaper,
@@ -74,6 +75,7 @@ export default function TemporaryDrawer() {
         </Drawer>
 
     </React.Fragment>
+   
 
 
 
