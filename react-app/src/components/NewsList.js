@@ -1,4 +1,11 @@
 import React from 'react';
+import { withStyles } from "@material-ui/core/styles";
+import MediaCard from './card.js';
+
+const styles = {
+  newsDiv: {
+  }
+};
 
 class NewsList extends React.Component {
   constructor(props) {
@@ -14,18 +21,20 @@ class NewsList extends React.Component {
       .then(res => this.setState({ data : res}))
       .catch (err => console.log(err))
   }
-    
+
+
+
   getNews = async (err) => {
     let date = new Date();
     let today = date.toISOString().slice(0,10);
     let query = "Stocks";
-    
+
     let url = 'https://gnews.io/api/v4/search?' +
                 `q=${query}&` +
                 `from=${today}&` +
                 'country=us&' +
                 'token=9413f702be9d4fcf334d0ce66270875a';
-    
+
     const response = await fetch(url);
     const body = await response.json();
     if(response.status !== 200) {
@@ -34,10 +43,10 @@ class NewsList extends React.Component {
     console.log(body);
     return body;
   };
-  
-
 
   render() {
+    const { classes } = this.props;
+
     if(!this.state.data) {
       return (
         <h1>Loading...</h1>
@@ -45,16 +54,12 @@ class NewsList extends React.Component {
     }
     return (
       <React.Fragment>
-      {this.state.data.articles.map(articles => (
-        <div>
-          <h6>{articles.title}</h6>
-          <p>{articles.source.name}</p>
-          <li>{articles.description}</li>
-        </div>
-      ))}
-    </React.Fragment>
+        {this.state.data.articles.map(articles => (
+          <MediaCard className={classes.newsDiv} articleImg={articles.image} articleSource={articles.source.name} articleDesc={articles.title} articleLink={articles.url}/>
+        ))}
+      </React.Fragment>
     )
   }
 }
 
-export default NewsList;
+export default withStyles(styles)(NewsList);

@@ -41,8 +41,13 @@ const styles = {
   newsContainer: {
     width: '45%',
     height: '92%',
+    overflowY: 'auto',
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
     borderRadius: '10px',
     position: 'relative',
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     background: '#393b41',
     color: '#fff',
     margin: '.5%'

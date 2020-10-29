@@ -128,7 +128,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
       onClose={handleMenuClose}    >
-      
+
       <MenuItem onClick={handleMenuClose}>Sign Out</MenuItem>
     </Menu>
   );
@@ -143,7 +143,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
-    >      
+    >
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
@@ -167,7 +167,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   );
 
   const content  = (
-    
+
       <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
@@ -197,7 +197,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
             />
           </div>
           <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>            
+          <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={0} color="secondary">
                 <NotificationsIcon />
@@ -239,10 +239,10 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       >
         <TemporaryDrawer />
       </Menu>
-      
+
     </div>
-    
-   
+
+
   )
 
   return (
