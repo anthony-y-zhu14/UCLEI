@@ -13,7 +13,9 @@ const useStyles = makeStyles({
     maxWidth: 345,
     color: '#fff',
     backgroundColor: '#35363C',
-    marginTop: '12%',
+    marginTop: '15%',
+    marginLeft: '0',
+    marginRight: '0',
     marginBottom: '-10%'
 
   },
