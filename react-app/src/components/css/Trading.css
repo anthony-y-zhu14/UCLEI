@@ -1,17 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
 /* imports open sans font */
-container {
-  position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
+#main {
   display: flex;
-  width: 1203px;
-  height: 806px;
-  left: 199px;
-  top: 94px;
-  margin: 15px;
-  padding: 20px;
-  font-family: 'Open Sans', sans-serif;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 90%;
+  height: 100%;
+  justify-content: space-around;
+  margin: 2%;
+  z-index: 2;
 }
 
 body {
@@ -68,32 +65,52 @@ details[open] summary ~ * {
   }
 }
 
-#fundsAvialable {
-  padding: 1em;
+#fundsAvialable {  
   width: 100%;
-  margin-top: 2%;
-  margin-bottom: 2%;
-
-  outline: none;
-  border-radius: .3em;
-  background: #393b41;
+  outline: none;  
   color: white;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;  
-
+  font-family: 'Open Sans', sans-serif; 
   display: flex;
   flex-wrap: wrap;
 }
 
 #trade-container {
-  position: absolute;
-  width: 601px;
-  height: 806px;
+  display: wrap;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #393b41;
+  color: #fff;
+  width: 45%;
+  height: 80%;
+  margin: 1%;
+     
   
 }
 
+#holding-container {
+  width: 45%;
+  height: 80%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 10px;
+  position: relative;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #393b41;
+  color: #fff;
+  margin: 1%;
+  
+
+  background: #393b41;
+}
+
 #account-container {
-  padding: 1em;
+  
   width: 50%;
   margin: 0 auto;
 
@@ -101,43 +118,10 @@ details[open] summary ~ * {
   border-radius: .3em;
   background: #393b41;
   color: white;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+  font-family: 'Open Sans', sans-serif;  
   text-align: center;
 }
 
-
-
-#searchBtn {
-  width: 4em;
-  height: 3em;
-  padding: 1em;
-  padding-left: 1.5em;
-  cursor: pointer;
-  border-radius: 0.8em;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto',sans-serif;
-  font-weight: 300;
-  color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
-  background-color: aliceblue;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-transition: all 0.15s;
-  transition: all 0.15s;
-}
-
-#searchBtn:hover {
-  text-shadow: 0 0 2em white;
-  color: #FFFFFf;
-  border-color: #FFFFFF;
-}
-
-#searchBtn:active {
-  background: #B4E2FC;
-}
 
 #searchResult {
   padding: 1em;
@@ -170,34 +154,53 @@ details[open] summary ~ * {
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-#trading-quantity-input {  
-  background: aliceblue;  
-  margin: 0 auto;
+#trading-quantity-input {   
+
+  cursor: pointer; 
+  
+}
+
+#search-input {  
   cursor: pointer; 
 }
 
-#search-input {
-  background: aliceblue;  
-  margin: 0 auto;
-  cursor: pointer; 
+#searchBtn {
+  margin: 2% auto;
+  cursor: pointer;
+  
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  text-decoration: none;
+  font-family: 'Roboto',sans-serif;
+  font-weight: 300;
+  color: #000000;  
+  background-color: aliceblue; 
+  font-family: 'Open Sans', sans-serif;
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
 }
 
+#searchBtn:hover {
+  text-shadow: 0 0 2em white;
+  color: #FFFFFf;
+  border-color: #FFFFFF;
+}
 
-
+#searchBtn:active {
+  background: #B4E2FC;
+}
 
 #buyBtn {
-  margin: 0 auto;
-  width: 8em;
-  height: 4em;
+  margin: 2% auto;     
   cursor: pointer;
-  border-radius: 0.8em;
+ 
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  
   background-color: aliceblue;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
@@ -217,20 +220,17 @@ details[open] summary ~ * {
 }
 
 #sellBtn {
-  margin: 1em;
-  padding: 2em;
-  width: 8em;
-  height: 4em;
+  margin: 2% auto;   
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
-  border-radius: 0.8em;
+  
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto',sans-serif;
   font-weight: 300;
   color: #000000;
-  text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+  
   background-color: aliceblue;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
@@ -250,8 +250,7 @@ details[open] summary ~ * {
 }
 
 #CompleteTransactionBtn {
-  margin-left: 8em;
-  margin-top: 2em;
+  margin: 0 auto;
   padding: 2em;
   width: 16em;
   height: 8em;
@@ -284,12 +283,6 @@ details[open] summary ~ * {
   background: cornflowerblue;
 }
 
-#holding-container {
-  position: absolute;
-  width: 601px;
-  height: 806px;
-  left: 601px;
-}
 
 #stock-container {
   width: 80%;
@@ -306,15 +299,18 @@ details[open] summary ~ * {
 
 #stock-list {
   list-style-type: none;
-  color: black;
+  color: white;
   font-family: 'Open Sans', sans-serif;
+  text-align: center;
+  margin: 2% auto;
+  
 }
 
 .stock-holding {
-  color: white;
+  color: #FFFFFf;
   padding: 0.5em;
-  background: slategrey;
-  outline: none;
+  
+  outline: #fff;
   border-radius: .3em;
   font-family: 'Open Sans', sans-serif;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
