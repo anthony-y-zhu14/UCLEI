@@ -1,5 +1,6 @@
 import json
 import stock
+import asyncio
 
 
 def update_database(database_path, url_path):
@@ -40,11 +41,12 @@ def json_sort(file_name):
     with open(file_name, "w+") as database:
         json.dump(sorted_obj, database, indent=4)
 
-def main():
+async def main():
     data_path = "../../server/database/stocks/data.json"
     url_path = "../../server/database/stocks/stock_url.json"
     update_database(data_path, url_path)
     json_sort(url_path)
 
 if __name__ == "__main__":
-    main()
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(main())

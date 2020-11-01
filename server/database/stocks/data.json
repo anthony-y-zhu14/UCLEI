@@ -12,7 +12,7 @@
         "volume": "51,348,328",
         "average_volume": "63,202,206",
         "stock_page": "https://ca.finance.yahoo.com/quote/AAL?p=AAL&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "AAPL": {
         "name": "Apple Inc.",
@@ -27,7 +27,7 @@
         "volume": "190,573,476",
         "average_volume": "169,553,234",
         "stock_page": "https://ca.finance.yahoo.com/quote/AAPL?p=AAPL",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "AC.TO": {
         "name": "Air Canada",
@@ -42,7 +42,7 @@
         "volume": "4,300,614",
         "average_volume": "4,654,229",
         "stock_page": "https://ca.finance.yahoo.com/quote/AC.TO?p=AC.TO&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "AMD": {
         "name": "Advanced Micro Devices, Inc.",
@@ -57,7 +57,7 @@
         "volume": "51,426,174",
         "average_volume": "55,783,454",
         "stock_page": "https://ca.finance.yahoo.com/quote/AMD?p=AMD",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "AMZN": {
         "name": "Amazon.com, Inc.",
@@ -72,7 +72,7 @@
         "volume": "8,396,081",
         "average_volume": "4,932,840",
         "stock_page": "https://ca.finance.yahoo.com/quote/AMZN?p=AMZN&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "BABA": {
         "name": "Alibaba Group Holding Limited",
@@ -87,7 +87,7 @@
         "volume": "14,923,854",
         "average_volume": "12,861,895",
         "stock_page": "https://ca.finance.yahoo.com/quote/BABA?p=BABA",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "BAC": {
         "name": "Bank of America Corporation",
@@ -102,7 +102,7 @@
         "volume": "66,499,910",
         "average_volume": "58,336,237",
         "stock_page": "https://ca.finance.yahoo.com/quote/BAC?p=BAC",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "CGC": {
         "name": "Canopy Growth Corporation",
@@ -117,7 +117,7 @@
         "volume": "4,493,754",
         "average_volume": "4,721,420",
         "stock_page": "https://ca.finance.yahoo.com/quote/CGC?p=CGC",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "CHCI": {
         "name": "Comstock Holding Companies, Inc.",
@@ -132,7 +132,7 @@
         "volume": "163,103",
         "average_volume": "217,618",
         "stock_page": "https://ca.finance.yahoo.com/quote/CHCI?p=CHCI",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "CL=F": {
         "name": "Crude Oil Dec 20",
@@ -147,7 +147,7 @@
         "volume": "367,503",
         "average_volume": "35.74",
         "stock_page": "https://ca.finance.yahoo.com/quote/CL=F?p=CL=F&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "COST": {
         "name": "Costco Wholesale Corporation",
@@ -162,7 +162,7 @@
         "volume": "2,724,917",
         "average_volume": "2,214,670",
         "stock_page": "https://ca.finance.yahoo.com/quote/COST?p=COST",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "DAL": {
         "name": "Delta Air Lines, Inc.",
@@ -177,7 +177,7 @@
         "volume": "15,235,399",
         "average_volume": "20,243,754",
         "stock_page": "https://ca.finance.yahoo.com/quote/DAL?p=DAL&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "F": {
         "name": "Ford Motor Company",
@@ -192,7 +192,7 @@
         "volume": "79,392,475",
         "average_volume": "59,706,745",
         "stock_page": "https://ca.finance.yahoo.com/quote/F?p=F&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "FB": {
         "name": "Facebook, Inc.",
@@ -207,7 +207,7 @@
         "volume": "47,299,002",
         "average_volume": "23,867,229",
         "stock_page": "https://ca.finance.yahoo.com/quote/FB?p=FB",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "GE": {
         "name": "General Electric Company",
@@ -222,7 +222,7 @@
         "volume": "102,480,596",
         "average_volume": "100,910,548",
         "stock_page": "https://ca.finance.yahoo.com/quote/GE?p=GE&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "GILD": {
         "name": "Gilead Sciences, Inc.",
@@ -237,14 +237,14 @@
         "volume": "11,871,686",
         "average_volume": "9,698,148",
         "stock_page": "https://ca.finance.yahoo.com/quote/GILD?p=GILD",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "GLD": {
         "name": "SPDR Gold Shares",
         "symbol": "GLD",
         "market": "NYSEArca - Nasdaq Real Time Price. Currency in USD",
-        "percentage": "+0.77 (+0.44%)",
-        "quote": "176.17",
+        "percentage": "+0.80 (+0.46%)",
+        "quote": "176.20",
         "prev_close": "175.40",
         "open": "177.18",
         "daily_range": "175.95 - 177.36",
@@ -252,7 +252,7 @@
         "volume": "7,304,589",
         "average_volume": "12,218,701",
         "stock_page": "https://ca.finance.yahoo.com/quote/GLD?p=GLD",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "GOOG": {
         "name": "Alphabet Inc.",
@@ -267,7 +267,7 @@
         "volume": "4,240,031",
         "average_volume": "1,838,360",
         "stock_page": "https://ca.finance.yahoo.com/quote/GOOG?p=GOOG",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "INTC": {
         "name": "Intel Corporation",
@@ -282,7 +282,7 @@
         "volume": "42,510,350",
         "average_volume": "32,598,082",
         "stock_page": "https://ca.finance.yahoo.com/quote/INTC?p=INTC",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "JD": {
         "name": "JD.com, Inc.",
@@ -297,7 +297,7 @@
         "volume": "9,086,235",
         "average_volume": "11,578,792",
         "stock_page": "https://ca.finance.yahoo.com/quote/JD?p=JD",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "JNJ": {
         "name": "Johnson & Johnson",
@@ -312,7 +312,7 @@
         "volume": "7,364,752",
         "average_volume": "6,032,257",
         "stock_page": "https://ca.finance.yahoo.com/quote/JNJ?p=JNJ",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "LK": {
         "name": "Luckin Coffee Inc.",
@@ -327,7 +327,7 @@
         "volume": "163,366,447",
         "average_volume": "3,357,683",
         "stock_page": "https://ca.finance.yahoo.com/quote/LK?p=LK",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "LSXMK": {
         "name": "The Liberty SiriusXM Group",
@@ -342,7 +342,7 @@
         "volume": "518,670",
         "average_volume": "832,034",
         "stock_page": "https://ca.finance.yahoo.com/quote/LSXMK?p=LSXMK",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "MA": {
         "name": "Mastercard Incorporated",
@@ -357,7 +357,7 @@
         "volume": "6,893,575",
         "average_volume": "3,665,262",
         "stock_page": "https://ca.finance.yahoo.com/quote/MA?p=MA&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "MAXR": {
         "name": "Maxar Technologies Inc.",
@@ -372,7 +372,7 @@
         "volume": "998,431",
         "average_volume": "1,371,578",
         "stock_page": "https://ca.finance.yahoo.com/quote/MAXR?p=MAXR&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "MRNA": {
         "name": "Moderna, Inc.",
@@ -387,7 +387,7 @@
         "volume": "7,085,797",
         "average_volume": "9,941,053",
         "stock_page": "https://ca.finance.yahoo.com/quote/MRNA?p=MRNA&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "MSFT": {
         "name": "Microsoft Corporation",
@@ -402,7 +402,7 @@
         "volume": "36,980,111",
         "average_volume": "32,692,425",
         "stock_page": "https://ca.finance.yahoo.com/quote/MSFT?p=MSFT",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "MU": {
         "name": "Micron Technology, Inc.",
@@ -417,7 +417,7 @@
         "volume": "15,961,140",
         "average_volume": "18,693,968",
         "stock_page": "https://ca.finance.yahoo.com/quote/MU?p=MU&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "NFLX": {
         "name": "Netflix, Inc.",
@@ -432,7 +432,7 @@
         "volume": "7,813,897",
         "average_volume": "6,084,096",
         "stock_page": "https://ca.finance.yahoo.com/quote/NFLX?p=NFLX&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "NIO": {
         "name": "NIO Limited",
@@ -447,7 +447,7 @@
         "volume": "136,902,610",
         "average_volume": "110,008,695",
         "stock_page": "https://ca.finance.yahoo.com/quote/NIO?p=NIO",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "NVDA": {
         "name": "NVIDIA Corporation",
@@ -462,7 +462,7 @@
         "volume": "10,125,342",
         "average_volume": "13,106,650",
         "stock_page": "https://ca.finance.yahoo.com/quote/NVDA?p=NVDA&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "SE": {
         "name": "Sea Limited",
@@ -477,7 +477,7 @@
         "volume": "3,231,561",
         "average_volume": "3,758,932",
         "stock_page": "https://ca.finance.yahoo.com/quote/SE?p=SE&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "SHOP": {
         "name": "Shopify Inc.",
@@ -492,7 +492,7 @@
         "volume": "2,677,709",
         "average_volume": "1,794,975",
         "stock_page": "https://ca.finance.yahoo.com/quote/SHOP?p=SHOP",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "SPCE": {
         "name": "Virgin Galactic Holdings, Inc.",
@@ -507,7 +507,7 @@
         "volume": "8,021,613",
         "average_volume": "13,655,240",
         "stock_page": "https://ca.finance.yahoo.com/quote/SPCE?p=SPCE",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "SQ": {
         "name": "Square, Inc.",
@@ -522,7 +522,7 @@
         "volume": "14,948,427",
         "average_volume": "10,201,185",
         "stock_page": "https://ca.finance.yahoo.com/quote/SQ?p=SQ",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "TCEHY": {
         "name": "Tencent Holdings Limited",
@@ -537,7 +537,7 @@
         "volume": "3,582,319",
         "average_volume": "2,992,821",
         "stock_page": "https://ca.finance.yahoo.com/quote/TCEHY?p=TCEHY",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "TD.TO": {
         "name": "The Toronto-Dominion Bank",
@@ -552,7 +552,7 @@
         "volume": "4,179,233",
         "average_volume": "5,385,314",
         "stock_page": "https://ca.finance.yahoo.com/quote/TD.TO?p=TD.TO&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "TLRY": {
         "name": "Tilray, Inc.",
@@ -567,7 +567,7 @@
         "volume": "7,114,315",
         "average_volume": "7,204,521",
         "stock_page": "https://ca.finance.yahoo.com/quote/TLRY?p=TLRY",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "TSLA": {
         "name": "Tesla, Inc.",
@@ -582,7 +582,7 @@
         "volume": "42,587,639",
         "average_volume": "64,504,243",
         "stock_page": "https://ca.finance.yahoo.com/quote/TSLA?p=TSLA&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "TSM": {
         "name": "Taiwan Semiconductor Manufacturing Company Limited",
@@ -597,7 +597,7 @@
         "volume": "4,964,485",
         "average_volume": "8,766,892",
         "stock_page": "https://ca.finance.yahoo.com/quote/TSM?p=TSM",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "V": {
         "name": "Visa Inc.",
@@ -612,7 +612,7 @@
         "volume": "10,256,303",
         "average_volume": "7,969,790",
         "stock_page": "https://ca.finance.yahoo.com/quote/V?p=V&.tsrc=fin-srch",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "WBAI": {
         "name": "500.com Limited",
@@ -627,7 +627,7 @@
         "volume": "7,587",
         "average_volume": "55,243",
         "stock_page": "https://ca.finance.yahoo.com/quote/WBAI?p=WBAI",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     },
     "WMT": {
         "name": "Walmart Inc.",
@@ -642,6 +642,6 @@
         "volume": "6,202,739",
         "average_volume": "9,809,110",
         "stock_page": "https://ca.finance.yahoo.com/quote/WMT?p=WMT",
-        "time_updated": "2020-11-01 15:29:22.327888"
+        "time_updated": "2020-11-01 17:53:45.177895"
     }
 }
