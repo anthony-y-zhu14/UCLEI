@@ -41,8 +41,8 @@ def json_sort(file_name):
         json.dump(sorted_obj, database, indent=4)
 
 def main():
-    data_path = "../../app/database/stocks/data.json"
-    url_path = "../../app/database/stocks/stock_url.json"
+    data_path = "../../server/database/stocks/data.json"
+    url_path = "../../server/database/stocks/stock_url.json"
     update_database(data_path, url_path)
     json_sort(url_path)
 

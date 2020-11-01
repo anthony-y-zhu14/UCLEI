@@ -24,7 +24,7 @@ def get_url(search_term):
 def update_stock_info(s):
     response = requests.get(s.stock_page)
     soup = BeautifulSoup(response.text, 'html.parser')
-    soup.prettify()
+    # soup.prettify()
     s.quote = soup.find_all(
         'div', {'class': 'My(6px) Pos(r) smartphone_Mt(6px)'})[0].find_all('span')[0].text
     # print(soup.find(
