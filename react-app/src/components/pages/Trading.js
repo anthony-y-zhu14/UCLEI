@@ -161,7 +161,7 @@ class Trading extends React.Component {
                         
                             <div id="fundsAvialable">
                                 <span style={{width: "80%"}}>Cash Balance: </span> 
-                                <span id="cash">{"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</span>
+                                <span id="cash">{"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}</span>
                                 </div> 
                         
 
@@ -177,11 +177,9 @@ class Trading extends React.Component {
                             <details>                                
                                 <summary id="searchResult">Search Result</summary>
                                 <ul id="stock-result-list">
-                                <div id="stockFound">
-                                    {this.state.isStockFound && (
+                                {this.state.isStockFound && (
                                         <li id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</li>
-                                    )}
-                                </div>
+                                    )}                                
                                 </ul>
                             </details>
 
@@ -189,7 +187,7 @@ class Trading extends React.Component {
 
                             <div>
                                 <TextField id="trading-quantity-input" label="quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>     
-                                <ButtonGroup>
+                                <ButtonGroup variant="contained">
                                     <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
                                     <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
                                 </ButtonGroup>

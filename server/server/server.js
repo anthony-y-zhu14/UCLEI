@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const querystring = require('querystring');
 const { response } = require('express');
 const { json } = require('body-parser');
+const { Console } = require('console');
 const app = express();
 
 // let users = fs.readFile("../database/user.json");
@@ -221,6 +222,7 @@ app.post('/buyStock', (request, response) => {
         */
         if(quantity * stockPrice > users.account.cashBalance) {
             console.log("Order not complete");
+            return;
         }
 
         /*
@@ -230,11 +232,15 @@ app.post('/buyStock', (request, response) => {
             -   update stock shares in user
         */
        for (let index = 0; index < users.ownedStocks.length; index++) {
-            let element = users.ownedStocks[index];
+            let element = users.ownedStocks[index];     
+            console.log(element.symbol);       
+            
             if (element.symbol === symbol){
+                
+                
                 users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));
                 users.account.investmentBalance += (stockPrice * parseFloat(quantity));
-                element.share += quantity;
+                element.share += parseInt(quantity);
                 return;
         }
     }
@@ -247,7 +253,8 @@ app.post('/buyStock', (request, response) => {
         let stock = {
             name: lis[symbol].name,
             quote: lis[symbol].quote,
-            shares: quantity
+            symbol: lis[symbol].symbol,
+            share: parseInt(quantity) 
         };
 
         users.ownedStocks.push(stock);
@@ -297,10 +304,10 @@ app.post('/sellStock', (request, response) => {
         */
         for (let index = 0; index < users.ownedStocks.length; index++) {
             let element = users.ownedStocks[index];
-            if (stock.name === element.name && element.share >= quantity) {
+            if (stock.name === element.name && element.share >= parseInt(quantity)) {
                 users.account["cashBalance"] += (stockPrice * parseFloat(quantity));
                 users.account.investmentBalance -= (stockPrice * parseFloat(quantity));
-                element.share -= quantity;
+                element.share -= parseInt(quantity);
                 if(element.share === 0) {
                     users.ownedStocks.splice(index, 1);
                 }
