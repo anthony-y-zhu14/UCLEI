@@ -33,17 +33,17 @@ class Sidenav extends React.Component {
             <div id="sidenav">
                 <h3 id="sidenav-title">UCLEI</h3>
                 <ul id="sidenav-list">
-                <li onClick={this.navToDsh}>
+                <li className='snli' onClick={this.navToDsh}>
                     <i className='fa fa-dashboard'></i>
                     Dashboard</li>
-                <li onClick={this.navToAct}>
+                <li className='snli' onClick={this.navToAct}>
                     <i className="fa fa-credit-card" aria-hidden="true"></i>
                     Account
                     </li>
-                <li onClick={this.navToTrd}>
+                <li className='snli' onClick={this.navToTrd}>
                     <i className="fa fa-exchange" aria-hidden="true"></i>
                     Trading</li>
-                <li onClick={this.navToMrk}>
+                <li className='snli' onClick={this.navToMrk}>
                     <i className="fa fa-area-chart" aria-hidden="true"></i>
                     Market
                 </li>

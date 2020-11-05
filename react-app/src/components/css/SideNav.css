@@ -45,9 +45,10 @@
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-li {
+.snli {
   margin-top: 45px;
   color: white;
+  cursor: pointer;
 }
 
 a {
@@ -55,20 +56,21 @@ a {
   text-decoration: none;
 }
 
-li:active {
+.snli:active {
   color: #B4E2FC;
 }
-/*
-li:hover {
+
+.snli:hover {
   color: #B4E2FC;
   cursor: pointer;
-} */
+}
 
-li:visited {
+.snli:visited {
   color: inherit;
 }
 
-li:visited:hover {
+.snli:visited:hover {
+  cursor: pointer;
   color: #B4E2FC;
 }
 

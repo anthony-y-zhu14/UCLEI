@@ -4,6 +4,8 @@ import NewsList from '../NewsList.js';
 import Header from "../Header.js";
 import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
+import LineChart from '../Linechart.js';
+
 
 
 const styles = {
@@ -110,11 +112,12 @@ class Market extends React.Component {
             <Header currentPage={`Market`} userName={`Jerry`}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
-              <h3 className={classes.font}>TSLA</h3>
+              <h3 className={classes.font}>NASDAQ</h3>
+              <LineChart />
               </div>
               <div className={classes.newsContainer}>
-              <h3 className={classes.font}>Market News</h3>
-              <NewsList />
+                <h3 className={classes.font}>Market News</h3>
+                <NewsList />
               </div>
               <div className={classes.popStockContainer}>
               <h3 className={classes.font}>Popular Stocks</h3>

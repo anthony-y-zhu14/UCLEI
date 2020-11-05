@@ -83,9 +83,8 @@ app.get('/getWatchlist', (req, res) => {
     let data = JSON.stringify(users.watchlist);
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/JSON");
-    console.log(`\nClient ${users.username} watchlist info sent.\n`)
+    // console.log(`\nClient ${users.username} watchlist info sent.\n`)
     res.write(data);
-    console.log(users.watchlist);
     res.end();
 });
 
@@ -141,6 +140,7 @@ app.post('/delWatchItem', (request, response) => {
    request.on('end', () => {
    users.watchlist.splice(users.watchlist.indexOf(data.item), 1);
    response.end();
+   console.log(users.watchlist);
    });
 });
 

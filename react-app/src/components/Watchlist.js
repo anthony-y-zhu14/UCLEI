@@ -47,7 +47,6 @@ class CheckboxList extends React.Component {
     if (response.status !== 200) {
       throw Error(body.message)
     }
-    console.log(body)
     return body;
   };
 
@@ -59,6 +58,17 @@ class CheckboxList extends React.Component {
     };
     const response = await fetch('/delWatchItem', requestOptions);
     const data = await response.json();
+  }
+
+  viewWatchItem = async(id) => {
+    //should be get request with query param as id
+    const response = await fetch(`/stock-data?search=${id}`);
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    console.log(body)
+    return body;
   }
 
   render() {
@@ -78,9 +88,9 @@ class CheckboxList extends React.Component {
 
           return (
             <ListItem className={classes.inner}>
-              <ListItemIcon>
-                <QueueIcon/>
-              </ListItemIcon>
+              <IconButton>
+                <QueueIcon onClick={() => this.viewWatchItem(value)}/>
+              </IconButton>
               <ListItemText id={labelId} primary={value}/>
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
