@@ -40,7 +40,11 @@ class Login extends React.Component {
         this.state = {
             username: "",
             password: "",
-            authenticated: false
+            helperText: '',
+            helperTextPsw: '',
+            id: 'outlined-basic',
+            authenticated: 'onload',
+            error: false
         };
     }
 
@@ -56,6 +60,12 @@ class Login extends React.Component {
         this.setState({ authenticated: data });
         if(this.state.authenticated) {
           this.navToDsh();
+        }
+        if(this.state.authenticate === 'onload') {
+          this.setState({ id: 'outlined-basic', helperText: '', error: false})
+        }
+        else if(!this.state.authenticate) {
+          this.setState({ id: 'outlined-error-helper-text', helperText: 'Invalid Username', error: true, helperTextPsw: 'Invalid Password'})
         }
     }
 
@@ -92,12 +102,12 @@ class Login extends React.Component {
 
                 <div className="lgnTxtFlds">
 
-                  <TextField id="outlined-basic" className="txtFld" label="Username"
-                  InputProps={{className: classes.input}}
+                  <TextField id={this.state.id} className="txtFld" label="Username" error={this.state.error}
+                  InputProps={{className: classes.input}} helperText={this.state.helperText}
                   variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
 
 
-                  <TextField id="outlined-basic"
+                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.error}
                   className="txtFld" label="Password" variant="outlined"
                   InputProps={{className: classes.input}}
                   onChange = {this.setPassword} value = {this.state.password} />

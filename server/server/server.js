@@ -109,6 +109,9 @@ app.post('/authentication', (request, response) => {
             console.log(`\nClient ${username} authenticated succesfully.\n`);
             response.write("true");
         }
+        else if(username === '' && password === '') {
+          response.write('onload');
+        }
         else {
             response.write("false");
             console.log(`\nClient ${username} provided invalid login.\n`);
