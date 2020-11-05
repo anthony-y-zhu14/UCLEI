@@ -66,11 +66,13 @@ const styles = {
       margin: '.5%'
     },
     chartContainer: {
-      display: 'wrap',
+      // display: 'wrap',
+      overflow: 'hidden',
+      wrap: 'wrap',
       flexDirection: 'column',
       flexWrap: 'wrap',
       width: '55%',
-      height: '92%',
+      height: '100%',
       borderRadius: '10px',
       position: 'relative',
       background: '#393b41',
@@ -113,6 +115,8 @@ class Market extends React.Component {
             <div className={classes.main}>
               <div className={classes.chartContainer}>
               <h3 className={classes.font}>NASDAQ</h3>
+              <p>I'm going to have stock information </p>
+              <p>I'm going to have buttons too!</p>
               <LineChart />
               </div>
               <div className={classes.newsContainer}>

@@ -22,7 +22,7 @@ export default function LineChart() {
   });
   return (
     <div className="App">
-      <canvas id="myChart" width="200" height="200" />
+      <canvas id="myChart"/>
     </div>
   );
 }

@@ -20,7 +20,7 @@ const styles = {
     zIndex: 2
   },
   font: {
-    margin: '2%'
+    marginLeft: '2%'
   },
   accountContainer: {
     display: 'wrap',
@@ -63,6 +63,12 @@ const styles = {
     background: '#393b41',
     color: '#fff',
     margin: '.5%'
+  },
+  mrkt: {
+    position: 'absolute',
+    left: '-20px',
+    bottom: '20px',
+    zIndex: -2
   },
   acctBln: {
     display: 'flex',
@@ -149,7 +155,7 @@ class Dashboard extends React.Component {
             <h3 className={classes.font}>NASDAQ</h3>
             </div>
             <div className={classes.newsContainer}>
-            <h3 className={classes.font}>Market News</h3>
+            <h3 className='mrkt'>Market News</h3>
             <NewsList />
 
             </div>

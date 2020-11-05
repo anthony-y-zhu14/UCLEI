@@ -18,7 +18,7 @@ const styles = {
     color: '#000',
   },
   inner: {
-    marginTop: '-4%',
+    marginTop: '4%',
     padding: '4%',
     backgroundColor: '#fff',
     color: '#000',
@@ -62,7 +62,7 @@ class CheckboxList extends React.Component {
 
   viewWatchItem = async(id) => {
     //should be get request with query param as id
-    const response = await fetch(`/stock-data?search=${id}`);
+    const response = await fetch(`/stock?search=${id}`);
     const body = await response.json();
     if (response.status !== 200) {
       throw Error(body.message)
