@@ -136,7 +136,7 @@ app.post('/delWatchItem', (request, response) => {
    });
 
    request.on('end', () => {
-   users.watchlist.splice(users.watchlist.indexOf(data), 1);
+   users.watchlist.splice(users.watchlist.indexOf(data.item), 1);
    response.end();
    });
 });
@@ -232,12 +232,12 @@ app.post('/buyStock', (request, response) => {
             -   update stock shares in user
         */
        for (let index = 0; index < users.ownedStocks.length; index++) {
-            let element = users.ownedStocks[index];     
-            console.log(element.symbol);       
-            
+            let element = users.ownedStocks[index];
+            console.log(element.symbol);
+
             if (element.symbol === symbol){
-                
-                
+
+
                 users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));
                 users.account.investmentBalance += (stockPrice * parseFloat(quantity));
                 element.share += parseInt(quantity);
@@ -254,7 +254,7 @@ app.post('/buyStock', (request, response) => {
             name: lis[symbol].name,
             quote: lis[symbol].quote,
             symbol: lis[symbol].symbol,
-            share: parseInt(quantity) 
+            share: parseInt(quantity)
         };
 
         users.ownedStocks.push(stock);

@@ -51,17 +51,17 @@ class CheckboxList extends React.Component {
     return body;
   };
 
-  delWatchItem = async() => {
+  delWatchItem = async(id) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ watchlist: this.state.watchlist })
+        body: JSON.stringify({ item: id })
     };
     const response = await fetch('/delWatchItem', requestOptions);
+
     const data = await response.json();
 
   }
-
 
   render() {
     const { classes } = this.props;
@@ -86,7 +86,7 @@ class CheckboxList extends React.Component {
               <ListItemText id={labelId} primary={value} />
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon onClick={this.delWatchItem}/>
+                  <DeleteIcon onClick={() => this.delWatchItem(value)}/>
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
