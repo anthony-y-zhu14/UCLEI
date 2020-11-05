@@ -58,9 +58,7 @@ class CheckboxList extends React.Component {
         body: JSON.stringify({ item: id })
     };
     const response = await fetch('/delWatchItem', requestOptions);
-
     const data = await response.json();
-
   }
 
   render() {
@@ -73,7 +71,7 @@ class CheckboxList extends React.Component {
     }
 
     return (
-      <List className={classes.root}>
+      <List className={classes.root} onChange={this.componentDidMount()}>
         {this.state.userWatchlist.map((value) => {
           const labelId = ``;
 
@@ -83,7 +81,7 @@ class CheckboxList extends React.Component {
               <ListItemIcon>
                 <QueueIcon/>
               </ListItemIcon>
-              <ListItemText id={labelId} primary={value} />
+              <ListItemText id={labelId} primary={value}/>
               <ListItemSecondaryAction>
                 <IconButton edge="end" aria-label="delete">
                   <DeleteIcon onClick={() => this.delWatchItem(value)}/>
