@@ -5,8 +5,7 @@ import Header from "../Header.js";
 import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
-
-
+import SpacingGrid from '../ChartGrid.js';
 
 const styles = {
     main: {
@@ -113,12 +112,12 @@ class Market extends React.Component {
             <div>
             <Header currentPage={`Market`} userName={`Jerry`}/>
             <div className={classes.main}>
-              <div className={classes.chartContainer}>
+              <SpacingGrid className={classes.chartContainer}>
               <h3 className={classes.font}>NASDAQ</h3>
-              <p>I'm going to have stock information </p>
+              <p>I'm going to haves stock information </p>
               <p>I'm going to have buttons too!</p>
               <LineChart />
-              </div>
+              </SpacingGrid>
               <div className={classes.newsContainer}>
                 <h3 className={classes.font}>Market News</h3>
                 <NewsList />
