@@ -57,7 +57,7 @@ class CheckboxList extends React.Component {
         body: JSON.stringify({ item: id })
     };
     const response = await fetch('/delWatchItem', requestOptions);
-    const data = await response.json();
+    // const data = await response.json();
   }
 
   viewWatchItem = async(id) => {

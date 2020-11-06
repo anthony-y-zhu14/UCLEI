@@ -151,7 +151,8 @@ app.post('/addEventNotify', (request, response) => {
     });
 
     request.on('end', () => {
-    if(!users.eventList.includes(data)) { users.eventList.push(data); }
+    if(!users.eventList.includes(data)) { 
+        users.eventList.push(data); }
     response.end();
     });
  });

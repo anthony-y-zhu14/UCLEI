@@ -194,7 +194,7 @@ class Trading extends React.Component {
                                 
                             </div>
                             <br />
-                            <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn} >Complete Transaction</Button>
+                            <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
 
                         
                         
