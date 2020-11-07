@@ -268,7 +268,6 @@ app.post('/buyStock', (request, response) => {
         //generate an orderID and add that to user activity and return that
 
         console.log(`${users.username} bought shares`);
-        response.write(JSON.stringify(users));
  }
 });
 
@@ -324,7 +323,6 @@ app.post('/sellStock', (request, response) => {
     });
         //generate an orderID and add that to user activity and return that
         console.log(`${users.username} sold shares`);
-        response.write(JSON.stringify(users));
 
  }
 });

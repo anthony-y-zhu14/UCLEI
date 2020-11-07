@@ -46,8 +46,9 @@ class Trading extends React.Component {
         }
 
         const response = await fetch(target_url, requestOptions);
-        const data = await response.json();
-        this.setState({ user: data});
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
         
 
     }
@@ -65,8 +66,9 @@ class Trading extends React.Component {
         }
 
         const response = await fetch(target_url, requestOptions);
-        const data = await response.json();
-        this.setState({ user: data});
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
         
 
     }
