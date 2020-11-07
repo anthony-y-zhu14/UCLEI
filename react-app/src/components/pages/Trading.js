@@ -12,6 +12,7 @@ const styles = {
 
 
 class Trading extends React.Component {
+
     constructor() {
         super();
         this.state = {
@@ -30,7 +31,49 @@ class Trading extends React.Component {
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
-      }
+    }
+
+    updateComponentSell = async () => {
+
+        let symbol = this.state.stock_found.symbol;
+        let quantity = this.state.quantity;
+        let target_url = "/sellStock";
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({ name: symbol, n: quantity })
+        }
+
+        const response = await fetch(target_url, requestOptions);
+        const data = await response.json();
+        this.setState({ user: data});
+        
+
+    }
+
+    updateComponentBuy = async () => {
+
+        let symbol = this.state.stock_found.symbol;
+        let quantity = this.state.quantity;
+        let target_url = "/buyStock";
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({ name: symbol, n: quantity })
+        }
+
+        const response = await fetch(target_url, requestOptions);
+        const data = await response.json();
+        this.setState({ user: data});
+        
+
+    }
+    
+    
+      
+    
   
     callBackendAPI = async () => {
           const response = await fetch('/getAccount');
@@ -39,19 +82,19 @@ class Trading extends React.Component {
             throw Error(body.message)
           }
           return body;
-      };
+    };
 
       setQuantity = event => {
           this.setState ({
               quantity: event.target.value
           });          
-      }
+    }
 
       setSearch = event => {
           this.setState ({
             search_symbol: event.target.value
           });
-      }
+    }
 
     handleBuyBtn = (e) =>{
         this.setState({
@@ -100,39 +143,14 @@ class Trading extends React.Component {
             return;
         }
         if (this.state.orderBuy){
-            {        
-                let symbol = this.state.stock_found.symbol;
-                let quantity = this.state.quantity;
-                let target_url = "/buyStock";
-        
-                fetch(target_url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': "application/json"
-                    },
-                    body: JSON.stringify({ name: symbol, n: quantity })
-                }).then((res) => res.json())
-                    .then((data) => console.log(data))
-                    .catch((err) => console.log(err))
-            }
+            this.updateComponentBuy();
+            
         }
-        else {
-            {
-                let symbol = this.state.stock_found.symbol;
-                let quantity = this.state.quantity;
-                let target_url = "/sellStock";
+        else {           
+            this.updateComponentSell();
+        }
         
-                fetch(target_url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': "application/json"
-                    },
-                    body: JSON.stringify({ name: symbol, n: quantity })
-                }).then((res) => res.json())
-                    .then((data) => console.log(data))
-                    .catch((err) => console.log(err))
-            }
-        }        
+        
     }
 
    
@@ -204,7 +222,7 @@ class Trading extends React.Component {
                            
                             <div id="stock-list">
                                 Current Holding
-                                <React.Fragment>
+                log                <React.Fragment>
                                     {this.state.user.ownedStocks.map(stock => (
                                         <li id={stock.name} className="stock-holding">{stock.name}</li>
                                     ))}

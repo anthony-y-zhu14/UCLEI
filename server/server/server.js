@@ -75,7 +75,6 @@ app.get('/getAccount', (req, res) => {
     res.setHeader("Content-Type", "application/JSON");
     console.log(`\nClient ${users.username} account info sent.\n`)
     res.write(data);
-    console.log(users);
     res.end();
 });
 
@@ -210,43 +209,43 @@ app.post('/buyStock', (request, response) => {
         let quantity = data.n;
         let stockSymbol = data.name;
         buyStock(quantity, stockSymbol);
-    response.end();
+        response.end();      
     });
 
     function buyStock(quantity, symbol) {
 
-    fs.readFile("../database/stocks/data.json", function(err, file) {
-        let lis = JSON.parse(file);
-        let stockPrice = parseFloat(lis[symbol]["quote"]);
+        fs.readFile("../database/stocks/data.json", function(err, file) {
+            let lis = JSON.parse(file);
+            let stockPrice = parseFloat(lis[symbol]["quote"]);
 
-        /*
-        if quantity * stock.price is more than user.account.cashBalance:
-            -   alert ("you don't have enough money!")
-            -   return
-        */
-        if(quantity * stockPrice > users.account.cashBalance) {
-            console.log("Order not complete");
-            return;
-        }
-
-        /*
-        if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-            -   remove quantity * stock.price amount of cash from user.cashBalance
-            -   add stock to users stock holding
-            -   update stock shares in user
-        */
-       for (let index = 0; index < users.ownedStocks.length; index++) {
-            let element = users.ownedStocks[index];
-            console.log(element.symbol);
-
-            if (element.symbol === symbol){
-
-
-                users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));
-                users.account.investmentBalance += (stockPrice * parseFloat(quantity));
-                element.share += parseInt(quantity);
+            /*
+            if quantity * stock.price is more than user.account.cashBalance:
+                -   alert ("you don't have enough money!")
+                -   return
+            */
+            if(quantity * stockPrice > users.account.cashBalance) {
+                console.log("Order not complete");
                 return;
-        }
+            }
+
+            /*
+            if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
+                -   remove quantity * stock.price amount of cash from user.cashBalance
+                -   add stock to users stock holding
+                -   update stock shares in user
+            */
+        for (let index = 0; index < users.ownedStocks.length; index++) {
+                let element = users.ownedStocks[index];
+                console.log(element.symbol);
+
+                if (element.symbol === symbol){
+
+
+                    users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));
+                    users.account.investmentBalance += (stockPrice * parseFloat(quantity));
+                    element.share += parseInt(quantity);
+                    return;
+            }
     }
         /*
         else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
@@ -265,10 +264,11 @@ app.post('/buyStock', (request, response) => {
         users.account["cashBalance"] -= (stockPrice * parseFloat(quantity));
         users.account.investmentBalance += (stockPrice * parseFloat(quantity));
 
-        console.log(users);
-
     });
         //generate an orderID and add that to user activity and return that
+
+        console.log(`${users.username} bought shares`);
+        response.write(JSON.stringify(users));
  }
 });
 
@@ -283,8 +283,10 @@ app.post('/sellStock', (request, response) => {
         let quantity = data.n;
         let stockSymbol = data.name;
         sellStock(quantity, stockSymbol);
-    response.end();
+        response.end();  
+         
     });
+
 
     function sellStock(quantity, symbol) {
 
@@ -318,10 +320,12 @@ app.post('/sellStock', (request, response) => {
             }
         }
 
-        console.log(users);
 
     });
         //generate an orderID and add that to user activity and return that
+        console.log(`${users.username} sold shares`);
+        response.write(JSON.stringify(users));
+
  }
 });
 
