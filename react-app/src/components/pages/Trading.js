@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Container, TextField } from '@material-ui/core';
+import { Button, ButtonGroup, colors, Container, TextField } from '@material-ui/core';
 import React from 'react';
 import Header from "../Header";
 import '../css/Trading.css'
@@ -6,9 +6,18 @@ import { withStyles } from '@material-ui/styles';
 
 const styles = {
    input: {
+      fullWidth: true,
+      background: '#393b41',
+      width: 300,
       color: 'white'
+    },
+    button: {
+        margin: '3.5% auto',
+        marginLeft: '10%'
+
     }
-  };
+  }
+
 
 
 class Trading extends React.Component {
@@ -49,7 +58,6 @@ class Trading extends React.Component {
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
-
 
     }
 
@@ -119,6 +127,10 @@ class Trading extends React.Component {
 
 
     handleSearch = async () =>{
+        if (!this.state.search_symbol){
+            alert("Please enter a search term")
+            return;
+        }
         let url = `/stock-data?search=${this.state.search_symbol}`;
         const response = await fetch(url);
         const stock = await response.json();
@@ -182,36 +194,43 @@ class Trading extends React.Component {
                             <div id="fundsAvialable">
                                 <span style={{width: "80%"}}>Cash Balance: </span>
                                 <span id="cash">{"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}</span>
-                                </div>
+                            </div>
 
 
 
-                                <TextField id="search-input" label="Enter a name or symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>
+
+                            <div>
+                                <TextField label="Enter a stock symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>
 
                                 <Button id="searchBtn" onClick={this.handleSearch}><i class='fa fa-search'></i></Button>
+                            </div>
+
+
+
+
+
+
+                            {this.state.isStockFound && (
+                                    <div id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</div>
+                                )}
+
+
+
+
+                            <div>
+                                <TextField label="Quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+                                <ButtonGroup variant='contained' className={classes.button}>
+                                    <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                                    <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
+                                </ButtonGroup>
+                            </div>
+
 
 
 
 
                             <br />
-
-                            <ul id="stock-result-list">
-                            {this.state.isStockFound && (
-                                    <li id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</li>
-                                )}
-                            </ul>
-
-
-
-
-
-                            <TextField id="trading-quantity-input" label="quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
-
-                            <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
-                            <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
-
-
-
+                            <br />
                             <br />
                             <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
 
@@ -221,14 +240,14 @@ class Trading extends React.Component {
 
                         <Container id="holding-container">
 
-                            <div id="stock-list">
+                            <ul id="stock-list">
                                 Current Holding
-                log                <React.Fragment>
+                                <React.Fragment>
                                     {this.state.user.ownedStocks.map(stock => (
                                         <li id={stock.name} className="stock-holding">{stock.name}</li>
                                     ))}
                                 </React.Fragment>
-                            </div>
+                            </ul>
 
 
                         </Container>

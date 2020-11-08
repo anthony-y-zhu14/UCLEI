@@ -1,13 +1,6 @@
-const http = require('http');
 const fs = require("fs"); //reads files
 const express = require('express');
 const path = require('path');
-const url = require('url');
-const bodyParser = require('body-parser');
-const querystring = require('querystring');
-const { response } = require('express');
-const { json } = require('body-parser');
-const { Console } = require('console');
 const app = express();
 
 // let users = fs.readFile("../database/user.json");
