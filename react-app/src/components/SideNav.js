@@ -1,7 +1,8 @@
 import React from "react";
 import "./css/SideNav.css";
 import {withRouter} from 'react-router-dom';
-import Modal from '@material-ui/core/Modal';
+// import Modal from '@material-ui/core/Modal';
+import Modal from './Modal.js'
 
 
 let links = {
@@ -15,7 +16,7 @@ class Sidenav extends React.Component {
   constructor() {
       super();
       this.state = {
-          display: false
+          display: 'classes.modal'
       };
   }
 
@@ -36,11 +37,11 @@ class Sidenav extends React.Component {
   }
 
   handleOpen = () => {
-    this.setState( {display: true} );
+    this.setState( {display: 'classes.modalShow'} );
   };
 
   handleClose = () => {
-    this.setState( {display: false} );
+    this.setState( {display: 'classes.modal'} );
   };
 
     render() {
@@ -67,16 +68,11 @@ class Sidenav extends React.Component {
                 <a id="add-funds-link" onClick={this.handleOpen}>
                     <i className='fa fa-plus-circle'></i>
                     Add Funds</a>
-
-                    <Modal
-                  open={this.state.display}
-                  onClose={this.handleClose}
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"></Modal>
                 </div>
 
-            </div>
+                <Modal display={this.state.display}/>
 
+            </div>
         );
     }
 

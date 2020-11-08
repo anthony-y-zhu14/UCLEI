@@ -1,37 +1,54 @@
 import React from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from "@material-ui/core/styles";
 // import Sidenav from "./sidenav.js";
 
-class Modal extends React.Component {
-    state = {
-        display: false
-    };
+const styles = {
+   modal: {
+     display: 'none'
+   },
+   modalShow: {
+     display: 'flex'
+   }
+};
 
-    modal   = ()  =>   {
-        // Get the modal
-    }
+class Modal extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          display: this.props.display
+        };
+  }
+
+  handleClose = () => {
+    this.setState({ display: 'classes.modal' });
+  };
 
     render() {
+
+      const { classes } = this.props;
+
     return(
-        <div id="add-funds-modal" style={addFundsModalStyle} >
-            <div class="modal-content">
-          <span class="close">&times;</span>
+        <div id="add-funds-modal" className={this.state.display} >
+            <div className="modal-content">
+          <span className="close" onClick={this.handleClose}>&times;</span>
           <h3 id="modal-title">Add funds</h3>
           <form>
             <div id="modal-account-balance">
-              <span class="modal-text">Account Balance:</span>
-              <span class="modal-text" class="cashBalance" id="money">2020.28</span>
+              <span className="modal-text">Account Balance:</span>
+              <span className="modal-text" className="cashBalance" id="money">2020.28</span>
             </div>
 
-            <p id="text-labels" class="text">Input Dollar Amount</p>
-            <input name="money" value="" type="text" id="money-form" class="text-field-email"></input>
+            <p id="text-labels" className="text">Input Dollar Amount</p>
+            <input name="money" value="" type="text" id="money-form" className="text-field-email"></input>
             <div id="modal-container">
               <div id="buttons-modal">
-                <div id="money-deposit" class="funds">Deposit</div>
-                <div id="money-withdraw" class="funds">Withdrawl</div>
+                <div id="money-deposit" className="funds">Deposit</div>
+                <div id="money-withdraw" className="funds">Withdrawl</div>
               </div>
               <div id="info-box">
-                <div class="info-box">
-                  <div class="info-title">Add and Remove Funds</div>
+                <div className="info-box">
+                  <div className="info-title">Add and Remove Funds</div>
                   <div id="info-text">Type the amount of cash you would
                     like to add or remove in the box to
                     the left and select to deposit or withdrawl
@@ -47,15 +64,5 @@ class Modal extends React.Component {
     }
 }
 
-const addFundsModalStyle = {
-    display: "none",
-    position: "fixed",
-    zIndex: "10",
-    left: "0",
-    top: "0",
-    width: "100%",
-    height: "100%",
-    overflow: "hidden"
-}
 
-export default Modal;
+export default withStyles(styles)(Modal);
