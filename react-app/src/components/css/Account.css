@@ -61,10 +61,11 @@ details[open] summary ~ * {
   margin: 0 auto;
   flex-wrap: wrap;
   width: 80%;
+  justify-content: space-between;
 }
 
 .innerCont {
-  width: 50%;
+  width: 48%;
 }
 
 #account-info {

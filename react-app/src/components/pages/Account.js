@@ -1,10 +1,17 @@
 import React from 'react';
 import { Button, ButtonGroup, Container } from '@material-ui/core';
 import Header from "../Header";
+import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
 
 
 import "../css/Account.css"
+
+const styles = {
+  input: {
+    color: "#fff"
+  },
+};
 
 class Account extends React.Component {
     constructor() {
@@ -107,6 +114,9 @@ class Account extends React.Component {
 
     render() {
 
+      const { classes } = this.props;
+
+
 
 
         if(!this.state.user) {
@@ -188,7 +198,6 @@ class Account extends React.Component {
 
                         <div id="add-funds-modal" className={this.state.display} >
                             <div className="modal-content">
-                          <h3 id="modal-title">Add funds</h3>
                           <br />
                           <br />
 
@@ -212,12 +221,14 @@ class Account extends React.Component {
                           <form>
                             <div id="modal-account-balance">
                               <span className="modal-text">Account Balance:</span>
-                              <span className="modal-text" className="cashBalance" id="money">${ this.state.user.account.cashBalance }</span>
+                              <span className="modal-text" className="cashBalance" id="money">
+                              {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
+                              </span>
                             </div>
 
 
                             <TextField className="txtFld" label="Input Dollar Amount"
-                            onChange={this.setAmnt} value={this.state.amount}
+                            onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
                             variant="outlined" />
                             <div id="modal-container">
 
@@ -249,4 +260,4 @@ class Account extends React.Component {
     }
 }
 
-  export default Account;
+  export default withStyles(styles) (Account);
