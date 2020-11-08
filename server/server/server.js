@@ -4,6 +4,7 @@ const path = require('path');
 const app = express();
 const uuidv4 = require('uuid/v4');
 const cookieParser = require('cookie-parser');
+const session=require('express-session');
 
 // let users = fs.readFile("../database/user.json");
 let users = {
@@ -36,6 +37,23 @@ let users = {
 
 app.use(express.static(path.join(__dirname, '../')));
 app.use(cookieParser());
+app.use(session({
+    secret: 'fleeb_juice',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        maxAge: 24 * 60 * 60 * 100, //24 hrs
+        path: '/'
+    }
+}));
+
+const sessionChecker = (req, res, next) => {
+    if (req.session.user && req.cookies.fleeb_juice) {
+        res.redirect('/dashboard');
+    } else {
+        next();
+    }    
+};
 
 app.get('/', (request, response) => {
     console.log(request.url);
@@ -121,15 +139,12 @@ app.post('/authentication', (request, response, next) => {
             response.write("false");
             console.log(`\nClient ${username} provided invalid login.\n`);
         }
-        next();
     }
  });
 
-app.get("/logout", function(req, res){
-    req.logout();
-    req.session.destory(function (err){
-        console.log("cookies destoryed!");
-        res.redirect('/');
+app.get("/logout", function(req, res){    
+    req.session.destroy(function (err){
+        console.log("cookies destroyed!");        
     });
 });
 
