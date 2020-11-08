@@ -77,6 +77,9 @@ const styles = {
       background: '#393b41',
       color: '#fff',
       margin: '.5%'
+    },
+    oCard: {
+      margin: '10%'
     }
   };
 
@@ -124,7 +127,8 @@ class Market extends React.Component {
               </div>
               <div className={classes.popStockContainer}>
               <h3 className={classes.font}>Popular Stocks</h3>
-              <OutlinedCard />
+              <OutlinedCard className={classes.oCard}/>
+              <OutlinedCard className={classes.oCard}/>
               </div>
 
               <div className={classes.watchListContainer}>

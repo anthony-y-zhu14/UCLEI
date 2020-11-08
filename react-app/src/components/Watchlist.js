@@ -56,8 +56,12 @@ class CheckboxList extends React.Component {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ item: id })
     };
-    const response = await fetch('/delWatchItem', requestOptions);
+    await fetch('/delWatchItem', requestOptions);
     // const data = await response.json();
+
+    this.callBackendAPI()
+    .then(res => this.setState({ userWatchlist: res }))
+    .catch(err => console.log(err));
   }
 
   viewWatchItem = async(id) => {
@@ -81,7 +85,7 @@ class CheckboxList extends React.Component {
     }
 
     return (
-      <List className={classes.root} onChange={this.componentDidMount()}>
+      <List className={classes.root}>
         {this.state.userWatchlist.map((value) => {
           const labelId = ``;
 

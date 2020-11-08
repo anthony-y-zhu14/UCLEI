@@ -45,7 +45,7 @@ class Trading extends React.Component {
             body: JSON.stringify({ name: symbol, n: quantity })
         }
 
-        const response = await fetch(target_url, requestOptions);
+        await fetch(target_url, requestOptions);
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
@@ -65,7 +65,7 @@ class Trading extends React.Component {
             body: JSON.stringify({ name: symbol, n: quantity })
         }
 
-        const response = await fetch(target_url, requestOptions);
+        await fetch(target_url, requestOptions);
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
@@ -185,34 +185,33 @@ class Trading extends React.Component {
                                 </div> 
                         
 
-                            <div>
+                            
                                 <TextField id="search-input" label="Enter a name or symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>   
 
                                 <Button id="searchBtn" onClick={this.handleSearch}><i class='fa fa-search'></i></Button>                         
 
                                 
-                            </div>
+                            
 
-                            <br />
-                            <details>                                
-                                <summary id="searchResult">Search Result</summary>
-                                <ul id="stock-result-list">
-                                {this.state.isStockFound && (
-                                        <li id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</li>
-                                    )}                                
-                                </ul>
-                            </details>
+                            <br />  
+
+                            <ul id="stock-result-list">
+                            {this.state.isStockFound && (
+                                    <li id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</li>
+                                )}                                
+                            </ul>
+                            
 
                             
 
-                            <div>
-                                <TextField id="trading-quantity-input" label="quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>     
-                                <ButtonGroup variant="contained">
-                                    <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
-                                    <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
-                                </ButtonGroup>
+                            
+                            <TextField id="trading-quantity-input" label="quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>     
+                            
+                            <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                            <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
+                        
                                 
-                            </div>
+                           
                             <br />
                             <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
 

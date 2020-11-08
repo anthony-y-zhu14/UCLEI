@@ -155,21 +155,22 @@ details[open] summary ~ * {
 }
 
 #trading-quantity-input {   
-
+  min-width: fit-content;
   cursor: pointer; 
+  display: inline inline-block;
   
 }
 
 #search-input {  
   cursor: pointer; 
+  min-width: fit-content;
+  display: inline inline-block;
 }
 
 #searchBtn {
   margin: 2% auto;
   cursor: pointer;
-  height: 4.5em;
-  width: 20%;
-  
+  display: inline inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
@@ -195,7 +196,8 @@ details[open] summary ~ * {
 #buyBtn {
   margin: 2% auto;     
   cursor: pointer;
-  height: 4.5em;
+  display: inline inline-block;  
+  
  
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -226,7 +228,8 @@ details[open] summary ~ * {
   margin: 2% auto;   
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
-  height: 4.5em;
+  display: inline inline-block;
+  
   
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
