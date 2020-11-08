@@ -138,8 +138,8 @@ a {
   margin: 5% auto;
   padding: 20px;
   border: 0.5px solid #000;
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 100%;
   opacity: 0.98;
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -212,8 +212,7 @@ a {
   width: 300px;
   display: flex;
   flex-wrap: wrap;
-  margin-top: 2px;
-  margin-left: 22px;
+  margin-top: 2%;
 }
 
 #info-box {
@@ -241,8 +240,15 @@ a {
   background:  #6299f7;
 }
 
+#submit {
+  margin-top: 3%;
+  background-color: #35363c;
+  color: #fff;
+}
+
 #info-text {
   font-size: 14px;
+  overflow: hidden;
   font-style: italic;
   color: #8c8c8c;
   font-family: 'Open Sans', sans-serif;

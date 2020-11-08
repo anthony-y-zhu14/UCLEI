@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, ButtonGroup, Container } from '@material-ui/core';
 import Header from "../Header";
+import { TextField } from '@material-ui/core';
+
 
 import "../css/Account.css"
 
@@ -10,10 +12,12 @@ class Account extends React.Component {
         this.state = {
             user: undefined,
             holdingBtn: false,
-            activityBtn: false
-
+            activityBtn: false,
+            moneyDeposit: false,
+            moneyWithdraw: true,
+            amount: 0,
+            type: undefined
           };
-
     }
 
     componentDidMount() {
@@ -48,6 +52,57 @@ class Account extends React.Component {
             activityBtn: true
         })
     }
+
+    handleDeposit = (e) =>{
+        this.setState({
+          moneyDeposit: true
+        })
+        this.setState({
+          moneyWithdraw: false
+        })
+        this.setState({
+          type: 'deposit'
+        })
+    }
+
+    handleWithdrawl = (e) =>{
+        this.setState({
+          moneyDeposit: false
+        })
+        this.setState({
+          moneyWithdraw: true
+        })
+        this.setState({
+          type: 'withdrawl'
+        })
+    }
+
+    setAmnt = event => {
+        this.setState ({
+          amount: event.target.value
+        });
+  }
+
+    handleSubmit = async (value) => {
+
+      let target_url = "/updateBalance";
+
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': "application/json" },
+          body: JSON.stringify({amount: this.state.amount, type: this.state.type})
+      }
+      console.log(requestOptions);
+
+      await fetch(target_url, requestOptions);
+
+      this.callBackendAPI()
+        .then(res => this.setState({ user: res }))
+        .catch(err => console.log(err));
+
+    }
+
+
 
 
     render() {
@@ -130,29 +185,61 @@ class Account extends React.Component {
                       <div className='innerCont'>
                         <details>
                         <summary>Manage Account</summary>
-                        <div id="balance-container">
-                            <div id="total-balance">
-                                <span className="title-small">Total Balance: </span>
-                                <span className="text-box" id="total-balance-text">
-                                    {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
-                                </span>
-                            </div>
-                            <div id="investments-cash-container">
-                                <div id="investment">
-                                    <span className="title-small">Investment: </span>
-                                    <span className="text-box" id="investment-text">
-                                        {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
-                                    </span>
-                                </div>
 
-                                <div id="cash-balance">
-                                    <span className="title-small">Cash Balance: </span>
-                                    <span className="text-box" id="cash-balance-text">
-                                        {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
-                                    </span>
+                        <div id="add-funds-modal" className={this.state.display} >
+                            <div className="modal-content">
+                          <h3 id="modal-title">Add funds</h3>
+                          <br />
+                          <br />
+
+                          <div id="info-box">
+                            <div className="info-box">
+                              <div className="info-title">Add and Remove Funds</div>
+
+                              <div id="info-text">
+
+                                Type the amount of cash you would
+                                like to add or remove in the box to
+                                the left and select to deposit or withdrawl
+                                funds from your account.
+
                                 </div>
+                                <br />
+
                             </div>
+                          </div>
+
+                          <form>
+                            <div id="modal-account-balance">
+                              <span className="modal-text">Account Balance:</span>
+                              <span className="modal-text" className="cashBalance" id="money">${ this.state.user.account.cashBalance }</span>
+                            </div>
+
+
+                            <TextField className="txtFld" label="Input Dollar Amount"
+                            onChange={this.setAmnt} value={this.state.amount}
+                            variant="outlined" />
+                            <div id="modal-container">
+
+                              <div id="buttons-modal">
+                              <br />
+                              <ButtonGroup disableElevation variant="outlined"  id="option-group">
+                                  <Button id="money-deposit" style={this.state.moneyDeposit ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleDeposit}>Deposit</Button>
+                                  <Button id="money-withdraw" style={this.state.moneyWithdraw ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleWithdrawl}>Withdrawl</Button>
+                              </ButtonGroup>
+                              <br />
+
+                              </div>
+
+                          </div>
+
+                          <Button id="submit" className='submit' onClick={this.handleSubmit}>Submit</Button>
+
+                          </form>
                         </div>
+                        </div>
+
+
                         </details>
                       </div>
                 </div>

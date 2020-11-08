@@ -88,9 +88,7 @@ class Market extends React.Component {
         super();
         this.state = {
             user: undefined
-
-          };
-
+        };
     }
 
     componentDidMount() {

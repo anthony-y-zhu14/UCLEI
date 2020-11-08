@@ -119,15 +119,31 @@ app.post('/authentication', (request, response) => {
 
  app.post('/updateBalance', (request, response) => {
     let data = "";
+    let newBalance = 0;
+    console.log(users)
+    console.log(users.account.cashBalance)
+
     request.on('data', (chunk) => {
         data = JSON.parse(chunk);
+        handleTransac(data);
     });
 
     request.on('end', () => {
-    users.account["cashBalance"] = data;
+      console.log(users.account.cashBalance)
     console.log(`\nClient ${users.username} balance updated to ${data}.\n`)
     response.end();
     });
+
+    function handleTransac(data) {
+      if(data.type === 'deposit') {
+          users.account.cashBalance += parseInt(data.amount);
+      }
+      else {
+        if(users.account.cashBalance >= parseInt(data.amount)) {
+          users.account.cashBalance -= parseInt(data.amount);
+        }
+      }
+    }
 });
 
 app.post('/delWatchItem', (request, response) => {
@@ -150,7 +166,7 @@ app.post('/addEventNotify', (request, response) => {
     });
 
     request.on('end', () => {
-    if(!users.eventList.includes(data)) { 
+    if(!users.eventList.includes(data)) {
         users.eventList.push(data); }
     response.end();
     });
@@ -209,7 +225,7 @@ app.post('/buyStock', (request, response) => {
         let quantity = data.n;
         let stockSymbol = data.name;
         buyStock(quantity, stockSymbol);
-        response.end();      
+        response.end();
     });
 
     function buyStock(quantity, symbol) {
@@ -282,8 +298,8 @@ app.post('/sellStock', (request, response) => {
         let quantity = data.n;
         let stockSymbol = data.name;
         sellStock(quantity, stockSymbol);
-        response.end();  
-         
+        response.end();
+
     });
 
 

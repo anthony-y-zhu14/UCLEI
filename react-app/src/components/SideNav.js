@@ -2,7 +2,6 @@ import React from "react";
 import "./css/SideNav.css";
 import {withRouter} from 'react-router-dom';
 // import Modal from '@material-ui/core/Modal';
-import Modal from './Modal.js'
 
 
 let links = {
@@ -36,13 +35,6 @@ class Sidenav extends React.Component {
     this.props.history.push(links.mrk);
   }
 
-  handleOpen = () => {
-    this.setState( {display: 'classes.modalShow'} );
-  };
-
-  handleClose = () => {
-    this.setState( {display: 'classes.modal'} );
-  };
 
     render() {
     return(
@@ -64,11 +56,6 @@ class Sidenav extends React.Component {
                     Market
                 </li>
                 </ul>
-                <div id="add-funds">
-                <a id="add-funds-link" onClick={this.handleOpen}>
-                    <i className='fa fa-plus-circle'></i>
-                    Add Funds</a>
-                </div>
 
             </div>
         );

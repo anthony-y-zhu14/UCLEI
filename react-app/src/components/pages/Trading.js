@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/styles';
 const styles = {
    input: {
       color: 'white'
-    } 
+    }
   };
 
 
@@ -16,14 +16,14 @@ class Trading extends React.Component {
     constructor() {
         super();
         this.state = {
-            user: undefined,           
+            user: undefined,
             quantity: undefined,
             orderBuy: false,
             orderSell: false,
             completeBtn: false,
             search_symbol: undefined,
             stock_found: undefined,
-            isStockFound: false 
+            isStockFound: false
           };
     }
 
@@ -49,7 +49,7 @@ class Trading extends React.Component {
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
-        
+
 
     }
 
@@ -69,14 +69,14 @@ class Trading extends React.Component {
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
-        
+
 
     }
-    
-    
-      
-    
-  
+
+
+
+
+
     callBackendAPI = async () => {
           const response = await fetch('/getAccount');
           const body = await response.json();
@@ -89,7 +89,7 @@ class Trading extends React.Component {
       setQuantity = event => {
           this.setState ({
               quantity: event.target.value
-          });          
+          });
     }
 
       setSearch = event => {
@@ -116,7 +116,7 @@ class Trading extends React.Component {
         })
     }
 
-    
+
 
     handleSearch = async () =>{
         let url = `/stock-data?search=${this.state.search_symbol}`;
@@ -125,17 +125,17 @@ class Trading extends React.Component {
         if (response.status !== 200) {
             throw Error(stock.message)
           }
-        
+
         this.setState ({
             stock_found: stock[0],
             isStockFound: true
         });
 
-        console.log(this.state.stock_found);         
-        
+        console.log(this.state.stock_found);
+
     }
 
-    handleCompleteBtn = (e) =>{   
+    handleCompleteBtn = (e) =>{
         if (this.state.quantity <= 0){
             alert("Please enter a valid quantity")
             return;
@@ -146,20 +146,20 @@ class Trading extends React.Component {
         }
         if (this.state.orderBuy){
             this.updateComponentBuy();
-            
+
         }
-        else {           
+        else {
             this.updateComponentSell();
         }
-        
-        
+
+
     }
 
-   
 
 
-    render() {    
-        const { classes } = this.props;  
+
+    render() {
+        const { classes } = this.props;
 
         if(!this.state.user) {
             return (
@@ -169,58 +169,58 @@ class Trading extends React.Component {
 
         return (
             <div>
-                    <Header currentPage={`Trading`} userName={this.state.user.username}/> 
+                    <Header currentPage={`Trading`} userName={this.state.user.username}/>
                     <Container id="main">
-                    
+
                         <Container id="trade-container">
-                    
+
                             <br />
-                            <div id="account-container" type="text">{this.state.user.account.accountName}</div>
+                            <div id="accoxwunt-container" type="text">{this.state.user.account.accountName}</div>
                             <br/>
 
-                        
+
                             <div id="fundsAvialable">
-                                <span style={{width: "80%"}}>Cash Balance: </span> 
+                                <span style={{width: "80%"}}>Cash Balance: </span>
                                 <span id="cash">{"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}</span>
-                                </div> 
-                        
+                                </div>
 
-                            
-                                <TextField id="search-input" label="Enter a name or symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>   
 
-                                <Button id="searchBtn" onClick={this.handleSearch}><i class='fa fa-search'></i></Button>                         
 
-                                
-                            
+                                <TextField id="search-input" label="Enter a name or symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>
 
-                            <br />  
+                                <Button id="searchBtn" onClick={this.handleSearch}><i class='fa fa-search'></i></Button>
+
+
+
+
+                            <br />
 
                             <ul id="stock-result-list">
                             {this.state.isStockFound && (
                                     <li id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</li>
-                                )}                                
+                                )}
                             </ul>
-                            
 
-                            
 
-                            
-                            <TextField id="trading-quantity-input" label="quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>     
-                            
+
+
+
+                            <TextField id="trading-quantity-input" label="quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+
                             <Button id="buyBtn" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
                             <Button id="sellBtn" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>sell</Button>
-                        
-                                
-                           
+
+
+
                             <br />
                             <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
 
-                        
-                        
+
+
                         </Container>
 
                         <Container id="holding-container">
-                           
+
                             <div id="stock-list">
                                 Current Holding
                 log                <React.Fragment>
@@ -229,8 +229,8 @@ class Trading extends React.Component {
                                     ))}
                                 </React.Fragment>
                             </div>
-                                
-                            
+
+
                         </Container>
 
 
