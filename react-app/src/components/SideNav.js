@@ -70,8 +70,6 @@ class Sidenav extends React.Component {
                     Add Funds</a>
                 </div>
 
-                <Modal display={this.state.display}/>
-
             </div>
         );
     }
