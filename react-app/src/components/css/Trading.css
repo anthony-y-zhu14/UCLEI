@@ -15,56 +15,6 @@ body {
   background: #e2eaf2;
 }
 
-summary {
-  padding: 1em;
-  width: 80%;
-  margin-bottom: 1em;
-  cursor: pointer;
-  outline: none;
-  border-radius: .3em;
-  background: #393b41;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-transition: background-color .3s, color .3s;
-  transition: background-color .3s, color .3s;
-}
-
-summary:hover {
-  background: aliceblue;
-  color: black;
-}
-
-summary::-webkit-details-marker {
-  color: #B4E2FC;
-}
-
-details[open] summary ~ * {
-  -webkit-animation: sweep .5s ease-in-out;
-          animation: sweep .5s ease-in-out;
-}
-
-@-webkit-keyframes sweep {
-  from {
-    opacity: 0;
-    margin-top: -10px;
-  }
-  to {
-    opacity: 1;
-    margin-top: 0;
-  }
-}
-
-@keyframes sweep {
-  from {
-    opacity: 0;
-    margin-top: -10px;
-  }
-  to {
-    opacity: 1;
-    margin-top: 0;
-  }
-}
-
 #fundsAvialable {  
   width: 100%;
   outline: none;  
@@ -87,26 +37,17 @@ details[open] summary ~ * {
   width: 45%;
   height: 80%;
   margin: 1%;
+  left: 5%;
      
   
 }
 
 #holding-container {
   width: 45%;
-  height: 80%;
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  border-radius: 10px;
-  position: relative;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  background: #393b41;
+  height: 80%;  
   color: #fff;
-  margin: 1%;
-  
-
-  background: #393b41;
+  font-family: 'Open Sans', sans-serif; 
+  text-align: center;
 }
 
 #account-container {
@@ -123,54 +64,15 @@ details[open] summary ~ * {
 }
 
 
-#searchResult {
-  padding: 1em;
-  width: 80%;
-  outline: none;
-  border-radius: .3em;
-  background: #393b41;
-  cursor: pointer;
-  color: white;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
-}
-
-#stock-result-list {
-  list-style-type: none;
-  text-align: center;
-  place-items: auto center;
-}
-
-#stockFound {
-  color: white;
-  padding: 0.5em;
-  margin: 2em;
-  width: 60%;
-  background: slategrey;
-  outline: none;
-  border-radius: .3em;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-#trading-quantity-input {   
-  min-width: fit-content;
-  cursor: pointer; 
-  display: inline inline-block;
-  
-}
-
-#search-input {  
-  cursor: pointer; 
-  min-width: fit-content;
-  display: inline inline-block;
-}
 
 #searchBtn {
   margin: 2% auto;
+  top: 10px;
+  left: 15%;
+  width: 20%;
+  height: 3em;
   cursor: pointer;
-  display: inline inline-block;
+  display: inline-block;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
@@ -196,7 +98,7 @@ details[open] summary ~ * {
 #buyBtn {
   margin: 2% auto;     
   cursor: pointer;
-  display: inline inline-block;  
+  display: inline-block;  
   
  
   -webkit-box-sizing: border-box;
@@ -228,7 +130,7 @@ details[open] summary ~ * {
   margin: 2% auto;   
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
-  display: inline inline-block;
+  display: inline-block;
   
   
   -webkit-box-sizing: border-box;
@@ -256,11 +158,10 @@ details[open] summary ~ * {
   background: indianred;
 }
 
-#CompleteTransactionBtn {
-  margin: 0 auto;
-  padding: 2em;
-  width: 16em;
-  height: 8em;
+#CompleteTransactionBtn {  
+  width: 50%;
+  height: 20%;
+  left: 25%;
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
   border-radius: 0.8em;
@@ -291,25 +192,15 @@ details[open] summary ~ * {
 }
 
 
-#stock-container {
-  width: 80%;
-  height: 80%;
-  margin-top: 5%;
-  padding: 2em;
-  background: #393b41;
-  outline: none;
-  border-radius: .3em;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-}
 
-#stock-list {
+
+#stock-list {  
+  padding: 0.5em 1em 0.5em 1em;  
+  background: #393b41;
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
   list-style-type: none;
-  color: white;
-  font-family: 'Open Sans', sans-serif;
-  text-align: center;
-  margin: 2% auto;
   
 }
 
