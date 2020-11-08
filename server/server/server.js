@@ -2,6 +2,8 @@ const fs = require("fs"); //reads files
 const express = require('express');
 const path = require('path');
 const app = express();
+const uuidv4 = require('uuid/v4');
+const cookieParser = require('cookie-parser');
 
 // let users = fs.readFile("../database/user.json");
 let users = {
@@ -21,8 +23,7 @@ let users = {
     }
 ],
     activity: [
-        "Brought 26 shares of TSLA",
-        "Sold 26 shares of AAL"
+        "Brought 20 shares of AAL"
     ],
     account: {
         accountName: "TFSA Account CAD 25MBJ",
@@ -34,6 +35,7 @@ let users = {
 };
 
 app.use(express.static(path.join(__dirname, '../')));
+app.use(cookieParser());
 
 app.get('/', (request, response) => {
     console.log(request.url);
@@ -80,7 +82,7 @@ app.get('/getWatchlist', (req, res) => {
     res.end();
 });
 
-app.post('/authentication', (request, response) => {
+app.post('/authentication', (request, response, next) => {
     let data = "";
     request.on('data', (chunk) => {
         data = JSON.parse(chunk);
@@ -98,6 +100,18 @@ app.post('/authentication', (request, response) => {
     function authenticate(username, password) {
         if(users.username === username && users.password === password) {
             console.log(`\nClient ${username} authenticated succesfully.\n`);
+
+            //generate USER_TOKEN HERE
+            const USER_TOKEN = uuidv4();
+            let cookie =  request.cookies.cookieName;
+
+            if(cookie === undefined) {
+                response.cookie('fleebJuice', USER_TOKEN);
+                console.log(`Cookie: ${cookie}, created successfully.`);
+            }
+            else {
+                console.log('cookie already exists', cookie);
+            }
             response.write("true");
         }
         else if(username === '' && password === '') {
@@ -107,10 +121,19 @@ app.post('/authentication', (request, response) => {
             response.write("false");
             console.log(`\nClient ${username} provided invalid login.\n`);
         }
+        next();
     }
  });
 
- app.post('/updateBalance', (request, response) => {
+app.get("/logout", function(req, res){
+    req.logout();
+    req.session.destory(function (err){
+        console.log("cookies destoryed!");
+        res.redirect('/');
+    });
+});
+
+app.post('/updateBalance', (request, response) => {
     let data = "";
     let newBalance = 0;
     console.log(users)
@@ -165,7 +188,7 @@ app.post('/addEventNotify', (request, response) => {
     });
  });
 
- app.post('/rmvEventNotify', (request, response) => {
+app.post('/rmvEventNotify', (request, response) => {
      let data = "";
      request.on('data', (chunk) => {
          data = JSON.parse(chunk);
@@ -279,7 +302,6 @@ app.post('/buyStock', (request, response) => {
         console.log(`${users.username} bought shares`);
  }
 });
-
 
 app.post('/sellStock', (request, response) => {
     let data = "";

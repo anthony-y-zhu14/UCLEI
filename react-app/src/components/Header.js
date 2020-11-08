@@ -17,6 +17,8 @@ import TemporaryDrawer from "./Menu.js"
 import { Avatar } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
 import {withRouter} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -90,6 +92,8 @@ const useStyles = makeStyles((theme) => ({
 const PrimarySearchAppBar = ({currentPage, userName}) => {
 
   const classes = useStyles();
+  const history = useHistory();
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -97,6 +101,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const [open, setOpen] = useState(false);
+
 
   const handleSideNav = () => {
     setOpen(true)
@@ -106,8 +111,20 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     setAnchorEl(event.currentTarget);
   };
 
+  const callBackendAPI = async () => {
+    const response = await fetch('/logout');
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
+  };
+
   const logout = (value) => {
-    alert("Logout");
+    callBackendAPI()
+    .then(res => console.log('logged out'))
+    .catch(err => console.log(err));
+    history.push('/login');
   }
 
   const handleMobileMenuClose = () => {

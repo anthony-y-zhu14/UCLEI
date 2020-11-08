@@ -9,7 +9,8 @@ import Trading from './components/pages/Trading';
 
 class App extends React.Component {
   state = {
-    user: undefined
+    user: undefined,
+    sesssion_id: undefined
   };
 
 
