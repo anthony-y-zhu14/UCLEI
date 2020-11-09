@@ -86,7 +86,11 @@ const styles = {
       margin: '10%'
     },
     ticker: {
-      display: 'inline-block'
+      display: 'inline-block',
+     '&:hover':{
+        color: '#6C9FF8',
+        cursor: 'pointer'
+      },
     },
     chart: {
       margin: '15%'
@@ -120,10 +124,20 @@ class Market extends React.Component {
         .catch(err => console.log(err));
 
     }
+    handleWatchSave = async(value) => {
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ value })
+      };
+      await fetch('/addWatchItem', requestOptions);
+
+      this.callBackendAPI()
+      .then(res => this.setState({ user: res }))
+      .catch(err => console.log(err));
+    }
 
     handleLog = data => {
-      console.log('boop')
-      console.log(data);
 
       if(data.view) {
         if(this.state.chartName != data.selectedStock[0].name) {
@@ -138,10 +152,6 @@ class Market extends React.Component {
         if(this.state.chartGrowth != data.selectedStock[0].percentage) {
           this.setState({chartGrowth: data.selectedStock[0].percentage});
         }
-        // , chartPrice: data.selectedStock[0].quote, chartTicker: data.selectedStock[0].symbol, chartGrowth: data.selectedStock[0].percentage})
-      }
-      else {
-        console.log('error')
       }
     }
 
@@ -164,7 +174,7 @@ class Market extends React.Component {
               <div className={classes.chartContainer}>
               <span className={classes.font}>{this.state.chartName}</span>
               <span className={classes.smallFont}>{this.state.chartTicker}</span>
-              <span className={classes.ticker} id="addBtn"><i class="fa fa-bookmark"></i></span>
+              <span className={classes.ticker} id="addBtn"><i className={classes.ticker} onClick={() => this.handleWatchSave(this.state.chartTicker)} className="fa fa-bookmark"></i></span>
               <ButtonGroup className={classes.controller}>
                 <Button variant="outlined" size="small" color="primary" className={classes.margin}>Day</Button>
                 <Button variant="outlined" size="small" color="primary" className={classes.margin}>Month</Button>
