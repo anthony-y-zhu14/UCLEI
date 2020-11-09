@@ -18,10 +18,10 @@ class Account extends React.Component {
         super();
         this.state = {
             user: undefined,
-            holdingBtn: false,
+            holdingBtn: true,
             activityBtn: false,
             moneyDeposit: false,
-            moneyWithdraw: true,
+            moneyWithdraw: false,
             amount: 0,
             type: undefined
           };
@@ -108,23 +108,13 @@ class Account extends React.Component {
         .catch(err => console.log(err));
 
     }
-
-
-
-
     render() {
-
       const { classes } = this.props;
-
-
-
-
         if(!this.state.user) {
             return (
               <h1>Loading...</h1>
             );
         }
-
         return(
             <div>
                     <Header currentPage={`Account`} userName={this.state.user.name}/>
@@ -139,56 +129,58 @@ class Account extends React.Component {
                       <div className='innerCont'>
                           <details>
                           <summary>Account Balance</summary>
-                          <div id="balance-container">
-                              <div id="total-balance">
-                                  <span className="title-small">Total Balance: </span>
-                                  <span className="text-box" id="total-balance-text">
-                                      {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
-                                  </span>
-                              </div>
-                              <div id="investments-cash-container">
+                          <div id="add-funds-modal" className="modal-content">
+                            <div id="balance-container">
+                                <div id="total-balance">
+                                    <span className="title-small">Total Balance: </span>
+                                    <span className="text-box" id="total-balance-text">
+                                        {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
+                                    </span>
+                                </div>
+                                <div id="investments-cash-container">
                                   <div id="investment">
                                       <span className="title-small">Investment: </span>
                                       <span className="text-box" id="investment-text">
-                                          {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
+                                            {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
                                       </span>
-                                  </div>
+                                </div>
 
-                                  <div id="cash-balance">
-                                      <span className="title-small">Cash Balance: </span>
-                                      <span className="text-box" id="cash-balance-text">
-                                          {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
-                                      </span>
-                                  </div>
-                              </div>
-                          </div>
+                                <div id="cash-balance">
+                                    <span className="title-small">Cash Balance: </span>
+                                    <span className="text-box" id="cash-balance-text">
+                                            {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
+                                    </span>
+                                </div>
+                                </div>
+                            </div>
 
-                          <div id="account-activity-container">
-                              <br/>
-                              <ButtonGroup disableElevation variant="outlined"  id="option-group">
-                                  <Button id="holdingBtn" style={this.state.holdingBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleHolding}>Holding</Button>
-                                  <Button id= "activityBtn" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
-                              </ButtonGroup>
-                              <ul id="table-container">
+                            <div id="account-activity-container">
+                                <br/>
+                                <ButtonGroup disableElevation variant="outlined"  id="option-group">
+                                    <Button id="money-deposit" style={this.state.holdingBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleHolding}>Holding</Button>
+                                    <Button id="money-withdraw" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
+                                </ButtonGroup>
+                                <ul id="table-container">
 
-                              <div>
-                                  {this.state.holdingBtn && (
-                                      <React.Fragment>
-                                          {this.state.user.ownedStocks.map(stock => (
-                                              <li id={stock.name} className="stock-holding">{stock.name}</li>
-                                          ))}
-                                      </React.Fragment>
-                                  )}
-                                  {this.state.activityBtn && (
-                                      <React.Fragment>
-                                          {this.state.user.activity.map(activity => (
-                                              <li id={activity} className="stock-holding">{activity}</li>
-                                          ))}
-                                      </React.Fragment>
-                                  )}
-                              </div>
-                              </ul>
+                                <div>
+                                    {this.state.holdingBtn && (
+                                        <React.Fragment>
+                                            {this.state.user.ownedStocks.map(stock => (
+                                                <li id={stock.name} className="stock-holding">{stock.name}</li>
+                                            ))}
+                                        </React.Fragment>
+                                    )}
+                                    {this.state.activityBtn && (
+                                        <React.Fragment>
+                                            {this.state.user.activity.map(activity => (
+                                                <li id={activity} className="stock-holding">{activity}</li>
+                                            ))}
+                                        </React.Fragment>
+                                    )}
+                                </div>
+                                </ul>
 
+                            </div>
                           </div>
                           </details>
                         </div>
@@ -196,7 +188,7 @@ class Account extends React.Component {
                         <details>
                         <summary>Manage Account</summary>
 
-                        <div id="add-funds-modal" className={this.state.display} >
+                        <div id="add-funds-modal" >
                             <div className="modal-content">
                           <br />
                           <br />

@@ -2,7 +2,7 @@ const fs = require("fs"); //reads files
 const express = require('express');
 const path = require('path');
 const app = express();
-const uuidv4 = require('uuid/v4');
+const { v4: uuidv4 } = require('uuid');
 const cookieParser = require('cookie-parser');
 const session=require('express-session');
 
@@ -52,7 +52,7 @@ const sessionChecker = (req, res, next) => {
         res.redirect('/dashboard');
     } else {
         next();
-    }    
+    }
 };
 
 app.get('/', (request, response) => {
@@ -142,9 +142,9 @@ app.post('/authentication', (request, response, next) => {
     }
  });
 
-app.get("/logout", function(req, res){    
+app.get("/logout", function(req, res){
     req.session.destroy(function (err){
-        console.log("cookies destroyed!");        
+        console.log("cookies destroyed!");
     });
 });
 
