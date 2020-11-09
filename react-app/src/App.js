@@ -9,47 +9,45 @@ import Trading from './components/pages/Trading';
 
 class App extends React.Component {
   state = {
-    user: undefined,
-    sesssion_id: undefined
+    routePath: 'fromApp',
+    session_id: undefined
   };
 
-
-  componentDidMount() {
-    // Calls our fetch below once the component mounts
-  this.callBackendAPI()
-    .then(res => this.setState({ user: res }))
-    .catch(err => console.log(err));
-  }
-  // Fetches our GET route to account info from server.js
-  callBackendAPI = async () => {
-    const response = await fetch('/getAccount');
-    const body = await response.json();
-    if (response.status !== 200) {
-      throw Error(body.message)
+  handleChange = data => {
+    console.log(data)
+    if(this.state.session_id !== data.session_id) {
+      this.setState({session_id : data.session_id})
     }
-    return body;
-  };
+  }
+  // componentDidMount() {
+  //   // Calls our fetch below once the component mounts
+  // this.callBackendAPI()
+  //   .then(res => this.setState({ session: res }))
+  //   .catch(err => console.log(err));
+  // }
+  // // Fetches our GET route to account info from server.js
+  // callBackendAPI = async () => {
+  //   const response = await fetch('/session');
+  //   const body = await response.json();
+  //   if (response.status !== 200) {
+  //     throw Error(body.message)
+  //   }
+  //   return body;
+  // };
 
   render() {
-
-    //returns loading state
-    if(!this.state.user) {
-      return (
-        <h1>Loading...</h1>
-      );
-    }
 
     //returns new state once loading is complete
     return (
 
+
       <Router>
         <React.Fragment>
-          <Route exact path= "/" render={(props) =>
-              <Login user={`Jerry`} />} />
+          <Route exact path= "/" component={Login} onChange={this.handleChange}/>
 
-          <Route path="/login" component={Login} />
+          <Route path="/login" component={Login} onChange={this.handleChange}/>
 
-          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/dashboard" component={Dashboard} render={()=> <Dashboard state={this.state}/>}/>
 
           <Route path="/account" component={Account} />
 

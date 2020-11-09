@@ -38,7 +38,7 @@ let users = {
 app.use(express.static(path.join(__dirname, '../')));
 app.use(cookieParser());
 app.use(session({
-    secret: 'secret123',
+    secret: 'fleeb_juice',
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -47,25 +47,6 @@ app.use(session({
         sameSite: true //'strict/     
     }
 }));
-
-
-app.get('/', (request, response) => {
-    console.log(request.url);
-    if(request.url === "/" || request.url === "../index") {
-        fs.readFile("../index.html", function(err, data){
-            if(err) {
-                response.statusCode = 500;
-                response.write("Server error.");
-                response.end();
-                return;
-            }
-            response.statusCode = 200;
-            response.setHeader("Content-Type", "text/html");
-            response.write(data.toString());
-            response.end();
-        });
-    }
-});
 
 app.post('/authentication', (request, response, next) => {
     let data = "";
@@ -97,7 +78,8 @@ app.post('/authentication', (request, response, next) => {
             else {
                 console.log('cookie already exists', cookie);
             }
-            response.write("true");
+            const login_data = {authentication: true, session_id: USER_TOKEN};
+            response.write(JSON.stringify(login_data));
         }
         else if(username === '' && password === '') {
           response.write('onload');
@@ -114,6 +96,15 @@ app.get("/logout", function(req, res){
         console.log("cookies destroyed!");
     });
 });
+
+app.get("/session", function(req, res){
+    let data = users.session_id;
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/JSON");
+    res.write(data.toString());
+    res.end();
+});
+
 
 app.get('/getBalance', (request, response) => {
     let data = users.account.cashBalance;

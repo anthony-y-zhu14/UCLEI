@@ -113,14 +113,20 @@ class Dashboard extends React.Component {
     super(props);
     console.log(props)
     this.state = {
-      user: undefined
+      user: undefined,
+      session_id: undefined
     };
   };
 
+  //this.props.location.state.session_id
+
   componentDidMount() {
+  
+    this.setState({session_id: this.props.location.state.session_id})
     // Calls our fetch below once the component mounts
+    
   this.callBackendAPI()
-    .then(res => this.setState({ user: res }))
+    .then(res => this.setState({ user: res}))
     .catch(err => console.log(err));
   }
   // Fetches our GET route to account info from server.js
@@ -144,10 +150,18 @@ class Dashboard extends React.Component {
       );
     }
 
+    if(!this.state.session_id) {
+      return (
+        <h1>401 Not Authorized</h1>
+      );
+  }
+
     let crtPg = 'Dashboard';
     let username = this.state.user.username;
 
     return (
+
+      
         <div>
           <Header currentPage={crtPg} userName={username}/>
           <div className={classes.main}>

@@ -14,8 +14,8 @@ const styles = {
 };
 
 class Account extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             user: undefined,
             holdingBtn: true,
@@ -23,7 +23,8 @@ class Account extends React.Component {
             moneyDeposit: false,
             moneyWithdraw: false,
             amount: 0,
-            type: undefined
+            type: undefined,
+            session_id: undefined
           };
     }
 
@@ -115,6 +116,11 @@ class Account extends React.Component {
               <h1>Loading...</h1>
             );
         }
+        if(!this.state.session_id) {
+          return (
+            <h1>401 Not Authorized</h1>
+          );
+      }
         return(
             <div>
                     <Header currentPage={`Account`} userName={this.state.user.name}/>
@@ -129,30 +135,31 @@ class Account extends React.Component {
                       <div className='innerCont'>
                           <details>
                           <summary>Account Balance</summary>
-                          <div id="add-funds-modal" className="modal-content">
-                            <div id="balance-container">
-                                <div id="total-balance">
-                                    <span className="title-small">Total Balance: </span>
-                                    <span className="text-box" id="total-balance-text">
-                                        {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
-                                    </span>
-                                </div>
-                                <div id="investments-cash-container">
-                                  <div id="investment">
-                                      <span className="title-small">Investment: </span>
-                                      <span className="text-box" id="investment-text">
-                                            {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
+                          <div id="add-funds-modal">
+                            <div className="modal-content">
+                              <div id="balance-container">
+                                  <div id="total-balance">
+                                      <span className="title-small">Total Balance: </span>
+                                      <span className="text-box" id="total-balance-text">
+                                          {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
                                       </span>
-                                </div>
+                                  </div>
+                                  <div id="investments-cash-container">
+                                    <div id="investment">
+                                        <span className="title-small">Investment: </span>
+                                        <span className="text-box" id="investment-text">
+                                              {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
+                                        </span>
+                                  </div>
 
-                                <div id="cash-balance">
-                                    <span className="title-small">Cash Balance: </span>
-                                    <span className="text-box" id="cash-balance-text">
-                                            {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
-                                    </span>
+                                  <div id="cash-balance">
+                                      <span className="title-small">Cash Balance: </span>
+                                      <span className="text-box" id="cash-balance-text">
+                                              {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
+                                      </span>
+                                  </div>
+                                  </div>
                                 </div>
-                                </div>
-                            </div>
 
                             <div id="account-activity-container">
                                 <br/>
@@ -180,6 +187,7 @@ class Account extends React.Component {
                                 </div>
                                 </ul>
 
+                            </div>
                             </div>
                           </div>
                           </details>

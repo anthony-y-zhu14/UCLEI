@@ -44,11 +44,12 @@ class Login extends React.Component {
             helperTextPsw: '',
             id: 'outlined-basic',
             authenticated: 'onload',
-            error: false
+            error: false,
+            session_id: false
         };
     }
 
-    componentDidMount = async () => {
+    login = async () => {
         // POST request using fetch with async/await
         const requestOptions = {
             method: 'POST',
@@ -57,8 +58,10 @@ class Login extends React.Component {
         };
         const response = await fetch('/authentication', requestOptions);
         const data = await response.json();
-        this.setState({ authenticated: data });
-        if(this.state.authenticated) {
+        this.setState({ authenticated: data.authentication, session_id: data.session_id });
+        console.log(this.state)
+
+        if(this.state.authenticated && this.state.session_id) {
           this.navToDsh();
         }
         if(this.state.authenticate === 'onload') {
@@ -69,8 +72,17 @@ class Login extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    }
+
     navToDsh = (value) => {
-      this.props.history.push('/dashboard');
+      this.props.history.push({
+        pathname: '/dashboard',
+        state: {session_id: this.state.session_id}
+      });
     }
 
     setUsername = event => {
@@ -118,7 +130,7 @@ class Login extends React.Component {
             </div>
 
             <div >
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.componentDidMount}>
+              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>
               Login
               </Button>
             </div>

@@ -171,13 +171,19 @@ class Trading extends React.Component {
             );
         }
 
+        if(!this.state.session_id) {
+            return (
+              <h1>401 Not Authorized</h1>
+            );
+        }
+
         return (
             <div>
                     <Header currentPage={`Trading`} userName={this.state.user.username}/>
-                    <Container id="main">
-                        <Container id="trade-container">
+                    <div id="main">
+                        <div id="trade-container">
                             <br />
-                            <div id="accoxwunt-container" type="text">{this.state.user.account.accountName}</div>
+                            <div id="account-container" type="text">{this.state.user.account.accountName}</div>
                             <br/>
 
                             <div id="fundsAvialable">
@@ -205,8 +211,8 @@ class Trading extends React.Component {
                             <br />
                             <br />
                             <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
-                        </Container>
-                        <Container id="holding-container">
+                        </div>
+                        <div id="holding-container">
                             <ul id="stock-list">
                                 Current Holding
                                 <React.Fragment>
@@ -215,8 +221,8 @@ class Trading extends React.Component {
                                     ))}
                                 </React.Fragment>
                             </ul>
-                        </Container>
-                    </Container>
+                        </div>
+                    </div>
         </div>
 
         );

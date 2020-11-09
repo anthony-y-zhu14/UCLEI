@@ -22,25 +22,23 @@ const styles = {
       margin: '2%',
       fontSize: 18,
       fontWeight: 'bold',
-      margin: '2%'
     },
     popStockContainer: {
       display: 'wrap',
-      position: 'absolute',
+      position: 'relative',
       flexDirection: 'column',
       justifyContent: 'space-around',
       flexWrap: 'wrap',
       width: '55%',
       height: '50%',
       borderRadius: '10px',
-      position: 'relative',
       background: '#393b41',
       color: '#fff',
       margin: '.5%',
     },
     watchListContainer: {
         display: 'wrap',
-        position: 'absolute',
+        position: 'relative',
         flexDirection: 'column',
         justifyContent: 'space-around',
         flexWrap: 'wrap',
@@ -48,7 +46,6 @@ const styles = {
         height: '92%',
         overflowY: 'auto',
         borderRadius: '10px',
-        position: 'relative',
         background: '#393b41',
         color: '#fff',
         margin: '.5%',
@@ -140,16 +137,16 @@ class Market extends React.Component {
     handleLog = data => {
 
       if(data.view) {
-        if(this.state.chartName != data.selectedStock[0].name) {
+        if(this.state.chartName !== data.selectedStock[0].name) {
           this.setState({chartName: data.selectedStock[0].name});
         }
-        if(this.state.chartTicker != data.selectedStock[0].symbol) {
+        if(this.state.chartTicker !== data.selectedStock[0].symbol) {
           this.setState({chartTicker: data.selectedStock[0].symbol});
         }
-        if(this.state.chartPrice!= data.selectedStock[0].quote) {
+        if(this.state.chartPrice!== data.selectedStock[0].quote) {
           this.setState({chartPrice: data.selectedStock[0].quote});
         }
-        if(this.state.chartGrowth != data.selectedStock[0].percentage) {
+        if(this.state.chartGrowth !== data.selectedStock[0].percentage) {
           this.setState({chartGrowth: data.selectedStock[0].percentage});
         }
       }
@@ -166,6 +163,12 @@ class Market extends React.Component {
 
     render() {
         const { classes } = this.props;
+
+        if(!this.state.session_id) {
+          return (
+            <h1>401 Not Authorized</h1>
+          );
+      }
 
         return (
             <div>
