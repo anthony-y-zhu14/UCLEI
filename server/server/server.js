@@ -38,22 +38,16 @@ let users = {
 app.use(express.static(path.join(__dirname, '../')));
 app.use(cookieParser());
 app.use(session({
-    secret: 'fleeb_juice',
+    secret: 'secret123',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        maxAge: 24 * 60 * 60 * 100, //24 hrs
-        path: '/'
+        httpOnly: true, //true by default
+        maxAge: 3600000, //milliseconds (1hr)
+        sameSite: true //'strict/     
     }
 }));
 
-const sessionChecker = (req, res, next) => {
-    if (req.session.user && req.cookies.fleeb_juice) {
-        res.redirect('/dashboard');
-    } else {
-        next();
-    }
-};
 
 app.get('/', (request, response) => {
     console.log(request.url);
@@ -71,33 +65,6 @@ app.get('/', (request, response) => {
             response.end();
         });
     }
-});
-
-app.get('/getBalance', (request, response) => {
-    let data = users.account.cashBalance;
-    response.statusCode = 200;
-    response.setHeader("Content-Type", "application/JSON");
-    console.log(`\nClient ${users.username} balance info sent.\n`)
-    response.write(data.toString());
-    response.end();
-});
-
-app.get('/getAccount', (req, res) => {
-    let data = JSON.stringify(users);
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/JSON");
-    console.log(`\nClient ${users.username} account info sent.\n`)
-    res.write(data);
-    res.end();
-});
-
-app.get('/getWatchlist', (req, res) => {
-    let data = JSON.stringify(users.watchlist);
-    res.statusCode = 200;
-    res.setHeader("Content-Type", "application/JSON");
-    // console.log(`\nClient ${users.username} watchlist info sent.\n`)
-    res.write(data);
-    res.end();
 });
 
 app.post('/authentication', (request, response, next) => {
@@ -146,6 +113,33 @@ app.get("/logout", function(req, res){
     req.session.destroy(function (err){
         console.log("cookies destroyed!");
     });
+});
+
+app.get('/getBalance', (request, response) => {
+    let data = users.account.cashBalance;
+    response.statusCode = 200;
+    response.setHeader("Content-Type", "application/JSON");
+    console.log(`\nClient ${users.username} balance info sent.\n`)
+    response.write(data.toString());
+    response.end();
+});
+
+app.get('/getAccount', (req, res) => {
+    let data = JSON.stringify(users);
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/JSON");
+    console.log(`Client ${users.username} requested account info`)
+    res.write(data);
+    res.end();
+});
+
+app.get('/getWatchlist', (req, res) => {
+    let data = JSON.stringify(users.watchlist);
+    res.statusCode = 200;
+    res.setHeader("Content-Type", "application/JSON");
+    // console.log(`\nClient ${users.username} watchlist info sent.\n`)
+    res.write(data);
+    res.end();
 });
 
 app.post('/updateBalance', (request, response) => {
