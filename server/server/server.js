@@ -222,8 +222,8 @@ app.post('/addWatchItem', (request, response) => {
     });
 
     request.on('end', () => {
-        if(!users.watchlist.includes(data)) {
-            users.watchlist.push(data);
+        if(!users.watchlist.includes(data.value)) {
+            users.watchlist.push(data.value);
         }
     response.end();
     });
@@ -265,13 +265,13 @@ app.post('/buyStock', (request, response) => {
             let lis = JSON.parse(file);
             let stockPrice = parseFloat(lis[symbol]["quote"]);
 
-            
+
             if(quantity * stockPrice > users.account.cashBalance) {
                 console.log("Order not complete");
                 return;
             }
 
-            
+
             for (let index = 0; index < users.ownedStocks.length; index++) {
                 let element = users.ownedStocks[index];
                 console.log(element.symbol);
