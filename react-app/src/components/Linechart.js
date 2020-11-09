@@ -3,7 +3,7 @@ import Chart from "chart.js";
 
 export default function LineChart() {
   useEffect(() => {
-    const ctx = document.getElementById("myChart");
+    const ctx = document.getElementById("marketChart");
     new Chart(ctx, {
       type: 'line',
       data: {
@@ -22,7 +22,7 @@ export default function LineChart() {
   });
   return (
     <div className="App">
-      <canvas id="myChart"/>
+      <canvas id="marketChart"/>
     </div>
   );
 }

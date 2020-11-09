@@ -30,7 +30,9 @@ class CheckboxList extends React.Component {
   constructor() {
       super();
       this.state = {
-          userWatchlist: undefined
+          userWatchlist: undefined,
+          selectedStock: undefined,
+          view: false
         };
   }
 
@@ -66,14 +68,22 @@ class CheckboxList extends React.Component {
 
   viewWatchItem = async(id) => {
     //should be get request with query param as id
-    const response = await fetch(`/stock?search=${id}`);
+    const response = await fetch(`/stock-data?search=${id}`);
     const body = await response.json();
     if (response.status !== 200) {
       throw Error(body.message)
     }
     console.log(body)
+    this.setState({ selectedStock: body} );
+    this.setState({ view: true} );
     return body;
   }
+
+  componentDidUpdate() {
+     if (this.props.onChange) {
+       this.props.onChange(this.state);
+     }
+   }
 
   render() {
     const { classes } = this.props;

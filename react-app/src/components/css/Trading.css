@@ -15,11 +15,11 @@ body {
   background: #e2eaf2;
 }
 
-#fundsAvialable {  
+#fundsAvialable {
   width: 100%;
-  outline: none;  
+  outline: none;
   color: white;
-  font-family: 'Open Sans', sans-serif; 
+  font-family: 'Open Sans', sans-serif;
   display: flex;
   flex-wrap: wrap;
 }
@@ -38,20 +38,20 @@ body {
   height: 80%;
   margin: 1%;
   left: 5%;
-     
-  
+
+
 }
 
 #holding-container {
   width: 45%;
-  height: 80%;  
+  height: 80%;
   color: #fff;
-  font-family: 'Open Sans', sans-serif; 
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
 
 #account-container {
-  
+
   width: 50%;
   margin: 0 auto;
 
@@ -59,17 +59,15 @@ body {
   border-radius: .3em;
   background: #393b41;
   color: white;
-  font-family: 'Open Sans', sans-serif;  
+  font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
 
 
 
 #searchBtn {
-  margin: 2% auto;
-  top: 10px;
-  left: 15%;
-  width: 20%;
+  margin: 4% auto;
+  margin-left: 20px;
   height: 3em;
   cursor: pointer;
   display: inline-block;
@@ -78,8 +76,8 @@ body {
   text-decoration: none;
   font-family: 'Roboto',sans-serif;
   font-weight: 300;
-  color: #000000;  
-  background-color: aliceblue; 
+  color: #000000;
+  background-color: aliceblue;
   font-family: 'Open Sans', sans-serif;
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
@@ -89,6 +87,7 @@ body {
   text-shadow: 0 0 2em white;
   color: #FFFFFf;
   border-color: #FFFFFF;
+  background: royalblue;
 }
 
 #searchBtn:active {
@@ -96,18 +95,18 @@ body {
 }
 
 #buyBtn {
-  margin: 2% auto;     
+  margin: 2% auto;
   cursor: pointer;
-  display: inline-block;  
-  
- 
+  display: inline-block;
+
+
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   color: #000000;
-  
+
   background-color: aliceblue;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
@@ -127,19 +126,19 @@ body {
 }
 
 #sellBtn {
-  margin: 2% auto;   
+  margin: 2% auto;
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
   display: inline-block;
-  
-  
+
+
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   text-decoration: none;
   font-family: 'Roboto',sans-serif;
   font-weight: 300;
   color: #000000;
-  
+
   background-color: aliceblue;
   text-align: center;
   font-family: 'Open Sans', sans-serif;
@@ -158,10 +157,9 @@ body {
   background: indianred;
 }
 
-#CompleteTransactionBtn {  
-  width: 50%;
-  height: 20%;
-  left: 25%;
+#CompleteTransactionBtn {
+  width: 40%;
+  height: 10%;
   font-family: 'Open Sans', sans-serif;
   cursor: pointer;
   border-radius: 0.8em;
@@ -194,21 +192,21 @@ body {
 
 
 
-#stock-list {  
-  padding: 0.5em 1em 0.5em 1em;  
+#stock-list {
+  padding: 0.5em 1em 0.5em 1em;
   background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   list-style-type: none;
-  
+
 }
 
 .stock-holding {
-  color: #FFFFFf; 
-  
+  color: #FFFFFf;
+
   outline: #fff;
-  
+
   font-family: 'Open Sans', sans-serif;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
