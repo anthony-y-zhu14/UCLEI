@@ -24,7 +24,7 @@ let users = {
     }
 ],
     activity: [
-        "Brought 20 shares of AAL"
+        "Brought 20 shares of AAL at 12.74"
     ],
     account: {
         accountName: "TFSA Account CAD 25MBJ",
@@ -265,23 +265,14 @@ app.post('/buyStock', (request, response) => {
             let lis = JSON.parse(file);
             let stockPrice = parseFloat(lis[symbol]["quote"]);
 
-            /*
-            if quantity * stock.price is more than user.account.cashBalance:
-                -   alert ("you don't have enough money!")
-                -   return
-            */
+            
             if(quantity * stockPrice > users.account.cashBalance) {
                 console.log("Order not complete");
                 return;
             }
 
-            /*
-            if stock not in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
-                -   remove quantity * stock.price amount of cash from user.cashBalance
-                -   add stock to users stock holding
-                -   update stock shares in user
-            */
-        for (let index = 0; index < users.ownedStocks.length; index++) {
+            
+            for (let index = 0; index < users.ownedStocks.length; index++) {
                 let element = users.ownedStocks[index];
                 console.log(element.symbol);
 
@@ -291,6 +282,7 @@ app.post('/buyStock', (request, response) => {
                     users.account["cashBalance"] -=  (stockPrice * parseFloat(quantity));
                     users.account.investmentBalance += (stockPrice * parseFloat(quantity));
                     element.share += parseInt(quantity);
+                    users.activity.push(`Bought ${quantity} shares of ${element.symbol} at $${element.quote}`);
                     return;
             }
     }
@@ -300,22 +292,23 @@ app.post('/buyStock', (request, response) => {
             -   update stock shares in user
         */
 
-        let stock = {
-            name: lis[symbol].name,
-            quote: lis[symbol].quote,
-            symbol: lis[symbol].symbol,
-            share: parseInt(quantity)
-        };
+            let stock = {
+                name: lis[symbol].name,
+                quote: lis[symbol].quote,
+                symbol: lis[symbol].symbol,
+                share: parseInt(quantity)
+            };
 
-        users.ownedStocks.push(stock);
-        users.account["cashBalance"] -= (stockPrice * parseFloat(quantity));
-        users.account.investmentBalance += (stockPrice * parseFloat(quantity));
+            users.ownedStocks.push(stock);
+            users.account["cashBalance"] -= (stockPrice * parseFloat(quantity));
+            users.account.investmentBalance += (stockPrice * parseFloat(quantity));
+            users.activity.push(`Bought ${quantity} shares of ${stock.symbol} at $${stock.quote}`);
 
-    });
-        //generate an orderID and add that to user activity and return that
+        });
+            //generate an orderID and add that to user activity and return that
 
-        console.log(`${users.username} bought shares`);
- }
+            console.log(`${users.username} bought shares`);
+    }
 });
 
 app.post('/sellStock', (request, response) => {
@@ -346,13 +339,6 @@ app.post('/sellStock', (request, response) => {
             -   return
         */
 
-
-        /*
-        if stock in user.ownedstock and quantity is less or equal to user.stock.shares:
-            -   add quantity * stock.price amount of cash to user.cashBalance
-            -   remove quantity * stock.price amount of cash from user.investment
-            -   update stock shares in user
-        */
         for (let index = 0; index < users.ownedStocks.length; index++) {
             let element = users.ownedStocks[index];
             if (stock.name === element.name && element.share >= parseInt(quantity)) {
@@ -362,6 +348,7 @@ app.post('/sellStock', (request, response) => {
                 if(element.share === 0) {
                     users.ownedStocks.splice(index, 1);
                 }
+                users.activity.push(`Sold ${quantity} shares of ${element.symbol} at $${element.quote}`);
             }
         }
 

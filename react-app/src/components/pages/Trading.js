@@ -121,19 +121,26 @@ class Trading extends React.Component {
             alert("Please enter a search term")
             return;
         }
-        let url = `/stock-data?search=${this.state.search_symbol}`;
+        let url = `/stock-data?search=${this.state.search_symbol.toUpperCase()}`;
         const response = await fetch(url);
         const stock = await response.json();
         if (response.status !== 200) {
             throw Error(stock.message)
-          }
+        }
 
-        this.setState ({
-            stock_found: stock[0],
-            isStockFound: true
-        });
+        if (stock.length != 0){
+            this.setState ({
+                stock_found: stock[0],
+                isStockFound: true
+            });    
+            console.log(this.state.stock_found);
 
-        console.log(this.state.stock_found);
+        }  
+        else{
+            alert("Failed to find a stock with that symbol");
+        }
+
+        
 
     }
 
