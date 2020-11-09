@@ -52,7 +52,7 @@ const sessionChecker = (req, res, next) => {
         res.redirect('/dashboard');
     } else {
         next();
-    }    
+    }
 };
 
 app.get('/', (request, response) => {
@@ -142,9 +142,9 @@ app.post('/authentication', (request, response, next) => {
     }
  });
 
-app.get("/logout", function(req, res){    
+app.get("/logout", function(req, res){
     req.session.destroy(function (err){
-        console.log("cookies destroyed!");        
+        console.log("cookies destroyed!");
     });
 });
 
