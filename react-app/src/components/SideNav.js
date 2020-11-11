@@ -19,19 +19,19 @@ class Sidenav extends React.Component {
       };
   }
 
-  navToAct = (value) => {
+  navToAct = () => {
     this.props.history.push(links.act);
   }
 
-  navToDsh = (value) => {
+  navToDsh = () => {
     this.props.history.push(links.dsh);
   }
 
-  navToTrd = (value) => {
+  navToTrd = () => {
     this.props.history.push(links.trd);
   }
 
-  navToMrk = (value) => {
+  navToMrk = () => {
     this.props.history.push(links.mrk);
   }
 

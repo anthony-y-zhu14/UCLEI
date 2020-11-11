@@ -18,7 +18,7 @@ export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     top: false,
-    left: true,
+    left: false,
     bottom: false,
     right: false,
   });
@@ -27,7 +27,6 @@ export default function TemporaryDrawer() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift' || event.type === 'onclick')) {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 

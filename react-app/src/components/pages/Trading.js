@@ -171,12 +171,6 @@ class Trading extends React.Component {
             );
         }
 
-        if(!this.state.session_id) {
-            return (
-              <h1>401 Not Authorized</h1>
-            );
-        }
-
         return (
             <div>
                     <Header currentPage={`Trading`} userName={this.state.user.username}/>

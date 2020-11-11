@@ -1,64 +1,82 @@
-import React from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { 
+    BrowserRouter as Router, 
+    Route,
+    Switch,
+    Link,
+    Redirect} from 'react-router-dom';
 import "./components/Header.js"
-import Login from "./components/pages/Login.js"
 import Market from "./components/pages/Market.js"
-import Dashboard from "./components/pages/Dashboard.js"
 import Account from "./components/pages/Account.js"
 import Trading from './components/pages/Trading';
+import Login from './components/pages/Login.js';
+import Dashboard from './components/pages/Dashboard.js';
+import AuthApi from './AuthApi';
 
-class App extends React.Component {
-  state = {
-    routePath: 'fromApp',
-    session_id: undefined
-  };
 
-  handleChange = data => {
-    console.log(data)
-    if(this.state.session_id !== data.session_id) {
-      this.setState({session_id : data.session_id})
+function App(){
+
+    const [auth, setAuth] = useState(null); 
+
+   function handleChange(newAuth){  
+        setAuth(newAuth);
     }
-  }
-  // componentDidMount() {
-  //   // Calls our fetch below once the component mounts
-  // this.callBackendAPI()
-  //   .then(res => this.setState({ session: res }))
-  //   .catch(err => console.log(err));
-  // }
-  // // Fetches our GET route to account info from server.js
-  // callBackendAPI = async () => {
-  //   const response = await fetch('/session');
-  //   const body = await response.json();
-  //   if (response.status !== 200) {
-  //     throw Error(body.message)
-  //   }
-  //   return body;
-  // };
 
-  render() {
+    useEffect(()=>{      
+        console.log(auth);
+        },[auth]);
 
-    //returns new state once loading is complete
+
     return (
+    <React.Fragment>
+        <AuthApi.Provider value={{auth, setAuth}}> 
+            <Router>
+                <Switch>                    
+                    <Route 
+                        path="/login" 
+                        component={() => <Login session_id={auth} onChange={handleChange} />}
+                        /> 
+                    <Routes/>       
+                </Switch>                   
+                              
+            </Router>
+        </AuthApi.Provider>
+    </React.Fragment>
+   
+    )    
+}
 
 
-      <Router>
-        <React.Fragment>
-          <Route exact path= "/" component={Login} onChange={this.handleChange}/>
+const Routes = () =>{
+    const Auth = React.useContext(AuthApi)
+    return (
+        <Switch>                
+            <ProtectedRoute path="/dashboard" auth={Auth.auth} component={Dashboard}/>
 
-          <Route path="/login" component={Login} onChange={this.handleChange}/>
+            <ProtectedRoute path="/account" auth={Auth.auth} component={Account} />
 
-          <Route path="/dashboard" component={Dashboard} render={()=> <Dashboard state={this.state}/>}/>
+            <ProtectedRoute path="/trading" auth={Auth.auth} component={Trading} />
 
-          <Route path="/account" component={Account} />
+            <ProtectedRoute path="/market" auth={Auth.auth} component={Market} />
+        </Switch>
+    )
+}
 
-          <Route path="/trading" component={Trading} />
+const ProtectedRoute = ({auth, component:Component,...rest}) => {
+    return(
+        <Route
+            {...rest}
+            render = {() =>auth? (
+                <Component/>
+            )          
+            :
+                (
+                    <Redirect to='/login' />
+                )
+            }   
+        />
+    )
+}
 
-          <Route path="/market" component={Market} />
-
-        </React.Fragment>
-      </Router>
-    );
-  }
-};
 
 export default App;

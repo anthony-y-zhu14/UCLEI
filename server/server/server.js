@@ -38,6 +38,7 @@ let users = {
 app.use(express.static(path.join(__dirname, '../')));
 app.use(cookieParser());
 app.use(session({
+    name: 'Plumbus',
     secret: 'fleeb_juice',
     resave: false,
     saveUninitialized: false,
@@ -65,19 +66,22 @@ app.post('/authentication', (request, response, next) => {
 
     function authenticate(username, password) {
         if(users.username === username && users.password === password) {
-            console.log(`\nClient ${username} authenticated succesfully.\n`);
+            console.log(`Client ${username} authenticated succesfully.`);
 
             //generate USER_TOKEN HERE
+            //relook at. Keep for now 
             const USER_TOKEN = uuidv4();
-            let cookie =  request.cookies.cookieName;
+            // let cookie =  request.cookies.cookieName;
 
-            if(cookie === undefined) {
-                response.cookie('fleebJuice', USER_TOKEN);
-                console.log(`Cookie: ${cookie}, created successfully.`);
-            }
-            else {
-                console.log('cookie already exists', cookie);
-            }
+            // if(cookie === undefined) {
+            //     response.cookie('fleebJuice', USER_TOKEN);
+            //     console.log(`Cookie: ${cookie}, created successfully.`);
+            // }
+            // else {
+            //     console.log('cookie already exists', cookie);
+            // }
+            
+            request.session.user = users;            
             const login_data = {authentication: true, session_id: USER_TOKEN};
             response.write(JSON.stringify(login_data));
         }
@@ -104,7 +108,6 @@ app.get("/session", function(req, res){
     res.write(data.toString());
     res.end();
 });
-
 
 app.get('/getBalance', (request, response) => {
     let data = users.account.cashBalance;

@@ -116,11 +116,7 @@ class Account extends React.Component {
               <h1>Loading...</h1>
             );
         }
-        if(!this.state.session_id) {
-          return (
-            <h1>401 Not Authorized</h1>
-          );
-      }
+        
         return(
             <div>
                     <Header currentPage={`Account`} userName={this.state.user.name}/>

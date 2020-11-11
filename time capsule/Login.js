@@ -45,14 +45,9 @@ class Login extends React.Component {
             id: 'outlined-basic',
             authenticated: 'onload',
             error: false,
+            session_id: false
         };
-        this.login = this.login.bind(this);
     }
-
-    // useContextData = () => {
-    //   const {handleChange} = useContext(handleData);
-    // }
-    
 
     login = async () => {
         // POST request using fetch with async/await
@@ -63,10 +58,12 @@ class Login extends React.Component {
         };
         const response = await fetch('/authentication', requestOptions);
         const data = await response.json();
-        this.setState({ authenticated: data.authentication});
-        this.props.onChange(data.session_id); 
+        this.setState({ authenticated: data.authentication, session_id: data.session_id });
+        // this.props.onSessionChange(data.session_id)
         
-        if(this.state.authenticated && this.props.session_id) {  
+
+        if(this.state.authenticated && this.state.session_id) {         
+          
           this.navToDsh();
         }
         if(this.state.authenticate === 'onload') {
@@ -77,10 +74,16 @@ class Login extends React.Component {
         }
     }
 
+    componentDidUpdate() {
+      if (this.props.onChange) {
+        this.props.onChange(this.state);
+      }
+    }
+
     navToDsh = () => {
-      // this.props.onSuccess();
       this.props.history.push({
-        pathname: '/dashboard'
+        pathname: '/dashboard',
+        state: {session_id: this.state.session_id}
       });
     }
 
@@ -97,7 +100,7 @@ class Login extends React.Component {
     }
 
     render() {
-      const { classes } = this.props;      
+      const { classes } = this.props;
 
       return (
         <form className="login">

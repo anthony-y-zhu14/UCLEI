@@ -111,18 +111,16 @@ const styles = {
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {
-      user: undefined,
-      session_id: undefined
+      user: undefined
+      // session_id: undefined
     };
   };
 
   //this.props.location.state.session_id
 
   componentDidMount() {
-  
-    this.setState({session_id: this.props.location.state.session_id})
+    // this.setState({session_id: this.props.location.state.session_id})
     // Calls our fetch below once the component mounts
     
   this.callBackendAPI()
@@ -148,13 +146,7 @@ class Dashboard extends React.Component {
       return (
         <h1>Loading...</h1>
       );
-    }
-
-    if(!this.state.session_id) {
-      return (
-        <h1>401 Not Authorized</h1>
-      );
-  }
+    }   
 
     let crtPg = 'Dashboard';
     let username = this.state.user.username;

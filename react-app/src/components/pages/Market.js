@@ -164,12 +164,6 @@ class Market extends React.Component {
     render() {
         const { classes } = this.props;
 
-        if(!this.state.session_id) {
-          return (
-            <h1>401 Not Authorized</h1>
-          );
-      }
-
         return (
             <div>
             <Header currentPage={`Market`} userName={`Jerry`}/>
