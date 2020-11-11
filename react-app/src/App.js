@@ -3,7 +3,6 @@ import {
     BrowserRouter as Router, 
     Route,
     Switch,
-    Link,
     Redirect} from 'react-router-dom';
 import "./components/Header.js"
 import Market from "./components/pages/Market.js"
