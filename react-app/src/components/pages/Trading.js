@@ -20,8 +20,8 @@ const styles = {
 
 class Trading extends React.Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             user: undefined,
             quantity: undefined,
@@ -30,11 +30,16 @@ class Trading extends React.Component {
             completeBtn: false,
             search_symbol: undefined,
             stock_found: undefined,
-            isStockFound: false
+            isStockFound: false,
+            session_id: null
           };
     }
 
     componentDidMount() {
+
+        this.setState({session_id: this.props.session_id});
+
+
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
@@ -170,6 +175,16 @@ class Trading extends React.Component {
               <h1>Loading...</h1>
             );
         }
+
+        
+        if(!this.state.session_id) {
+            return (
+              <React.Fragment className={classes.error}>
+                <h1>401 Not Authorized.</h1>
+                <a>Go back to Login</a>
+              </React.Fragment>
+            );
+          }   
 
         return (
             <div>

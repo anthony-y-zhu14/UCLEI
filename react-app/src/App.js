@@ -10,71 +10,45 @@ import Account from "./components/pages/Account.js"
 import Trading from './components/pages/Trading';
 import Login from './components/pages/Login.js';
 import Dashboard from './components/pages/Dashboard.js';
-import AuthApi from './AuthApi';
 
 
 function App(){
+    const [auth, setAuth] = useState(undefined); 
 
-    const [auth, setAuth] = useState(null); 
+    function handleChange(newAuth){ 
+            
+            setAuth(newAuth);
+        }
 
-   function handleChange(newAuth){  
-        setAuth(newAuth);
-    }
-
-    useEffect(()=>{      
-        console.log(auth);
-        },[auth]);
+    useEffect(()=>{    
+        console.log("auth: ", auth);   
+        if (auth === undefined){
+            fetch('/session')
+            .then((res) => res.json())
+            .then((data) => setAuth(data))
+            .catch((error) => console.log(error.message));    
+        }             
+                    
+    },[auth]);  
+   
 
 
     return (
-    <React.Fragment>
-        <AuthApi.Provider value={{auth, setAuth}}> 
-            <Router>
-                <Switch>                    
-                    <Route 
+    <React.Fragment>     
+            <Router>            
+                    <Switch>
+                        <Route 
                         path="/login" 
                         component={() => <Login session_id={auth} onChange={handleChange} />}
-                        /> 
-                    <Routes/>       
-                </Switch>                   
-                              
-            </Router>
-        </AuthApi.Provider>
+                        />                     
+                        <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
+                        <Route path="/account"  component={() => <Account session_id={auth}/>}/>
+                        <Route path="/market"  component={() => <Market session_id={auth}/>}/>
+                        <Route path="/trading"  component={() => <Trading session_id={auth}/>}/>
+                    </Switch>                                       
+            </Router>    
     </React.Fragment>
-   
     )    
-}
-
-
-const Routes = () =>{
-    const Auth = React.useContext(AuthApi)
-    return (
-        <Switch>                
-            <ProtectedRoute path="/dashboard" auth={Auth.auth} component={Dashboard}/>
-
-            <ProtectedRoute path="/account" auth={Auth.auth} component={Account} />
-
-            <ProtectedRoute path="/trading" auth={Auth.auth} component={Trading} />
-
-            <ProtectedRoute path="/market" auth={Auth.auth} component={Market} />
-        </Switch>
-    )
-}
-
-const ProtectedRoute = ({auth, component:Component,...rest}) => {
-    return(
-        <Route
-            {...rest}
-            render = {() =>auth? (
-                <Component/>
-            )          
-            :
-                (
-                    <Redirect to='/login' />
-                )
-            }   
-        />
-    )
 }
 
 

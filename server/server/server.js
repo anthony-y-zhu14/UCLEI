@@ -10,7 +10,7 @@ const session=require('express-session');
 let users = {
     username: "jerry137",
     password : "123456",
-
+    session_id: null,
     name: "Jerry Smith",
     UID: "c117",
     watchlist: ["AAL", "TSLA", "FB", "SHOP"],
@@ -81,7 +81,8 @@ app.post('/authentication', (request, response, next) => {
             //     console.log('cookie already exists', cookie);
             // }
             
-            request.session.user = users;            
+            request.session.user = users;
+            users.session_id = USER_TOKEN;            
             const login_data = {authentication: true, session_id: USER_TOKEN};
             response.write(JSON.stringify(login_data));
         }
@@ -96,8 +97,9 @@ app.post('/authentication', (request, response, next) => {
  });
 
 app.get("/logout", function(req, res){
+    users.session_id = null;
     req.session.destroy(function (err){
-        console.log("cookies destroyed!");
+        console.log("Session destroyed!");
     });
 });
 
@@ -105,7 +107,8 @@ app.get("/session", function(req, res){
     let data = users.session_id;
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/JSON");
-    res.write(data.toString());
+    res.write(JSON.stringify(data));
+    console.log(data);
     res.end();
 });
 

@@ -29,6 +29,8 @@ class Account extends React.Component {
     }
 
     componentDidMount() {
+      this.setState({session_id: this.props.session_id});
+
       this.callBackendAPI()
         .then(res => this.setState({ user: res }))
         .catch(err => console.log(err));
@@ -117,6 +119,15 @@ class Account extends React.Component {
             );
         }
         
+        if(!this.state.session_id) {
+          return (
+            <React.Fragment className={classes.error}>
+              <h1>401 Not Authorized.</h1>
+              <a>Go back to Login</a>
+            </React.Fragment>
+          );
+        }   
+
         return(
             <div>
                     <Header currentPage={`Account`} userName={this.state.user.name}/>

@@ -104,18 +104,22 @@ const styles = {
   };
 
 class Market extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             user: undefined,
             chartName: undefined,
             chartTicker: undefined,
             chartPrice: undefined,
             chartGrowth: undefined,
+            session_id: null
         };
     }
 
     componentDidMount() {
+
+      this.setState({session_id: this.props.session_id});
+
       this.callBackendAPI()
         .then(res => this.setState({user:res, chartName:res.ownedStocks[0].name, chartTicker:res.ownedStocks[0].symbol, chartPrice:res.ownedStocks[0].quote}))
         .catch(err => console.log(err));
@@ -163,6 +167,15 @@ class Market extends React.Component {
 
     render() {
         const { classes } = this.props;
+
+        if(!this.state.session_id) {
+          return (
+            <React.Fragment className={classes.error}>
+              <h1>401 Not Authorized.</h1>
+              <a>Go back to Login</a>
+            </React.Fragment>
+          );
+        }   
 
         return (
             <div>

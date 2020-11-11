@@ -1,10 +1,7 @@
 import React from 'react';
-import GridList from "../GridList.js";
 import Header from "../Header.js";
-import SpacingGrid from "../Grid.js";
-import SimpleContainer from "../Container.js";
 import NewsList from '../NewsList.js';
-import Typography from '@material-ui/core/Typography';
+
 
 import { withStyles } from "@material-ui/core/styles";
 
@@ -105,6 +102,9 @@ const styles = {
   },
   innBln: {
     width: '40%'
+  },
+  errpr: {
+    color: 'red'
   }
 };
 
@@ -112,8 +112,8 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: undefined
-      // session_id: undefined
+      user: undefined,
+      session_id: null
     };
   };
 
@@ -122,7 +122,9 @@ class Dashboard extends React.Component {
   componentDidMount() {
     // this.setState({session_id: this.props.location.state.session_id})
     // Calls our fetch below once the component mounts
-    
+
+  this.setState({session_id: this.props.session_id});
+
   this.callBackendAPI()
     .then(res => this.setState({ user: res}))
     .catch(err => console.log(err));
@@ -145,6 +147,15 @@ class Dashboard extends React.Component {
     if(!this.state.user) {
       return (
         <h1>Loading...</h1>
+      );
+    }   
+
+    if(!this.state.session_id) {
+      return (
+        <React.Fragment className={classes.error}>
+          <h1>401 Not Authorized.</h1>
+          <a>Go back to Login</a>
+        </React.Fragment>
       );
     }   
 
@@ -194,6 +205,6 @@ class Dashboard extends React.Component {
         </div>
     );
   }
-};
+}
 
 export default withStyles(styles)(Dashboard);

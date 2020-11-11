@@ -35,6 +35,7 @@ const styles = {
 };
 
 class Login extends React.Component {
+  _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -47,14 +48,17 @@ class Login extends React.Component {
             error: false,
         };
         this.login = this.login.bind(this);
+    } 
+
+    componentWillUnmount() {
+      this.setState = ()=>{
+        return;
+      };
     }
 
-    // useContextData = () => {
-    //   const {handleChange} = useContext(handleData);
-    // }
-    
-
     login = async () => {
+      this._isMounted = true;
+
         // POST request using fetch with async/await
         const requestOptions = {
             method: 'POST',
@@ -64,24 +68,22 @@ class Login extends React.Component {
         const response = await fetch('/authentication', requestOptions);
         const data = await response.json();
         this.setState({ authenticated: data.authentication});
-        this.props.onChange(data.session_id); 
+        this.props.onChange(data.session_id);
         
-        if(this.state.authenticated && this.props.session_id) {  
-          this.navToDsh();
-        }
         if(this.state.authenticate === 'onload') {
           this.setState({ id: 'outlined-basic', helperText: '', error: false})
         }
         else if(!this.state.authenticate) {
           this.setState({ id: 'outlined-error-helper-text', helperText: 'Invalid Username', error: true, helperTextPsw: 'Invalid Password'})
         }
+        if(this.state.authenticated) {  
+          this.navToDsh();
+        }
     }
 
     navToDsh = () => {
       // this.props.onSuccess();
-      this.props.history.push({
-        pathname: '/dashboard'
-      });
+      this.props.history.push('/dashboard');
     }
 
     setUsername = event => {
