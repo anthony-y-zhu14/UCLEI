@@ -140,7 +140,6 @@ class Account extends React.Component {
 
         if(!this.state.user) {
             return (
-
               <div>
                   <h1>   Loading   </h1>
                   <LinearProgress/>

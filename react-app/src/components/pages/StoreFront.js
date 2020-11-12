@@ -13,55 +13,78 @@ import LineChart from '../Linechart';
 const styles = {
     root: {
       flexGrow: 1,
-    },    
+    },
     title: {
       flexGrow: 1,
     },
-    
+    font: {
+      color: "#000"
+    },
+    li: {
+      color: "#000",
+      textDecoration: 'underline',
+      '&:hover':{
+        color: '#6C9FF8',
+        cursor: 'pointer'
+      },
+    }
+
   };
 
 
 
 
 
-class StoreFront extends React.Component {    
+class StoreFront extends React.Component {
 
-    handleClick = () =>{    
-       
-        this.props.history.push('/login');  
-                
-       
-        
+    handleClick = () =>{
+        this.props.history.push('/login');
     }
-    
-    
 
-    
     render() {
         const { classes } = this.props;
 
         return(
             <div className={classes.root}>
                 <AppBar position="static">
-                    <Toolbar>                        
+                    <Toolbar>
                         <Typography variant="h6" className={classes.title}>
-                                Home
-                        </Typography>    
-                        
+                                Welcome
+                        </Typography>
+
                     </Toolbar>
                 </AppBar>
 
                 <Container maxWidth="sm">
-                    <h1>UCLEI</h1>                    
+                    <h1 className={classes.font}>UCLEI</h1>
                     <LinearProgress />
+                    <br />
+                    <Typography variant="h6" className={classes.title}>
+                            UCLEI is a stock trading simulation website that provides a safe, easy-to-use sandbox environment for users to experience how stock market trading works.
+                            Simply create an account and you will be welcomed to the website and free to explore the excitement of stocking trading without consequence! However, do be careful,
+                            press the wrong button, you could lose everything.
+                    </Typography>
+                    <br />
+                    <Typography variant="p" className={classes.title}>
+                    Made by Anthony Zhu and Joseph Malovic
+                    </Typography>
+                    <br />
+                    <br />
+
+                    <Typography variant="p" className={classes.title}>
+                    <a className={classes.li} href="https://github.com/anthony-y-zhu14/UCLEI---Stock-Trading-Platform-Sandbox" target="_blank">Check out the repo here</a>
+                    </Typography>
+                    <br />
+                    <br />
                     <Fab variant="extended" onClick={this.handleClick}>
                         <NavigationIcon />
                             Login
                     </Fab>
-                </Container>
-                
 
-                
+                </Container>
+
+
+
 
 
             </div>
