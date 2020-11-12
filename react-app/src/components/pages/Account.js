@@ -3,6 +3,7 @@ import { Button, ButtonGroup, Container, LinearProgress } from '@material-ui/cor
 import Header from "../Header";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
+import Fourohone from '../fourohone.js';
 
 
 import "../css/Account.css"
@@ -11,6 +12,19 @@ const styles = {
   input: {
     color: "#fff"
   },
+  fourohone: {
+    marginLeft: '20rem',
+    color: '#000'
+  },
+  li: {
+    marginLeft: '20rem',
+    textDecoration: 'underline',
+    color: '#000',
+    '&:hover':{
+      color: '#6C9FF8',
+      cursor: 'pointer'
+    },
+  }
 };
 
 class Account extends React.Component {
@@ -117,22 +131,23 @@ class Account extends React.Component {
       if(!this.state.user && !this.state.session_id) {
         return (
           <div>
-            <h1>401 Not Authorized.</h1>
-            <a href='/login'>Return to Login</a>
+            <h1 className={classes.fourohone}>401 Not Authorized.</h1>
+            <a className={classes.li} href='/login'>Return to Login</a>
+            <Fourohone />
           </div>
         );
-      }   
+      }
 
         if(!this.state.user) {
             return (
 
               <div>
                   <h1>   Loading   </h1>
-                  <LinearProgress/>                    
+                  <LinearProgress/>
               </div>
             );
         }
-          
+
 
         return(
             <div>

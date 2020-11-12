@@ -6,6 +6,8 @@ import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } fro
 import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
+import Fourohone from '../fourohone.js';
+
 
 const styles = {
     main: {
@@ -100,6 +102,19 @@ const styles = {
     controller: {
       float: 'right',
       marginRight: '1rem'
+    },
+    fourohone: {
+      marginLeft: '20rem',
+      color: '#000'
+    },
+    li: {
+      marginLeft: '20rem',
+      textDecoration: 'underline',
+      color: '#000',
+      '&:hover':{
+        color: '#6C9FF8',
+        cursor: 'pointer'
+      },
     }
   };
 
@@ -171,11 +186,12 @@ class Market extends React.Component {
         if(!this.state.user && !this.state.session_id) {
           return (
             <div>
-              <h1>401 Not Authorized.</h1>
-              <a href='/login'>Return to Login</a>
+              <h1 className={classes.fourohone}>401 Not Authorized.</h1>
+              <a className={classes.li} href='/login'>Return to Login</a>
+              <Fourohone />
             </div>
           );
-        }   
+        }
 
         if(!this.state.user) {
           return (
@@ -184,7 +200,7 @@ class Market extends React.Component {
               <LinearProgress/>
             </div>
           );
-        }   
+        }
 
         return (
             <div>

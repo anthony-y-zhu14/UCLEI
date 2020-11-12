@@ -3,6 +3,8 @@ import Header from "../Header.js";
 import NewsList from '../NewsList.js';
 import { withStyles } from "@material-ui/core/styles";
 import { LinearProgress } from '@material-ui/core';
+import Fourohone from '../fourohone.js';
+
 
 const styles = {
   main: {
@@ -102,8 +104,18 @@ const styles = {
   innBln: {
     width: '40%'
   },
-  errpr: {
-    color: 'red'
+  fourohone: {
+    marginLeft: '20rem',
+    color: '#000'
+  },
+  li: {
+    marginLeft: '20rem',
+    textDecoration: 'underline',
+    color: '#000',
+    '&:hover':{
+      color: '#6C9FF8',
+      cursor: 'pointer'
+    },
   }
 };
 
@@ -118,7 +130,7 @@ class Dashboard extends React.Component {
 
   //this.props.location.state.session_id
 
-  componentDidMount() {    
+  componentDidMount() {
 
     // this.setState({session_id: this.props.location.state.session_id})
     // Calls our fetch below once the component mounts
@@ -143,26 +155,26 @@ class Dashboard extends React.Component {
 
     const { classes } = this.props;
 
-    
+
     if(!this.state.user && !this.state.session_id) {
       return (
         <div>
-          <h1>401 Not Authorized.</h1>
-          <a href='/login'>Return to Login</a>
+          <h1 className={classes.fourohone}>401 Not Authorized.</h1>
+          <a className={classes.li} href='/login'>Return to Login</a>
+          <Fourohone />
         </div>
-        
       );
-    }   
+    }
 
     if(!this.state.user) {
       return (
 
         <div>
             <h1>   Loading   </h1>
-            <LinearProgress/>                    
+            <LinearProgress/>
         </div>
       );
-    } 
+    }
 
     if(!this.state.session_id) {
       return (
@@ -171,14 +183,14 @@ class Dashboard extends React.Component {
           <a href="\login">Go back to Login</a>
         </React.Fragment>
       );
-    }   
+    }
 
     let crtPg = 'Dashboard';
     let username = this.state.user.username;
 
     return (
 
-      
+
         <div>
           <Header currentPage={crtPg} userName={username}/>
           <div className={classes.main}>

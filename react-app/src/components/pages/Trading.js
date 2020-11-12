@@ -3,6 +3,8 @@ import React from 'react';
 import Header from "../Header";
 import '../css/Trading.css'
 import { withStyles } from '@material-ui/styles';
+import Fourohone from '../fourohone.js';
+
 
 const styles = {
    input: {
@@ -15,6 +17,19 @@ const styles = {
         margin: '4% auto',
         marginLeft: 20,
         display: 'inline-block'
+    },
+    fourohone: {
+      marginLeft: '20rem',
+      color: '#000'
+    },
+    li: {
+      marginLeft: '20rem',
+      textDecoration: 'underline',
+      color: '#000',
+      '&:hover':{
+        color: '#6C9FF8',
+        cursor: 'pointer'
+      },
     }
   }
 
@@ -137,15 +152,15 @@ class Trading extends React.Component {
             this.setState ({
                 stock_found: stock[0],
                 isStockFound: true
-            });    
+            });
             console.log(this.state.stock_found);
 
-        }  
+        }
         else{
             alert("Failed to find a stock with that symbol");
         }
 
-        
+
 
     }
 
@@ -172,12 +187,13 @@ class Trading extends React.Component {
 
         if(!this.state.user && !this.state.session_id) {
             return (
-                <div>
-                    <h1>401 Not Authorized.</h1>
-                    <a href='/login'>Return to Login</a>
-                </div>
+              <div>
+                <h1 className={classes.fourohone}>401 Not Authorized.</h1>
+                <a className={classes.li} href='/login'>Return to Login</a>
+                <Fourohone />
+              </div>
             );
-          }   
+          }
 
         if(!this.state.user) {
             return (
@@ -185,7 +201,7 @@ class Trading extends React.Component {
                     <h1>   Loading   </h1>
                     <LinearProgress/>
                 </div>
-                
+
             );
         }
 
@@ -196,7 +212,7 @@ class Trading extends React.Component {
                 <a>Go back to Login</a>
               </React.Fragment>
             );
-          }   
+          }
 
         return (
             <div>
