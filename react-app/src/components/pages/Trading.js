@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, colors, Container, TextField } from '@material-ui/core';
+import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 import React from 'react';
 import Header from "../Header";
 import '../css/Trading.css'
@@ -181,7 +181,11 @@ class Trading extends React.Component {
 
         if(!this.state.user) {
             return (
-              <h1>Loading...</h1>
+                <div>
+                    <h1>   Loading   </h1>
+                    <LinearProgress/>
+                </div>
+                
             );
         }
 

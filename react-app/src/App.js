@@ -10,6 +10,7 @@ import Account from "./components/pages/Account.js"
 import Trading from './components/pages/Trading';
 import Login from './components/pages/Login.js';
 import Dashboard from './components/pages/Dashboard.js';
+import StoreFront from './components/pages/StoreFront.js';
 
 
 function App(){
@@ -20,8 +21,8 @@ function App(){
             setAuth(newAuth);
         }
 
-    useEffect(()=>{    
-        console.log("auth: ", auth);   
+    useEffect(()=>{   
+      
         if (auth === undefined){
             fetch('/session')
             .then((res) => res.json())
@@ -37,10 +38,14 @@ function App(){
     <React.Fragment>     
             <Router>            
                     <Switch>
+                        
                         <Route 
                         path="/login" 
                         component={() => <Login session_id={auth} onChange={handleChange} />}
-                        />                     
+                        />
+                        
+                        
+                        <Route  exact path="/" component={StoreFront}/>                       
                         <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
                         <Route path="/account"  component={() => <Account session_id={auth}/>}/>
                         <Route path="/market"  component={() => <Market session_id={auth}/>}/>

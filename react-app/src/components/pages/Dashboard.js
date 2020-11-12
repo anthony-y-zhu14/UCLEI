@@ -1,11 +1,8 @@
 import React from 'react';
 import Header from "../Header.js";
 import NewsList from '../NewsList.js';
-import { withCookies, Cookies } from 'react-cookie';
-
-
-
 import { withStyles } from "@material-ui/core/styles";
+import { LinearProgress } from '@material-ui/core';
 
 const styles = {
   main: {
@@ -159,7 +156,11 @@ class Dashboard extends React.Component {
 
     if(!this.state.user) {
       return (
-        <h1>Loading...</h1>
+
+        <div>
+            <h1>   Loading   </h1>
+            <LinearProgress/>                    
+        </div>
       );
     } 
 

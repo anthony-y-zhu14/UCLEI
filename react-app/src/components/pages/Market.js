@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import NewsList from '../NewsList.js';
 import Header from "../Header.js";
-import { Button, ButtonGroup, colors, Container, TextField } from '@material-ui/core';
+import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
@@ -177,12 +177,12 @@ class Market extends React.Component {
           );
         }   
 
-        if(!this.state.session_id) {
+        if(!this.state.user) {
           return (
-            <React.Fragment className={classes.error}>
-              <h1>401 Not Authorized.</h1>
-              <a>Go back to Login</a>
-            </React.Fragment>
+            <div>
+              <h1>   Loading   </h1>
+              <LinearProgress/>
+            </div>
           );
         }   
 

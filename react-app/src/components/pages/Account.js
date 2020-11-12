@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, ButtonGroup, Container } from '@material-ui/core';
+import { Button, ButtonGroup, Container, LinearProgress } from '@material-ui/core';
 import Header from "../Header";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
@@ -125,18 +125,14 @@ class Account extends React.Component {
 
         if(!this.state.user) {
             return (
-              <h1>Loading...</h1>
+
+              <div>
+                  <h1>   Loading   </h1>
+                  <LinearProgress/>                    
+              </div>
             );
         }
-        
-        if(!this.state.session_id) {
-          return (
-            <React.Fragment className={classes.error}>
-              <h1>401 Not Authorized.</h1>
-              <a>Go back to Login</a>
-            </React.Fragment>
-          );
-        }   
+          
 
         return(
             <div>
