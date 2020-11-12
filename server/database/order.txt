@@ -1,0 +1,45 @@
+User Orders;
+
+appending data to historical data in data.json every day , and adding volume 
+
+Buy: (FIFO) 
+
+1. User sends a request to server to buy a stock (post request {stock symbol, desired price, amount of shares})
+2. Server process the post request buy generating a orderID and added that to the user.openOrders
+3. Server adds a new order {stock symbol, desired price, amount of desired shares, username, orderID} to the order.json
+
+Sell: (FIFO)
+
+1. User sends a request to server to sell a stock  ({stock symbol, desired price, amount of shares})
+2. Server processes the post request
+    - generating an orderID
+    - adds to the user.openOrders
+3. Server adds a new order {stock symbol, desired price, amount of shares, username, orderID} to the order.json
+
+LimitBuy:
+
+LimitSell:
+
+Chart:
+
+Server Activty:
+
+User Activity: 
+
+User Ability to Cancel Orders:
+
+
+
+In addition to the web-based client that most users will use, your stock trading platform must also provide a public JSON REST API that supports the following routes and parameters, at minimum:
+1. GET/stocks–Allowssearchingofstocksymbols.Returnsanarrayofstock symbols that match the query. Must support at least the following query parameters:
+a. symbol–Astringthatshouldbeconsideredamatchforanystock symbol that contains the given string symbol. If no value is given for this parameter, all stock symbols should fulfill the symbol constraint.
+b. minprice–Anumberthatshouldbeconsideredamatchifthecurrent price of the stock is greater than or equal to minprice. If no value is given for this parameter, the minimum price constraint should be ignored.
+c. maxprice – A number that should be considered a match if the current price of the stock is less than or equal to maxprice. If no value is given for this parameter, the maximum price constraint should be ignored.
+2. GET/stocks/:symbol–Allowsretrievinginformationaboutaspecificstock with the given symbol. Returns an array containing a single object entry for each day in the requested date range. For each day in the given range, this information must include at least the daily high/low prices, the closing/current price, and the number of shares traded during the current day. If no query parameters are specified, then only the current day’s information should be sent. This route must support at least the following query parameters:
+a. startday–Anumberrepresentingthestartingpointforthehistorical information. If an endday parameter is included but the startday parameter is not, the startday default value should be day 0 (i.e., server start).
+b. endday–Anumberrepresentingtheendingpointforthehistorical information. If a startday parameter is included but the endday parameter is not, the endday default value should be the current day.
+5
+  COMP 2406 – Fall 2020 Stock Trading Platform Project
+  3. GET/stocks/:symbol/history–Allowsretrievinginformationaboutpast trades of the stock with the given symbol. This information must include the buyer username, seller username, buy price, sell price, and number of shares exchanged for each successful order fulfillment with the given symbol within the given date ranges. If no query parameters are specified, then only the current day’s information should be sent. Your API must support at least the following query parameters:
+a. startday–Anumberrepresentingthestartingpointfortheinformation. If an endday parameter is included but the startday parameter is not, the startday default value should be day 0 (i.e., server start).
+b. endday–Anumberrepresentingtheendingpointfortheinformation.If a startday parameter is included but the endday parameter is not, the endday default value should be the current day.

@@ -4,15 +4,12 @@
         "symbol": "AAL",
         "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
         "percentage": "-0.82 (-6.21%)",
-        "quote": "12.38",
+        "volume": 0,
+        "quote": 12.38,
         "prev_close": "13.20",
         "open": "12.85",
         "daily_range": "12.34 - 13.02",
-        "annual_range": "8.25 - 30.78",
-        "volume": "124,084,029",
-        "average_volume": "62,811,753",
-        "stock_page": "https://ca.finance.yahoo.com/quote/AAL?p=AAL&.tsrc=fin-srch",
-        "time_updated": "2020-11-10 19:46:30.551915"
+        "historical": [29.30, 30.78]
     },
     "AAPL": {
         "name": "Apple Inc.",

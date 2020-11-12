@@ -39,10 +39,10 @@ export default function OutlinedCard({stock}) {
           {stock.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          {stock.market}
+          {stock.quote}
         </Typography>
         <Typography variant="body2" component="p">
-          {stock.quote}
+          ${stock.quote}
         
           
         </Typography>

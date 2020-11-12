@@ -19,7 +19,7 @@ app.use(session({
     cookie: {
         httpOnly: true, //true by default
         maxAge: 3600000, //milliseconds (1hr)
-        sameSite: true //strict
+        sameSite: true //'strict/
     }
 }));
 
@@ -28,10 +28,6 @@ function isSessionValid(s, u){
         return true;
     }
     return false;
-}
-
-function updateUserDataBase(u){
-    fs.writeFileSync("../database/users/users.json", JSON.stringify(u));
 }
 
 
@@ -138,7 +134,6 @@ app.post('/updateBalance', (request, response) => {
 
         request.on('end', () => {
         console.log(`\nClient ${users[request.session.user]} balance updated to ${data}.\n`)
-        updateUserDataBase(users);
         response.end();
 
         });
@@ -165,7 +160,6 @@ app.post('/delWatchItem', (request, response) => {
 
         request.on('end', () => {
         users[request.session.user]['watchlist'].splice(users[request.session.user]['watchlist'].indexOf(data.item), 1);
-        updateUserDataBase(users);
         response.end();
         console.log(users[request.session.user]['watchlist']);
     });
@@ -182,7 +176,6 @@ app.post('/addEventNotify', (request, response) => {
         request.on('end', () => {
         if(!users[request.session.user]['eventList'].includes(data)) {
             users[request.session.user]['eventList'].push(data); }
-        updateUserDataBase(users);
         response.end();
         });
 
@@ -200,7 +193,6 @@ app.post('/rmvEventNotify', (request, response) => {
 
         request.on('end', () => {
         if(!users[request.session.user]['eventList'].includes(data)) { users[request.session.user]['eventList'].splice(users[request.session.user]['eventList'].indexOf(data, 1)) }
-        updateUserDataBase(users);
         response.end();
         });
     }
@@ -217,8 +209,7 @@ app.post('/addWatchItem', (request, response) => {
             if(!users[request.session.user]['watchlist'].includes(data.value)) {
                 users[request.session.user]['watchlist'].push(data.value);
             }
-            updateUserDataBase(users);
-            response.end();
+        response.end();
         });
     }
  });
@@ -315,8 +306,6 @@ app.post('/sellStock', (request, response) => {
             let quantity = data.n;
             let stockSymbol = data.name;
             sellStock(quantity, stockSymbol);
-            updateUserDataBase(users);
-
             response.end();
 
         });
@@ -368,8 +357,6 @@ app.get('/stock-data-w', (request, response) => {
             data.push(lis[item]);
             }
             response.write(JSON.stringify(data));
-            updateUserDataBase(users);
-
             response.end();
 
         });

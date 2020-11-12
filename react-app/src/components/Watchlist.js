@@ -107,8 +107,8 @@ class CheckboxList extends React.Component {
               </IconButton>
               <ListItemText id={labelId} primary={value}/>
               <ListItemSecondaryAction>
-                <IconButton edge="end" aria-label="delete">
-                  <DeleteIcon onClick={() => this.delWatchItem(value)}/>
+                <IconButton onClick={() => this.delWatchItem(value)} edge="end" aria-label="delete">
+                  <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
             </ListItem>
