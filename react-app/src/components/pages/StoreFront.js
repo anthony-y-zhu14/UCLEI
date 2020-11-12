@@ -37,9 +37,9 @@ const styles = {
 
 class StoreFront extends React.Component {
 
-    handleClick = () =>{
+    handleLogin = () =>{
         this.props.history.push('/login');
-    }
+    }   
 
     render() {
         const { classes } = this.props;
@@ -66,7 +66,7 @@ class StoreFront extends React.Component {
                     </Typography>
                     <br />
                     <Typography variant="p" className={classes.title}>
-                    Made by Anthony Zhu and Joseph Malovic
+                    Made by Anthony Y. Zhu and Joseph Malovic
                     </Typography>
                     <br />
                     <br />
@@ -76,10 +76,11 @@ class StoreFront extends React.Component {
                     </Typography>
                     <br />
                     <br />
-                    <Fab variant="extended" onClick={this.handleClick}>
+                    <Fab variant="extended" onClick={this.handleLogin}>
                         <NavigationIcon />
-                            Login
+                            Get Started
                     </Fab>
+                    
 
                 </Container>
 

@@ -5,10 +5,12 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { blueGrey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 50,
+    minWidth: 5,
+    
   },
   bullet: {
     display: 'inline-block',
@@ -23,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function OutlinedCard() {
+export default function OutlinedCard({stock}) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
@@ -31,17 +33,17 @@ export default function OutlinedCard() {
     <Card className={classes.root} variant="outlined">
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          ACB
+          {stock.symbol}
         </Typography>
         <Typography variant="h5" component="h2">
-          Auroria Cannabis Inc.
+          {stock.name}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          Market (Nasdaq / NYSE)
+          {stock.market}
         </Typography>
         <Typography variant="body2" component="p">
-          PRICE / PERCENT GROWTH
-          <br />
+          {stock.quote}
+        
           
         </Typography>
       </CardContent>

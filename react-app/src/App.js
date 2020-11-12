@@ -11,6 +11,7 @@ import Trading from './components/pages/Trading';
 import Login from './components/pages/Login.js';
 import Dashboard from './components/pages/Dashboard.js';
 import StoreFront from './components/pages/StoreFront.js';
+import Register from './components/pages/Register.js';
 
 
 function App(){
@@ -43,6 +44,8 @@ function App(){
                         path="/login" 
                         component={() => <Login session_id={auth} onChange={handleChange} />}
                         />
+
+                        <Route path="/register"  component={Register}/>
                         
                         
                         <Route  exact path="/" component={StoreFront}/>                       

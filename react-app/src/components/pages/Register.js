@@ -34,7 +34,7 @@ const styles = {
   }
 };
 
-class Login extends React.Component {
+class Register extends React.Component {
   _isMounted = false;
     constructor(props) {
         super(props);
@@ -54,10 +54,6 @@ class Login extends React.Component {
       this.setState = ()=>{
         return;
       };
-    }
-
-    register(){
-      alert('In Progress!');
     }
 
     login = async () => {
@@ -113,7 +109,7 @@ class Login extends React.Component {
                     <h1> UCLEI </h1>
                     <div className="welcomeMsg">
                       <h3 className="welcome">Welcome,</h3>
-                      <p className="welcomeMsgTxt"> We're happy to see you back.</p>
+                      <p className="welcomeMsgTxt"> We're happy to have you.</p>
                     </div>
                 </div>
 
@@ -136,9 +132,6 @@ class Login extends React.Component {
 
             <div >
               <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>
-              Login
-              </Button>
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.register}>
               Register
               </Button>
             </div>
@@ -151,4 +144,4 @@ class Login extends React.Component {
 
   export default compose(
      withStyles(styles),
-  )(withRouter(Login))
+  )(withRouter(Register))
