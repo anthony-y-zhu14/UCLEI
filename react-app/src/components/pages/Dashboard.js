@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from "../Header.js";
 import NewsList from '../NewsList.js';
+import { withCookies, Cookies } from 'react-cookie';
+
 
 
 import { withStyles } from "@material-ui/core/styles";
@@ -114,12 +116,13 @@ class Dashboard extends React.Component {
     this.state = {
       user: undefined,
       session_id: null
-    };
+      };
   };
 
   //this.props.location.state.session_id
 
-  componentDidMount() {
+  componentDidMount() {    
+
     // this.setState({session_id: this.props.location.state.session_id})
     // Calls our fetch below once the component mounts
 
@@ -143,18 +146,28 @@ class Dashboard extends React.Component {
 
     const { classes } = this.props;
 
+    
+    if(!this.state.user && !this.state.session_id) {
+      return (
+        <div>
+          <h1>401 Not Authorized.</h1>
+          <a href='/login'>Return to Login</a>
+        </div>
+        
+      );
+    }   
 
     if(!this.state.user) {
       return (
         <h1>Loading...</h1>
       );
-    }   
+    } 
 
     if(!this.state.session_id) {
       return (
         <React.Fragment className={classes.error}>
           <h1>401 Not Authorized.</h1>
-          <a>Go back to Login</a>
+          <a href="\login">Go back to Login</a>
         </React.Fragment>
       );
     }   

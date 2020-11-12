@@ -90,7 +90,7 @@ class CheckboxList extends React.Component {
 
     if(!this.state.userWatchlist) {
       return (
-        <h1>Loading...</h1>
+        <h1>401 Not Authorized...</h1>
       )
     }
 

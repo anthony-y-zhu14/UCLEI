@@ -170,13 +170,21 @@ class Trading extends React.Component {
     render() {
         const { classes } = this.props;
 
+        if(!this.state.user && !this.state.session_id) {
+            return (
+                <div>
+                    <h1>401 Not Authorized.</h1>
+                    <a href='/login'>Return to Login</a>
+                </div>
+            );
+          }   
+
         if(!this.state.user) {
             return (
               <h1>Loading...</h1>
             );
         }
 
-        
         if(!this.state.session_id) {
             return (
               <React.Fragment className={classes.error}>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -8,7 +8,6 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -16,7 +15,6 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import TemporaryDrawer from "./Menu.js"
 import { Avatar } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
-import {withRouter} from 'react-router-dom';
 import { useHistory } from "react-router-dom";
 
 
@@ -99,13 +97,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  const [open, setOpen] = useState(false);
-
-
-  const handleSideNav = () => {
-    setOpen(true)
-  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -193,15 +184,10 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleSideNav}
-          >
-            <MenuIcon />
-          </IconButton>
+          
+            <TemporaryDrawer />            
+            
+         
           <Typography className={classes.title} variant="h6" noWrap>
             {currentPage}
           </Typography>
@@ -254,15 +240,14 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       {renderMobileMenu}
       {renderMenu}
 
+     
 
-      <Menu
-        open = {open}
-        onClose={()=>setOpen(false)}
-      >
-        <TemporaryDrawer />
-      </Menu>
+
+      
 
     </div>
+
+
 
 
   )
