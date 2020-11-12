@@ -4,6 +4,7 @@ import Header from "../Header";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
+import OutlinedCard from '../OutlinedCard.js';
 
 
 import "../css/Account.css"
@@ -196,11 +197,12 @@ class Account extends React.Component {
                                 </ButtonGroup>
                                 <ul id="table-container">
 
-                                <div>
+                                
                                     {this.state.holdingBtn && (
                                         <React.Fragment>
                                             {this.state.user.ownedStocks.map(stock => (
-                                                <li id={stock.name} className="stock-holding">{stock.name}</li>
+                                                <OutlinedCard stock={stock}/>
+                                                
                                             ))}
                                         </React.Fragment>
                                     )}
@@ -211,7 +213,7 @@ class Account extends React.Component {
                                             ))}
                                         </React.Fragment>
                                     )}
-                                </div>
+                                
                                 </ul>
 
                             </div>
