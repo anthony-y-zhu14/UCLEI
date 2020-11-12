@@ -48,7 +48,7 @@ class Login extends React.Component {
             error: false,
         };
         this.login = this.login.bind(this);
-    } 
+    }
 
     componentWillUnmount() {
       this.setState = ()=>{
@@ -69,14 +69,14 @@ class Login extends React.Component {
         const data = await response.json();
         this.setState({ authenticated: data.authentication});
         this.props.onChange(data.session_id);
-        
+
         if(this.state.authenticate === 'onload') {
           this.setState({ id: 'outlined-basic', helperText: '', error: false})
         }
         else if(!this.state.authenticate) {
           this.setState({ id: 'outlined-error-helper-text', helperText: 'Invalid Username', error: true, helperTextPsw: 'Invalid Password'})
         }
-        if(this.state.authenticated) {  
+        if(this.state.authenticated) {
           this.navToDsh();
         }
     }
@@ -99,7 +99,7 @@ class Login extends React.Component {
     }
 
     render() {
-      const { classes } = this.props;      
+      const { classes } = this.props;
 
       return (
         <form className="login">

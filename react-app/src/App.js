@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { 
-    BrowserRouter as Router, 
+import {
+    BrowserRouter as Router,
     Route,
     Switch,
     Redirect} from 'react-router-dom';
@@ -14,46 +14,46 @@ import StoreFront from './components/pages/StoreFront.js';
 
 
 function App(){
-    const [auth, setAuth] = useState(undefined); 
+    const [auth, setAuth] = useState(undefined);
 
-    function handleChange(newAuth){ 
-            
+    function handleChange(newAuth){
+
             setAuth(newAuth);
         }
 
-    useEffect(()=>{   
-      
+    useEffect(()=>{
+
         if (auth === undefined){
             fetch('/session')
             .then((res) => res.json())
             .then((data) => setAuth(data))
-            .catch((error) => console.log(error.message));    
-        }             
-                    
-    },[auth]);  
-   
+            .catch((error) => console.log(error.message));
+        }
+
+    },[auth]);
+
 
 
     return (
-    <React.Fragment>     
-            <Router>            
+    <React.Fragment>
+            <Router>
                     <Switch>
-                        
-                        <Route 
-                        path="/login" 
+
+                        <Route
+                        path="/login"
                         component={() => <Login session_id={auth} onChange={handleChange} />}
                         />
-                        
-                        
-                        <Route  exact path="/" component={StoreFront}/>                       
+
+
+                        <Route  exact path="/" component={StoreFront}/>
                         <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
                         <Route path="/account"  component={() => <Account session_id={auth}/>}/>
                         <Route path="/market"  component={() => <Market session_id={auth}/>}/>
                         <Route path="/trading"  component={() => <Trading session_id={auth}/>}/>
-                    </Switch>                                       
-            </Router>    
+                    </Switch>
+            </Router>
     </React.Fragment>
-    )    
+    )
 }
 
 

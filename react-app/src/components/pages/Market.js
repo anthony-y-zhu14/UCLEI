@@ -8,7 +8,6 @@ import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
 
-
 const styles = {
     main: {
       display: 'flex',
@@ -127,9 +126,13 @@ class Market extends React.Component {
             chartTicker: undefined,
             chartPrice: undefined,
             chartGrowth: undefined,
-            session_id: null
+            session_id: null,
+            day_start: undefined,
+            day_end: undefined,
+            query: window.location.href.slice(29)
         };
     }
+
 
     componentDidMount() {
 
@@ -167,6 +170,12 @@ class Market extends React.Component {
         }
         if(this.state.chartGrowth !== data.selectedStock[0].percentage) {
           this.setState({chartGrowth: data.selectedStock[0].percentage});
+        }
+        if(this.state.day_start !== data.selectedStock[0].open) {
+          this.setState({day_start: data.selectedStock[0].open});
+        }
+        if(this.state.day_end !== data.selectedStock[0].prev_close) {
+          this.setState({day_end: data.selectedStock[0].prev_close});
         }
       }
     }
@@ -212,13 +221,12 @@ class Market extends React.Component {
               <span className={classes.ticker} id="addBtn"><i className={classes.ticker} onClick={() => this.handleWatchSave(this.state.chartTicker)} className="fa fa-bookmark"></i></span>
               <ButtonGroup className={classes.controller}>
                 <Button variant="outlined" size="small" color="primary" className={classes.margin}>Day</Button>
-                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Month</Button>
                 <Button variant="outlined" size="small" color="primary" className={classes.margin}>Year</Button>
               </ButtonGroup>
               <br />
               <span className={classes.smallFont}>${this.state.chartPrice}</span>
               <span className={classes.smallFont}>{this.state.chartGrowth}</span>
-              <LineChart className={classes.chart}/>
+              <LineChart className={classes.chart} ticker={this.state.query}/>
               </div>
               <div className={classes.newsContainer}>
                 <h3 className={classes.font}>Market News</h3>

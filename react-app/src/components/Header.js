@@ -1,4 +1,5 @@
 import React from 'react';
+import Dashboard from './pages/Dashboard.js';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -16,7 +17,7 @@ import TemporaryDrawer from "./Menu.js"
 import { Avatar } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
 import { useHistory } from "react-router-dom";
-
+import {withRouter} from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -93,7 +94,9 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   const history = useHistory();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [search, setSearch] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -110,6 +113,24 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     }
     return body;
   };
+
+  const setSearchQuery = (event) => {
+      setSearch(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+
+    if(event.charCode === 13) {
+      console.log(event.target.value);
+      let location = {
+        pathname: `/market/${event.target.value}`,
+        state: {
+          query: event.target.value
+        }
+      }
+      history.push(location);
+  }
+}
 
   const logout = (value) => {
     callBackendAPI()
@@ -184,10 +205,10 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          
-            <TemporaryDrawer />            
-            
-         
+
+            <TemporaryDrawer />
+
+
           <Typography className={classes.title} variant="h6" noWrap>
             {currentPage}
           </Typography>
@@ -196,12 +217,15 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
               <SearchIcon />
             </div>
             <InputBase
-              placeholder="Search…"
+              placeholder="Search for a Stock…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
+              onChange = {setSearchQuery}
+              value = {search}
               inputProps={{ 'aria-label': 'search' }}
+              onKeyPress={handleSubmit}
             />
           </div>
           <div className={classes.grow} />
@@ -240,10 +264,10 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       {renderMobileMenu}
       {renderMenu}
 
-     
 
 
-      
+
+
 
     </div>
 
@@ -257,4 +281,4 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   );
 }
 
-export default PrimarySearchAppBar;
+export default (withRouter)(PrimarySearchAppBar);

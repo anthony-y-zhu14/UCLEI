@@ -9,7 +9,6 @@ import Fab from '@material-ui/core/Fab';
 import { Container, LinearProgress } from '@material-ui/core';
 import LineChart from '../Linechart';
 
-
 const styles = {
     root: {
       flexGrow: 1,
@@ -30,10 +29,6 @@ const styles = {
     }
 
   };
-
-
-
-
 
 class StoreFront extends React.Component {
 
@@ -61,8 +56,8 @@ class StoreFront extends React.Component {
                     <br />
                     <Typography variant="h6" className={classes.title}>
                             UCLEI is a stock trading simulation website that provides a safe, easy-to-use sandbox environment for users to experience how stock market trading works.
-                            Simply create an account and you will be welcomed to the website and free to explore the excitement of stocking trading without consequence! However, do be careful,
-                            press the wrong button, you could lose everything.
+                            Simply create an account and you will be welcomed to the website and free to explore the excitement of stock trading without consequence! However, do be careful,
+                            press the wrong button, and you could lose everything.
                     </Typography>
                     <br />
                     <Typography variant="p" className={classes.title}>
@@ -80,13 +75,7 @@ class StoreFront extends React.Component {
                         <NavigationIcon />
                             Login
                     </Fab>
-
                 </Container>
-
-
-
-
-
             </div>
             )
     }
