@@ -1,1 +1,89 @@
-{"jerry137":{"username":"jerry137","password":"123456","session_id":"3e2cc45b-898d-489a-a2ab-3d56fa69a914","name":"Jerry Smith","watchlist":["AAL","TSLA","FB","SHOP"],"eventList":["AAL","SE"],"ownedStocks":[],"activity":[],"account":{"accountName":1001,"cashBalance":1020,"investmentBalance":0},"balanceGrowth":"-20%"},"morty137":{"username":"morty137","password":"123456","session_id":null,"name":"Morty Smith","watchlist":["SHOP"],"eventList":["AAL","SE"],"ownedStocks":[],"activity":[],"account":{"accountName":1002,"cashBalance":0,"investmentBalance":0},"balanceGrowth":"0"},"rick137":{"username":"rick137","password":"123456","session_id":null,"name":"Rick Sanchez","watchlist":[],"eventList":[],"ownedStocks":[],"activity":[],"account":{"accountName":1003,"cashBalance":0,"investmentBalance":0},"balanceGrowth":"0"}}
+{
+  "jerry137": {
+    "username": "jerry137",
+    "password": "123456",
+    "session_id": "1fd51b82-41b5-4d1f-9e36-324ea1f06eda",
+    "name": "Jerry Smith",
+    "watchlist": [
+      "AAL",
+      "TSLA",
+      "FB",
+      "SHOP"
+    ],
+    "eventList": [
+      "AAL",
+      "SE"
+    ],
+    "ownedStocks": [
+      {
+        "name": "Advanced Micro Devices, Inc.",
+        "quote": "77.99",
+        "symbol": "AMD",
+        "share": 2
+      }
+    ],
+    "activity": [
+      "Bought 2 shares of TSLA at $410.36",
+      "Sold 2 shares of TSLA at $410.36",
+      "Bought 2 shares of TSLA at $410.36",
+      "Sold 2 shares of TSLA at $410.36",
+      "Bought 2 shares of TSLA at $410.36",
+      "Sold 2 shares of TSLA at $410.36",
+      "Bought 2 shares of AMD at $77.99",
+      "Bought 1 shares of TSLA at $410.36",
+      "Bought 1 shares of TSLA at $410.36",
+      "Sold 1 shares of TSLA at $410.36",
+      "Sold 1 shares of TSLA at $410.36",
+      "Sold 1 shares of AMD at $77.99",
+      "Sold 1 shares of AMD at $77.99",
+      "Bought 2 shares of AMD at $77.99",
+      "Sold 2 shares of AMD at $77.99",
+      "Bought 2 shares of AMD at $77.99",
+      "Sold 2 shares of AMD at $77.99",
+      "Bought 2 shares of AMD at $77.99"
+    ],
+    "account": {
+      "accountName": 1001,
+      "cashBalance": 874.02,
+      "investmentBalance": 155.98000000000002
+    },
+    "balanceGrowth": "-20%"
+  },
+  "morty137": {
+    "username": "morty137",
+    "password": "123456",
+    "session_id": null,
+    "name": "Morty Smith",
+    "watchlist": [
+      "SHOP"
+    ],
+    "eventList": [
+      "AAL",
+      "SE"
+    ],
+    "ownedStocks": [],
+    "activity": [],
+    "account": {
+      "accountName": 1002,
+      "cashBalance": 0,
+      "investmentBalance": 0
+    },
+    "balanceGrowth": "0"
+  },
+  "rick137": {
+    "username": "rick137",
+    "password": "123456",
+    "session_id": null,
+    "name": "Rick Sanchez",
+    "watchlist": [],
+    "eventList": [],
+    "ownedStocks": [],
+    "activity": [],
+    "account": {
+      "accountName": 1003,
+      "cashBalance": 0,
+      "investmentBalance": 0
+    },
+    "balanceGrowth": "0"
+  }
+}
