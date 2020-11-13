@@ -293,7 +293,7 @@ class Trading extends React.Component {
                                         <li id={stock.name} className="stock-holding">
                                         <p>Name: {stock.name}</p>
                                         <p>Shares: {stock.share},</p>
-                                        <p>Average Price: {stock.quote}</p>
+                                        <p>Average Price: {stock.average_cost}</p>
                                         </li>
                                     ))}
                                 </React.Fragment>

@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "777e79ed-330a-4575-8aed-c75d1226920c",
+    "session_id": "fb5439df-c2a7-468e-a2d0-5938a02ffee9",
     "name": "Jerry Smith",
     "watchlist": [
       "AAL",
@@ -10,19 +10,25 @@
       "FB",
       "SHOP"
     ],
-    "openOrders": [],
+    "openOrders": [
+      
+    ],
     "eventList": [
       "AAL",
       "SE"
     ],
-    "ownedStocks": [],
-    "activity": [],
+    "ownedStocks": [
+      
+    ],
+    "activity": [
+      
+    ],
     "account": {
       "accountName": 1001,
-      "cashBalance": 2212.71,
-      "investmentBalance": 817.29
+      "cashBalance": 9980,
+      "investmentBalance": 0
     },
-    "balanceGrowth": "-20%"
+    "balanceGrowth": 0
   },
   "morty137": {
     "username": "morty137",
@@ -32,17 +38,39 @@
     "watchlist": [
       "SHOP"
     ],
-    "openOrders": [],
+    "openOrders": [
+      {
+        "name": "Facebook, Inc.",
+        "quote": "272.43",
+        "symbol": "FB",
+        "share": 2,
+        "orderType": "Sell",
+        "orderId": "eca82387-6ff9-4e49-b5ef-0d517a4e6d1b",
+        "username": "morty137",
+        "date": "2020-11-13",
+        "limitPrice": 10
+      }
+    ],
     "eventList": [
       "AAL",
       "SE"
     ],
-    "ownedStocks": [],
-    "activity": [],
+    "ownedStocks": [
+      {
+        "name": "Facebook, Inc.",
+        "quote": 10,
+        "total_cost": 20,
+        "average_cost": 10,
+        "symbol": "FB",
+        "share": 2
+      }
+    ],
+    "activity": [
+    ],
     "account": {
       "accountName": 1002,
-      "cashBalance": 2000,
-      "investmentBalance": 0
+      "cashBalance": 2060,
+      "investmentBalance": 20
     },
     "balanceGrowth": "0"
   },
@@ -56,17 +84,8 @@
     ],
     "openOrders": [],
     "eventList": [],
-    "ownedStocks": [
-      {
-        "name": "Advanced Micro Devices, Inc.",
-        "quote": "77.99",
-        "symbol": "AMD",
-        "share": 12
-      }
-    ],
-    "activity": [
-      "Bought 12 shares of AMD at $77.99"
-    ],
+    "ownedStocks": [],
+    "activity": [],
     "account": {
       "accountName": 1003,
       "cashBalance": 9064.12,
