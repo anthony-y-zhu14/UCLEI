@@ -137,8 +137,7 @@ app.get('/getWatchlist', (req, res) => {
 
 app.post('/updateBalance', (request, response) => {
     if (isSessionValid(request.session, request.session.user)){
-        let data = "";
-        let newBalance = 0;
+        let data = "";;
 
         request.on('data', (chunk) => {
             data = JSON.parse(chunk);
