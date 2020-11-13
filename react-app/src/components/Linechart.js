@@ -1,41 +1,76 @@
-import React, { useEffect } from "react";
+import React from "react";
+import PropTypes from 'prop-types';
 import Chart from "chart.js";
+import { LinearProgress } from '@material-ui/core';
 
-export default function LineChart({ticker}) {
 
-  const readStock = async (event) => {
-    //should be get request with query param as id
-    const response = await fetch(`/stock-data?search=${ticker}`);
-    const body = await response.json();
-    if (response.status !== 200) {
-      throw Error(body.message)
-    }
-    console.log(body)
+class LineChart extends React.Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+          stockData: undefined,
+      };
   }
 
-  useEffect(() => {
-    // let data = getData('TSLA');
-    const ctx = document.getElementById("marketChart");
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels:  [],
-        datasets: [
-          {
-            label: "Week",
-            data: [],
-            backgroundColor: '#6C9FF8',
-            borderColor: '#35363C',
-            borderWidth: 1
-          }
-        ]
-      }
-    });
-  });
-  return (
-    <div className="App">
-      <h1 onClick={readStock}>{ticker}</h1>
-      <canvas id="marketChart"/>
-    </div>
-  );
-}
+  componentDidMount() {
+    this.setState({stockData: this.props.cData});
+    console.log(this.props.cData)
+  }
+
+  render() {
+
+    // const ctx = document.getElementById("marketChart");
+    //     new Chart(ctx, {
+    //       type: 'line',
+    //       data: {
+    //         labels: [1,2],
+    //         datasets: [
+    //           {
+    //             label: "Week",
+    //             data: [1,2],
+    //             backgroundColor: '#6C9FF8',
+    //             borderColor: '#35363C',
+    //             borderWidth: 1
+    //           }
+    //         ]
+    //       }
+    //     });
+
+
+    if(!this.state.stockData) {
+      return (
+        <div>
+        <h5>   Loading   </h5>
+        <LinearProgress/>
+        </div>
+      );
+    }
+      return (
+        <div className="App">
+        <canvas id="marketChart"/>
+        </div>
+      );
+    }
+  }
+
+
+
+
+//   useEffect(() => {
+//     setData(cData);
+//     console.log(cData);
+//     if(cdata) {
+//       // let data = getData('TSLA');
+//
+//     return (
+//       <div className="App">
+//         <canvas id="marketChart"/>
+//       </div>
+//     );
+//
+//
+// }
+//
+// }
+
+export default LineChart;

@@ -129,13 +129,23 @@ class Market extends React.Component {
             session_id: null,
             day_start: undefined,
             day_end: undefined,
-            query: window.location.href.slice(29)
+            query: window.location.href.slice(29),
+            stockData: undefined
         };
     }
 
+    readStock = async(event) => {
+      //should be get request with query param as id
+      const response = await fetch(`/stock-data?search=${this.state.query}`);
+      const body = await response.json();
+      if (response.status !== 200) {
+        throw Error(body.message)
+      }
+      this.setState({ stockData: body})
+      console.log(body)
+    }
 
     componentDidMount() {
-
       this.setState({session_id: this.props.session_id});
 
       this.callBackendAPI()
@@ -202,17 +212,38 @@ class Market extends React.Component {
           );
         }
 
-        if(!this.state.user) {
+        if(!this.state.query) {
           return (
+
             <div>
-              <h1>   Loading   </h1>
+            <Header currentPage={`Market`} userName={`Jerry`}/>
+            <div className={classes.main}>
+              <div className={classes.chartContainer}>
+              <h5>   Loading   </h5>
               <LinearProgress/>
+              </div>
+              <div className={classes.newsContainer}>
+                <h3 className={classes.font}>Market News</h3>
+                <NewsList />
+              </div>
+              <div className={classes.popStockContainer}>
+              <h3 className={classes.font}>Popular Stocks</h3>
+
+              </div>
+
+              <div className={classes.watchListContainer}>
+              <h3 className={classes.font}>Watchlist</h3>
+              <CheckboxList onChange={this.handleLog}/>
+              </div>
+
             </div>
+            </div>
+
           );
         }
 
         return (
-            <div>
+            <div onChange={this.readStock}>
             <Header currentPage={`Market`} userName={`Jerry`}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
@@ -226,7 +257,7 @@ class Market extends React.Component {
               <br />
               <span className={classes.smallFont}>${this.state.chartPrice}</span>
               <span className={classes.smallFont}>{this.state.chartGrowth}</span>
-              <LineChart className={classes.chart} ticker={this.state.query}/>
+              <LineChart className={classes.chart} cData={this.state.stockData}/>
               </div>
               <div className={classes.newsContainer}>
                 <h3 className={classes.font}>Market News</h3>
@@ -234,7 +265,7 @@ class Market extends React.Component {
               </div>
               <div className={classes.popStockContainer}>
               <h3 className={classes.font}>Popular Stocks</h3>
-              
+
               </div>
 
               <div className={classes.watchListContainer}>
