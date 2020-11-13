@@ -137,7 +137,8 @@ app.get('/getWatchlist', (req, res) => {
 
 app.post('/updateBalance', (request, response) => {
     if (isSessionValid(request.session, request.session.user)){
-        let data = "";;
+        let data = "";
+        let newBalance = 0;
 
         request.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -275,27 +276,40 @@ app.post('/buyStock', (request, response) => {
                     return;
                 }
 
+                for (let index = 0; index < users[request.session.user]['ownedStocks'].length; index++) {
+                    let element = users[request.session.user]['ownedStocks'][index];
+                    console.log(element.symbol);
+
+                    if (element.symbol === symbol){
+                        users[request.session.user]['account']["cashBalance"] -=  (stockPrice * parseFloat(quantity));
+                        users[request.session.user]['account']['investmentBalance'] += (stockPrice * parseFloat(quantity));
+                        element.share += parseInt(quantity);
+                        users[request.session.user]['activity'].push(`Bought ${quantity} shares of ${element.symbol} at $${element.quote}`);
+                        return;
+                }
+        }
+            /*
+            else if stock in user.ownedstock and quantity * stock.price is less than user.account.cashBalance:
+                -   remove quantity * stock.price amount of cash from user.cashBalance
+                -   update stock shares in user
+            */
+
                 let stock = {
-                  name: lis[symbol].name,
-                  quote: lis[symbol].quote,
-                  symbol: lis[symbol].symbol,
-                  share: parseInt(quantity),
-                  orderType: 'Buy',
-                  orderId: uuidv4()
+                    name: lis[symbol].name,
+                    quote: lis[symbol].quote,
+                    symbol: lis[symbol].symbol,
+                    share: parseInt(quantity)
                 };
 
-                console.log(stock);
+                users[request.session.user]['ownedStocks'].push(stock);
+                users[request.session.user]['account']["cashBalance"] -= (stockPrice * parseFloat(quantity));
+                users[request.session.user]['account']['investmentBalance'] += (stockPrice * parseFloat(quantity));
+                users[request.session.user]['activity'].push(`Bought ${quantity} shares of ${stock.symbol} at $${stock.quote}`);
 
-                users[request.session.user]['openOrders'].push(stock);
-
-                fs.writeFileSync("../database/users/openBuyOrders.json", JSON.stringify(stock, null, 2));
-                // users[request.session.user]['account']["cashBalance"] -=  (stockPrice * parseFloat(quantity));
-                // users[request.session.user]['account']['investmentBalance'] += (stockPrice * parseFloat(quantity));
-                // element.share += parseInt(quantity);
-                return;
             });
-
-          updateUserDataBase(users);
+                //generate an orderID and add that to user activity and return that
+                console.log(`${users[request.session.user].username} bought shares`);
+                updateUserDataBase(users);
 
         }
     }
@@ -324,7 +338,11 @@ app.post('/sellStock', (request, response) => {
             let lis = JSON.parse(file);
             let stock = lis[symbol];
             let stockPrice = parseFloat(lis[symbol]["quote"]);
-
+            /*
+            if stock not in user.ownedstock:
+                -   alert ("You don't own that stock")
+                -   return
+            */
             for (let index = 0; index < users[request.session.user]['ownedStocks'].length; index++) {
                 let element = users[request.session.user]['ownedStocks'][index];
                 if (stock.name === element.name && element.share >= parseInt(quantity)) {

@@ -1,0 +1,11 @@
+{
+    "AAPL": {
+        "name": "Apple Inc.",
+        "symbol": "AAPL",
+        "amount": 14,
+        "quote": 115.55,
+        "username": "jerry137",
+        "orderID": 1011,
+    },
+
+}
