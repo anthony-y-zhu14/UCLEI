@@ -31,7 +31,8 @@ function isSessionValid(s, u){
 }
 
 function updateUserDataBase(u){
-    fs.writeFileSync("../database/users/users.json", JSON.stringify(u));
+    fs.writeFileSync("../database/users/users.json", JSON.stringify(u, null, 2));
+    console.log('saved!');
 }
 
 
@@ -78,13 +79,21 @@ app.post('/authentication', (request, response) => {
  });
 
 app.get("/logout", function(req, res){
+    console.log(`${users[req.session.user].username} Logged Out, Cookie destroyed`);
     users[req.session.user]["session_id"] = null;
     req.session.destroy();
-    console.log(`${users[req.session.user].username} Logged Out, Cookie destroyed`);
+    
 });
 
 app.get("/session", function(req, res){
-    let data = users[req.session.user]['session_id'];
+    let data = '';
+    if (req.session.user){
+        data = users[req.session.user]['session_id'];
+    }
+    else{
+        data = null;
+    }
+    
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/JSON");
     res.write(JSON.stringify(data));
@@ -97,7 +106,7 @@ app.get('/getBalance', (request, response) => {
         let data = users[username]['account']['cashBalance'];
         response.statusCode = 200;
         response.setHeader("Content-Type", "application/JSON");
-        console.log(`\nClient ${users[request.session.user]} balance info sent.\n`)
+        console.log(`\nClient ${users[request.session.user].username} balance info sent.\n`)
         response.write(data.toString());
         response.end();
     }
@@ -109,7 +118,7 @@ app.get('/getAccount', (req, res) => {
         let data = JSON.stringify(users[req.session.user]);
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
-        console.log(`Client ${users[req.session.user]} requested account info`)
+        console.log(`Client ${users[req.session.user].username} requested account info`)
         res.write(data);
         res.end();
     }
@@ -137,7 +146,7 @@ app.post('/updateBalance', (request, response) => {
         });
 
         request.on('end', () => {
-        console.log(`\nClient ${users[request.session.user]} balance updated to ${data}.\n`)
+        console.log(`\nClient ${users[request.session.user].username} balance updated to ${data}.\n`)
         updateUserDataBase(users);
         response.end();
 
@@ -252,6 +261,7 @@ app.post('/buyStock', (request, response) => {
             let quantity = data.n;
             let stockSymbol = data.name;
             buyStock(quantity, stockSymbol);
+            
             response.end();
         });
 
@@ -298,7 +308,9 @@ app.post('/buyStock', (request, response) => {
 
             });
                 //generate an orderID and add that to user activity and return that
-                console.log(`${users[request.session.user]} bought shares`);
+                console.log(`${users[request.session.user].username} bought shares`);
+                updateUserDataBase(users);
+                
         }
     }
 });
@@ -314,7 +326,7 @@ app.post('/sellStock', (request, response) => {
             let quantity = data.n;
             let stockSymbol = data.name;
             sellStock(quantity, stockSymbol);
-            updateUserDataBase(users);
+            
 
             response.end();
 
@@ -349,7 +361,8 @@ app.post('/sellStock', (request, response) => {
 
         });
             //generate an orderID and add that to user activity and return that
-            console.log(`${users[request.session.user]} sold shares`);
+            console.log(`${users[request.session.user].username} sold shares`);
+            updateUserDataBase(users);
 
         }
     }
