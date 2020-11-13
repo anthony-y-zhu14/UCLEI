@@ -46,7 +46,8 @@ class Trading extends React.Component {
             search_symbol: undefined,
             stock_found: undefined,
             isStockFound: false,
-            session_id: null
+            session_id: null,
+            limit_price: undefined
           };
     }
 
@@ -64,12 +65,23 @@ class Trading extends React.Component {
 
         let symbol = this.state.stock_found.symbol;
         let quantity = this.state.quantity;
+        let limit_price = this.state.limit_price;
         let target_url = "/sellStock";
+        let requestOptions = {};
+        if (this.state.limit_price){
+            requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': "application/json" },
+                body: JSON.stringify({ name: symbol, n: quantity , limit_price: limit_price})
+            }
+        }
 
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': "application/json" },
-            body: JSON.stringify({ name: symbol, n: quantity })
+        else {
+            requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': "application/json" },
+                body: JSON.stringify({ name: symbol, n: quantity , limit_price: parseFloat(this.state.stock_found.quote)})
+            }
         }
 
         await fetch(target_url, requestOptions);
@@ -84,12 +96,24 @@ class Trading extends React.Component {
         let symbol = this.state.stock_found.symbol;
         let quantity = this.state.quantity;
         let target_url = "/buyStock";
-
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': "application/json" },
-            body: JSON.stringify({ name: symbol, n: quantity })
+        let limit_price = this.state.limit_price;
+        let requestOptions = {};
+        if (this.state.limit_price){
+            requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': "application/json" },
+                body: JSON.stringify({ name: symbol, n: quantity , limit_price: limit_price})
+            }
         }
+
+        else {
+            requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': "application/json" },
+                body: JSON.stringify({ name: symbol, n: quantity , limit_price: parseFloat(this.state.stock_found.quote)})
+            }
+        }
+        
 
         await fetch(target_url, requestOptions);
         this.callBackendAPI()
@@ -106,16 +130,22 @@ class Trading extends React.Component {
           return body;
     };
 
-      setQuantity = event => {
+    setQuantity = event => {
           this.setState ({
               quantity: event.target.value
           });
     }
 
-      setSearch = event => {
-          this.setState ({
-            search_symbol: event.target.value
-          });
+    setSearch = event => {
+        this.setState ({
+        search_symbol: event.target.value
+        });
+    }
+
+    setLimitPrice = event => {
+        this.setState({
+            limit_price:  parseFloat(event.target.value)
+        });
     }
 
     handleBuyBtn = (e) =>{
@@ -148,7 +178,7 @@ class Trading extends React.Component {
             throw Error(stock.message)
         }
 
-        if (stock.length != 0){
+        if (stock.length !== 0){
             this.setState ({
                 stock_found: stock[0],
                 isStockFound: true
@@ -159,6 +189,10 @@ class Trading extends React.Component {
         else{
             alert("Failed to find a stock with that symbol");
         }
+
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
 
 
 
@@ -173,6 +207,7 @@ class Trading extends React.Component {
             alert("No Stock Selected")
             return;
         }
+        
         if (this.state.orderBuy){
             this.updateComponentBuy();
 
@@ -209,7 +244,7 @@ class Trading extends React.Component {
             return (
               <React.Fragment className={classes.error}>
                 <h1>401 Not Authorized.</h1>
-                <a>Go back to Login</a>
+                <a href='/login'>Go back to Login</a>
               </React.Fragment>
             );
           }
@@ -244,6 +279,7 @@ class Trading extends React.Component {
                                     <Button id="money-withdraw" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
                                 </ButtonGroup>
                             </div>
+                            <TextField label="Limit Price" variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
                             <br />
                             <br />
                             <br />
@@ -270,7 +306,7 @@ class Trading extends React.Component {
                                 Open Orders
                                 <React.Fragment>
                                     {this.state.user.openOrders.map(stock => (
-                                        <li id={stock.name} className="stock-holding">{stock.orderType} Order: {stock.share} share(s) of {stock.name} at {stock.quote}</li>
+                                        <li id={stock.name} className="stock-holding">{stock.orderType} Order: {stock.share} share(s) of {stock.name} for limit price of ${stock.limitPrice}</li>
                                     ))}
                                 </React.Fragment>
                             </ul>

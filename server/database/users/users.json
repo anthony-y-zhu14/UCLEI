@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "70737dea-e539-4696-bbf2-bd101a4745bd",
+    "session_id": "777e79ed-330a-4575-8aed-c75d1226920c",
     "name": "Jerry Smith",
     "watchlist": [
       "AAL",
@@ -10,24 +10,7 @@
       "FB",
       "SHOP"
     ],
-    "openOrders": [
-      {
-        "name": "Sea Limited",
-        "quote": "156.53",
-        "symbol": "SE",
-        "share": 1,
-        "orderType": "Buy",
-        "orderId": "6c04585b-f64c-4167-9ce9-d4ddef4166d3"
-      },
-      {
-        "name": "Advanced Micro Devices, Inc.",
-        "quote": "77.99",
-        "symbol": "AMD",
-        "share": 1,
-        "orderType": "Buy",
-        "orderId": "0092984f-3fee-4547-afe4-e9ad28289ea9"
-      }
-    ],
+    "openOrders": [],
     "eventList": [
       "AAL",
       "SE"
@@ -36,8 +19,8 @@
     "activity": [],
     "account": {
       "accountName": 1001,
-      "cashBalance": 1020,
-      "investmentBalance": 0
+      "cashBalance": 2212.71,
+      "investmentBalance": 817.29
     },
     "balanceGrowth": "-20%"
   },

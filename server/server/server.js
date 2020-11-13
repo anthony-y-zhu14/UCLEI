@@ -259,12 +259,17 @@ app.post('/buyStock', (request, response) => {
         request.on('end', () => {
             let quantity = data.n;
             let stockSymbol = data.name;
-            buyStock(quantity, stockSymbol);
-
+            let limitPrice = data.limit_price;
+            buyStock(quantity, stockSymbol, limitPrice);
             response.end();
         });
 
-        function buyStock(quantity, symbol) {
+        function buyStock(quantity, symbol, limitPrice) {
+
+            let stockData = JSON.parse(fs.readFileSync("../database/users/openBuyOrders.json"));
+
+            let date = new Date();
+            // let today = date.toISOString().slice(0,10);
 
             fs.readFile("../database/stocks/data.json", function(err, file) {
                 let lis = JSON.parse(file);
@@ -281,25 +286,72 @@ app.post('/buyStock', (request, response) => {
                   symbol: lis[symbol].symbol,
                   share: parseInt(quantity),
                   orderType: 'Buy',
-                  orderId: uuidv4()
+                  orderId: uuidv4(),
+                  username: users[request.session.user]['username'],
+                  date: date,
+                  limitPrice: limitPrice
                 };
-
-                console.log(stock);
-
+                
+                stockData.push(stock);
+                
+                
                 users[request.session.user]['openOrders'].push(stock);
 
-                fs.writeFileSync("../database/users/openBuyOrders.json", JSON.stringify(stock, null, 2));
-                // users[request.session.user]['account']["cashBalance"] -=  (stockPrice * parseFloat(quantity));
-                // users[request.session.user]['account']['investmentBalance'] += (stockPrice * parseFloat(quantity));
-                // element.share += parseInt(quantity);
-                return;
+                fs.writeFileSync("../database/users/BuyOrders.json", JSON.stringify(stockData, null, 2));
+                validateBuy(quantity, symbol, limitPrice, users[request.session.user]['username']);
             });
-
           updateUserDataBase(users);
-
         }
     }
 });
+
+function validateBuy(quantity, symbol, limitPrice, user) {
+
+    let sellData = JSON.parse(fs.readFileSync("../database/users/openSellOrders.json"));
+    let stockData = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+
+    for(let i = 0; i < sellData.length; i++) {
+
+        if(symbol === sellData[i].symbol && sellData[i].share >= quantity && sellData[i].limitPrice <= limitPrice) {
+
+            let stock = {
+
+                name: stockData[symbol].name,
+                quote: sellData[i].limitPrice,
+                symbol: stockData[symbol].symbol,
+                share: parseInt(quantity)
+                
+            };
+            users[user]['account']["cashBalance"] -=  (sellData[i].limitPrice * parseFloat(quantity));
+            users[user]['account']['investmentBalance'] += (sellData[i].limitPrice * parseFloat(quantity));
+            console.log("Before: ");
+            console.log(sellData);
+
+            sellData[i].share -= quantity;
+
+            //users[request.session.user]['eventList'].splice(users[request.session.user]['eventList'].indexOf(data, 1))
+            if (sellData[i].share === 0){                
+                sellData.splice(i, 1);
+            }
+            console.log("After: ")
+            console.log(sellData);
+            users[user]['activity'].push(`Bought ${quantity} shares of ${stock.symbol} at $${stock.quote}`);
+
+            if(users[user]['ownedStocks'].includes(stock)) {
+                users[user]['ownedStocks'][users[user]['ownedStocks'].indexOf(stock)].share += quantity;
+
+                return;
+                
+                //deal with avg price later.
+            }
+            else{
+                users[user]['ownedStocks'].push(stock);
+                return;
+            }
+            
+        }
+    }
+}
 
 app.post('/sellStock', (request, response) => {
     if (isSessionValid(request.session, request.session.user)){
@@ -338,8 +390,6 @@ app.post('/sellStock', (request, response) => {
                 }
             }
         });
-            //generate an orderID and add that to user activity and return that
-            console.log(`${users[request.session.user].username} sold shares`);
             updateUserDataBase(users);
 
         }
