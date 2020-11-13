@@ -10,7 +10,7 @@ import { blueGrey } from '@material-ui/core/colors';
 const useStyles = makeStyles({
   root: {
     minWidth: 5,
-    
+
   },
   bullet: {
     display: 'inline-block',
@@ -43,8 +43,8 @@ export default function OutlinedCard({stock}) {
         </Typography>
         <Typography variant="body2" component="p">
           ${stock.quote}
-        
-          
+
+
         </Typography>
       </CardContent>
       <CardActions>

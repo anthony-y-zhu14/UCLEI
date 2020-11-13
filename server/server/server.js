@@ -56,12 +56,12 @@ app.post('/authentication', (request, response) => {
             console.log(`Client ${username} authenticated succesfully.`);
 
             //generate USER_TOKEN HERE
- 
-            const USER_TOKEN = uuidv4();   
 
-            request.session.user = users[username]['username'];            
-            
-            users[username]['session_id'] = USER_TOKEN;            
+            const USER_TOKEN = uuidv4();
+
+            request.session.user = users[username]['username'];
+
+            users[username]['session_id'] = USER_TOKEN;
             const login_data = {
                 authentication: true,
                 session_id: USER_TOKEN
@@ -103,7 +103,7 @@ app.get("/session", function(req, res){
 
 app.get('/getBalance', (request, response) => {
     if (isSessionValid(request.session, request.session.user)){
-        let data = users[username]['account']['cashBalance'];    
+        let data = users[username]['account']['cashBalance'];
         response.statusCode = 200;
         response.setHeader("Content-Type", "application/JSON");
         console.log(`\nClient ${users[request.session.user].username} balance info sent.\n`)
@@ -195,7 +195,7 @@ app.post('/addEventNotify', (request, response) => {
         });
 
     }
-    
+
  });
 
 
@@ -242,7 +242,6 @@ app.get("/stock-data", (request, response) => {
             if(lis[search] != null) {
                 data.push(lis[search]);
             }
-
             response.write(JSON.stringify(data));
             response.end();
 
