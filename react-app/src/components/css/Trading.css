@@ -35,21 +35,32 @@
   width: 40%;
   height: 60%;
   margin: 1% auto;
-  
+
 }
 
 #holding-container {
   width: 40%;
   float: right;
   margin: 1% auto;
-  height: 80%;
+  height: 40%;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  text-align: center;
+}
+
+#orders-container {
+  width: 40%;
+  margin-top: -20%;
+  float: right;
+  margin-right: 4%;
+
+  height: 40%;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
 
 #account-container {
-
   width: 50%;
   margin: 2% auto;
   outline: none;

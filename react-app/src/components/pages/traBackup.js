@@ -220,11 +220,11 @@ class Trading extends React.Component {
                     <div id="main">
                         <div id="trade-container">
                             <br />
-                            <h2 id="account-container" type="text">Account: {this.state.user.account.accountName}</h2>
+                            <div id="account-container" type="text">{this.state.user.account.accountName}</div>
                             <br/>
 
                             <div id="fundsAvialable">
-                                <span style={{width: "30%"}}>Cash Balance: </span>
+                                <span style={{width: "80%"}}>Cash Balance: </span>
                                 <span id="cash">{"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}</span>
                             </div>
 
@@ -254,23 +254,7 @@ class Trading extends React.Component {
                                 Current Holding
                                 <React.Fragment>
                                     {this.state.user.ownedStocks.map(stock => (
-                                        <li id={stock.name} className="stock-holding">
-                                        <p>Name: {stock.name}</p>
-                                        <p>Shares: {stock.share},</p>
-                                        <p>Average Price: {stock.quote}</p>
-                                        </li>
-                                    ))}
-                                </React.Fragment>
-                            </ul>
-                        </div>
-                        <div id="holding-container">
-                        </div>
-                        <div id="orders-container">
-                            <ul id="stock-list">
-                                Open Orders
-                                <React.Fragment>
-                                    {this.state.user.openOrders.map(stock => (
-                                        <li id={stock.name} className="stock-holding">{stock.orderType} Order: {stock.share} share(s) of {stock.name} at {stock.quote}</li>
+                                        <li id={stock.name} className="stock-holding">{stock.name}</li>
                                     ))}
                                 </React.Fragment>
                             </ul>

@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "1fd51b82-41b5-4d1f-9e36-324ea1f06eda",
+    "session_id": "70737dea-e539-4696-bbf2-bd101a4745bd",
     "name": "Jerry Smith",
     "watchlist": [
       "AAL",
@@ -10,53 +10,46 @@
       "FB",
       "SHOP"
     ],
-    "eventList": [
-      "AAL",
-      "SE"
-    ],
-    "ownedStocks": [
+    "openOrders": [
+      {
+        "name": "Sea Limited",
+        "quote": "156.53",
+        "symbol": "SE",
+        "share": 1,
+        "orderType": "Buy",
+        "orderId": "6c04585b-f64c-4167-9ce9-d4ddef4166d3"
+      },
       {
         "name": "Advanced Micro Devices, Inc.",
         "quote": "77.99",
         "symbol": "AMD",
-        "share": 2
+        "share": 1,
+        "orderType": "Buy",
+        "orderId": "0092984f-3fee-4547-afe4-e9ad28289ea9"
       }
     ],
-    "activity": [
-      "Bought 2 shares of TSLA at $410.36",
-      "Sold 2 shares of TSLA at $410.36",
-      "Bought 2 shares of TSLA at $410.36",
-      "Sold 2 shares of TSLA at $410.36",
-      "Bought 2 shares of TSLA at $410.36",
-      "Sold 2 shares of TSLA at $410.36",
-      "Bought 2 shares of AMD at $77.99",
-      "Bought 1 shares of TSLA at $410.36",
-      "Bought 1 shares of TSLA at $410.36",
-      "Sold 1 shares of TSLA at $410.36",
-      "Sold 1 shares of TSLA at $410.36",
-      "Sold 1 shares of AMD at $77.99",
-      "Sold 1 shares of AMD at $77.99",
-      "Bought 2 shares of AMD at $77.99",
-      "Sold 2 shares of AMD at $77.99",
-      "Bought 2 shares of AMD at $77.99",
-      "Sold 2 shares of AMD at $77.99",
-      "Bought 2 shares of AMD at $77.99"
+    "eventList": [
+      "AAL",
+      "SE"
     ],
+    "ownedStocks": [],
+    "activity": [],
     "account": {
       "accountName": 1001,
-      "cashBalance": 874.02,
-      "investmentBalance": 155.98000000000002
+      "cashBalance": 1020,
+      "investmentBalance": 0
     },
     "balanceGrowth": "-20%"
   },
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": null,
+    "session_id": "01cfbfcc-0c69-4ca4-9ca3-93772400a4da",
     "name": "Morty Smith",
     "watchlist": [
       "SHOP"
     ],
+    "openOrders": [],
     "eventList": [
       "AAL",
       "SE"
@@ -65,7 +58,7 @@
     "activity": [],
     "account": {
       "accountName": 1002,
-      "cashBalance": 0,
+      "cashBalance": 2000,
       "investmentBalance": 0
     },
     "balanceGrowth": "0"
@@ -73,16 +66,28 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": null,
+    "session_id": "a9fef115-726b-4a47-94cf-895d2a41c1ef",
     "name": "Rick Sanchez",
-    "watchlist": [],
+    "watchlist": [
+      "AMD"
+    ],
+    "openOrders": [],
     "eventList": [],
-    "ownedStocks": [],
-    "activity": [],
+    "ownedStocks": [
+      {
+        "name": "Advanced Micro Devices, Inc.",
+        "quote": "77.99",
+        "symbol": "AMD",
+        "share": 12
+      }
+    ],
+    "activity": [
+      "Bought 12 shares of AMD at $77.99"
+    ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 0,
-      "investmentBalance": 0
+      "cashBalance": 9064.12,
+      "investmentBalance": 935.8799999999999
     },
     "balanceGrowth": "0"
   }
