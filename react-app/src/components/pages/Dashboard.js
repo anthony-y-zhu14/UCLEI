@@ -4,7 +4,7 @@ import NewsList from '../NewsList.js';
 import { withStyles } from "@material-ui/core/styles";
 import { LinearProgress } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
-
+import LineChart from '../Linechart.js';
 
 const styles = {
   main: {
@@ -124,7 +124,19 @@ class Dashboard extends React.Component {
     super(props);
     this.state = {
       user: undefined,
-      session_id: null
+      session_id: null,
+      stockData: {
+        "name": "Dimension 35-C",
+        "symbol": "D35-C",
+        "market": "Dimension 35-C - Real Time Price. Currency in USD",
+        "percentage": "-0.82 (-6.21%)",
+        "volume": 2030,
+        "quote": 1200000.38,
+        "prev_close": "1190000.40",
+        "open": "1199990.23",
+        "daily_range": "1189000.40 - 1304600.32",
+        "historical": [1189000.40, 1304600.32]
+    }
       };
   };
 
@@ -189,13 +201,13 @@ class Dashboard extends React.Component {
     let username = this.state.user.username;
 
     return (
-
-
         <div>
+
           <Header currentPage={crtPg} userName={username}/>
           <div className={classes.main}>
             <div className={classes.chartContainer}>
             <h3 className={classes.font}>NASDAQ</h3>
+            <LineChart className={classes.chart} cData={this.state.stockData}/>              
             </div>
             <div className={classes.newsContainer}>
             <h3 className='mrkt'>Market News</h3>

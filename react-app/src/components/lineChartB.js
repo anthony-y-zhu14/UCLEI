@@ -60,11 +60,22 @@ const styles = {
   }
 };
 
-class LineChart extends React.Component {
+class LineChartB extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          stockData: this.props.cData,
+          stockData: {
+            "name": "Dimension 35-C",
+            "symbol": "D35-C",
+            "market": "Dimension 35-C - Real Time Price. Currency in USD",
+            "percentage": "-0.82 (-6.21%)",
+            "volume": 2030,
+            "quote": 1200000.38,
+            "prev_close": "1190000.40",
+            "open": "1199990.23",
+            "daily_range": "1189000.40 - 1304600.32",
+            "historical": [1189000.40, 1304600.32]
+        },
           query: window.location.href.slice(29),
 
       };
@@ -130,4 +141,4 @@ class LineChart extends React.Component {
     }
   }
 
-export default withStyles(styles)(LineChart);
+export default withStyles(styles)(LineChartB);

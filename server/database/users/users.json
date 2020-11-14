@@ -2,42 +2,35 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "d2b75c42-5e16-4807-bc00-7a71b95e2668",
+    "session_id": "bca19ac3-d540-4ba6-b467-6cba6916ee28",
     "name": "Jerry Smith",
-    "watchlist": [],
-    "openOrders": [
+    "watchlist": [
       {
-        "name": "Facebook, Inc.",
-        "quote": "272.43",
-        "symbol": "FB",
-        "share": 1,
-        "orderType": "buy",
-        "orderId": "4e661ff6-4254-4e08-87eb-6f51a842627e",
-        "username": "jerry137",
-        "date": "2020-11-14T01:02:13.613Z",
-        "limitPrice": 272.43
+        "symbol": "MAXR",
+        "quote": "23.94",
+        "name": "Maxar Technologies Inc.",
+        "volume": 0
       },
       {
-        "name": "Facebook, Inc.",
-        "quote": "272.43",
-        "symbol": "FB",
-        "share": 3,
-        "orderType": "buy",
-        "orderId": "87b33115-e15c-46ab-a292-f92594fd4bed",
-        "username": "jerry137",
-        "date": "2020-11-14T01:02:42.351Z",
-        "limitPrice": 272.43
+        "symbol": "TSLA",
+        "quote": "410.36",
+        "name": "Tesla, Inc.",
+        "volume": 0
+      },
+      {
+        "symbol": "AC.TO",
+        "quote": "20.12",
+        "name": "Air Canada",
+        "volume": 0
       }
     ],
+    "openOrders": [],
     "eventList": [],
     "ownedStocks": [],
-    "activity": [
-      "Bought 2 shares of FB at $272.43",
-      "Sold 2 shares of FB at $272.43"
-    ],
+    "activity": [],
     "account": {
       "accountName": 1001,
-      "cashBalance": 10484.86,
+      "cashBalance": 10757.289999999999,
       "investmentBalance": 0
     },
     "balanceGrowth": 0
@@ -45,7 +38,7 @@
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": "89f97717-4a3b-4982-b6df-ff2be177b2f6",
+    "session_id": "100a8bd8-7ad7-4cfe-942f-44d3c39790d8",
     "name": "Morty Smith",
     "watchlist": [
       "SHOP"
@@ -56,21 +49,17 @@
       {
         "name": "Facebook, Inc.",
         "quote": 272.43,
-        "total_cost": 544.86,
+        "total_cost": 3541.59,
         "average_cost": 272.43,
         "symbol": "FB",
-        "share": 2
+        "share": 13
       }
     ],
-    "activity": [
-      "Bought 2 shares of FB at $272.43",
-      "Sold 2 shares of FB at $272.43",
-      "Bought 2 shares of FB at $272.43"
-    ],
+    "activity": [],
     "account": {
       "accountName": 1002,
-      "cashBalance": 1555.1399999999999,
-      "investmentBalance": 544.86
+      "cashBalance": 41282.71,
+      "investmentBalance": 0
     },
     "balanceGrowth": "0"
   },

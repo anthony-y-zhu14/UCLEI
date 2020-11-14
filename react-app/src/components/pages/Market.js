@@ -7,6 +7,8 @@ import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
+import LineChartB from '../lineChartB.js';
+
 
 const styles = {
     main: {
@@ -20,8 +22,8 @@ const styles = {
       zIndex: 2
     },
     font: {
-      margin: '2%',
       fontSize: 18,
+      margin: '2%',
       fontWeight: 'bold',
     },
     popStockContainer: {
@@ -57,7 +59,6 @@ const styles = {
       overflowY: 'auto',
       display: 'flex',
       flexWrap: 'wrap',
-      justifyContent: 'center',
       borderRadius: '10px',
       position: 'relative',
       boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
@@ -73,7 +74,7 @@ const styles = {
       flexDirection: 'column',
       flexWrap: 'wrap',
       width: '55%',
-      height: '100%',
+      height: '90%',
       borderRadius: '10px',
       position: 'relative',
       background: '#393b41',
@@ -89,9 +90,6 @@ const styles = {
         color: '#6C9FF8',
         cursor: 'pointer'
       },
-    },
-    chart: {
-      margin: '15%'
     },
     smallFont: {
       fontSize: '14px',
@@ -131,7 +129,8 @@ class Market extends React.Component {
             day_end: undefined,
             query: window.location.href.slice(29),
             stockData: undefined,
-            reload: false
+            reload: false,
+            popStocks: undefined
         };
     }
 
@@ -148,27 +147,28 @@ class Market extends React.Component {
     componentDidMount() {
       this.setState({session_id: this.props.session_id});
 
+      this.callPopStock()
+      .then(res => this.setState({popStocks: res}))
+      .catch(err => console.log(err));
+
       this.readStock()
       .then(res => this.setState({ stockData: res[0]}))
       .catch(err => console.log(err));
 
       this.callBackendAPI()
-        .then(res => this.setState({user:res, chartName:res.ownedStocks[0].name, chartTicker:res.ownedStocks[0].symbol, chartPrice:res.ownedStocks[0].quote}))
+        .then(res => this.setState({user:res}))
         .catch(err => console.log(err));
-
     }
-    handleWatchSave = async(value) => {
-      const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ value })
-      };
-      await fetch('/addWatchItem', requestOptions);
 
-      this.callBackendAPI()
-      .then(res => this.setState({ user: res }))
-      .catch(err => console.log(err));
-    }
+    callPopStock = async() => {
+      const response = await fetch('/pop-stock-data');
+      const body = await response.json();
+      if (response.status !== 200) {
+        throw Error(body.message)
+      }
+      return body;
+    };
+
 
     handleLog = data => {
 
@@ -222,53 +222,24 @@ class Market extends React.Component {
           );
         }
 
-        if(!this.state.query) {
+        if(!this.state.user || !this.state.popStocks) {
           return (
 
             <div>
-            <Header currentPage={`Market`} userName={`Jerry`}/>
-            <div className={classes.main}>
-              <div className={classes.chartContainer}>
-              <h5>   Loading   </h5>
-              <LinearProgress/>
-              </div>
-              <div className={classes.newsContainer}>
-                <h3 className={classes.font}>Market News</h3>
-                <NewsList />
-              </div>
-              <div className={classes.popStockContainer}>
-              <h3 className={classes.font}>Popular Stocks</h3>
-
-              </div>
-
-              <div className={classes.watchListContainer}>
-              <h3 className={classes.font}>Watchlist</h3>
-              <CheckboxList onChange={this.handleLog}/>
-              </div>
-
+                <h1>   Loading   </h1>
+                <LinearProgress/>
             </div>
-            </div>
-
           );
         }
 
         if(!this.state.stockData) {
           return (
-            <div>
-            <Header currentPage={`Market`} userName={`Jerry`}/>
+            <div>         
+            <Header currentPage={`Market`}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
-              <span className={classes.font}>{this.state.chartName}</span>
-              <span className={classes.smallFont}>{this.state.chartTicker}</span>
-              {/* <span className={classes.ticker} id="addBtn"><i className={classes.ticker} onClick={() => this.handleWatchSave(this.state.chartTicker)} className="fa fa-bookmark"></i></span> */}
-              {/* <ButtonGroup className={classes.controller}>
-                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Day</Button>
-                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Year</Button>
-              </ButtonGroup> */}
               <br />
-              <span className={classes.smallFont}>${this.state.chartPrice}</span>
-              <span className={classes.smallFont}>{this.state.chartGrowth}</span>
-              <LinearProgress/>
+              <LineChartB className={classes.chart} cData={false}/> 
               </div>
               <div className={classes.newsContainer}>
                 <h3 className={classes.font}>Market News</h3>
@@ -286,34 +257,30 @@ class Market extends React.Component {
 
             </div>
             </div>
-          );
+        );
         }
         
         return (
             <div>         
-              
-            <Header currentPage={`Market`} userName={`Jerry`}/>
+                {console.log(this.state.popStocks)}
+
+            <Header currentPage={`Market`} userName={this.state.user.username}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
-              <span className={classes.font}>{this.state.chartName}</span>
-              <span className={classes.smallFont}>{this.state.chartTicker}</span>
-              <span className={classes.ticker} id="addBtn"><i className={classes.ticker} onClick={() => this.handleWatchSave(this.state.chartTicker)} className="fa fa-bookmark"></i></span>
-              <ButtonGroup className={classes.controller}>
-                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Day</Button>
-                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Year</Button>
-              </ButtonGroup>
-              <br />
-              <span className={classes.smallFont}>${this.state.chartPrice}</span>
-              <span className={classes.smallFont}>{this.state.chartGrowth}</span>              
+              <br />             
               <LineChart className={classes.chart} cData={this.state.stockData}/>              
               </div>
               <div className={classes.newsContainer}>
-                <h3 className={classes.font}>Market News</h3>
+                <p className={classes.font}>Market News</p>
                 <NewsList />
               </div>
               <div className={classes.popStockContainer}>
               <h3 className={classes.font}>Popular Stocks</h3>
-
+              <div>
+                  {this.state.popStocks.map(stock => (
+                    <OutlinedCard stock={stock}/>                              
+                  ))}
+              </div>
               </div>
 
               <div className={classes.watchListContainer}>
