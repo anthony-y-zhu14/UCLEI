@@ -130,7 +130,8 @@ class Market extends React.Component {
             day_start: undefined,
             day_end: undefined,
             query: window.location.href.slice(29),
-            stockData: undefined
+            stockData: undefined,
+            reload: false
         };
     }
 
@@ -141,12 +142,15 @@ class Market extends React.Component {
       if (response.status !== 200) {
         throw Error(body.message)
       }
-      this.setState({ stockData: body})
-      console.log(body)
+      return body;    
     }
 
     componentDidMount() {
       this.setState({session_id: this.props.session_id});
+
+      this.readStock()
+      .then(res => this.setState({ stockData: res[0]}))
+      .catch(err => console.log(err));
 
       this.callBackendAPI()
         .then(res => this.setState({user:res, chartName:res.ownedStocks[0].name, chartTicker:res.ownedStocks[0].symbol, chartPrice:res.ownedStocks[0].quote}))
@@ -187,6 +191,12 @@ class Market extends React.Component {
         if(this.state.day_end !== data.selectedStock[0].prev_close) {
           this.setState({day_end: data.selectedStock[0].prev_close});
         }
+      }
+    }
+
+    handleReRender = data => {
+      if(!this.state.reload) {
+        this.setState({reload: true});
       }
     }
 
@@ -242,8 +252,46 @@ class Market extends React.Component {
           );
         }
 
+        if(!this.state.stockData) {
+          return (
+            <div>
+            <Header currentPage={`Market`} userName={`Jerry`}/>
+            <div className={classes.main}>
+              <div className={classes.chartContainer}>
+              <span className={classes.font}>{this.state.chartName}</span>
+              <span className={classes.smallFont}>{this.state.chartTicker}</span>
+              {/* <span className={classes.ticker} id="addBtn"><i className={classes.ticker} onClick={() => this.handleWatchSave(this.state.chartTicker)} className="fa fa-bookmark"></i></span> */}
+              {/* <ButtonGroup className={classes.controller}>
+                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Day</Button>
+                <Button variant="outlined" size="small" color="primary" className={classes.margin}>Year</Button>
+              </ButtonGroup> */}
+              <br />
+              <span className={classes.smallFont}>${this.state.chartPrice}</span>
+              <span className={classes.smallFont}>{this.state.chartGrowth}</span>
+              <LinearProgress/>
+              </div>
+              <div className={classes.newsContainer}>
+                <h3 className={classes.font}>Market News</h3>
+                <NewsList />
+              </div>
+              <div className={classes.popStockContainer}>
+              <h3 className={classes.font}>Popular Stocks</h3>
+
+              </div>
+
+              <div className={classes.watchListContainer}>
+              <h3 className={classes.font}>Watchlist</h3>
+              <CheckboxList onChange={this.handleLog}/>
+              </div>
+
+            </div>
+            </div>
+          );
+        }
+        
         return (
-            <div onChange={this.readStock}>
+            <div>         
+              
             <Header currentPage={`Market`} userName={`Jerry`}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
@@ -256,8 +304,8 @@ class Market extends React.Component {
               </ButtonGroup>
               <br />
               <span className={classes.smallFont}>${this.state.chartPrice}</span>
-              <span className={classes.smallFont}>{this.state.chartGrowth}</span>
-              <LineChart className={classes.chart} cData={this.state.stockData}/>
+              <span className={classes.smallFont}>{this.state.chartGrowth}</span>              
+              <LineChart className={classes.chart} cData={this.state.stockData}/>              
               </div>
               <div className={classes.newsContainer}>
                 <h3 className={classes.font}>Market News</h3>

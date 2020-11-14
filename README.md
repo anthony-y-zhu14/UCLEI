@@ -152,45 +152,11 @@ UCLEI---Stock-Trading-Platform-Sandbox
 │   │   │   └── stock_url.json
 │   │   └── users
 │   │       └── users.json
-│   ├── readme.md
+│   |
 │   └── server
 │       ├── package-lock.json
 │       └── server.js
 └── timecapsule
-    ├── App copy.js
-    ├── App.js
-    ├── Login.js
-    ├── css
-    │   ├── account.css
-    │   ├── account.css.map
-    │   ├── account.scss
-    │   ├── dashboard.css
-    │   ├── header.css
-    │   ├── market.css
-    │   ├── sidenav.css
-    │   ├── styles.css
-    │   ├── trading.css
-    │   ├── trading.css.map
-    │   └── trading.scss
-    ├── favicon.ico
-    ├── html
-    │   ├── account.html
-    │   ├── dashboard.html
-    │   ├── market.html
-    │   └── trading.html
-    ├── index.html
-    ├── js
-    │   ├── account.js
-    │   ├── login.js
-    │   ├── market.js
-    │   ├── marketNews.js
-    │   ├── modal.js
-    │   ├── myChart.js
-    │   ├── news.js
-    │   ├── trading.js
-    │   └── transferFund.js
-    ├── server-backup-nov
-    └── serverb.js
 ```
 
 ## Usage

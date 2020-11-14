@@ -268,20 +268,24 @@ function validateBuy(quantity, symbol, limitPrice, user) {
         }             
     }
 
-    let name = stockDatabase[symbol].name;
-    let quote = stockDatabase[symbol].quote;
-    let orderType = 'buy';
-    let orderId = uuidv4();
-    let username = user    
+    if (currentQuantity > 0){
+        let name = stockDatabase[symbol].name;
+        let quote = stockDatabase[symbol].quote;
+        let orderType = 'buy';
+        let orderId = uuidv4();
+        let username = user    
 
-    let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
+        let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
+        
+        buyOrderArr.push(newOpenOrder);
+        users[user]["openOrders"].push(newOpenOrder);
+
+        updateSellOrdersData(sellOrderArr);
+        updateBuyOrdersData(buyOrderArr);
+        updateUserDataBase(users);
+    }
+
     
-    buyOrderArr.push(newOpenOrder);
-    users[user]["openOrders"].push(newOpenOrder);
-
-    updateSellOrdersData(sellOrderArr);
-    updateBuyOrdersData(buyOrderArr);
-    updateUserDataBase(users);
 }
 
 function validateSell(quantity, symbol, limitPrice, user) {
@@ -406,7 +410,7 @@ function validateSell(quantity, symbol, limitPrice, user) {
 
                 users[user]['activity'].push(
 
-                    `Sold ${quantity} shares of ${newStock.symbol} at $${buyOrderArr[i].limitPrice}`
+                    `Sold ${quantity} shares of ${symbol} at $${buyOrderArr[i].limitPrice}`
 
                 );
 
@@ -477,20 +481,22 @@ function validateSell(quantity, symbol, limitPrice, user) {
         }        
     }
 
-    let name = stockDatabase[symbol].name;
-    let quote = stockDatabase[symbol].quote;
-    let orderType = 'sell';
-    let orderId = uuidv4();
-    let username = user    
+    if (currentQuantity > 0){
+        let name = stockDatabase[symbol].name;
+        let quote = stockDatabase[symbol].quote;
+        let orderType = 'sell';
+        let orderId = uuidv4();
+        let username = user    
 
-    let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
-    
-    sellOrderArr.push(newOpenOrder);
-    users[user]["openOrders"].push(newOpenOrder);
+        let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
+        
+        sellOrderArr.push(newOpenOrder);
+        users[user]["openOrders"].push(newOpenOrder);
 
-    updateSellOrdersData(sellOrderArr);
-    updateBuyOrdersData(buyOrderArr);
-    updateUserDataBase(users);
+        updateSellOrdersData(sellOrderArr);
+        updateBuyOrdersData(buyOrderArr);
+        updateUserDataBase(users);
+    }
 }
 
 
@@ -646,7 +652,7 @@ app.post('/addWatchItem', (req, res) => {
         req.on('end', () => {
 
             let stockData = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-            let stock = stockData[data.value];
+            let stock = stockData[data.item];
 
             let watchItem = {
                 symbol: stock.symbol,
@@ -680,7 +686,7 @@ app.post('/delWatchItem', (req, res) => {
         req.on('end', () => {
             
             for(let i = 0; i < users[req.session.user]['watchlist'].length; i++) {
-                if(users[req.session.user]['watchlist'][i]['symbol'] === data.value) {
+                if(users[req.session.user]['watchlist'][i]['symbol'] === data.item) {
                     users[req.session.user]['watchlist'].splice(i, 1);
                 } 
             }
@@ -719,7 +725,7 @@ app.get('/getEvents', (req, res) => {
         req.on('end', () => {
 
             let stockData = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-            let stock = stockData[data.value];
+            let stock = stockData[data];
 
             let eventItem = {
                 symbol: stock.symbol,
@@ -755,7 +761,7 @@ app.get('/getEvents', (req, res) => {
         req.on('end', () => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i]['symbol'] === data.value) {
+                if(users[req.session.user]['eventList'][i]['symbol'] === data) {
                     users[req.session.user]['eventList'].splice(i, 1);
                 } 
             }
@@ -775,7 +781,7 @@ app.post('/deactivateEvent', (req, res) => {
         req.on('end', () => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i]['symbol'] === data.value) {
+                if(users[req.session.user]['eventList'][i]['symbol'] === data) {
                     users[req.session.user]['eventList'][i]['active'] = false;
                 } 
             }
@@ -795,7 +801,7 @@ app.post('/activateEvent', (req, res) => {
         req.on('end', () => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i]['symbol'] === data.value) {
+                if(users[req.session.user]['eventList'][i]['symbol'] === data) {
                     users[req.session.user]['eventList'][i]['active'] = true;
                 } 
             }
@@ -933,4 +939,6 @@ app.get('/stock-data-w', (req, res) => {
  Server Information 
 ********************************************* */
 app.listen(3001);
-console.log('\nServer running at http://127.0.0.1:3001/\n');
+console.log('\nServer running at http://127.0.0.1:3001/');
+console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
+console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');

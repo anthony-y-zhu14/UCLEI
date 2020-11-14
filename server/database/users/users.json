@@ -2,50 +2,75 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "3f54733b-2b63-44df-be6a-71100d5d474b",
+    "session_id": "d2b75c42-5e16-4807-bc00-7a71b95e2668",
     "name": "Jerry Smith",
     "watchlist": [],
-    "openOrders": [      
-    ],
-    "eventList": [],
-    "ownedStocks": [
+    "openOrders": [
       {
         "name": "Facebook, Inc.",
-        "quote": 10,
-        "total_cost": 20,
-        "average_cost": 10,
+        "quote": "272.43",
         "symbol": "FB",
-        "share": 2
+        "share": 1,
+        "orderType": "buy",
+        "orderId": "4e661ff6-4254-4e08-87eb-6f51a842627e",
+        "username": "jerry137",
+        "date": "2020-11-14T01:02:13.613Z",
+        "limitPrice": 272.43
+      },
+      {
+        "name": "Facebook, Inc.",
+        "quote": "272.43",
+        "symbol": "FB",
+        "share": 3,
+        "orderType": "buy",
+        "orderId": "87b33115-e15c-46ab-a292-f92594fd4bed",
+        "username": "jerry137",
+        "date": "2020-11-14T01:02:42.351Z",
+        "limitPrice": 272.43
       }
     ],
+    "eventList": [],
+    "ownedStocks": [],
     "activity": [
-      "Bought 2 shares of FB at $10"
+      "Bought 2 shares of FB at $272.43",
+      "Sold 2 shares of FB at $272.43"
     ],
     "account": {
       "accountName": 1001,
-      "cashBalance": 9940,
-      "investmentBalance": 20
+      "cashBalance": 10484.86,
+      "investmentBalance": 0
     },
     "balanceGrowth": 0
   },
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": "01cfbfcc-0c69-4ca4-9ca3-93772400a4da",
+    "session_id": "89f97717-4a3b-4982-b6df-ff2be177b2f6",
     "name": "Morty Smith",
     "watchlist": [
       "SHOP"
     ],
     "openOrders": [],
     "eventList": [],
-    "ownedStocks": [],
+    "ownedStocks": [
+      {
+        "name": "Facebook, Inc.",
+        "quote": 272.43,
+        "total_cost": 544.86,
+        "average_cost": 272.43,
+        "symbol": "FB",
+        "share": 2
+      }
+    ],
     "activity": [
-      "Sold 2 shares of FB at $10"
+      "Bought 2 shares of FB at $272.43",
+      "Sold 2 shares of FB at $272.43",
+      "Bought 2 shares of FB at $272.43"
     ],
     "account": {
       "accountName": 1002,
-      "cashBalance": 2100,
-      "investmentBalance": 0
+      "cashBalance": 1555.1399999999999,
+      "investmentBalance": 544.86
     },
     "balanceGrowth": "0"
   },

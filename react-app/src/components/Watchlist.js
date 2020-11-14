@@ -49,6 +49,7 @@ class CheckboxList extends React.Component {
     if (response.status !== 200) {
       throw Error(body.message)
     }
+    console.log(body);
     return body;
   };
 
@@ -103,11 +104,14 @@ class CheckboxList extends React.Component {
           return (
             <ListItem className={classes.inner}>
               <IconButton>
-                <QueueIcon onClick={() => this.viewWatchItem(value)}/>
+                <QueueIcon onClick={() => this.viewWatchItem(value.symbol)}/>
               </IconButton>
-              <ListItemText id={labelId} primary={value}/>
+              <ListItemText id={labelId} primary={value.symbol}/>
+              <ListItemText id={labelId} primary={value.quote}/>
+              <ListItemText id={labelId} primary={value.volume}/>
+              <ListItemText id={labelId} primary={value.name}/>
               <ListItemSecondaryAction>
-                <IconButton onClick={() => this.delWatchItem(value)} edge="end" aria-label="delete">
+                <IconButton onClick={() => this.delWatchItem(value.symbol)} edge="end" aria-label="delete">
                   <DeleteIcon />
                 </IconButton>
               </ListItemSecondaryAction>
