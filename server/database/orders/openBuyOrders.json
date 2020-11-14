@@ -1,3 +1,13 @@
 [
-  
+  {
+    "name": "Facebook, Inc.",
+    "quote": "272.43",
+    "symbol": "FB",
+    "share": 8,
+    "orderType": "buy",
+    "orderId": "c66c341c-0300-42a7-9837-cdc16c4e60e4",
+    "username": "morty137",
+    "date": "2020-11-14T13:49:11.756Z",
+    "limitPrice": 272.43
+  }
 ]
