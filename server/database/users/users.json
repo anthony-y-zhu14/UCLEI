@@ -2,59 +2,12 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "fb5439df-c2a7-468e-a2d0-5938a02ffee9",
+    "session_id": "3f54733b-2b63-44df-be6a-71100d5d474b",
     "name": "Jerry Smith",
-    "watchlist": [
-      "AAL",
-      "TSLA",
-      "FB",
-      "SHOP"
+    "watchlist": [],
+    "openOrders": [      
     ],
-    "openOrders": [
-      
-    ],
-    "eventList": [
-      "AAL",
-      "SE"
-    ],
-    "ownedStocks": [
-      
-    ],
-    "activity": [
-      
-    ],
-    "account": {
-      "accountName": 1001,
-      "cashBalance": 9980,
-      "investmentBalance": 0
-    },
-    "balanceGrowth": 0
-  },
-  "morty137": {
-    "username": "morty137",
-    "password": "123456",
-    "session_id": "01cfbfcc-0c69-4ca4-9ca3-93772400a4da",
-    "name": "Morty Smith",
-    "watchlist": [
-      "SHOP"
-    ],
-    "openOrders": [
-      {
-        "name": "Facebook, Inc.",
-        "quote": "272.43",
-        "symbol": "FB",
-        "share": 2,
-        "orderType": "Sell",
-        "orderId": "eca82387-6ff9-4e49-b5ef-0d517a4e6d1b",
-        "username": "morty137",
-        "date": "2020-11-13",
-        "limitPrice": 10
-      }
-    ],
-    "eventList": [
-      "AAL",
-      "SE"
-    ],
+    "eventList": [],
     "ownedStocks": [
       {
         "name": "Facebook, Inc.",
@@ -66,11 +19,33 @@
       }
     ],
     "activity": [
+      "Bought 2 shares of FB at $10"
+    ],
+    "account": {
+      "accountName": 1001,
+      "cashBalance": 9940,
+      "investmentBalance": 20
+    },
+    "balanceGrowth": 0
+  },
+  "morty137": {
+    "username": "morty137",
+    "password": "123456",
+    "session_id": "01cfbfcc-0c69-4ca4-9ca3-93772400a4da",
+    "name": "Morty Smith",
+    "watchlist": [
+      "SHOP"
+    ],
+    "openOrders": [],
+    "eventList": [],
+    "ownedStocks": [],
+    "activity": [
+      "Sold 2 shares of FB at $10"
     ],
     "account": {
       "accountName": 1002,
-      "cashBalance": 2060,
-      "investmentBalance": 20
+      "cashBalance": 2100,
+      "investmentBalance": 0
     },
     "balanceGrowth": "0"
   },
@@ -79,9 +54,7 @@
     "password": "123456",
     "session_id": "a9fef115-726b-4a47-94cf-895d2a41c1ef",
     "name": "Rick Sanchez",
-    "watchlist": [
-      "AMD"
-    ],
+    "watchlist": [],
     "openOrders": [],
     "eventList": [],
     "ownedStocks": [],

@@ -4,10 +4,10 @@
     "quote": "272.43",
     "symbol": "FB",
     "share": 2,
-    "orderType": "Sell",
-    "orderId": "eca82387-6ff9-4e49-b5ef-0d517a4e6d1b",
-    "username": "morty137",
-    "date": "2020-11-13",
-    "limitPrice": 10
+    "orderType": "sell",
+    "orderId": "3803eb3b-6240-4ad1-96ee-da9a8141052b",
+    "username": "jerry137",
+    "date": "2020-11-14T00:00:32.482Z",
+    "limitPrice": 272.43
   }
 ]
