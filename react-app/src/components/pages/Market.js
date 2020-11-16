@@ -141,10 +141,11 @@ class Market extends React.Component {
       if (response.status !== 200) {
         throw Error(body.message)
       }
-      return body;    
+      return body;
     }
 
     componentDidMount() {
+
       this.setState({session_id: this.props.session_id});
 
       this.callPopStock()
@@ -234,12 +235,12 @@ class Market extends React.Component {
 
         if(!this.state.stockData) {
           return (
-            <div>         
+            <div>
             <Header currentPage={`Market`}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
               <br />
-              <LineChartB className={classes.chart} cData={false}/> 
+              <LineChartB className={classes.chart} cData={false}/>
               </div>
               <div className={classes.newsContainer}>
                 <h3 className={classes.font}>Market News</h3>
@@ -259,16 +260,16 @@ class Market extends React.Component {
             </div>
         );
         }
-        
+
         return (
-            <div>         
+            <div>
                 {console.log(this.state.popStocks)}
 
             <Header currentPage={`Market`} userName={this.state.user.username}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
-              <br />             
-              <LineChart className={classes.chart} cData={this.state.stockData}/>              
+              <br />
+              <LineChart className={classes.chart} cData={this.state.stockData}/>
               </div>
               <div className={classes.newsContainer}>
                 <p className={classes.font}>Market News</p>
@@ -278,7 +279,7 @@ class Market extends React.Component {
               <h3 className={classes.font}>Popular Stocks</h3>
               <div>
                   {this.state.popStocks.map(stock => (
-                    <OutlinedCard stock={stock}/>                              
+                    <OutlinedCard stock={stock}/>
                   ))}
               </div>
               </div>

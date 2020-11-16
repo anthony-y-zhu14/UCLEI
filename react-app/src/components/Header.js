@@ -129,6 +129,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
         }
       }
       history.push(location);
+      window.location.reload(false);
   }
 }
 
