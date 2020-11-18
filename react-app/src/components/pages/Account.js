@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
 import OutlinedCard from '../OutlinedCard.js';
+import { useHistory } from "react-router-dom";
 
 
 import "../css/Account.css"
@@ -201,7 +202,7 @@ class Account extends React.Component {
                                     {this.state.holdingBtn && (
                                         <React.Fragment>
                                             {this.state.user.ownedStocks.map(stock => (
-                                                <OutlinedCard stock={stock}/>
+                                                <OutlinedCard h={this.props.history} stock={stock}/>
                                                 
                                             ))}
                                         </React.Fragment>

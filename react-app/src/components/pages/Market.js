@@ -124,7 +124,7 @@ class Market extends React.Component {
             chartTicker: undefined,
             chartPrice: undefined,
             chartGrowth: undefined,
-            session_id: null,
+            session_id: this.props.session_id,
             day_start: undefined,
             day_end: undefined,
             query: window.location.href.slice(29),
@@ -146,7 +146,7 @@ class Market extends React.Component {
 
     componentDidMount() {
 
-      this.setState({session_id: this.props.session_id});
+      // this.setState({session_id: this.props.session_id});
 
       this.callPopStock()
       .then(res => this.setState({popStocks: res}))
@@ -213,7 +213,7 @@ class Market extends React.Component {
     render() {
         const { classes } = this.props;
 
-        if(!this.state.user && !this.state.session_id) {
+        if(!this.props.session_id) {
           return (
             <div>
               <h1 className={classes.fourohone}>401 Not Authorized.</h1>
@@ -263,13 +263,12 @@ class Market extends React.Component {
 
         return (
             <div>
-                {console.log(this.state.popStocks)}
 
             <Header currentPage={`Market`} userName={this.state.user.username}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
               <br />
-              <LineChart className={classes.chart} cData={this.state.stockData}/>
+              <LineChart className={classes.chart} q={this.state.query} cData={this.state.stockData}/>
               </div>
               <div className={classes.newsContainer}>
                 <p className={classes.font}>Market News</p>

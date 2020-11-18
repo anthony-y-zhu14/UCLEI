@@ -2,21 +2,9 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "8308fc9f-cf3d-4ee8-acf8-ec06d8d5cdf4",
+    "session_id": "1cf56674-3dfd-49e8-a093-d486d10126da",
     "name": "Jerry Smith",
     "watchlist": [
-      {
-        "symbol": "MAXR",
-        "quote": "23.94",
-        "name": "Maxar Technologies Inc.",
-        "volume": 0
-      },
-      {
-        "symbol": "TSLA",
-        "quote": "410.36",
-        "name": "Tesla, Inc.",
-        "volume": 0
-      },
       {
         "symbol": "AC.TO",
         "quote": "20.12",
@@ -28,46 +16,81 @@
     "eventList": [],
     "ownedStocks": [
       {
-        "name": "Facebook, Inc.",
-        "quote": 272.43,
-        "total_cost": 2179.4399999999996,
-        "average_cost": 272.42999999999995,
-        "symbol": "FB",
-        "share": 8
+        "name": "Sea Limited.",
+        "quote": 172.43,
+        "total_cost": 304,
+        "average_cost": 150,
+        "symbol": "SE",
+        "share": 10
       }
     ],
     "activity": [
       "Bought 5 shares of FB at $272.43 from rick137",
       "Bought 4 shares of FB at $272.43 from rick137",
       "Bought 1 shares of FB at $272.43 from rick137",
-      "Sold 2 shares of FB at $272.43 to morty137"
+      "Sold 2 shares of FB at $272.43 to morty137",
+      "Sold 5 shares of FB at $272.43 to morty137",
+      "Sold 3 shares of FB at $272.43 to morty137"
     ],
     "account": {
       "accountName": 1001,
-      "cashBalance": 7905.42,
-      "investmentBalance": 2179.4399999999996
+      "cashBalance": 10084.86,
+      "investmentBalance": 0
     },
     "balanceGrowth": 0
   },
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": "5e052196-6870-4354-affe-0ff10df6b718",
+    "session_id": null,
     "name": "Morty Smith",
     "watchlist": [
       "SHOP"
     ],
+    "openOrders": [],
+    "eventList": [],
+    "ownedStocks": [],
+    "activity": [
+      "Bought 2 shares of FB at $272.43 from jerry137",
+      "Bought 5 shares of FB at $272.43 from jerry137",
+      "Bought 3 shares of FB at $272.43 from jerry137",
+      "Sold 5 shares of FB at $272.43 to rick137",
+      "Sold 1 shares of FB at $272.43 to rick137",
+      "Sold 4 shares of FB at $272.43 to rick137",
+      "Bought 10 shares of FB at $272.43 from rick137",
+      "Sold 10 shares of FB at $272.43 to rick137"
+    ],
+    "account": {
+      "accountName": 1002,
+      "cashBalance": 44679.439999999995,
+      "investmentBalance": 0
+    },
+    "balanceGrowth": "0"
+  },
+  "rick137": {
+    "username": "rick137",
+    "password": "123456",
+    "session_id": "5ea0b29a-55b6-4909-8197-ef69f64a6404",
+    "name": "Rick Sanchez",
+    "watchlist": [
+      {
+        "symbol": "FB",
+        "quote": "272.43",
+        "name": "Facebook, Inc.",
+        "volume": 0
+      }
+    ],
     "openOrders": [
       {
-        "name": "Facebook, Inc.",
-        "quote": "272.43",
-        "symbol": "FB",
-        "share": 8,
+        "name": "Sea Limited",
+        "quote": "156.53",
+        "symbol": "SE",
+        "share": 10,
         "orderType": "buy",
-        "orderId": "c66c341c-0300-42a7-9837-cdc16c4e60e4",
-        "username": "morty137",
-        "date": "2020-11-14T13:49:11.756Z",
-        "limitPrice": 272.43
+        "orderId": "460d4599-9522-41fb-912e-aed4ce5ec3c2",
+        "username": "rick137",
+        "date": "2020-11-18T17:37:03.146Z",
+        "limitPrice": 156.53
       }
     ],
     "eventList": [],
@@ -75,40 +98,26 @@
       {
         "name": "Facebook, Inc.",
         "quote": 272.43,
-        "total_cost": 544.86,
+        "total_cost": 2724.3,
         "average_cost": 272.43,
         "symbol": "FB",
-        "share": 2
+        "share": 10
       }
     ],
     "activity": [
-      "Bought 2 shares of FB at $272.43 from jerry137"
-    ],
-    "account": {
-      "accountName": 1002,
-      "cashBalance": 44134.579999999994,
-      "investmentBalance": 544.86
-    },
-    "balanceGrowth": "0"
-  },
-  "rick137": {
-    "username": "rick137",
-    "password": "123456",
-    "session_id": null,
-    "name": "Rick Sanchez",
-    "watchlist": [],
-    "openOrders": [],
-    "eventList": [],
-    "ownedStocks": [],
-    "activity": [
       "Sold 5 shares of FB at $272.43 to jerry137",
       "Sold 4 shares of FB at $272.43 to jerry137",
-      "Sold 1 shares of FB at $272.43 to jerry137"
+      "Sold 1 shares of FB at $272.43 to jerry137",
+      "Bought 5 shares of FB at $272.43 from morty137",
+      "Bought 1 shares of FB at $272.43 from morty137",
+      "Bought 4 shares of FB at $272.43 from morty137",
+      "Sold 10 shares of FB at $272.43 to morty137",
+      "Bought 10 shares of FB at $272.43 from morty137"
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 9064.12,
-      "investmentBalance": 0
+      "cashBalance": 6339.820000000001,
+      "investmentBalance": 2724.3
     },
     "balanceGrowth": "0"
   }

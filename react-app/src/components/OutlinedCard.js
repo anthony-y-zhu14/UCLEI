@@ -6,6 +6,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { blueGrey } from '@material-ui/core/colors';
+import { useHistory } from "react-router-dom";
+
 
 const useStyles = makeStyles({
   root: {
@@ -25,31 +27,49 @@ const useStyles = makeStyles({
   },
 });
 
-export default function OutlinedCard({stock}) {
+export default function OutlinedCard({stock}, {h}) {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
+  let history = useHistory();
 
-  return (
-    <Card className={classes.root} variant="outlined">
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {stock.symbol}
-        </Typography>
-        <Typography variant="h5" component="h2">
-          {stock.name}
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          {stock.quote}
-        </Typography>
-        <Typography variant="body2" component="p">
-          ${stock.quote}
+  const handleClick = (event) => {
+      console.log(event.target.value);
+      let location = {
+        pathname: `/market/${stock.symbol}`,
+        state: {
+          query: stock.symbol
+        }
+      }
+      history.push(location);
+      console.log(window.location)
+      console.log(history)
+      // if(window.location.href === '/account/') {
+      //   window.location.reload(false);
+      // }
+      // if(window.location.href === `/market/${stock.symbol}`) {
+      //   window.location.reload(true);
+      // }
+  }
 
-
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">View Stock</Button>
-      </CardActions>
-    </Card>
+    return (
+      <Card className={classes.root} variant="outlined">
+        <CardContent>
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            {stock.symbol}
+          </Typography>
+          <Typography variant="h5" component="h2">
+            {stock.name}
+          </Typography>
+          <Typography className={classes.pos} color="textSecondary">
+            {stock.quote}
+          </Typography>
+          <Typography variant="body2" component="p">
+            ${stock.quote}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small" onClick={handleClick}>View Stock</Button>
+        </CardActions>
+      </Card>
   );
-}
+  }

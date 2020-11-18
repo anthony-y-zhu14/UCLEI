@@ -6,6 +6,7 @@ const { v4: uuidv4 } = require('uuid');
 const cookieParser = require('cookie-parser');
 const session=require('express-session');
 const users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
 
 app.use(express.static(path.join(__dirname, '../')));
 app.use(cookieParser());
@@ -39,6 +40,10 @@ function isSessionValid(s, u){
 
 function updateUserDataBase(){    
     fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
+}
+
+function updateStockDatabase(){
+    fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
 }
 
 function updateBuyOrdersData(d){
@@ -79,8 +84,6 @@ function validateBuy(quantity, symbol, limitPrice, user) {
     
     let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
     let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
-    let stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-
     let currentQuantity = parseInt(quantity);
     
     for(let i = 0; i < sellOrderArr.length; i++) {
@@ -282,10 +285,13 @@ function validateBuy(quantity, symbol, limitPrice, user) {
         return order.share > 0
     });
 
+    stockDatabase[symbol].volume += (quantity - currentQuantity);
+
     updateInvestmentBalance(user);
     updateSellOrdersData(updatedSellOrderArr);
     updateBuyOrdersData(buyOrderArr);        
     updateUserDataBase();
+    updateStockDatabase();
 
     
 }
@@ -294,7 +300,6 @@ function validateSell(quantity, symbol, limitPrice, user) {
 
     let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"))
     let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));;
-    let stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
 
     let currentQuantity = parseInt(quantity);
     
@@ -482,10 +487,12 @@ function validateSell(quantity, symbol, limitPrice, user) {
         return order.share > 0
     });
 
+    stockDatabase[symbol].volume += (quantity - currentQuantity);
     updateInvestmentBalance(user);
     updateSellOrdersData(sellOrderArr);
     updateBuyOrdersData(updatedBuyOrderArr);        
     updateUserDataBase();
+    updateStockDatabase();
 }
 
 
@@ -639,9 +646,8 @@ app.post('/addWatchItem', (req, res) => {
             data = JSON.parse(chunk);
         });
         req.on('end', () => {
-
-            let stockData = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-            let stock = stockData[data.value];
+           
+            let stock = stockDatabase[data.value];
 
             let watchItem = {
                 symbol: stock.symbol,
@@ -706,7 +712,7 @@ app.get('/getEvents', (req, res) => {
     }
 });
 
- app.post('/addEventNotify', (req, res) => {
+app.post('/addEventNotify', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
         let data = "";
         req.on('data', (chunk) => {
@@ -714,8 +720,8 @@ app.get('/getEvents', (req, res) => {
         });
         req.on('end', () => {
 
-            let stockData = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-            let stock = stockData[data];
+           
+            let stock = stockDataBase[data];
 
             let eventItem = {
                 symbol: stock.symbol,
@@ -856,7 +862,8 @@ app.post('/buyStock', (req, res) => {
                 check if user have enough cash to cover all previous order to the same stock
                 ********************************************* */
                 for (let j = 0; j < users[req.session.user]['openOrders'].length; j++){                        
-                    if (users[req.session.user]['openOrders'][j]['symbol'] === symbol){
+                    if (users[req.session.user]['openOrders'][j]['symbol'] === symbol 
+                    && users[req.session.user]['openOrders'][j]['orderType'] === "buy"){
                         sum += users[req.session.user]['openOrders'][j]['share'] * users[req.session.user]['openOrders'][j]['share'];
                     }
                 }
@@ -897,7 +904,8 @@ app.post('/sellStock', (req, res) => {
                     let sum = 0;
 
                     for (let j = 0; j < users[req.session.user]['openOrders'].length; j++){                        
-                        if (users[req.session.user]['openOrders'][j]['symbol'] === symbol){
+                        if (users[req.session.user]['openOrders'][j]['symbol'] === symbol 
+                        && users[req.session.user]['openOrders'][j]['orderType'] === "sell"){
                             sum += users[req.session.user]['openOrders'][j]['share'];
                         }
                     }
@@ -922,31 +930,28 @@ app.post('/sellStock', (req, res) => {
 ********************************************* */
 
 app.get('/stock-data-w', (req, res) => {
-    if (isSessionValid(req.session, req.session.user)){
-        fs.readFile("../database/stocks/data.json", function(err, file){
-            let lis = JSON.parse(file);
-            let data = [];
-            res.setHeader("Content-Type", "application/JSON");
-            for(let j = 0; j < users[req.session.user]['watchlist'].length; j++) {
-            let item = users[req.session.user]['watchlist'][j];
-            data.push(lis[item]);
-            }
-            res.write(JSON.stringify(data));
-            updateUserDataBase();
-            res.end();
-        });
+    if (isSessionValid(req.session, req.session.user)){      
+            
+        let data = [];
+        res.setHeader("Content-Type", "application/JSON");
+        for(let j = 0; j < users[req.session.user]['watchlist'].length; j++) {
+        let item = users[req.session.user]['watchlist'][j];
+        data.push(stockDatabase[item]);
+        }
+        res.write(JSON.stringify(data));
+        updateUserDataBase();
+        res.end();        
     }
   });
 
-app.get('/pop-stock-data', (req, res) => {
+app.get('/pop-stock-data', (req, res) => {   
     
-    let stockData = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     let data = [];
 
     //this will eventually give popular stocks by volume! We need more data!!
-    data.push(stockData['AMD']);
-    data.push(stockData['SE']);
-    data.push(stockData['FB']);    
+    data.push(stockDatabase['AMD']);
+    data.push(stockDatabase['SE']);
+    data.push(stockDatabase['FB']);    
     
     if (isSessionValid(req.session, req.session.user)){
         res.setHeader("Content-Type", "application/JSON");
@@ -955,20 +960,16 @@ app.get('/pop-stock-data', (req, res) => {
     }
   });
 
-
 app.get("/stock-data", (req, res) => {
-    if (isSessionValid(req.session, req.session.user)){
-        fs.readFile("../database/stocks/data.json", function(err, file){
-            let search = req.query['search'];
-            let lis = JSON.parse(file);
-            let data = [];
-            res.setHeader("Content-Type", "application/JSON");
-            if(lis[search] != null) {
-                data.push(lis[search]);
-            }
-            res.write(JSON.stringify(data));
-            res.end();
-            });
+    if (isSessionValid(req.session, req.session.user)){        
+        let search = req.query['search'];        
+        let data = [];
+        res.setHeader("Content-Type", "application/JSON");
+        if(stockDatabase[search] != null) {
+            data.push(stockDatabase[search]);
+        }
+        res.write(JSON.stringify(data));
+        res.end();            
     }
 });
 

@@ -1,531 +1,663 @@
 {
-    "D35-C": {
-        "name": "Dimension 35-C",
-        "symbol": "D35-C",
-        "market": "Dimension 35-C - Real Time Price. Currency in USD",
-        "percentage": "-0.82 (-6.21%)",
-        "volume": 2030,
-        "quote": 1200000.38,
-        "prev_close": "1190000.40",
-        "open": "1199990.23",
-        "daily_range": "1189000.40 - 1304600.32",
-        "historical": [1189000.40, 1304600.32]
-    },
-    "AAL": {
-        "name": "American Airlines Group Inc.",
-        "symbol": "AAL",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-0.82 (-6.21%)",
-        "volume": 0,
-        "quote": 12.38,
-        "prev_close": "13.20",
-        "open": "12.85",
-        "daily_range": "12.34 - 13.02",
-        "historical": [29.30, 30.78]
-    },
-    "AAPL": {
-        "name": "Apple Inc.",
-        "symbol": "AAPL",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-0.35 (-0.30%)",
-        "quote": "115.97",
-        "prev_close": "116.32",
-        "open": "115.55",
-        "daily_range": "114.13 - 117.59",
-        "historical": [53.15, 137.98],
-        "volume": 0
-    },
-    "AC.TO": {
-        "name": "Air Canada",
-        "symbol": "AC.TO",
-        "market": "Toronto - Toronto Real Time Price. Currency in CAD",
-        "percentage": "-0.23 (-1.13%)",
-        "quote": "20.12",
-        "prev_close": "20.35",
-        "open": "19.59",
-        "daily_range": "18.87 - 20.50",
-        "historical": [9.26 , 52.71],
-        "volume": 0
-    },
-    "AMD": {
-        "name": "Advanced Micro Devices, Inc.",
-        "symbol": "AMD",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-5.13 (-6.17%)",
-        "quote": "77.99",
-        "prev_close": "83.12",
-        "open": "81.93",
-        "daily_range": "77.63 - 82.13",
-        "historical": [36.40, 94.28],
-        "volume": 0
-    },
-    "AMZN": {
-        "name": "Amazon.com, Inc.",
-        "symbol": "AMZN",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-108.72 (-3.46%)",
-        "quote": "3,035.02",
-        "prev_close": "3,143.74",
-        "open": "3,095.02",
-        "daily_range": "3,019.48 - 3,114.00",
-        "historical": [1626.03 , 3552.25],
-        "volume": 0
-    },
-    "BABA": {
-        "name": "Alibaba Group Holding Limited",
-        "symbol": "BABA",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-23.99 (-8.26%)",
-        "quote": "266.54",
-        "prev_close": "290.53",
-        "open": "279.97",
-        "daily_range": "264.33 - 280.00",
-        "historical": [169.95, 319.32],
-        "volume": 0
-    },
-    "BAC": {
-        "name": "Bank of America Corporation",
-        "symbol": "BAC",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-0.10 (-0.36%)",
-        "quote": "27.66",
-        "prev_close": "27.76",
-        "open": "27.49",
-        "daily_range": "27.18 - 27.76",
-        "historical": [17.95, 35.72],
-        "volume": 0
-    },
-    "CGC": {
-        "name": "Canopy Growth Corporation",
-        "symbol": "CGC",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-0.87 (-3.54%)",
-        "quote": "23.71",
-        "prev_close": "24.58",
-        "open": "23.89",
-        "daily_range": "22.53 - 24.53",
-        "historical": [9.00, 26.95],
-        "volume": 0
-    },
-    "CHCI": {
-        "name": "Comstock Holding Companies, Inc.",
-        "symbol": "CHCI",
-        "market": "NasdaqCM - NasdaqCM Real Time Price. Currency in USD",
-        "percentage": "-0.2400 (-8.48%)",
-        "quote": "2.5900",
-        "prev_close": "2.8300",
-        "open": "2.7100",
-        "daily_range": "2.4400 - 2.7500",
-        "historical": [1.0600, 6.2600],
-        "volume": 0
-    },
-    "CL=F": {
-        "name": "Crude Oil Dec 20",
-        "symbol": "CL=F",
-        "market": "NY Mercantile - NY Mercantile Delayed Price. Currency in USD",
-        "percentage": "+0.21 (+0.51%)",
-        "quote": "41.57",
-        "prev_close": "N/A",
-        "open": "2020-11-20",
-        "daily_range": "41.36",
-        "historical": [41.45, 42.27],
-        "volume": 0
-    },
-    "COST": {
-        "name": "Costco Wholesale Corporation",
-        "symbol": "COST",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "+1.62 (+0.44%)",
-        "quote": "366.62",
-        "prev_close": "365.00",
-        "open": "363.88",
-        "daily_range": "360.62 - 371.54",
-        "historical": [271.28, 389.50],
-        "volume": 0
-    },
-    "DAL": {
-        "name": "Delta Air Lines, Inc.",
-        "symbol": "DAL",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+0.27 (+0.73%)",
-        "quote": "37.04",
-        "prev_close": "36.77",
-        "open": "36.10",
-        "daily_range": "35.69 - 37.17",
-        "historical": [17.51 , 62.48],
-        "volume": 0
-    },
-    "F": {
-        "name": "Ford Motor Company",
-        "symbol": "F",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+0.18 (+2.20%)",
-        "quote": "8.38",
-        "prev_close": "8.20",
-        "open": "8.23",
-        "daily_range": "8.18 - 8.59",
-        "historical": [3.96 , 9.57],
-        "volume": 0
-    },
-    "FB": {
-        "name": "Facebook, Inc.",
-        "symbol": "FB",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-6.34 (-2.27%)",
-        "quote": "272.43",
-        "prev_close": "278.77",
-        "open": "273.10",
-        "daily_range": "264.00 - 274.00",
-        "historical": [137.10  , 304.67],
-        "volume": 0
-    },
-    "GE": {
-        "name": "General Electric Company",
-        "symbol": "GE",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+0.26 (+2.98%)",
-        "quote": "8.98",
-        "prev_close": "8.72",
-        "open": "8.82",
-        "daily_range": "8.75 - 9.10",
-        "historical": [5.48,13.26],
-        "volume": 0
-    },
-    "GILD": {
-        "name": "Gilead Sciences, Inc.",
-        "symbol": "GILD",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "+1.57 (+2.66%)",
-        "quote": "60.62",
-        "prev_close": "59.05",
-        "open": "58.44",
-        "daily_range": "58.20 - 61.45",
-        "annual_range": "",
-        "historical": [57.04, 85.97],
-        "volume": 0
-    },
-    "GLD": {
-        "name": "SPDR Gold Shares",
-        "symbol": "GLD",
-        "market": "NYSEArca - Nasdaq Real Time Price. Currency in USD",
-        "percentage": "+0.58 (+0.33%)",
-        "quote": "175.66",
-        "prev_close": "175.08",
-        "open": "176.75",
-        "daily_range": "175.66 - 176.91",
-        "historical": [136.12, 194.45],
-        "volume": 0
-    },
-    "GOOG": {
-        "name": "Alphabet Inc.",
-        "symbol": "GOOG",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-22.61 (-1.28%)",
-        "quote": "1,740.39",
-        "prev_close": "1,763.00",
-        "open": "1,731.09",
-        "daily_range": "1,717.30 - 1,762.75",
-        "historical": [1013.54, 1818.06],
-        "volume": 0
-    },
-    "INTC": {
-        "name": "Intel Corporation",
-        "symbol": "INTC",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-0.16 (-0.35%)",
-        "quote": "45.44",
-        "prev_close": "45.60",
-        "open": "45.40",
-        "daily_range": "45.25 - 46.48",
-        "historical": [43.61, 69.29],
-        "volume": 0
-    },
-    "JD": {
-        "name": "JD.com, Inc.",
-        "symbol": "JD",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-4.78 (-5.63%)",
-        "quote": "80.08",
-        "prev_close": "84.86",
-        "open": "82.52",
-        "daily_range": "78.25 - 82.88",
-        "historical": [30.84, 92.77],
-        "volume": 0
-    },
-    "JNJ": {
-        "name": "Johnson & Johnson",
-        "symbol": "JNJ",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+2.20 (+1.51%)",
-        "quote": "148.28",
-        "prev_close": "146.08",
-        "open": "147.25",
-        "daily_range": "146.26 - 148.75",
-        "historical": [109.16, 157.00],
-        "volume": 0
-    },
-    "LK": {
-        "name": "Luckin Coffee Inc.",
-        "symbol": "LK",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "+1.3800 (+-54.00%)",
-        "quote": "1.3800",
-        "prev_close": "0.0000",
-        "open": "2.1000",
-        "daily_range": "1.1900 - 2.4600",
-        "historical": [1.1600, 51.3800],
-        "volume": 0
-    },
-    "LSXMK": {
-        "name": "The Liberty SiriusXM Group",
-        "symbol": "LSXMK",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "+0.03 (+0.08%)",
-        "quote": "39.68",
-        "prev_close": "39.65",
-        "open": "39.19",
-        "daily_range": "38.94 - 40.40",
-        "historical": [22.63, 50.50],
-        "volume": 0
-    },
-    "MA": {
-        "name": "Mastercard Incorporated",
-        "symbol": "MA",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-9.78 (-2.84%)",
-        "quote": "334.78",
-        "prev_close": "344.56",
-        "open": "339.99",
-        "daily_range": "333.44 - 345.86",
-        "historical": [199.99, 367.25],
-        "volume": 0
-    },
-    "MAXR": {
-        "name": "Maxar Technologies Inc.",
-        "symbol": "MAXR",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+2.27 (+10.48%)",
-        "quote": "23.94",
-        "prev_close": "21.67",
-        "open": "21.75",
-        "daily_range": "21.35 - 24.00",
-        "historical": [7.18, 32.42],
-        "volume": 0
-    },
-    "MRNA": {
-        "name": "Moderna, Inc.",
-        "symbol": "MRNA",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-1.69 (-2.17%)",
-        "quote": "76.05",
-        "prev_close": "77.74",
-        "open": "80.00",
-        "daily_range": "73.52 - 80.38",
-        "historical": [17.30, 95.21],
-        "volume": 0
-    },
-    "MSFT": {
-        "name": "Microsoft Corporation",
-        "symbol": "MSFT",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-7.38 (-3.38%)",
-        "quote": "211.01",
-        "prev_close": "218.39",
-        "open": "214.50",
-        "daily_range": "209.73 - 216.50",
-        "historical": [132.52, 232.86],
-        "volume": 0
-    },
-    "MU": {
-        "name": "Micron Technology, Inc.",
-        "symbol": "MU",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-0.55 (-0.98%)",
-        "quote": "55.41",
-        "prev_close": "55.96",
-        "open": "55.13",
-        "daily_range": "54.36 - 55.94",
-        "historical": [31.13, 61.19],
-        "volume": 0
-    },
-    "NFLX": {
-        "name": "Netflix, Inc.",
-        "symbol": "NFLX",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "+9.74 (+2.07%)",
-        "quote": "480.24",
-        "prev_close": "470.50",
-        "open": "470.95",
-        "daily_range": "463.41 - 484.60",
-        "historical": [281.14, 575.37],
-        "volume": 0
-    },
-    "NIO": {
-        "name": "NIO Limited",
-        "symbol": "NIO",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-2.47 (-5.61%)",
-        "quote": "41.55",
-        "prev_close": "44.02",
-        "open": "44.50",
-        "daily_range": "38.11 - 45.20",
-        "historical": [1.66, 45.29],
-        "volume": 0
-    },
-    "NVDA": {
-        "name": "NVIDIA Corporation",
-        "symbol": "NVDA",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-34.43 (-6.31%)",
-        "quote": "510.80",
-        "prev_close": "545.23",
-        "open": "544.26",
-        "daily_range": "505.13 - 542.45",
-        "historical": [180.68, 589.07],
-        "volume": 0
-    },
-    "SE": {
-        "name": "Sea Limited",
-        "symbol": "SE",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-12.55 (-7.42%)",
-        "quote": "156.53",
-        "prev_close": "169.08",
-        "open": "169.80",
-        "daily_range": "155.10 - 169.96",
-        "historical": [34.89, 187.75],
-        "volume": 0
-    },
-    "SHOP": {
-        "name": "Shopify Inc.",
-        "symbol": "SHOP",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-16.84 (-1.87%)",
-        "quote": "885.76",
-        "prev_close": "902.60",
-        "open": "912.00",
-        "daily_range": "875.00 - 924.00",
-        "historical": [301.82, 1146.91],
-        "volume": 0
-    },
-    "SPCE": {
-        "name": "Virgin Galactic Holdings, Inc.",
-        "symbol": "SPCE",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+0.02 (+0.10%)",
-        "quote": "20.47",
-        "prev_close": "20.45",
-        "open": "20.77",
-        "daily_range": "19.11 - 20.93",
-        "historical": [6.90, 42.49],
-        "volume": 0
-    },
-    "SQ": {
-        "name": "Square, Inc.",
-        "symbol": "SQ",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-12.08 (-6.56%)",
-        "quote": "172.00",
-        "prev_close": "184.08",
-        "open": "182.37",
-        "daily_range": "167.11 - 183.46",
-        "historical": [32.33, 201.33],
-        "volume": 0
-    },
-    "TCEHY": {
-        "name": "Tencent Holdings Limited",
-        "symbol": "TCEHY",
-        "market": "Other OTC - Other OTC Delayed Price. Currency in USD",
-        "percentage": "-4.76 (-6.06%)",
-        "quote": "73.80",
-        "prev_close": "78.56",
-        "open": "76.35",
-        "daily_range": "73.45 - 76.45",
-        "historical": [40.28, 81.35],
-        "volume": 0
-    },
-    "TD.TO": {
-        "name": "The Toronto-Dominion Bank",
-        "symbol": "TD.TO",
-        "market": "Toronto - Toronto Real Time Price. Currency in CAD",
-        "percentage": "+1.59 (+2.53%)",
-        "quote": "64.48",
-        "prev_close": "62.89",
-        "open": "63.30",
-        "daily_range": "63.05 - 64.48",
-        "historical": [49.01, 77.72],
-        "volume": 0
-    },
-    "TLRY": {
-        "name": "Tilray, Inc.",
-        "symbol": "TLRY",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-1.77 (-17.52%)",
-        "quote": "8.33",
-        "prev_close": "10.10",
-        "open": "9.31",
-        "daily_range": "8.07 - 9.33",
-        "historical": [2.43, 23.80],
-        "volume": 0
-    },
-    "TSLA": {
-        "name": "Tesla, Inc.",
-        "symbol": "TSLA",
-        "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
-        "percentage": "-10.90 (-2.59%)",
-        "quote": "410.36",
-        "prev_close": "421.26",
-        "open": "420.09",
-        "daily_range": "396.03 - 420.09",
-        "historical": [65.42, 502.49],
-        "volume": 0
-    },
-    "TSM": {
-        "name": "Taiwan Semiconductor Manufacturing Company Limited",
-        "symbol": "TSM",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "-1.37 (-1.54%)",
-        "quote": "87.66",
-        "prev_close": "89.03",
-        "open": "88.40",
-        "daily_range": "86.70 - 88.80",
-        "historical": [42.70, 92.48],
-        "volume": 0
-    },
-    "V": {
-        "name": "Visa Inc.",
-        "symbol": "V",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+0.63 (+0.30%)",
-        "quote": "213.31",
-        "prev_close": "212.68",
-        "open": "211.94",
-        "daily_range": "210.54 - 214.06",
-        "historical": [133.93, 217.65],
-        "volume": 0
-    },
-    "WBAI": {
-        "name": "500.com Limited",
-        "symbol": "WBAI",
-        "market": "NYSE - Nasdaq Real Time Price. Currency in USD",
-        "percentage": "-0.0500 (-1.75%)",
-        "quote": "2.8000",
-        "prev_close": "2.8500",
-        "open": "2.8300",
-        "daily_range": "2.7701 - 2.8000",
-        "historical": [2.5100, 10.0000],
-        "volume": 0
-    },
-    "WMT": {
-        "name": "Walmart Inc.",
-        "symbol": "WMT",
-        "market": "NYSE - NYSE Delayed Price. Currency in USD",
-        "percentage": "+2.02 (+1.41%)",
-        "quote": "145.56",
-        "prev_close": "143.54",
-        "open": "143.75",
-        "daily_range": "143.53 - 146.44",
-        "historical": [102.00, 151.33],
-        "volume": 0
-    }
+  "D35-C": {
+    "name": "Dimension 35-C",
+    "symbol": "D35-C",
+    "market": "Dimension 35-C - Real Time Price. Currency in USD",
+    "percentage": "-0.82 (-6.21%)",
+    "volume": 2030,
+    "quote": 1200000.38,
+    "prev_close": "1190000.40",
+    "open": "1199990.23",
+    "daily_range": "1189000.40 - 1304600.32",
+    "historical": [
+      1189000.4,
+      1304600.32
+    ]
+  },
+  "AAL": {
+    "name": "American Airlines Group Inc.",
+    "symbol": "AAL",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-0.82 (-6.21%)",
+    "volume": 0,
+    "quote": 12.38,
+    "prev_close": "13.20",
+    "open": "12.85",
+    "daily_range": "12.34 - 13.02",
+    "historical": [
+      29.3,
+      30.78
+    ]
+  },
+  "AAPL": {
+    "name": "Apple Inc.",
+    "symbol": "AAPL",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-0.35 (-0.30%)",
+    "quote": "115.97",
+    "prev_close": "116.32",
+    "open": "115.55",
+    "daily_range": "114.13 - 117.59",
+    "historical": [
+      53.15,
+      137.98
+    ],
+    "volume": 0
+  },
+  "AC.TO": {
+    "name": "Air Canada",
+    "symbol": "AC.TO",
+    "market": "Toronto - Toronto Real Time Price. Currency in CAD",
+    "percentage": "-0.23 (-1.13%)",
+    "quote": "20.12",
+    "prev_close": "20.35",
+    "open": "19.59",
+    "daily_range": "18.87 - 20.50",
+    "historical": [
+      9.26,
+      52.71
+    ],
+    "volume": 0
+  },
+  "AMD": {
+    "name": "Advanced Micro Devices, Inc.",
+    "symbol": "AMD",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-5.13 (-6.17%)",
+    "quote": "77.99",
+    "prev_close": "83.12",
+    "open": "81.93",
+    "daily_range": "77.63 - 82.13",
+    "historical": [
+      36.4,
+      94.28
+    ],
+    "volume": 0
+  },
+  "AMZN": {
+    "name": "Amazon.com, Inc.",
+    "symbol": "AMZN",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-108.72 (-3.46%)",
+    "quote": "3,035.02",
+    "prev_close": "3,143.74",
+    "open": "3,095.02",
+    "daily_range": "3,019.48 - 3,114.00",
+    "historical": [
+      1626.03,
+      3552.25
+    ],
+    "volume": 0
+  },
+  "BABA": {
+    "name": "Alibaba Group Holding Limited",
+    "symbol": "BABA",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-23.99 (-8.26%)",
+    "quote": "266.54",
+    "prev_close": "290.53",
+    "open": "279.97",
+    "daily_range": "264.33 - 280.00",
+    "historical": [
+      169.95,
+      319.32
+    ],
+    "volume": 0
+  },
+  "BAC": {
+    "name": "Bank of America Corporation",
+    "symbol": "BAC",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-0.10 (-0.36%)",
+    "quote": "27.66",
+    "prev_close": "27.76",
+    "open": "27.49",
+    "daily_range": "27.18 - 27.76",
+    "historical": [
+      17.95,
+      35.72
+    ],
+    "volume": 0
+  },
+  "CGC": {
+    "name": "Canopy Growth Corporation",
+    "symbol": "CGC",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-0.87 (-3.54%)",
+    "quote": "23.71",
+    "prev_close": "24.58",
+    "open": "23.89",
+    "daily_range": "22.53 - 24.53",
+    "historical": [
+      9,
+      26.95
+    ],
+    "volume": 0
+  },
+  "CHCI": {
+    "name": "Comstock Holding Companies, Inc.",
+    "symbol": "CHCI",
+    "market": "NasdaqCM - NasdaqCM Real Time Price. Currency in USD",
+    "percentage": "-0.2400 (-8.48%)",
+    "quote": "2.5900",
+    "prev_close": "2.8300",
+    "open": "2.7100",
+    "daily_range": "2.4400 - 2.7500",
+    "historical": [
+      1.06,
+      6.26
+    ],
+    "volume": 0
+  },
+  "CL=F": {
+    "name": "Crude Oil Dec 20",
+    "symbol": "CL=F",
+    "market": "NY Mercantile - NY Mercantile Delayed Price. Currency in USD",
+    "percentage": "+0.21 (+0.51%)",
+    "quote": "41.57",
+    "prev_close": "N/A",
+    "open": "2020-11-20",
+    "daily_range": "41.36",
+    "historical": [
+      41.45,
+      42.27
+    ],
+    "volume": 0
+  },
+  "COST": {
+    "name": "Costco Wholesale Corporation",
+    "symbol": "COST",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "+1.62 (+0.44%)",
+    "quote": "366.62",
+    "prev_close": "365.00",
+    "open": "363.88",
+    "daily_range": "360.62 - 371.54",
+    "historical": [
+      271.28,
+      389.5
+    ],
+    "volume": 0
+  },
+  "DAL": {
+    "name": "Delta Air Lines, Inc.",
+    "symbol": "DAL",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+0.27 (+0.73%)",
+    "quote": "37.04",
+    "prev_close": "36.77",
+    "open": "36.10",
+    "daily_range": "35.69 - 37.17",
+    "historical": [
+      17.51,
+      62.48
+    ],
+    "volume": 0
+  },
+  "F": {
+    "name": "Ford Motor Company",
+    "symbol": "F",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+0.18 (+2.20%)",
+    "quote": "8.38",
+    "prev_close": "8.20",
+    "open": "8.23",
+    "daily_range": "8.18 - 8.59",
+    "historical": [
+      3.96,
+      9.57
+    ],
+    "volume": 0
+  },
+  "FB": {
+    "name": "Facebook, Inc.",
+    "symbol": "FB",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-6.34 (-2.27%)",
+    "quote": "272.43",
+    "prev_close": "278.77",
+    "open": "273.10",
+    "daily_range": "264.00 - 274.00",
+    "historical": [
+      137.1,
+      304.67
+    ],
+    "volume": 10
+  },
+  "GE": {
+    "name": "General Electric Company",
+    "symbol": "GE",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+0.26 (+2.98%)",
+    "quote": "8.98",
+    "prev_close": "8.72",
+    "open": "8.82",
+    "daily_range": "8.75 - 9.10",
+    "historical": [
+      5.48,
+      13.26
+    ],
+    "volume": 0
+  },
+  "GILD": {
+    "name": "Gilead Sciences, Inc.",
+    "symbol": "GILD",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "+1.57 (+2.66%)",
+    "quote": "60.62",
+    "prev_close": "59.05",
+    "open": "58.44",
+    "daily_range": "58.20 - 61.45",
+    "annual_range": "",
+    "historical": [
+      57.04,
+      85.97
+    ],
+    "volume": 0
+  },
+  "GLD": {
+    "name": "SPDR Gold Shares",
+    "symbol": "GLD",
+    "market": "NYSEArca - Nasdaq Real Time Price. Currency in USD",
+    "percentage": "+0.58 (+0.33%)",
+    "quote": "175.66",
+    "prev_close": "175.08",
+    "open": "176.75",
+    "daily_range": "175.66 - 176.91",
+    "historical": [
+      136.12,
+      194.45
+    ],
+    "volume": 0
+  },
+  "GOOG": {
+    "name": "Alphabet Inc.",
+    "symbol": "GOOG",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-22.61 (-1.28%)",
+    "quote": "1,740.39",
+    "prev_close": "1,763.00",
+    "open": "1,731.09",
+    "daily_range": "1,717.30 - 1,762.75",
+    "historical": [
+      1013.54,
+      1818.06
+    ],
+    "volume": 0
+  },
+  "INTC": {
+    "name": "Intel Corporation",
+    "symbol": "INTC",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-0.16 (-0.35%)",
+    "quote": "45.44",
+    "prev_close": "45.60",
+    "open": "45.40",
+    "daily_range": "45.25 - 46.48",
+    "historical": [
+      43.61,
+      69.29
+    ],
+    "volume": 0
+  },
+  "JD": {
+    "name": "JD.com, Inc.",
+    "symbol": "JD",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-4.78 (-5.63%)",
+    "quote": "80.08",
+    "prev_close": "84.86",
+    "open": "82.52",
+    "daily_range": "78.25 - 82.88",
+    "historical": [
+      30.84,
+      92.77
+    ],
+    "volume": 0
+  },
+  "JNJ": {
+    "name": "Johnson & Johnson",
+    "symbol": "JNJ",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+2.20 (+1.51%)",
+    "quote": "148.28",
+    "prev_close": "146.08",
+    "open": "147.25",
+    "daily_range": "146.26 - 148.75",
+    "historical": [
+      109.16,
+      157
+    ],
+    "volume": 0
+  },
+  "LK": {
+    "name": "Luckin Coffee Inc.",
+    "symbol": "LK",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "+1.3800 (+-54.00%)",
+    "quote": "1.3800",
+    "prev_close": "0.0000",
+    "open": "2.1000",
+    "daily_range": "1.1900 - 2.4600",
+    "historical": [
+      1.16,
+      51.38
+    ],
+    "volume": 0
+  },
+  "LSXMK": {
+    "name": "The Liberty SiriusXM Group",
+    "symbol": "LSXMK",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "+0.03 (+0.08%)",
+    "quote": "39.68",
+    "prev_close": "39.65",
+    "open": "39.19",
+    "daily_range": "38.94 - 40.40",
+    "historical": [
+      22.63,
+      50.5
+    ],
+    "volume": 0
+  },
+  "MA": {
+    "name": "Mastercard Incorporated",
+    "symbol": "MA",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-9.78 (-2.84%)",
+    "quote": "334.78",
+    "prev_close": "344.56",
+    "open": "339.99",
+    "daily_range": "333.44 - 345.86",
+    "historical": [
+      199.99,
+      367.25
+    ],
+    "volume": 0
+  },
+  "MAXR": {
+    "name": "Maxar Technologies Inc.",
+    "symbol": "MAXR",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+2.27 (+10.48%)",
+    "quote": "23.94",
+    "prev_close": "21.67",
+    "open": "21.75",
+    "daily_range": "21.35 - 24.00",
+    "historical": [
+      7.18,
+      32.42
+    ],
+    "volume": 0
+  },
+  "MRNA": {
+    "name": "Moderna, Inc.",
+    "symbol": "MRNA",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-1.69 (-2.17%)",
+    "quote": "76.05",
+    "prev_close": "77.74",
+    "open": "80.00",
+    "daily_range": "73.52 - 80.38",
+    "historical": [
+      17.3,
+      95.21
+    ],
+    "volume": 0
+  },
+  "MSFT": {
+    "name": "Microsoft Corporation",
+    "symbol": "MSFT",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-7.38 (-3.38%)",
+    "quote": "211.01",
+    "prev_close": "218.39",
+    "open": "214.50",
+    "daily_range": "209.73 - 216.50",
+    "historical": [
+      132.52,
+      232.86
+    ],
+    "volume": 0
+  },
+  "MU": {
+    "name": "Micron Technology, Inc.",
+    "symbol": "MU",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-0.55 (-0.98%)",
+    "quote": "55.41",
+    "prev_close": "55.96",
+    "open": "55.13",
+    "daily_range": "54.36 - 55.94",
+    "historical": [
+      31.13,
+      61.19
+    ],
+    "volume": 0
+  },
+  "NFLX": {
+    "name": "Netflix, Inc.",
+    "symbol": "NFLX",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "+9.74 (+2.07%)",
+    "quote": "480.24",
+    "prev_close": "470.50",
+    "open": "470.95",
+    "daily_range": "463.41 - 484.60",
+    "historical": [
+      281.14,
+      575.37
+    ],
+    "volume": 0
+  },
+  "NIO": {
+    "name": "NIO Limited",
+    "symbol": "NIO",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-2.47 (-5.61%)",
+    "quote": "41.55",
+    "prev_close": "44.02",
+    "open": "44.50",
+    "daily_range": "38.11 - 45.20",
+    "historical": [
+      1.66,
+      45.29
+    ],
+    "volume": 0
+  },
+  "NVDA": {
+    "name": "NVIDIA Corporation",
+    "symbol": "NVDA",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-34.43 (-6.31%)",
+    "quote": "510.80",
+    "prev_close": "545.23",
+    "open": "544.26",
+    "daily_range": "505.13 - 542.45",
+    "historical": [
+      180.68,
+      589.07
+    ],
+    "volume": 0
+  },
+  "SE": {
+    "name": "Sea Limited",
+    "symbol": "SE",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-12.55 (-7.42%)",
+    "quote": "156.53",
+    "prev_close": "169.08",
+    "open": "169.80",
+    "daily_range": "155.10 - 169.96",
+    "historical": [
+      34.89,
+      187.75
+    ],
+    "volume": 0
+  },
+  "SHOP": {
+    "name": "Shopify Inc.",
+    "symbol": "SHOP",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-16.84 (-1.87%)",
+    "quote": "885.76",
+    "prev_close": "902.60",
+    "open": "912.00",
+    "daily_range": "875.00 - 924.00",
+    "historical": [
+      301.82,
+      1146.91
+    ],
+    "volume": 0
+  },
+  "SPCE": {
+    "name": "Virgin Galactic Holdings, Inc.",
+    "symbol": "SPCE",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+0.02 (+0.10%)",
+    "quote": "20.47",
+    "prev_close": "20.45",
+    "open": "20.77",
+    "daily_range": "19.11 - 20.93",
+    "historical": [
+      6.9,
+      42.49
+    ],
+    "volume": 0
+  },
+  "SQ": {
+    "name": "Square, Inc.",
+    "symbol": "SQ",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-12.08 (-6.56%)",
+    "quote": "172.00",
+    "prev_close": "184.08",
+    "open": "182.37",
+    "daily_range": "167.11 - 183.46",
+    "historical": [
+      32.33,
+      201.33
+    ],
+    "volume": 0
+  },
+  "TCEHY": {
+    "name": "Tencent Holdings Limited",
+    "symbol": "TCEHY",
+    "market": "Other OTC - Other OTC Delayed Price. Currency in USD",
+    "percentage": "-4.76 (-6.06%)",
+    "quote": "73.80",
+    "prev_close": "78.56",
+    "open": "76.35",
+    "daily_range": "73.45 - 76.45",
+    "historical": [
+      40.28,
+      81.35
+    ],
+    "volume": 0
+  },
+  "TD.TO": {
+    "name": "The Toronto-Dominion Bank",
+    "symbol": "TD.TO",
+    "market": "Toronto - Toronto Real Time Price. Currency in CAD",
+    "percentage": "+1.59 (+2.53%)",
+    "quote": "64.48",
+    "prev_close": "62.89",
+    "open": "63.30",
+    "daily_range": "63.05 - 64.48",
+    "historical": [
+      49.01,
+      77.72
+    ],
+    "volume": 0
+  },
+  "TLRY": {
+    "name": "Tilray, Inc.",
+    "symbol": "TLRY",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-1.77 (-17.52%)",
+    "quote": "8.33",
+    "prev_close": "10.10",
+    "open": "9.31",
+    "daily_range": "8.07 - 9.33",
+    "historical": [
+      2.43,
+      23.8
+    ],
+    "volume": 0
+  },
+  "TSLA": {
+    "name": "Tesla, Inc.",
+    "symbol": "TSLA",
+    "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
+    "percentage": "-10.90 (-2.59%)",
+    "quote": "410.36",
+    "prev_close": "421.26",
+    "open": "420.09",
+    "daily_range": "396.03 - 420.09",
+    "historical": [
+      65.42,
+      502.49
+    ],
+    "volume": 0
+  },
+  "TSM": {
+    "name": "Taiwan Semiconductor Manufacturing Company Limited",
+    "symbol": "TSM",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "-1.37 (-1.54%)",
+    "quote": "87.66",
+    "prev_close": "89.03",
+    "open": "88.40",
+    "daily_range": "86.70 - 88.80",
+    "historical": [
+      42.7,
+      92.48
+    ],
+    "volume": 0
+  },
+  "V": {
+    "name": "Visa Inc.",
+    "symbol": "V",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+0.63 (+0.30%)",
+    "quote": "213.31",
+    "prev_close": "212.68",
+    "open": "211.94",
+    "daily_range": "210.54 - 214.06",
+    "historical": [
+      133.93,
+      217.65
+    ],
+    "volume": 0
+  },
+  "WBAI": {
+    "name": "500.com Limited",
+    "symbol": "WBAI",
+    "market": "NYSE - Nasdaq Real Time Price. Currency in USD",
+    "percentage": "-0.0500 (-1.75%)",
+    "quote": "2.8000",
+    "prev_close": "2.8500",
+    "open": "2.8300",
+    "daily_range": "2.7701 - 2.8000",
+    "historical": [
+      2.51,
+      10
+    ],
+    "volume": 0
+  },
+  "WMT": {
+    "name": "Walmart Inc.",
+    "symbol": "WMT",
+    "market": "NYSE - NYSE Delayed Price. Currency in USD",
+    "percentage": "+2.02 (+1.41%)",
+    "quote": "145.56",
+    "prev_close": "143.54",
+    "open": "143.75",
+    "daily_range": "143.53 - 146.44",
+    "historical": [
+      102,
+      151.33
+    ],
+    "volume": 0
+  }
 }

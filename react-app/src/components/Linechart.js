@@ -66,6 +66,7 @@ class LineChart extends React.Component {
       this.state = {
           stockData: this.props.cData,
           query: window.location.href.slice(29),
+          q: this.props.q
 
       };
   }
@@ -84,6 +85,7 @@ class LineChart extends React.Component {
     await fetch('/addWatchItem', requestOptions);
   }
 
+  1
   componentDidMount() {
     console.log(this.props.stockData);
     // this.setState({stockData: this.props.cData});
