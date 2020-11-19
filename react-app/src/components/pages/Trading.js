@@ -113,7 +113,7 @@ class Trading extends React.Component {
                 body: JSON.stringify({ name: symbol, n: quantity , limit_price: parseFloat(this.state.stock_found.quote)})
             }
         }
-        
+
 
         await fetch(target_url, requestOptions);
         this.callBackendAPI()
@@ -207,7 +207,7 @@ class Trading extends React.Component {
             alert("No Stock Selected")
             return;
         }
-        
+
         if (this.state.orderBuy){
             this.updateComponentBuy();
 

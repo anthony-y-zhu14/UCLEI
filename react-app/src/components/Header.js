@@ -18,6 +18,7 @@ import { Avatar } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
 import { useHistory } from "react-router-dom";
 import {withRouter} from 'react-router-dom';
+// import { Router, Route } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -129,7 +130,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
         }
       }
       history.push(location);
-      window.location.reload(false);
+      // window.location.reload(false);
   }
 }
 
@@ -265,11 +266,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       {renderMobileMenu}
       {renderMenu}
 
-
-
-
-
-
     </div>
 
 
@@ -282,4 +278,4 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   );
 }
 
-export default (withRouter)(PrimarySearchAppBar);
+export default withRouter(PrimarySearchAppBar);

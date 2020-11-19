@@ -41,14 +41,6 @@ export default function OutlinedCard({stock}, {h}) {
         }
       }
       history.push(location);
-      console.log(window.location)
-      console.log(history)
-      // if(window.location.href === '/account/') {
-      //   window.location.reload(false);
-      // }
-      // if(window.location.href === `/market/${stock.symbol}`) {
-      //   window.location.reload(true);
-      // }
   }
 
     return (

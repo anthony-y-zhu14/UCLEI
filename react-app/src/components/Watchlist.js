@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import QueueIcon from '@material-ui/icons/Queue';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { withRouter } from 'react-router-dom';
+import compose from 'recompose/compose'
 
 const styles = {
   root: {
@@ -36,6 +38,8 @@ class CheckboxList extends React.Component {
         };
   }
 
+
+
   componentDidMount() {
     // Calls our fetch below once the component mounts
   this.callBackendAPI()
@@ -49,7 +53,6 @@ class CheckboxList extends React.Component {
     if (response.status !== 200) {
       throw Error(body.message)
     }
-    console.log(body);
     return body;
   };
 
@@ -67,17 +70,14 @@ class CheckboxList extends React.Component {
     .catch(err => console.log(err));
   }
 
-  viewWatchItem = async(id) => {
-    //should be get request with query param as id
-    const response = await fetch(`/stock-data?search=${id}`);
-    const body = await response.json();
-    if (response.status !== 200) {
-      throw Error(body.message)
-    }
-    console.log(body)
-    this.setState({ selectedStock: body} );
-    this.setState({ view: true} );
-    return body;
+  viewWatchItem = async(value) => {
+      let location = {
+        pathname: `/market/${value}`,
+        state: {
+          query: value
+        }
+      }
+      this.props.history.push(location);
   }
 
   componentDidUpdate() {
@@ -122,5 +122,6 @@ class CheckboxList extends React.Component {
     );
   }
 }
-
-export default  withStyles(styles)(CheckboxList);
+export default compose(
+   withStyles(styles),
+)(withRouter(CheckboxList))
