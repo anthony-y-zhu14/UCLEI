@@ -9,10 +9,29 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function FormDialog({name}) {
   const [open, setOpen] = React.useState(false);
+  const [num, setNum] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const setTheNum = (event) => {
+      setNum(event.target.value)
+  }
+
+  const handleWatchSave = async () => {
+    let data = {
+      num: num,
+      name: window.location.href.slice(29)
+    }
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    };
+    await fetch('/addEventNotify', requestOptions);
+    handleClose();
+  }
 
   const handleClose = () => {
     setOpen(false);
@@ -38,13 +57,14 @@ export default function FormDialog({name}) {
             label="Percentage"
             type="Percentage"
             fullWidth
+            onChange = {setTheNum}
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleWatchSave} color="primary">
             Subscribe
           </Button>
         </DialogActions>

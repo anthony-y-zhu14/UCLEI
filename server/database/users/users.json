@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "78fdd625-bd7d-4530-902e-c710a97f9429",
+    "session_id": "6c0214ab-c2cc-4963-a456-e6a846fd47d3",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -25,7 +25,15 @@
       }
     ],
     "openOrders": [],
-    "eventList": [],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": "156.53",
+        "name": "Sea Limited",
+        "active": true,
+        "notify_num": "2"
+      }
+    ],
     "ownedStocks": [
       {
         "name": "Sea Limited.",

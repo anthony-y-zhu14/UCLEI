@@ -22,9 +22,9 @@ app.use(session({
     }
 }));
 
-/********************************************** 
+/**********************************************
     Helper Functions
-     - handles: 
+     - handles:
         - checking for valid sessions
         - updating data base  (currently JSON files)
         - creating open sell and buy orders
@@ -38,7 +38,7 @@ function isSessionValid(s, u){
     return false;
 }
 
-function updateUserDataBase(){    
+function updateUserDataBase(){
     fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
 }
 
@@ -56,7 +56,7 @@ function updateSellOrdersData(d){
 
 function createOpenOrder(name, quote, symbol, quantity, orderType, orderId, username, limitPrice){
     let date = new Date();
-        
+
         let openOrder = {
           name: name,
           quote: quote,
@@ -67,8 +67,8 @@ function createOpenOrder(name, quote, symbol, quantity, orderType, orderId, user
           username: username,
           date: date,
           limitPrice: limitPrice
-        };   
-        
+        };
+
     return openOrder;
 }
 
@@ -81,20 +81,20 @@ function updateInvestmentBalance(username){
 }
 
 function validateBuy(quantity, symbol, limitPrice, user) {
-    
+
     let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
     let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
     let currentQuantity = parseInt(quantity);
-    
+
     for(let i = 0; i < sellOrderArr.length; i++) {
-        
-        if(symbol === sellOrderArr[i].symbol 
-            && sellOrderArr[i].username !== user 
-            && sellOrderArr[i].limitPrice <= limitPrice 
+
+        if(symbol === sellOrderArr[i].symbol
+            && sellOrderArr[i].username !== user
+            && sellOrderArr[i].limitPrice <= limitPrice
             && sellOrderArr[i].share >= currentQuantity) {
 
-            
-            updateBuyerAccount();    
+
+            updateBuyerAccount();
             function updateBuyerAccount(){
 
                 let newStock = {
@@ -103,59 +103,59 @@ function validateBuy(quantity, symbol, limitPrice, user) {
                     total_cost: sellOrderArr[i].limitPrice*currentQuantity,
                     average_cost: sellOrderArr[i].limitPrice,
                     symbol: stockDatabase[symbol].symbol,
-                    share: currentQuantity      
+                    share: currentQuantity
                 };
 
                 //Update Buyer Balance and Holding
-                users[user]['account']["cashBalance"] 
+                users[user]['account']["cashBalance"]
                 -= (sellOrderArr[i].limitPrice * currentQuantity);
-            
+
 
                 users[user]['activity'].push(
                     `Bought ${currentQuantity} shares of ${symbol} at $${sellOrderArr[i].limitPrice} from ${sellOrderArr[i].username}`
-                );                      
+                );
 
                 for (let j = 0; j < users[user]['ownedStocks'].length; j++) {
 
                     if(users[user]['ownedStocks'][j].symbol === newStock.symbol) {
 
-                        users[user]['ownedStocks'][j].share 
+                        users[user]['ownedStocks'][j].share
                         += currentQuantity;
 
-                        users[user]['ownedStocks'][j].total_cost 
+                        users[user]['ownedStocks'][j].total_cost
                         += newStock.quote * currentQuantity;
 
-                        users[user]['ownedStocks'][j].average_cost 
-                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);                    
-                        
+                        users[user]['ownedStocks'][j].average_cost
+                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);
+
                         return;
-                    }                               
-                } 
-                users[user]['ownedStocks'].push(newStock);           
-                
+                    }
+                }
+                users[user]['ownedStocks'].push(newStock);
+
             }
 
             updateSellerAccount();
             function updateSellerAccount(){
 
-                //Update Seller Balance and Holding            
+                //Update Seller Balance and Holding
                 users[sellOrderArr[i]['username']]
-                ['account']["cashBalance"] +=  (sellOrderArr[i].limitPrice * currentQuantity);           
-     
+                ['account']["cashBalance"] +=  (sellOrderArr[i].limitPrice * currentQuantity);
+
                 users[sellOrderArr[i]['username']]
                 ['activity'].push(`Sold ${currentQuantity} shares of ${symbol} at $${sellOrderArr[i].limitPrice} to ${user}`);
 
                 for(let k = 0; k < users[sellOrderArr[i]['username']]['ownedStocks'].length; k++) {
                     if(users[sellOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === sellOrderArr[i].symbol) {
                         users[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] -= currentQuantity;
-                        
+
                         if(users[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] === 0) {
                             users[sellOrderArr[i]['username']]['ownedStocks'].splice(k, 1);
                         }
                         break;
                     }
                 }
-                
+
                 for(let k = 0; k < users[sellOrderArr[i]['username']]['openOrders'].length; k++) {
                     if(users[sellOrderArr[i]['username']]['openOrders'][k]['orderId'] === sellOrderArr[i].orderId) {
 
@@ -163,7 +163,7 @@ function validateBuy(quantity, symbol, limitPrice, user) {
 
                         if(users[sellOrderArr[i]['username']]['openOrders'][k]['share'] === 0) {
                             users[sellOrderArr[i]['username']]['openOrders'].splice(k, 1);
-                        } 
+                        }
 
                         break;
                     }
@@ -171,24 +171,24 @@ function validateBuy(quantity, symbol, limitPrice, user) {
 
                 updateInvestmentBalance(sellOrderArr[i]['username']);
 
-                
-            
-            }          
+
+
+            }
                 //decrement share total for partially fufilled sell order
                 sellOrderArr[i].share -= currentQuantity;
                 currentQuantity = 0;
                 break;
-                
+
         }
 
-        else if(symbol === sellOrderArr[i].symbol 
-            && sellOrderArr[i].limitPrice >= limitPrice 
-            && sellOrderArr[i].username !== user 
+        else if(symbol === sellOrderArr[i].symbol
+            && sellOrderArr[i].limitPrice >= limitPrice
+            && sellOrderArr[i].username !== user
             && 0 < sellOrderArr[i].share < currentQuantity) {
-                
-            
 
-            updateBuyerAccount();              
+
+
+            updateBuyerAccount();
             function updateBuyerAccount(){
 
                 let newStock = {
@@ -197,90 +197,90 @@ function validateBuy(quantity, symbol, limitPrice, user) {
                     total_cost: sellOrderArr[i].limitPrice*sellOrderArr[i].share,
                     average_cost: sellOrderArr[i].limitPrice,
                     symbol: stockDatabase[symbol].symbol,
-                    share: sellOrderArr[i].share      
+                    share: sellOrderArr[i].share
                 };
 
                 //Update Buyer Balance and Holding
-                users[user]['account']["cashBalance"] 
-                -= (sellOrderArr[i].limitPrice * sellOrderArr[i].share);    
+                users[user]['account']["cashBalance"]
+                -= (sellOrderArr[i].limitPrice * sellOrderArr[i].share);
                 users[user]['activity'].push(
                     `Bought ${sellOrderArr[i].share} shares of ${symbol} at $${sellOrderArr[i].limitPrice} from ${sellOrderArr[i].username}`
-                );                 
-              
+                );
+
 
                 for (let j = 0; j < users[user]['ownedStocks'].length; j++) {
 
                     if(users[user]['ownedStocks'][j].symbol === newStock.symbol) {
 
-                        users[user]['ownedStocks'][j].share 
+                        users[user]['ownedStocks'][j].share
                         += sellOrderArr[i].share;
 
-                        users[user]['ownedStocks'][j].total_cost 
+                        users[user]['ownedStocks'][j].total_cost
                         += newStock.quote * sellOrderArr[i].share;
 
-                        users[user]['ownedStocks'][j].average_cost 
-                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);                    
-                        
+                        users[user]['ownedStocks'][j].average_cost
+                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);
+
                         return;
-                    }                               
-                } 
-                users[user]['ownedStocks'].push(newStock);           
-                
+                    }
+                }
+                users[user]['ownedStocks'].push(newStock);
+
             }
 
             updateSellerAccount();
             function updateSellerAccount(){
 
-                //Update Seller Balance and Holding            
+                //Update Seller Balance and Holding
                 users[sellOrderArr[i]['username']]
-                ['account']["cashBalance"] +=  (sellOrderArr[i].limitPrice * sellOrderArr[i].share);    
+                ['account']["cashBalance"] +=  (sellOrderArr[i].limitPrice * sellOrderArr[i].share);
                 users[sellOrderArr[i]['username']]
                 ['activity'].push(`Sold ${sellOrderArr[i].share} shares of ${symbol} at $${sellOrderArr[i].limitPrice} to ${user}`);
 
                 for(let k = 0; k < users[sellOrderArr[i]['username']]['ownedStocks'].length; k++) {
                     if(users[sellOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === sellOrderArr[i].symbol) {
-                        users[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] -= sellOrderArr[i].share;                        
+                        users[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] -= sellOrderArr[i].share;
                         if(users[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] === 0) {
                             users[sellOrderArr[i]['username']]['ownedStocks'].splice(k, 1);
                         }
                         break;
                     }
                 }
-                
+
                 for(let k = 0; k < users[sellOrderArr[i]['username']]['openOrders'].length; k++) {
                     if(users[sellOrderArr[i]['username']]['openOrders'][k]['orderId'] === sellOrderArr[i].orderId) {
                         users[sellOrderArr[i]['username']]['openOrders'].splice(k, 1);
-                        break;                         
+                        break;
                     }
-                }    
-                
+                }
+
                 updateInvestmentBalance(sellOrderArr[i]['username']);
-                
-                
+
+
 
             }
             currentQuantity -= sellOrderArr[i].share;
             sellOrderArr[i].share = 0;
-        }             
+        }
     }
 
-    
+
 
     if (currentQuantity > 0){
         let name = stockDatabase[symbol].name;
         let quote = stockDatabase[symbol].quote;
         let orderType = 'buy';
         let orderId = uuidv4();
-        let username = user    
+        let username = user
 
         let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
-        
+
         buyOrderArr.push(newOpenOrder);
-        users[user]["openOrders"].push(newOpenOrder);       
-        
+        users[user]["openOrders"].push(newOpenOrder);
+
     }
 
-    
+
     let updatedSellOrderArr = sellOrderArr.filter(function (order) {
         return order.share > 0
     });
@@ -289,11 +289,11 @@ function validateBuy(quantity, symbol, limitPrice, user) {
 
     updateInvestmentBalance(user);
     updateSellOrdersData(updatedSellOrderArr);
-    updateBuyOrdersData(buyOrderArr);        
+    updateBuyOrdersData(buyOrderArr);
     updateUserDataBase();
     updateStockDatabase();
 
-    
+
 }
 
 function validateSell(quantity, symbol, limitPrice, user) {
@@ -302,18 +302,18 @@ function validateSell(quantity, symbol, limitPrice, user) {
     let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));;
 
     let currentQuantity = parseInt(quantity);
-    
-    
+
+
     for(let i = 0; i < buyOrderArr.length; i++) {
 
         if(symbol === buyOrderArr[i].symbol  && buyOrderArr[i].limitPrice >= limitPrice && buyOrderArr[i].username !== user &&  buyOrderArr[i].share >= currentQuantity) {
-                   
-            updateSellerAccount();    
+
+            updateSellerAccount();
             function updateSellerAccount(){
 
                 //Update Buyer Balance and Holding
-                users[user]['account']["cashBalance"] 
-                += (buyOrderArr[i].limitPrice * currentQuantity);               
+                users[user]['account']["cashBalance"]
+                += (buyOrderArr[i].limitPrice * currentQuantity);
 
                 users[user]['activity'].push(
 
@@ -325,21 +325,21 @@ function validateSell(quantity, symbol, limitPrice, user) {
 
                     if(users[user]['ownedStocks'][j].symbol === symbol) {
 
-                        users[user]['ownedStocks'][j].share 
-                        -= currentQuantity;                    
+                        users[user]['ownedStocks'][j].share
+                        -= currentQuantity;
 
-                        users[user]['ownedStocks'][j].total_cost 
+                        users[user]['ownedStocks'][j].total_cost
                         -= (buyOrderArr[i].limitPrice * currentQuantity);
 
-                        users[user]['ownedStocks'][j].average_cost 
-                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);    
-                        
+                        users[user]['ownedStocks'][j].average_cost
+                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);
+
                         if (users[user]['ownedStocks'][j].share === 0){
                             users[user]['ownedStocks'].splice(j, 1);
                         }
                         return;
-                    }                               
-                } 
+                    }
+                }
             }
 
             updateBuyerAccount();
@@ -351,13 +351,13 @@ function validateSell(quantity, symbol, limitPrice, user) {
                     total_cost: buyOrderArr[i].limitPrice*currentQuantity,
                     average_cost: buyOrderArr[i].limitPrice,
                     symbol: stockDatabase[symbol].symbol,
-                    share: currentQuantity      
+                    share: currentQuantity
                 };
 
-                //Update Buyer Balance and Holding            
+                //Update Buyer Balance and Holding
                 users[buyOrderArr[i]['username']]
                 ['account']["cashBalance"] -=  (buyOrderArr[i].limitPrice * currentQuantity);
-                users[buyOrderArr[i]['username']]               
+                users[buyOrderArr[i]['username']]
                 ['activity'].push(`Bought ${currentQuantity} shares of ${symbol} at $${buyOrderArr[i].limitPrice} from ${user}`);
 
                 for(let k = 0; k < users[buyOrderArr[i]['username']]['openOrders'].length; k++) {
@@ -365,39 +365,39 @@ function validateSell(quantity, symbol, limitPrice, user) {
                         users[buyOrderArr[i]['username']]['openOrders'][k]['share'] -= currentQuantity;
                         if(users[buyOrderArr[i]['username']]['openOrders'][k]['share'] === 0) {
                             users[buyOrderArr[i]['username']]['openOrders'].splice(k, 1);
-                        } 
+                        }
                     }
-                }                
+                }
 
                 for(let k = 0; k < users[buyOrderArr[i]['username']]['ownedStocks'].length; k++) {
                     //if user owns stock, and is adding more shares
                     if(users[buyOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === buyOrderArr[i].symbol) {
-                        users[buyOrderArr[i]['username']]['ownedStocks'][k]['share'] += currentQuantity;                                                 
+                        users[buyOrderArr[i]['username']]['ownedStocks'][k]['share'] += currentQuantity;
                         return;
-                    } 
-                }                                             
-                users[buyOrderArr[i]['username']]['ownedStocks'].push(newStock);              
-                               
-               
+                    }
+                }
+                users[buyOrderArr[i]['username']]['ownedStocks'].push(newStock);
+
+
             }
             //decrement share total for partially fufilled sell order
-            buyOrderArr[i].share -= currentQuantity;    
+            buyOrderArr[i].share -= currentQuantity;
             currentQuantity = 0;
-            updateInvestmentBalance(buyOrderArr[i]['username']);   
-            break;           
-                
+            updateInvestmentBalance(buyOrderArr[i]['username']);
+            break;
+
         }
 
         else if(symbol === buyOrderArr[i].symbol && buyOrderArr[i].limitPrice >= limitPrice && buyOrderArr[i].username !== user && 0 < buyOrderArr[i].share < currentQuantity) {
             currentQuantity -= buyOrderArr[i].share;
 
             updateSellerAccount();
-            function updateSellerAccount(){                
+            function updateSellerAccount(){
 
                 //Update Buyer Balance and Holding
-                users[user]['account']["cashBalance"] 
+                users[user]['account']["cashBalance"]
                 += (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
-            
+
 
                 users[user]['activity'].push(
 
@@ -409,24 +409,24 @@ function validateSell(quantity, symbol, limitPrice, user) {
 
                     if(users[user]['ownedStocks'][j].symbol === symbol) {
 
-                        users[user]['ownedStocks'][j].share -= buyOrderArr[i].share;                    
+                        users[user]['ownedStocks'][j].share -= buyOrderArr[i].share;
 
                         users[user]['ownedStocks'][j].total_cost -= (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
 
-                        users[user]['ownedStocks'][j].average_cost 
-                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);    
-                        
+                        users[user]['ownedStocks'][j].average_cost
+                        = (users[user]['ownedStocks'][j].total_cost / users[user]['ownedStocks'][j].share);
+
                         if (users[user]['ownedStocks'][j].share === 0){
                             users[user]['ownedStocks'].splice(j, 1);
                         }
                         return;
-                    }                               
+                    }
                 }
-                
-                
+
+
             }
 
-            updateBuyerAccount();            
+            updateBuyerAccount();
             function updateBuyerAccount(){
 
                 let newStock = {
@@ -435,39 +435,39 @@ function validateSell(quantity, symbol, limitPrice, user) {
                     total_cost: buyOrderArr[i].limitPrice*buyOrderArr[i].share,
                     average_cost: buyOrderArr[i].limitPrice,
                     symbol: stockDatabase[symbol].symbol,
-                    share: buyOrderArr[i].share      
-                };               
+                    share: buyOrderArr[i].share
+                };
 
-                //Update Buyer Balance and Holding            
-                users[buyOrderArr[i]['username']]['account']["cashBalance"] 
+                //Update Buyer Balance and Holding
+                users[buyOrderArr[i]['username']]['account']["cashBalance"]
                 -=  (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
-                              
+
                 users[buyOrderArr[i]['username']]['activity']
                 .push(`Bought ${buyOrderArr[i].share} shares of ${symbol} at $${buyOrderArr[i].limitPrice} from ${user}`);
 
                 for(let k = 0; k < users[buyOrderArr[i]['username']]['openOrders'].length; k++) {
                     if(users[buyOrderArr[i]['username']]['openOrders'][k]['orderId'] === buyOrderArr[i].orderId) {
                         users[buyOrderArr[i]['username']]['openOrders'].splice(k, 1);
-                    }                    
-                }               
-                
-                
+                    }
+                }
+
+
                 for(let k = 0; k < users[buyOrderArr[i]['username']]['ownedStocks'].length; k++) {
                     //if user owns stock, and is adding more shares
                     if(users[buyOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === buyOrderArr[i].symbol) {
                         users[buyOrderArr[i]['username']]['ownedStocks'][k]['share'] += buyOrderArr[i].share;
-                        
-                        return;                        
-                    } 
-                }                
-                
-                users[buyOrderArr[i]['username']]['ownedStocks'].push(newStock);               
-                             
+
+                        return;
+                    }
+                }
+
+                users[buyOrderArr[i]['username']]['ownedStocks'].push(newStock);
+
             }
 
-            updateInvestmentBalance(buyOrderArr[i]['username']);   
+            updateInvestmentBalance(buyOrderArr[i]['username']);
             buyOrderArr.splice(i, 1);
-        }        
+        }
     }
 
     if (currentQuantity > 0){
@@ -475,12 +475,12 @@ function validateSell(quantity, symbol, limitPrice, user) {
         let quote = stockDatabase[symbol].quote;
         let orderType = 'sell';
         let orderId = uuidv4();
-        let username = user    
+        let username = user
 
         let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
-        
+
         sellOrderArr.push(newOpenOrder);
-        users[user]["openOrders"].push(newOpenOrder);       
+        users[user]["openOrders"].push(newOpenOrder);
     }
 
     let updatedBuyOrderArr = buyOrderArr.filter(function (order) {
@@ -490,19 +490,19 @@ function validateSell(quantity, symbol, limitPrice, user) {
     stockDatabase[symbol].volume += (quantity - currentQuantity);
     updateInvestmentBalance(user);
     updateSellOrdersData(sellOrderArr);
-    updateBuyOrdersData(updatedBuyOrderArr);        
+    updateBuyOrdersData(updatedBuyOrderArr);
     updateUserDataBase();
     updateStockDatabase();
 }
 
 
-/********************************************** 
+/**********************************************
     Account authentication Get and Post Requests:
-     - handles a users: 
+     - handles a users:
         - authentication to the server
         - logging in / out
         - creating session & cookie
-        - destroying cookie on logout 
+        - destroying cookie on logout
 **********************************************/
 app.post('/authentication', (req, res) => {
     users = JSON.parse(fs.readFileSync("../database/users/users.json"));
@@ -563,9 +563,9 @@ app.post('/register', (req, res) => {
     });
 
     function register(username, password, name) {
-        if(!users[username]) {        
+        if(!users[username]) {
             const USER_TOKEN = uuidv4();
-            let newUser = {            
+            let newUser = {
                 username: username,
                 password: password,
                 session_id: USER_TOKEN,
@@ -580,7 +580,7 @@ app.post('/register', (req, res) => {
                     cashBalance: 0,
                     investmentBalance: 0,
                 },
-                balanceGrowth: "0"              
+                balanceGrowth: "0"
             }
 
             users[username] = newUser;
@@ -628,12 +628,12 @@ app.get("/session", function(req, res){
     res.end();
 });
 
-/********************************************** 
+/**********************************************
     Account Post and Get Requests:
-     - handles a user: 
-        - checking their current balance  
+     - handles a user:
+        - checking their current balance
         - checking their account information
-        - updating their balance on a withdrawl or deposit 
+        - updating their balance on a withdrawl or deposit
 **********************************************/
 
 app.get('/getBalance', (req, res) => {
@@ -684,12 +684,12 @@ app.post('/updateBalance', (req, res) => {
     }
 });
 
-/********************************************** 
+/**********************************************
     Watchlist Post and Get Requests:
-     - handles a user: 
-        - adding an item to their watchlist 
-        - removing items to a watchlist 
-        - viewing their watchlist 
+     - handles a user:
+        - adding an item to their watchlist
+        - removing items to a watchlist
+        - viewing their watchlist
 **********************************************/
 
 app.get('/getWatchlist', (req, res) => {
@@ -709,7 +709,7 @@ app.post('/addWatchItem', (req, res) => {
             data = JSON.parse(chunk);
         });
         req.on('end', () => {
-           
+
             let stock = stockDatabase[data.value];
 
             let watchItem = {
@@ -743,11 +743,11 @@ app.post('/delWatchItem', (req, res) => {
         });
 
         req.on('end', () => {
-            
+
             for(let i = 0; i < users[req.session.user]['watchlist'].length; i++) {
                 if(users[req.session.user]['watchlist'][i]['symbol'] === data.item) {
                     users[req.session.user]['watchlist'].splice(i, 1);
-                } 
+                }
             }
             updateUserDataBase();
             res.end();
@@ -755,14 +755,14 @@ app.post('/delWatchItem', (req, res) => {
     }
 });
 
-/********************************************** 
+/**********************************************
     Event Post and Get Requests:
-     - handles a user: 
-        - adding an item to their events 
-        - removing items to their events 
-        - viewing their events 
+     - handles a user:
+        - adding an item to their events
+        - removing items to their events
+        - viewing their events
         - notifying user on events
-        - deactivating and activating events 
+        - deactivating and activating events
 ********************************************* */
 
 app.get('/getEvents', (req, res) => {
@@ -780,16 +780,20 @@ app.post('/addEventNotify', (req, res) => {
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
+            console.log(data)
+            console.log(data.name)
         });
         req.on('end', () => {
 
-           
-            let stock = stockDataBase[data];
+
+            let stock = stockDatabase[data.name];
+
+            console.log(stock)
 
             let eventItem = {
-                symbol: stock.symbol,
-                quote: stock.quote,
-                name: stock.name,
+                symbol: stock['symbol'],
+                quote: stock['quote'],
+                name: stock['name'],
                 active: true,
                 notify_num: data.num
             };
@@ -803,7 +807,7 @@ app.post('/addEventNotify', (req, res) => {
             if(!isItemInList) {
                 users[req.session.user]['eventList'].push(eventItem);
             }
-            
+
             updateUserDataBase();
             res.end();
         });
@@ -822,7 +826,7 @@ app.post('/rmvEventNotify', (req, res) => {
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data) {
                     users[req.session.user]['eventList'].splice(i, 1);
-                } 
+                }
             }
             updateUserDataBase();
             res.end();
@@ -842,7 +846,7 @@ app.post('/deactivateEvent', (req, res) => {
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data) {
                     users[req.session.user]['eventList'][i]['active'] = false;
-                } 
+                }
             }
             updateUserDataBase();
             res.end();
@@ -862,7 +866,7 @@ app.post('/activateEvent', (req, res) => {
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data) {
                     users[req.session.user]['eventList'][i]['active'] = true;
-                } 
+                }
             }
             updateUserDataBase();
             res.end();
@@ -882,7 +886,7 @@ app.post('/updateEventNum', (req, res) => {
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data.value) {
                     users[req.session.user]['eventList'][i]['num'] = data.num;
-                } 
+                }
             }
             updateUserDataBase();
             res.end();
@@ -890,11 +894,11 @@ app.post('/updateEventNum', (req, res) => {
     }
 });
 
-/********************************************** 
+/**********************************************
     Buy and Sell Stock Post and Get Requests:
-     - handles a user: 
+     - handles a user:
         - buying a stock
-        - selling a stock  
+        - selling a stock
 ********************************************* */
 
 app.post('/buyStock', (req, res) => {
@@ -912,20 +916,20 @@ app.post('/buyStock', (req, res) => {
             res.end();
         });
 
-        function buyStock(quantity, symbol, limitPrice) {               
+        function buyStock(quantity, symbol, limitPrice) {
 
-            /********************************************** 
+            /**********************************************
             check if user have enough cash to cover this order
             ********************************************* */
             if(quantity * limitPrice <= users[req.session.user]['account']['cashBalance']) {
 
                 let sum = 0;
 
-                 /********************************************** 
+                 /**********************************************
                 check if user have enough cash to cover all previous order to the same stock
                 ********************************************* */
-                for (let j = 0; j < users[req.session.user]['openOrders'].length; j++){                        
-                    if (users[req.session.user]['openOrders'][j]['symbol'] === symbol 
+                for (let j = 0; j < users[req.session.user]['openOrders'].length; j++){
+                    if (users[req.session.user]['openOrders'][j]['symbol'] === symbol
                     && users[req.session.user]['openOrders'][j]['orderType'] === "buy"){
                         sum += users[req.session.user]['openOrders'][j]['share'] * users[req.session.user]['openOrders'][j]['share'];
                     }
@@ -934,13 +938,13 @@ app.post('/buyStock', (req, res) => {
                 if (users[req.session.user]['account']['cashBalance'] - sum >= 0){
                     validateBuy(quantity, symbol, limitPrice, users[req.session.user]['username']);
                     return;
-                }                
-            }                           
-            
+                }
+            }
+
             console.log(`User: ${users[req.session.user]['username']} does not have the required amount of cash balance to complete this sale.`);
 
         }
-        
+
     }
 });
 
@@ -961,13 +965,13 @@ app.post('/sellStock', (req, res) => {
         });
 
         function sellStock(quantity, symbol, limitPrice) {
-            
+
             for(let i = 0; i < users[req.session.user]['ownedStocks'].length; i++) {
                 if(users[req.session.user]['ownedStocks'][i]['symbol'] === symbol && users[req.session.user]['ownedStocks'][i]['share'] >= quantity) {
                     let sum = 0;
 
-                    for (let j = 0; j < users[req.session.user]['openOrders'].length; j++){                        
-                        if (users[req.session.user]['openOrders'][j]['symbol'] === symbol 
+                    for (let j = 0; j < users[req.session.user]['openOrders'].length; j++){
+                        if (users[req.session.user]['openOrders'][j]['symbol'] === symbol
                         && users[req.session.user]['openOrders'][j]['orderType'] === "sell"){
                             sum += users[req.session.user]['openOrders'][j]['share'];
                         }
@@ -977,7 +981,7 @@ app.post('/sellStock', (req, res) => {
                         validateSell(quantity, symbol, limitPrice, users[req.session.user]['username']);
                         return;
                     }
-                    
+
                 }
             }
             console.log(`User: ${users[req.session.user]['username']} does not have the required stock or amount of shares to complete this sale.`);
@@ -985,16 +989,16 @@ app.post('/sellStock', (req, res) => {
     }
 });
 
-/********************************************** 
+/**********************************************
     Stock Info Get Requests:
-     - handles a user: 
+     - handles a user:
         - getting info of a particular stock
-        - searching for a stock ticker  
+        - searching for a stock ticker
 ********************************************* */
 
 app.get('/stock-data-w', (req, res) => {
-    if (isSessionValid(req.session, req.session.user)){      
-            
+    if (isSessionValid(req.session, req.session.user)){
+
         let data = [];
         res.setHeader("Content-Type", "application/JSON");
         for(let j = 0; j < users[req.session.user]['watchlist'].length; j++) {
@@ -1003,19 +1007,19 @@ app.get('/stock-data-w', (req, res) => {
         }
         res.write(JSON.stringify(data));
         updateUserDataBase();
-        res.end();        
+        res.end();
     }
   });
 
-app.get('/pop-stock-data', (req, res) => {   
-    
+app.get('/pop-stock-data', (req, res) => {
+
     let data = [];
 
     //this will eventually give popular stocks by volume! We need more data!!
     data.push(stockDatabase['AMD']);
     data.push(stockDatabase['SE']);
-    data.push(stockDatabase['FB']);    
-    
+    data.push(stockDatabase['FB']);
+
     if (isSessionValid(req.session, req.session.user)){
         res.setHeader("Content-Type", "application/JSON");
         res.write(JSON.stringify(data));
@@ -1024,20 +1028,20 @@ app.get('/pop-stock-data', (req, res) => {
   });
 
 app.get("/stock-data", (req, res) => {
-    if (isSessionValid(req.session, req.session.user)){        
-        let search = req.query['search'];        
+    if (isSessionValid(req.session, req.session.user)){
+        let search = req.query['search'];
         let data = [];
         res.setHeader("Content-Type", "application/JSON");
         if(stockDatabase[search] != null) {
             data.push(stockDatabase[search]);
         }
         res.write(JSON.stringify(data));
-        res.end();            
+        res.end();
     }
 });
 
-/********************************************** 
- Server Information 
+/**********************************************
+ Server Information
 ********************************************* */
 app.listen(3001);
 console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');

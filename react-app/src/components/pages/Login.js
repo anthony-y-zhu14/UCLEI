@@ -135,10 +135,10 @@ class Login extends React.Component {
             </div>
 
             <div >
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>             
+              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
               <Button className={classes.lgnBtn} variant="contained" color="secondary" onClick={this.register}>Register</Button>
-           
-              
+
+
             </div>
 
 
