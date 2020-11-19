@@ -130,6 +130,7 @@ class Market extends React.Component {
             query: window.location.href.slice(29),
             stockData: undefined,
             reload: false,
+            watchlist: undefined,
             popStocks: undefined
         };
     }
@@ -157,7 +158,7 @@ class Market extends React.Component {
       .catch(err => console.log(err));
 
       this.callBackendAPI()
-        .then(res => this.setState({user:res}))
+        .then(res => this.setState({user:res, watchlist:res.watchlist}))
         .catch(err => console.log(err));
     }
 
@@ -170,29 +171,13 @@ class Market extends React.Component {
       return body;
     };
 
-
     handleLog = data => {
-
-      if(data.view) {
-        if(this.state.chartName !== data.selectedStock[0].name) {
-          this.setState({chartName: data.selectedStock[0].name});
-        }
-        if(this.state.chartTicker !== data.selectedStock[0].symbol) {
-          this.setState({chartTicker: data.selectedStock[0].symbol});
-        }
-        if(this.state.chartPrice!== data.selectedStock[0].quote) {
-          this.setState({chartPrice: data.selectedStock[0].quote});
-        }
-        if(this.state.chartGrowth !== data.selectedStock[0].percentage) {
-          this.setState({chartGrowth: data.selectedStock[0].percentage});
-        }
-        if(this.state.day_start !== data.selectedStock[0].open) {
-          this.setState({day_start: data.selectedStock[0].open});
-        }
-        if(this.state.day_end !== data.selectedStock[0].prev_close) {
-          this.setState({day_end: data.selectedStock[0].prev_close});
-        }
-      }
+      console.log(data)
+        // if(this.state.watchlist.length !== data.watchlist.length) {
+        //   this.setState({watchlist: data.watchlist});
+        // } else {
+        //   return;
+        // }
     }
 
     handleReRender = data => {
@@ -236,7 +221,7 @@ class Market extends React.Component {
         if(!this.state.stockData) {
           return (
             <div>
-            <Header currentPage={`Market`}/>
+            <Header currentPage={`Market`} userName={this.state.user.username}/>
             <div className={classes.main}>
               <div className={classes.chartContainer}>
               <br />
@@ -248,6 +233,11 @@ class Market extends React.Component {
               </div>
               <div className={classes.popStockContainer}>
               <h3 className={classes.font}>Popular Stocks</h3>
+              <div>
+                  {this.state.popStocks.map(stock => (
+                    <OutlinedCard stock={stock}/>
+                  ))}
+              </div>
 
               </div>
 
@@ -268,7 +258,7 @@ class Market extends React.Component {
             <div className={classes.main}>
               <div className={classes.chartContainer}>
               <br />
-              <LineChart className={classes.chart} q={this.state.query} cData={this.state.stockData}/>
+              <LineChart className={classes.chart} q={this.state.query} onChange={this.handleLog}/>
               </div>
               <div className={classes.newsContainer}>
                 <p className={classes.font}>Market News</p>

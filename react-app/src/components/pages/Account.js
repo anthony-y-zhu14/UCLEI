@@ -198,12 +198,12 @@ class Account extends React.Component {
                                 </ButtonGroup>
                                 <ul id="table-container">
 
-                                
+
                                     {this.state.holdingBtn && (
                                         <React.Fragment>
                                             {this.state.user.ownedStocks.map(stock => (
                                                 <OutlinedCard h={this.props.history} stock={stock}/>
-                                                
+
                                             ))}
                                         </React.Fragment>
                                     )}
@@ -214,7 +214,7 @@ class Account extends React.Component {
                                             ))}
                                         </React.Fragment>
                                     )}
-                                
+
                                 </ul>
 
                             </div>

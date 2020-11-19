@@ -2,14 +2,26 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "1cf56674-3dfd-49e8-a093-d486d10126da",
+    "session_id": "78fdd625-bd7d-4530-902e-c710a97f9429",
     "name": "Jerry Smith",
     "watchlist": [
       {
-        "symbol": "AC.TO",
-        "quote": "20.12",
-        "name": "Air Canada",
+        "symbol": "AMD",
+        "quote": "77.99",
+        "name": "Advanced Micro Devices, Inc.",
         "volume": 0
+      },
+      {
+        "symbol": "SE",
+        "quote": "156.53",
+        "name": "Sea Limited",
+        "volume": 0
+      },
+      {
+        "symbol": "FB",
+        "quote": "272.43",
+        "name": "Facebook, Inc.",
+        "volume": 10
       }
     ],
     "openOrders": [],

@@ -4,7 +4,7 @@ import NewsList from '../NewsList.js';
 import { withStyles } from "@material-ui/core/styles";
 import { LinearProgress } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
-import LineChart from '../Linechart.js';
+import LineChartB from '../lineChartB.js';
 
 const styles = {
   main: {
@@ -207,7 +207,7 @@ class Dashboard extends React.Component {
           <div className={classes.main}>
             <div className={classes.chartContainer}>
             <h3 className={classes.font}>NASDAQ</h3>
-            <LineChart className={classes.chart} cData={this.state.stockData}/>              
+            <LineChartB className={classes.chart} cData={this.state.stockData}/>
             </div>
             <div className={classes.newsContainer}>
             <h3 className='mrkt'>Market News</h3>

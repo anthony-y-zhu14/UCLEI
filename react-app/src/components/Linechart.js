@@ -64,16 +64,33 @@ class LineChart extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          stockData: this.props.cData,
-          query: window.location.href.slice(29),
-          q: this.props.q
+          stockData: undefined,
+          query: undefined,
+          q: undefined
 
       };
   }
   componentDidUpdate() {
-    if (this.props.onChange) {
-      this.props.onChange(this.state);
+    this.componentDidMount()
+    if(this.state.query != window.location.href.slice(29)) {
+      this.setState({query: window.location.href.slice(29)});
     }
+  }
+
+  readStock = async() => {
+    //should be get request with query param as id
+    const response = await fetch(`/stock-data?search=${window.location.href.slice(29)}`);
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    this.setState({ stockData: body[0]})
+
+
+    this.makeChart(this.state.stockData.name);
+    this.componentDidMount()
+
+    return body;
   }
 
   handleWatchSave = async(value) => {
@@ -83,34 +100,55 @@ class LineChart extends React.Component {
         body: JSON.stringify({ value })
     };
     await fetch('/addWatchItem', requestOptions);
+    this.componentDidMount();
   }
 
-  1
   componentDidMount() {
-    console.log(this.props.stockData);
-    // this.setState({stockData: this.props.cData});
 
-    const ctx = document.getElementById("marketChart");
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Day 1','Day 2','Day 3','Day 4'],
-        datasets: [
-          {
-            label: "Past 4 Days",
-            data: [this.state.stockData.prev_close, this.state.stockData.open, this.state.stockData.historical[0],this.state.stockData.historical[1]],
-            backgroundColor: '#6C9FF8',
-            borderColor: '#35363C',
-            borderWidth: 1
-          }
-        ]
-      }
-    });
-    console.log(this.state.stockData)
+    if(this.state.q != window.location.href.slice(29)) {
+      this.setState({q: window.location.href.slice(29)});
+      this.readStock();
+    }
   }
+
+    makeChart = async (d) => {
+      console.log(d);
+      if(this.state.stockData) {
+
+
+        const ctx = document.getElementById("marketChart");
+
+        if (window.ctx != undefined) {
+          window.ctx.destroy();
+        }
+        window.ctx = new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['Day 1','Day 2','Day 3','Day 4'],
+            datasets: [
+              {
+                label: "Past 4 Days",
+                data: [this.state.stockData.prev_close, this.state.stockData.open, this.state.stockData.historical[0],this.state.stockData.historical[1]],
+                backgroundColor: '#6C9FF8',
+                borderColor: '#35363C',
+                borderWidth: 1
+              }
+            ]
+          }
+        });
+        console.log(this.state.stockData)
+      }
+    }
 
   render() {
     const { classes } = this.props;
+
+    if(!this.state.stockData) {
+      return (
+        <h1>Loading</h1>
+      );
+    }
+
       return (
         <div className="App">
         <span className={classes.titleFont} >{this.state.stockData.name}</span>
@@ -124,6 +162,7 @@ class LineChart extends React.Component {
                   <Button variant="outlined" size="small" color="primary" className={classes.margin}>Historical</Button>
                 </ButtonGroup>
           <div className={classes.chart}>
+
             <canvas id="marketChart"/>
           </div>
         </div>
