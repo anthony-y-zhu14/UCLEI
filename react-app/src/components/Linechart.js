@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from "@material-ui/core/styles";
 import Chart from "chart.js";
 import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
+import FormDialog from './Dialog.js';
 
 const styles = {
   font: {
@@ -79,14 +80,25 @@ class LineChart extends React.Component {
 
   readStock = async() => {
     //should be get request with query param as id
+    if(window.location.href.slice(29) === "") {
+      const response = await fetch(`/stock-data?search=D35-C`);
+      const body = await response.json();
+
+      if (response.status !== 200) {
+        throw Error(body.message)
+      }
+      this.setState({ stockData: body[0]})
+      this.makeChart(this.state.stockData.name);
+      this.componentDidMount()
+
+      return body;
+    }
     const response = await fetch(`/stock-data?search=${window.location.href.slice(29)}`);
     const body = await response.json();
     if (response.status !== 200) {
       throw Error(body.message)
     }
     this.setState({ stockData: body[0]})
-
-
     this.makeChart(this.state.stockData.name);
     this.componentDidMount()
 
@@ -112,9 +124,7 @@ class LineChart extends React.Component {
   }
 
     makeChart = async (d) => {
-      console.log(d);
       if(this.state.stockData) {
-
 
         const ctx = document.getElementById("marketChart");
 
@@ -136,7 +146,6 @@ class LineChart extends React.Component {
             ]
           }
         });
-        console.log(this.state.stockData)
       }
     }
 
@@ -151,8 +160,15 @@ class LineChart extends React.Component {
 
       return (
         <div className="App">
-        <span className={classes.titleFont} >{this.state.stockData.name}</span>
-        <span className={classes.ticker}><i onClick={() => this.handleWatchSave(this.state.stockData.symbol)} className="fa fa-bookmark"></i></span>
+          <span className={classes.titleFont} >{this.state.stockData.name}</span>
+          <span className={classes.ticker}><i onClick={() => this.handleWatchSave(this.state.stockData.symbol)}
+           className="fa fa-bookmark"></i></span>
+
+           <div className={classes.ticker}>
+           <FormDialog name={this.state.stockData.name}/>
+           </div>
+
+
         <div className={classes.chartContainer}>
                 <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
                 <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>

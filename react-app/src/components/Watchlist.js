@@ -103,8 +103,8 @@ class CheckboxList extends React.Component {
 
           return (
             <ListItem className={classes.inner}>
-              <IconButton>
-                <QueueIcon onClick={() => this.viewWatchItem(value.symbol)}/>
+              <IconButton onClick={() => this.viewWatchItem(value.symbol)}>
+                <QueueIcon/>
               </IconButton>
               <ListItemText id={labelId} primary={value.symbol}/>
               <ListItemText id={labelId} primary={value.quote}/>

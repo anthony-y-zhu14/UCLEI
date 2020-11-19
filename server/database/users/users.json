@@ -82,13 +82,19 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "5ea0b29a-55b6-4909-8197-ef69f64a6404",
+    "session_id": "1e5b0275-af73-4b31-8d83-680b60992a2b",
     "name": "Rick Sanchez",
     "watchlist": [
       {
         "symbol": "FB",
         "quote": "272.43",
         "name": "Facebook, Inc.",
+        "volume": 0
+      },
+      {
+        "symbol": "AMD",
+        "quote": "77.99",
+        "name": "Advanced Micro Devices, Inc.",
         "volume": 0
       }
     ],

@@ -137,12 +137,24 @@ class Market extends React.Component {
 
     readStock = async(event) => {
       //should be get request with query param as id
-      const response = await fetch(`/stock-data?search=${this.state.query}`);
-      const body = await response.json();
-      if (response.status !== 200) {
-        throw Error(body.message)
+
+      if(!this.state.query) {
+        const response = await fetch(`/stock-data?search=D35-C`);
+        const body = await response.json();
+        if (response.status !== 200) {
+          throw Error(body.message)
+        }
+        return body;
       }
-      return body;
+      else {
+        const response = await fetch(`/stock-data?search=${this.state.query}`);
+        const body = await response.json();
+        if (response.status !== 200) {
+          throw Error(body.message)
+        }
+        return body;
+      }
+
     }
 
     componentDidMount() {
@@ -173,11 +185,13 @@ class Market extends React.Component {
 
     handleLog = data => {
       console.log(data)
-        // if(this.state.watchlist.length !== data.watchlist.length) {
-        //   this.setState({watchlist: data.watchlist});
-        // } else {
-        //   return;
-        // }
+      // if(this.state.watchlist) {
+      //   if(this.state.watchlist.length !== data.watchlist.length) {
+      //     this.setState({watchlist: data.watchlist});
+      //   } else {
+      //     return;
+      //   }
+      // }
     }
 
     handleReRender = data => {
@@ -217,40 +231,6 @@ class Market extends React.Component {
             </div>
           );
         }
-
-        if(!this.state.stockData) {
-          return (
-            <div>
-            <Header currentPage={`Market`} userName={this.state.user.username}/>
-            <div className={classes.main}>
-              <div className={classes.chartContainer}>
-              <br />
-              <LineChartB className={classes.chart} cData={false}/>
-              </div>
-              <div className={classes.newsContainer}>
-                <h3 className={classes.font}>Market News</h3>
-                <NewsList />
-              </div>
-              <div className={classes.popStockContainer}>
-              <h3 className={classes.font}>Popular Stocks</h3>
-              <div>
-                  {this.state.popStocks.map(stock => (
-                    <OutlinedCard stock={stock}/>
-                  ))}
-              </div>
-
-              </div>
-
-              <div className={classes.watchListContainer}>
-              <h3 className={classes.font}>Watchlist</h3>
-              <CheckboxList onChange={this.handleLog}/>
-              </div>
-
-            </div>
-            </div>
-        );
-        }
-
         return (
             <div>
 
