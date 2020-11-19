@@ -25,11 +25,11 @@ const styles = {
     position: 'relative',
     margin: '5%'
   },
-  login: {
-    width: '40%',
+  register: {
+    width: '60%',
     marginLeft: '10%'
   },
-  lgnBtn: {
+  Btn: {
     marginLeft: '12%'
   }
 };
@@ -40,14 +40,16 @@ class Register extends React.Component {
         super(props);
         this.state = {
             username: "",
+            fullName: "",
             password: "",
+            rePassword: "",
             helperText: '',
             helperTextPsw: '',
             id: 'outlined-basic',
             authenticated: 'onload',
             error: false,
         };
-        this.login = this.login.bind(this);
+        this.register = this.register.bind(this);
     } 
 
     componentWillUnmount() {
@@ -56,29 +58,34 @@ class Register extends React.Component {
       };
     }
 
-    login = async () => {
+    register = async () => {
       this._isMounted = true;
 
-        // POST request using fetch with async/await
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username: this.state.username, password: this.state.password })
-        };
-        const response = await fetch('/authentication', requestOptions);
-        const data = await response.json();
-        this.setState({ authenticated: data.authentication});
-        this.props.onChange(data.session_id);
-        
-        if(this.state.authenticate === 'onload') {
-          this.setState({ id: 'outlined-basic', helperText: '', error: false})
-        }
-        else if(!this.state.authenticate) {
-          this.setState({ id: 'outlined-error-helper-text', helperText: 'Invalid Username', error: true, helperTextPsw: 'Invalid Password'})
-        }
-        if(this.state.authenticated) {  
-          this.navToDsh();
-        }
+      if(this.state.password !== this.state.rePassword){
+        this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', error: true})
+        return;
+      }
+
+      // POST request using fetch with async/await
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: this.state.username, password: this.state.password , name: this.state.fullName})
+      };
+      const response = await fetch('/register', requestOptions);
+      const data = await response.json();
+      this.setState({ authenticated: data.authentication});
+      this.props.onChange(data.session_id);
+      
+      if(this.state.authenticate === 'onload') {
+        this.setState({ id: 'outlined-basic', helperText: '', error: false})
+      }
+      else if(!this.state.authenticate) {
+        this.setState({ id: 'outlined-error-helper-text', helperText: 'Username Already Exists', error: true})
+      }
+      if(this.state.authenticated) {  
+        this.navToDsh();
+      }
     }
 
     navToDsh = () => {
@@ -98,13 +105,25 @@ class Register extends React.Component {
         });
     }
 
+    setRePassword = event =>{
+      this.setState ({
+        rePassword: event.target.value
+      });
+    }
+
+    setFullName = event =>{
+      this.setState({
+        fullName: event.target.value
+      })
+    }
+
     render() {
       const { classes } = this.props;      
 
       return (
         <form className="login">
         <div className={classes.wrapper}>
-          <div className={classes.login}>
+          <div className={classes.register}>
                 <div>
                     <h1> UCLEI </h1>
                     <div className="welcomeMsg">
@@ -115,15 +134,22 @@ class Register extends React.Component {
 
                 <div className="lgnTxtFlds">
 
-                  <TextField id={this.state.id} className="txtFld" label="Username" error={this.state.error}
+                  <TextField id={this.state.id} className="txtFld" label="Enter Your Username" error={this.state.error}
                   InputProps={{className: classes.input}} helperText={this.state.helperText}
                   variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
+                  <TextField id={this.state.id} className="txtFld" label="First Name and Last Name" error={this.state.error}
+                  InputProps={{className: classes.input}} variant="outlined" onChange = {this.setFullName} value = {this.state.fullName} />
 
 
                   <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.error}
-                  className="txtFld" label="Password" variant="outlined"
+                  className="txtFld" label="Enter Your Password" variant="outlined"
                   InputProps={{className: classes.input}}
                   onChange = {this.setPassword} value = {this.state.password} />
+
+                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.error}
+                  className="txtFld" label="Confirm Password" variant="outlined"
+                  InputProps={{className: classes.input}}
+                  onChange = {this.setRePassword} value = {this.state.Repassword} />
 
                 </div>
               </div>
@@ -131,9 +157,7 @@ class Register extends React.Component {
             </div>
 
             <div >
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>
-              Register
-              </Button>
+              <Button className={classes.Btn} variant="contained" color="primary" onClick={this.register}>Register</Button>
             </div>
 
 

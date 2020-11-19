@@ -3,13 +3,13 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const { v4: uuidv4 } = require('uuid');
-const cookieParser = require('cookie-parser');
+// const cookieParser = require('cookie-parser');
 const session=require('express-session');
-const users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+let users = {};
 const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
 
 app.use(express.static(path.join(__dirname, '../')));
-app.use(cookieParser());
+// app.use(cookieParser());
 app.use(session({
     cookieName: 'Plumbus',
     secret: 'fleeb_juice',
@@ -505,6 +505,7 @@ function validateSell(quantity, symbol, limitPrice, user) {
         - destroying cookie on logout 
 **********************************************/
 app.post('/authentication', (req, res) => {
+    users = JSON.parse(fs.readFileSync("../database/users/users.json"));
     let data = "";
     req.on('data', (chunk) => {
         data = JSON.parse(chunk);
@@ -541,6 +542,68 @@ app.post('/authentication', (req, res) => {
         }
     }
  });
+
+app.post('/register', (req, res) => {
+
+    users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+
+    let data = "";
+    req.on('data', (chunk) => {
+        data = JSON.parse(chunk);
+    });
+
+    req.on('end', () => {
+        console.log(data);
+
+    let username = data.username;
+    let password = data.password;
+    let name = data.name;
+    register(username, password, name);
+    res.end();
+    });
+
+    function register(username, password, name) {
+        if(!users[username]) {        
+            const USER_TOKEN = uuidv4();
+            let newUser = {            
+                username: username,
+                password: password,
+                session_id: USER_TOKEN,
+                name: name,
+                watchlist: [],
+                openOrders: [],
+                eventList: [],
+                ownedStocks: [],
+                activity: [],
+                account: {
+                    accountName: 1004,
+                    cashBalance: 0,
+                    investmentBalance: 0,
+                },
+                balanceGrowth: "0"              
+            }
+
+            users[username] = newUser;
+            req.session.user = users[username]['username'];
+
+            users[username]['session_id'] = USER_TOKEN;
+            const login_data = {
+                authentication: true,
+                session_id: USER_TOKEN
+            };
+            updateUserDataBase();
+            res.write(JSON.stringify(login_data));
+        }
+        else if(users[username]) {
+            res.write('onload');
+        }
+        else {
+            res.write("false");
+            console.log(`\n${username} attempted to register.\n`);
+        }
+    }
+});
+
 
 app.get("/logout", function(req, res){
     console.log(`${users[req.session.user].username} Logged Out, Cookie destroyed`);
@@ -589,7 +652,7 @@ app.get('/getAccount', (req, res) => {
         let data = JSON.stringify(users[req.session.user]);
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
-        console.log(`Client ${users[req.session.user].username} requested account info`)
+        // console.log(`Client ${users[req.session.user].username} requested account info`)
         res.write(data);
         res.end();
     }
@@ -977,6 +1040,5 @@ app.get("/stock-data", (req, res) => {
  Server Information 
 ********************************************* */
 app.listen(3001);
-console.log('\nServer running at http://127.0.0.1:3001/');
 console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
 console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');

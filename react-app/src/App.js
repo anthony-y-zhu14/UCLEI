@@ -18,7 +18,6 @@ function App(){
     const [auth, setAuth] = useState(undefined);
 
     function handleChange(newAuth){
-
             setAuth(newAuth);
         }
 
@@ -46,7 +45,7 @@ function App(){
                         />
 
                         <Route  exact path="/" component={StoreFront}/>
-                        <Route path="/register"  component={Register}/>
+                        <Route path="/register"  component={() => <Register onChange={handleChange} />}/>
                         <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
                         <Route path="/account"  component={() => <Account session_id={auth}/>}/>
                         <Route path="/market"  component={() => <Market session_id={auth}/>}/>

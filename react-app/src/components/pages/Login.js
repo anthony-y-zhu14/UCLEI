@@ -30,7 +30,7 @@ const styles = {
     marginLeft: '10%'
   },
   lgnBtn: {
-    marginLeft: '12%'
+    marginLeft: '18%'
   }
 };
 
@@ -56,10 +56,6 @@ class Login extends React.Component {
       };
     }
 
-    register(){
-      alert('In Progress!');
-    }
-
     login = async () => {
       this._isMounted = true;
 
@@ -83,6 +79,10 @@ class Login extends React.Component {
         if(this.state.authenticated) {
           this.navToDsh();
         }
+    }
+
+    register = () =>{
+      this.props.history.push('/register');
     }
 
     navToDsh = () => {
@@ -135,12 +135,10 @@ class Login extends React.Component {
             </div>
 
             <div >
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>
-              Login
-              </Button>
-              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.register}>
-              Register
-              </Button>
+              <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>             
+              <Button className={classes.lgnBtn} variant="contained" color="secondary" onClick={this.register}>Register</Button>
+           
+              
             </div>
 
 
