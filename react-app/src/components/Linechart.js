@@ -73,7 +73,7 @@ class LineChart extends React.Component {
   }
   componentDidUpdate() {
     this.componentDidMount()
-    if(this.state.query != window.location.href.slice(29)) {
+    if(this.state.query !== window.location.href.slice(29)) {
       this.setState({query: window.location.href.slice(29)});
     }
   }
@@ -117,7 +117,7 @@ class LineChart extends React.Component {
 
   componentDidMount() {
 
-    if(this.state.q != window.location.href.slice(29)) {
+    if(this.state.q !== window.location.href.slice(29)) {
       this.setState({q: window.location.href.slice(29)});
       this.readStock();
     }
@@ -128,7 +128,7 @@ class LineChart extends React.Component {
 
         const ctx = document.getElementById("marketChart");
 
-        if (window.ctx != undefined) {
+        if (window.ctx !== undefined) {
           window.ctx.destroy();
         }
         window.ctx = new Chart(ctx, {

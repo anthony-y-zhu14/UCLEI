@@ -38,8 +38,6 @@ class CheckboxList extends React.Component {
         };
   }
 
-
-
   componentDidMount() {
     // Calls our fetch below once the component mounts
   this.callBackendAPI()

@@ -19,7 +19,7 @@ export default function FormDialog({name}) {
       setNum(event.target.value)
   }
 
-  const handleWatchSave = async () => {
+  const handleEventSave = async () => {
     let data = {
       num: num,
       name: window.location.href.slice(29)
@@ -47,8 +47,9 @@ export default function FormDialog({name}) {
         <DialogContent>
           <DialogContentText>
             To get notifications regarding {name} please enter a number representing the stock decrease
-            or increase as a percentage. Ex: If you type 5% then you will be notified if that stock's price
-            dips or increases by >= 5%.
+            or increase as a percentage. Ex: If you type 5 then you will be notified if that stock's price
+            dips or increases by greater than or equal to 5%. If you type -5, you will be notified if the stock
+            dips by -5% or more.
           </DialogContentText>
           <TextField
             autoFocus
@@ -64,7 +65,7 @@ export default function FormDialog({name}) {
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
-          <Button onClick={handleWatchSave} color="primary">
+          <Button onClick={handleEventSave} color="primary">
             Subscribe
           </Button>
         </DialogActions>

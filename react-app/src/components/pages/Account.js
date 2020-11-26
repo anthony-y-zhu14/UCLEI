@@ -210,7 +210,10 @@ class Account extends React.Component {
                                     {this.state.activityBtn && (
                                         <React.Fragment>
                                             {this.state.user.activity.map(activity => (
-                                                <li id={activity} className="stock-holding">{activity}</li>
+                                              activity.activities.map(message =>(
+                                                <li className="stock-holding">{message.message}</li>
+                                              ))
+                                                
                                             ))}
                                         </React.Fragment>
                                     )}

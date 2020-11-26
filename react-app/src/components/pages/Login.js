@@ -124,8 +124,9 @@ class Login extends React.Component {
                   variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
 
 
-                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.error}
-                  className="txtFld" label="Password" variant="outlined"
+                  <TextField  helperText={this.state.helperTextPsw} error={this.state.error}
+                  className="txtFld" label="Password" variant="outlined" type="password" id={this.state.id}
+
                   InputProps={{className: classes.input}}
                   onChange = {this.setPassword} value = {this.state.password} />
 

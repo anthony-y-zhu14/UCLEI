@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Dashboard from './pages/Dashboard.js';
+import NotificationsForm from './Notifications.js';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -97,6 +98,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [search, setSearch] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [eventsList, setEventsList] = React.useState(null);
 
 
   const isMenuOpen = Boolean(anchorEl);
@@ -115,6 +117,16 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     return body;
   };
 
+  const getEventsList = async () => {
+    const response = await fetch('/getEvents');
+    const body = await response.json();
+    if(response.status !== 200) {
+      throw Error(body.message);
+    }
+    setEventsList(body);
+    return;
+  }
+
   const setSearchQuery = (event) => {
       setSearch(event.target.value);
   }
@@ -129,10 +141,13 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
           query: event.target.value
         }
       }
-      history.push(location);
-      // window.location.reload(false);
-  }
+      history.push(location); 
+    }
 }
+
+useEffect(() => {
+  getEventsList();
+});
 
   const logout = (value) => {
     callBackendAPI()
@@ -181,12 +196,9 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={0} color="secondary">
-            <NotificationsIcon />
-          </Badge>
+        <IconButton color="inherit">  
+          <NotificationsForm onClick={getEventsList} stockData={eventsList}/>
         </IconButton>
-        <p>Notifications</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -232,10 +244,8 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={0} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+            <IconButton color="inherit">
+            <NotificationsForm onClick={getEventsList} stockData={eventsList}/>
             </IconButton>
             <IconButton
               edge="end"

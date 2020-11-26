@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "9787462f-daf7-4256-93b2-623f6dbf54d1",
+    "session_id": "a8c1f927-27f4-4cdd-94cc-c41c5cb9bbc7",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -25,66 +25,50 @@
       }
     ],
     "openOrders": [],
-    "eventList": [
-      {
-        "symbol": "SE",
-        "quote": "156.53",
-        "name": "Sea Limited",
-        "active": true,
-        "notify_num": "2"
-      },
-      {
-        "symbol": "SE",
-        "quote": "156.53",
-        "name": "Sea Limited",
-        "active": true,
-        "notify_num": "5"
-      },
-      {
-        "symbol": "SE",
-        "quote": "156.53",
-        "name": "Sea Limited",
-        "active": true,
-        "notify_num": "5"
-      }
-    ],
-    "ownedStocks": [
-      {
-        "name": "Sea Limited",
-        "quote": 156.53,
-        "total_cost": 1565.3,
-        "average_cost": 156.53,
-        "symbol": "SE",
-        "share": 10
-      }
-    ],
+    "eventList": [],
+    "ownedStocks": [],
     "activity": [
-      "Bought 5 shares of FB at $272.43 from rick137",
-      "Bought 4 shares of FB at $272.43 from rick137",
-      "Bought 1 shares of FB at $272.43 from rick137",
-      "Sold 2 shares of FB at $272.43 to morty137",
-      "Sold 5 shares of FB at $272.43 to morty137",
-      "Sold 3 shares of FB at $272.43 to morty137",
-      "Sold 10 shares of SE at $156.53 to rick137",
-      "Bought 10 shares of SE at $156.53 from rick137"
+      {
+        "date": "2020-11-26",
+        "activities": [
+          {
+            "date": "2020-11-26",
+            "action": "Buy",
+            "message": "On 2020-11-26T20:40:24.956Z Bought 10 shares of SE at $156.53 from rick137"
+          },
+          {
+            "date": "2020-11-26",
+            "action": "sell",
+            "message": "On 2020-11-26T20:45:53.855Z Sold 10 shares of SE at $156.53 to rick137"
+          }
+        ]
+      }
     ],
     "account": {
       "accountName": 1001,
-      "cashBalance": 10084.86,
-      "investmentBalance": 1565.3
+      "cashBalance": 11650.16,
+      "investmentBalance": 0
     },
     "balanceGrowth": 0
   },
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": "5f0f9be9-6729-4d18-bb7e-31fec25a992e",
+    "session_id": "c3d077e2-62bc-4508-aaf7-bebfbfecf17d",
     "name": "Morty Smith",
-    "watchlist": [
-      "SHOP"
-    ],
+    "watchlist": [],
     "openOrders": [],
-    "eventList": [],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": "156.53",
+        "name": "Sea Limited",
+        "active": "Active",
+        "notified": false,
+        "notify_num": "23",
+        "message": ""
+      }
+    ],
     "ownedStocks": [
       {
         "name": "Facebook, Inc.",
@@ -95,17 +79,7 @@
         "share": 10
       }
     ],
-    "activity": [
-      "Bought 2 shares of FB at $272.43 from jerry137",
-      "Bought 5 shares of FB at $272.43 from jerry137",
-      "Bought 3 shares of FB at $272.43 from jerry137",
-      "Sold 5 shares of FB at $272.43 to rick137",
-      "Sold 1 shares of FB at $272.43 to rick137",
-      "Sold 4 shares of FB at $272.43 to rick137",
-      "Bought 10 shares of FB at $272.43 from rick137",
-      "Sold 10 shares of FB at $272.43 to rick137",
-      "Bought 10 shares of FB at $272.43 from rick137"
-    ],
+    "activity": [],
     "account": {
       "accountName": 1002,
       "cashBalance": 41955.13999999999,
@@ -116,7 +90,7 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "8266795a-f036-4c60-aec8-6c7851a9b037",
+    "session_id": "6697a548-afe6-423b-b68f-80444900e6f2",
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -133,25 +107,48 @@
       }
     ],
     "openOrders": [],
-    "eventList": [],
-    "ownedStocks": [],
+    "eventList": [
+      {
+        "symbol": "AMD",
+        "quote": "77.99",
+        "name": "Advanced Micro Devices, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": "100",
+        "message": "Advanced Micro Devices, Inc.'s price has changed by 100%."
+      }
+    ],
+    "ownedStocks": [
+      {
+        "name": "Sea Limited",
+        "quote": 156.53,
+        "total_cost": 1565.3,
+        "average_cost": 156.53,
+        "symbol": "SE",
+        "share": 10
+      }
+    ],
     "activity": [
-      "Sold 5 shares of FB at $272.43 to jerry137",
-      "Sold 4 shares of FB at $272.43 to jerry137",
-      "Sold 1 shares of FB at $272.43 to jerry137",
-      "Bought 5 shares of FB at $272.43 from morty137",
-      "Bought 1 shares of FB at $272.43 from morty137",
-      "Bought 4 shares of FB at $272.43 from morty137",
-      "Sold 10 shares of FB at $272.43 to morty137",
-      "Bought 10 shares of FB at $272.43 from morty137",
-      "Bought 10 shares of SE at $156.53 from jerry137",
-      "Sold 10 shares of SE at $156.53 to jerry137",
-      "Sold 10 shares of FB at $272.43 to morty137"
+      {
+        "date": "2020-11-26",
+        "activities": [
+          {
+            "date": "2020-11-26",
+            "action": "sell",
+            "message": "On 2020-11-26T20:40:24.956Z Sold 10 shares of SE at $156.53 to jerry137"
+          },
+          {
+            "date": "2020-11-26",
+            "action": "Buy",
+            "message": "On 2020-11-26T20:45:53.855Z Bought 10 shares of SE at $156.53 from jerry137"
+          }
+        ]
+      }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 9064.12,
-      "investmentBalance": 0
+      "cashBalance": 7498.820000000001,
+      "investmentBalance": 1565.3
     },
     "balanceGrowth": "0"
   }

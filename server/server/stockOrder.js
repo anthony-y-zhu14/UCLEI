@@ -9,8 +9,25 @@ module.exports = {
     updateBuyOrdersData
  }
 
+function creatNewActivity(action, message){
+    let date = new Date();
+    let today = date.toISOString().slice(0,10);
+
+    message ="On " + date.toISOString().slice(0,10) + " " + message;
+
+    let newActivity = {
+        date: today,
+        action: action,
+        message: message
+    }
+
+    return newActivity;
+}
+
 function createOpenOrder(name, quote, symbol, quantity, orderType, orderId, username, limitPrice){
     let date = new Date();
+    let today = date.toISOString().slice(0,10);
+
         let openOrder = {
           name: name,
           quote: quote,
@@ -19,11 +36,33 @@ function createOpenOrder(name, quote, symbol, quantity, orderType, orderId, user
           orderType: orderType,
           orderId: orderId,
           username: username,
-          date: date.getDate(),
+          date: today,
           limitPrice: limitPrice
         };
 
     return openOrder;
+}
+
+function updateUserActivity(activityArr, newActivity){
+
+    for (let index = 0; index < activityArr.length; index++) {      
+
+        let activityDate = activityArr[index];
+
+        if (activityDate.date === newActivity.date){
+            activityDate.activities.push(newActivity);
+            return;
+        }        
+    }
+
+    let newActivityDate = {
+        date: newActivity.date,
+        activities: []
+    }
+
+    newActivityDate.activities.push(newActivity);
+    activityArr.push(newActivityDate);
+
 }
 
 function updateInvestmentBalance(user){
@@ -43,10 +82,12 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
     for(let i = 0; i < sellOrderArr.length; i++) {
 
-        if(symbol === sellOrderArr[i].symbol
-            && sellOrderArr[i].username !== buyerUserName
-            && sellOrderArr[i].limitPrice <= limitPrice
-            && sellOrderArr[i].share >= currentQuantity) {
+        let sellOrder = sellOrderArr[i];
+
+        if(symbol === sellOrder.symbol
+            && sellOrder.username !== buyerUserName
+            && sellOrder.limitPrice <= limitPrice
+            && sellOrder.share >= currentQuantity) {
 
 
             updateBuyerAccount();
@@ -54,39 +95,36 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
                 let newStock = {
                     name: stockDatabase[symbol].name,
-                    quote: sellOrderArr[i].limitPrice,
-                    total_cost: sellOrderArr[i].limitPrice*currentQuantity,
-                    average_cost: sellOrderArr[i].limitPrice,
+                    quote: sellOrder.limitPrice,
+                    total_cost: sellOrder.limitPrice*currentQuantity,
+                    average_cost: sellOrder.limitPrice,
                     symbol: stockDatabase[symbol].symbol,
                     share: currentQuantity
                 };
 
                 //Update Buyer Balance and Holding
                 usersDataBase[buyerUserName]['account']["cashBalance"]
-                -= (sellOrderArr[i].limitPrice * currentQuantity);
+                -= (sellOrder.limitPrice * currentQuantity);
 
+                let activityMessage = `Bought ${currentQuantity} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrderArr[i].username}`;
+                let newActivity = creatNewActivity('Buy', activityMessage);
 
-                usersDataBase[buyerUserName]['activity'].push(
-                    `Bought ${currentQuantity} shares of ${symbol} at $${sellOrderArr[i].limitPrice} from ${sellOrderArr[i].username}`
-                );
+                updateUserActivity(usersDataBase[buyerUserName].activity, newActivity);
 
-                for (let j = 0; j < usersDataBase[buyerUserName]['ownedStocks'].length; j++) {
+                for (let j = 0; j < usersDataBase[buyerUserName].ownedStocks.length; j++) {
 
-                    if(usersDataBase[buyerUserName]['ownedStocks'][j].symbol === newStock.symbol) {
+                    if(usersDataBase[buyerUserName].ownedStocks[j].symbol === newStock.symbol) {
 
-                        usersDataBase[buyerUserName]['ownedStocks'][j].share
-                        += currentQuantity;
+                        usersDataBase[buyerUserName].ownedStocks[j].share += currentQuantity;
 
-                        usersDataBase[buyerUserName]['ownedStocks'][j].total_cost
-                        += newStock.quote * currentQuantity;
+                        usersDataBase[buyerUserName].ownedStocks[j].total_cost += newStock.quote * currentQuantity;
 
-                        usersDataBase[buyerUserName]['ownedStocks'][j].average_cost
-                        = (usersDataBase[buyerUserName]['ownedStocks'][j].total_cost / usersDataBase[buyerUserName]['ownedStocks'][j].share);
+                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = (usersDataBase[buyerUserName]['ownedStocks'][j].total_cost / usersDataBase[buyerUserName]['ownedStocks'][j].share);
 
                         return;
                     }
                 }
-                usersDataBase[buyerUserName]['ownedStocks'].push(newStock);
+                usersDataBase[buyerUserName].ownedStocks.push(newStock);
 
             }
 
@@ -94,37 +132,39 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
             function updateSellerAccount(){
 
                 //Update Seller Balance and Holding
-                usersDataBase[sellOrderArr[i]['username']]
-                ['account']["cashBalance"] +=  (sellOrderArr[i].limitPrice * currentQuantity);
+                usersDataBase[sellOrder.username].account.cashBalance += (sellOrder.limitPrice * currentQuantity);
 
-                usersDataBase[sellOrderArr[i]['username']]
-                ['activity'].push(`Sold ${currentQuantity} shares of ${symbol} at $${sellOrderArr[i].limitPrice} to ${buyerUserName}`);
+                let activityMessage = `Sold ${currentQuantity} shares of ${symbol} at $${sellOrder.limitPrice} to ${buyerUserName}`;
+                let newActivity = creatNewActivity('sell', activityMessage);
 
-                for(let k = 0; k < usersDataBase[sellOrderArr[i]['username']]['ownedStocks'].length; k++) {
-                    if(usersDataBase[sellOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === sellOrderArr[i].symbol) {
-                        usersDataBase[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] -= currentQuantity;
+                updateUserActivity(usersDataBase[sellOrder.username].activity, newActivity);
 
-                        if(usersDataBase[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] === 0) {
-                            usersDataBase[sellOrderArr[i]['username']]['ownedStocks'].splice(k, 1);
+                for(let k = 0; k < usersDataBase[sellOrder.username].ownedStocks.length; k++) {
+                    if(usersDataBase[sellOrder.username].ownedStocks[k].symbol === sellOrderArr[i].symbol) {
+
+                        usersDataBase[sellOrder.username].ownedStocks[k].share -= currentQuantity;
+
+                        if(usersDataBase[sellOrder.username].ownedStocks[k].share === 0) {
+                            usersDataBase[sellOrder.username].ownedStocks.splice(k, 1);
                         }
                         break;
                     }
                 }
 
-                for(let k = 0; k < usersDataBase[sellOrderArr[i]['username']]['openOrders'].length; k++) {
-                    if(usersDataBase[sellOrderArr[i]['username']]['openOrders'][k]['orderId'] === sellOrderArr[i].orderId) {
+                for(let k = 0; k < usersDataBase[sellOrder.username].openOrders.length; k++) {
+                    if(usersDataBase[sellOrder.username].openOrders[k].orderId === sellOrder.orderId) {
 
-                        usersDataBase[sellOrderArr[i]['username']]['openOrders'][k]['share'] -= currentQuantity;
+                        usersDataBase[sellOrder.username].openOrders[k].share -= currentQuantity;
 
-                        if(usersDataBase[sellOrderArr[i]['username']]['openOrders'][k]['share'] === 0) {
-                            usersDataBase[sellOrderArr[i]['username']]['openOrders'].splice(k, 1);
+                        if(usersDataBase[sellOrder.username].openOrders[k].share === 0) {
+                            usersDataBase[sellOrder.username].openOrders.splice(k, 1);
                         }
 
                         break;
                     }
                 }
 
-                updateInvestmentBalance(usersDataBase[sellOrderArr[i].username]);
+                updateInvestmentBalance(usersDataBase[sellOrder.username]);
 
 
 
@@ -148,38 +188,35 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
                 let newStock = {
                     name: stockDatabase[symbol].name,
-                    quote: sellOrderArr[i].limitPrice,
-                    total_cost: sellOrderArr[i].limitPrice*sellOrderArr[i].share,
-                    average_cost: sellOrderArr[i].limitPrice,
+                    quote: sellOrder.limitPrice,
+                    total_cost: sellOrder.limitPrice*sellOrderArr[i].share,
+                    average_cost: sellOrder.limitPrice,
                     symbol: stockDatabase[symbol].symbol,
-                    share: sellOrderArr[i].share
+                    share: sellOrder.share
                 };
 
                 //Update Buyer Balance and Holding
-                usersDataBase[buyerUserName]['account']["cashBalance"]
-                -= (sellOrderArr[i].limitPrice * sellOrderArr[i].share);
-                usersDataBase[buyerUserName]['activity'].push(
-                    `Bought ${sellOrderArr[i].share} shares of ${symbol} at $${sellOrderArr[i].limitPrice} from ${sellOrderArr[i].username}`
-                );
+                usersDataBase[buyerUserName]['account']["cashBalance"] -= (sellOrder.limitPrice * sellOrder.share);
 
+                let activityMessage =  `Bought ${sellOrde.share} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrder.username}`;
+                let newActivity = creatNewActivity('buy', activityMessage);
 
-                for (let j = 0; j < usersDataBase[buyerUserName]['ownedStocks'].length; j++) {
+                updateUserActivity(usersDataBase[buyerUserName].activity, newActivity);
 
-                    if(usersDataBase[buyerUserName]['ownedStocks'][j].symbol === newStock.symbol) {
+                for (let j = 0; j < usersDataBase[buyerUserName].ownedStocks.length; j++) {
 
-                        usersDataBase[buyerUserName]['ownedStocks'][j].share
-                        += sellOrderArr[i].share;
+                    if(usersDataBase[buyerUserName].ownedStocks[j].symbol === newStock.symbol) {
 
-                        usersDataBase[buyerUserName]['ownedStocks'][j].total_cost
-                        += newStock.quote * sellOrderArr[i].share;
+                        usersDataBase[buyerUserName].ownedStocks[j].share += sellOrderArr[i].share;
 
-                        usersDataBase[buyerUserName]['ownedStocks'][j].average_cost
-                        = (usersDataBase[buyerUserName]['ownedStocks'][j].total_cost / usersDataBase[buyerUserName]['ownedStocks'][j].share);
+                        usersDataBase[buyerUserName].ownedStocks[j].total_cost += newStock.quote * sellOrder.share;
+
+                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = (usersDataBase[buyerUserName].ownedStocks[j].total_cost / usersDataBase[buyerUserName].ownedStocks[j].share);
 
                         return;
                     }
                 }
-                usersDataBase[buyerUserName]['ownedStocks'].push(newStock);
+                usersDataBase[buyerUserName].ownedStocks.push(newStock);
 
             }
 
@@ -187,34 +224,32 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
             function updateSellerAccount(){
 
                 //Update Seller Balance and Holding
-                usersDataBase[sellOrderArr[i]['username']]
-                ['account']["cashBalance"] +=  (sellOrderArr[i].limitPrice * sellOrderArr[i].share);
-                usersDataBase[sellOrderArr[i]['username']]
-                ['activity'].push(`Sold ${sellOrderArr[i].share} shares of ${symbol} at $${sellOrderArr[i].limitPrice} to ${buyerUserName}`);
+                usersDataBase[sellOrder.username].account.cashBalance +=  (sellOrder.limitPrice * sellOrder.share);
+                let activityMessage = `Sold ${sellOrder.share} shares of ${symbol} at $${sellOrder.limitPrice} to ${buyerUserName}`;
+                let newActivity = creatNewActivity('sell', activityMessage);
 
-                for(let k = 0; k < usersDataBase[sellOrderArr[i]['username']]['ownedStocks'].length; k++) {
-                    if(usersDataBase[sellOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === sellOrderArr[i].symbol) {
-                        usersDataBase[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] -= sellOrderArr[i].share;
-                        if(usersDataBase[sellOrderArr[i]['username']]['ownedStocks'][k]['share'] === 0) {
-                            usersDataBase[sellOrderArr[i]['username']]['ownedStocks'].splice(k, 1);
+                updateUserActivity(usersDataBase[sellOrder.username].activity, newActivity);
+
+                for(let k = 0; k < usersDataBase[sellOrder.username].ownedStocks.length; k++) {
+                    if(usersDataBase[sellOrder.username].ownedStocks[k].symbol === sellOrder.symbol) {
+                        usersDataBase[sellOrder.username].ownedStocks[k].share -= sellOrder.share;
+                        if(usersDataBase[sellOrder.username].ownedStocks[k].share === 0) {
+                            usersDataBase[sellOrder.username].ownedStocks.splice(k, 1);
                         }
                         break;
                     }
                 }
 
-                for(let k = 0; k < usersDataBase[sellOrderArr[i]['username']]['openOrders'].length; k++) {
-                    if(usersDataBase[sellOrderArr[i]['username']]['openOrders'][k]['orderId'] === sellOrderArr[i].orderId) {
-                        usersDataBase[sellOrderArr[i]['username']]['openOrders'].splice(k, 1);
+                for(let k = 0; k < usersDataBase[sellOrder.username].openOrders.length; k++) {
+                    if(usersDataBase[sellOrder.username].openOrders[k].orderId === sellOrder.orderId) {
+                        usersDataBase[sellOrder.username].openOrders.splice(k, 1);
                         break;
                     }
                 }
 
-                updateInvestmentBalance(usersDataBase[sellOrderArr[i].username]);
-
-
-
+                updateInvestmentBalance(usersDataBase[sellOrder.username]);
             }
-            currentQuantity -= sellOrderArr[i].share;
+            currentQuantity -= sellOrder.share;
             sellOrderArr[i].share = 0;
         }
     }
@@ -231,7 +266,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
         let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
 
         buyOrderArr.push(newOpenOrder);
-        usersDataBase[username]["openOrders"].push(newOpenOrder);
+        usersDataBase[username].openOrders.push(newOpenOrder);
 
     }
 
@@ -261,36 +296,34 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
 
     for(let i = 0; i < buyOrderArr.length; i++) {
 
-        if(symbol === buyOrderArr[i].symbol  && buyOrderArr[i].limitPrice >= limitPrice && buyOrderArr[i].username !== sellerUserName &&  buyOrderArr[i].share >= currentQuantity) {
+        let buyOrder = buyOrderArr[i];
+
+        if(symbol === buyOrder.symbol  && buyOrder.limitPrice >= limitPrice && buyOrder.username !== sellerUserName &&  buyOrder.share >= currentQuantity) {
 
             updateSellerAccount();
             function updateSellerAccount(){
 
                 //Update Buyer Balance and Holding
-                usersDatabase[sellerUserName]['account']["cashBalance"]
-                += (buyOrderArr[i].limitPrice * currentQuantity);
+                usersDatabase[sellerUserName].account.cashBalance += (buyOrder.limitPrice * currentQuantity);
 
-                usersDatabase[sellerUserName]['activity'].push(
+                let activityMessage = `Sold ${currentQuantity} shares of ${symbol} at $${buyOrder.limitPrice} to ${buyOrder.username}`;
 
-                    `Sold ${currentQuantity} shares of ${symbol} at $${buyOrderArr[i].limitPrice} to ${buyOrderArr[i].username}`
+                let newActivity = creatNewActivity('sell', activityMessage);
 
-                );
+                updateUserActivity(usersDatabase[sellerUserName].activity, newActivity);
 
-                for (let j = 0; i < usersDatabase[sellerUserName]['ownedStocks'].length; j++) {
+                for (let j = 0; i < usersDatabase[sellerUserName].ownedStocks.length; j++) {
 
-                    if(usersDatabase[sellerUserName]['ownedStocks'][j].symbol === symbol) {
+                    if(usersDatabase[sellerUserName].ownedStocks[j].symbol === symbol) {
 
-                        usersDatabase[sellerUserName]['ownedStocks'][j].share
-                        -= currentQuantity;
+                        usersDatabase[sellerUserName].ownedStocks[j].share -= currentQuantity;
 
-                        usersDatabase[sellerUserName]['ownedStocks'][j].total_cost
-                        -= (buyOrderArr[i].limitPrice * currentQuantity);
+                        usersDatabase[sellerUserName].ownedStocks[j].total_cost -= (buyOrderArr[i].limitPrice * currentQuantity);
 
-                        usersDatabase[sellerUserName]['ownedStocks'][j].average_cost
-                        = (usersDatabase[sellerUserName]['ownedStocks'][j].total_cost / usersDatabase[sellerUserName]['ownedStocks'][j].share);
+                        usersDatabase[sellerUserName].ownedStocks[j].average_cost = (usersDatabase[sellerUserName].ownedStocks[j].total_cost / usersDatabase[sellerUserName].ownedStocks[j].share);
 
-                        if (usersDatabase[sellerUserName]['ownedStocks'][j].share === 0){
-                            usersDatabase[sellerUserName]['ownedStocks'].splice(j, 1);
+                        if (usersDatabase[sellerUserName].ownedStocks[j].share === 0){
+                            usersDatabase[sellerUserName].ownedStocks.splice(j, 1);
                         }
                         return;
                     }
@@ -302,77 +335,76 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
 
                 let newStock = {
                     name: stockDatabase[symbol].name,
-                    quote: buyOrderArr[i].limitPrice,
-                    total_cost: buyOrderArr[i].limitPrice*currentQuantity,
-                    average_cost: buyOrderArr[i].limitPrice,
+                    quote: buyOrder.limitPrice,
+                    total_cost: buyOrder.limitPrice*currentQuantity,
+                    average_cost: buyOrder.limitPrice,
                     symbol: stockDatabase[symbol].symbol,
                     share: currentQuantity
                 };
 
                 //Update Buyer Balance and Holding
-                usersDatabase[buyOrderArr[i]['username']]
-                ['account']["cashBalance"] -=  (buyOrderArr[i].limitPrice * currentQuantity);
-                usersDatabase[buyOrderArr[i]['username']]
-                ['activity'].push(`Bought ${currentQuantity} shares of ${symbol} at $${buyOrderArr[i].limitPrice} from ${sellerUserName}`);
+                usersDatabase[buyOrder.username].account.cashBalance -=  (buyOrder.limitPrice * currentQuantity);
 
-                for(let k = 0; k < usersDatabase[buyOrderArr[i]['username']]['openOrders'].length; k++) {
-                    if(usersDatabase[buyOrderArr[i]['username']]['openOrders'][k]['orderId'] === buyOrderArr[i].orderId) {
-                        usersDatabase[buyOrderArr[i]['username']]['openOrders'][k]['share'] -= currentQuantity;
-                        if(usersDatabase[buyOrderArr[i]['username']]['openOrders'][k]['share'] === 0) {
-                            usersDatabase[buyOrderArr[i]['username']]['openOrders'].splice(k, 1);
+                let activityMessage = `Bought ${currentQuantity} shares of ${symbol} at $${buyOrder.limitPrice} from ${sellerUserName}`;
+                let newActivity = creatNewActivity('buy', activityMessage);
+
+                updateUserActivity(usersDatabase[buyOrder.username].activity, newActivity);
+
+                for(let k = 0; k < usersDatabase[buyOrder.username].openOrders.length; k++) {
+                    if(usersDatabase[buyOrder.username].openOrders[k].orderId === buyOrder.orderId) {
+                        usersDatabase[buyOrder.username].openOrders[k].share -= currentQuantity;
+                        if(usersDatabase[buyOrder.username].openOrders[k].share === 0) {
+                            usersDatabase[buyOrder.username].openOrders.splice(k, 1);
                         }
                     }
                 }
 
-                for(let k = 0; k < usersDatabase[buyOrderArr[i]['username']]['ownedStocks'].length; k++) {
+                for(let k = 0; k < usersDatabase[buyOrder.username].ownedStocks.length; k++) {
                     //if user owns stock, and is adding more shares
-                    if(usersDatabase[buyOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === buyOrderArr[i].symbol) {
-                        usersDatabase[buyOrderArr[i]['username']]['ownedStocks'][k]['share'] += currentQuantity;
+                    if(usersDatabase[buyOrder.username].ownedStocks[k].symbol === buyOrder.symbol) {
+                        usersDatabase[buyOrder.username].ownedStocks[k].share += currentQuantity;
                         return;
                     }
                 }
-                usersDatabase[buyOrderArr[i]['username']]['ownedStocks'].push(newStock);
+                usersDatabase[buyOrder.username].ownedStocks.push(newStock);
 
 
             }
             //decrement share total for partially fufilled sell order
-            buyOrderArr[i].share -= currentQuantity;
+            buyOrder.share -= currentQuantity;
             currentQuantity = 0;
-            updateInvestmentBalance(usersDatabase[buyOrderArr[i].username]);
+            updateInvestmentBalance(usersDatabase[buyOrder.username]);
             break;
 
         }
 
-        else if(symbol === buyOrderArr[i].symbol && buyOrderArr[i].limitPrice >= limitPrice && buyOrderArr[i].username !== sellerUserName && 0 < buyOrderArr[i].share < currentQuantity) {
-            currentQuantity -= buyOrderArr[i].share;
+        else if(symbol === buyOrder.symbol && buyOrder.limitPrice >= limitPrice && buyOrder.username !== sellerUserName && 0 < buyOrder.share < currentQuantity) {
+            currentQuantity -= buyOrder.share;
 
             updateSellerAccount();
             function updateSellerAccount(){
 
                 //Update Buyer Balance and Holding
-                usersDatabase[sellerUserName]['account']["cashBalance"]
-                += (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
+                usersDatabase[sellerUserName].account.cashBalance += (buyOrder.limitPrice * buyOrder.share);
+                
+                let activityMessage = `Sold ${buyOrder.share} shares of ${symbol} at $${buyOrder.limitPrice} to ${buyOrder.username}`;
+                let newActivity = creatNewActivity('sell', activityMessage);
 
+                updateUserActivity(usersDatabase[sellerUserName].activity, newActivity);
 
-                usersDatabase[sellerUserName]['activity'].push(
+                for (let j = 0; i < usersDatabase[sellerUserName].ownedStocks.length; j++) {
 
-                    `Sold ${buyOrderArr[i].share} shares of ${symbol} at $${buyOrderArr[i].limitPrice} to ${buyOrderArr[i].username}`
+                    if(usersDatabase[sellerUserName].ownedStocks[j].symbol === symbol) {
 
-                );
+                        usersDatabase[sellerUserName].ownedStocks[j].share -= buyOrderArr[i].share;
 
-                for (let j = 0; i < usersDatabase[sellerUserName]['ownedStocks'].length; j++) {
+                        usersDatabase[sellerUserName].ownedStocks[j].total_cost -= (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
 
-                    if(usersDatabase[sellerUserName]['ownedStocks'][j].symbol === symbol) {
+                        usersDatabase[sellerUserName].ownedStocks[j].average_cost
+                        = (usersDatabase[sellerUserName].ownedStocks[j].total_cost / usersDatabase[sellerUserName].ownedStocks[j].share);
 
-                        usersDatabase[sellerUserName]['ownedStocks'][j].share -= buyOrderArr[i].share;
-
-                        usersDatabase[sellerUserName]['ownedStocks'][j].total_cost -= (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
-
-                        usersDatabase[sellerUserName]['ownedStocks'][j].average_cost
-                        = (usersDatabase[sellerUserName]['ownedStocks'][j].total_cost / usersDatabase[sellerUserName]['ownedStocks'][j].share);
-
-                        if (usersDatabase[sellerUserName]['ownedStocks'][j].share === 0){
-                            usersDatabase[sellerUserName]['ownedStocks'].splice(j, 1);
+                        if (usersDatabase[sellerUserName].ownedStocks[j].share === 0){
+                            usersDatabase[sellerUserName].ownedStocks.splice(j, 1);
                         }
                         return;
                     }
@@ -386,40 +418,41 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
 
                 let newStock = {
                     name: stockDatabase[symbol].name,
-                    quote: buyOrderArr[i].limitPrice,
-                    total_cost: buyOrderArr[i].limitPrice*buyOrderArr[i].share,
-                    average_cost: buyOrderArr[i].limitPrice,
+                    quote: buyOrder.limitPrice,
+                    total_cost: buyOrder.limitPrice*buyOrder.share,
+                    average_cost: buyOrder.limitPrice,
                     symbol: stockDatabase[symbol].symbol,
-                    share: buyOrderArr[i].share
+                    share: buyOrder.share
                 };
 
                 //Update Buyer Balance and Holding
-                usersDatabase[buyOrderArr[i]['username']]['account']["cashBalance"]
-                -=  (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
+                usersDatabase[buyOrder.username].account.cashBalance -=  (buyOrder.limitPrice * buyOrder.share);
 
-                usersDatabase[buyOrderArr[i]['username']]['activity']
-                .push(`Bought ${buyOrderArr[i].share} shares of ${symbol} at $${buyOrderArr[i].limitPrice} from ${sellerUserName}`);
+                let activityMessage = `Bought ${buyOrder.share} shares of ${symbol} at $${buyOrder.limitPrice} from ${sellerUserName}`;
+                let newActivity = creatNewActivity('buy', activityMessage);
 
-                for(let k = 0; k < usersDatabase[buyOrderArr[i]['username']]['openOrders'].length; k++) {
-                    if(usersDatabase[buyOrderArr[i]['username']]['openOrders'][k]['orderId'] === buyOrderArr[i].orderId) {
-                        usersDatabase[buyOrderArr[i]['username']]['openOrders'].splice(k, 1);
+                updateUserActivity(usersDatabase[buyOrder.username].activity, newActivity);
+                
+
+                for(let k = 0; k < usersDatabase[buyOrder.username].openOrders.length; k++) {
+                    if(usersDatabase[buyOrder.username].openOrders[k].orderId === buyOrder.orderId) {
+                        usersDatabase[buyOrder.username].openOrders.splice(k, 1);
                     }
                 }
 
 
-                for(let k = 0; k < usersDatabase[buyOrderArr[i]['username']]['ownedStocks'].length; k++) {
+                for(let k = 0; k < usersDatabase[buyOrder.username].ownedStocks.length; k++) {
                     //if user owns stock, and is adding more shares
-                    if(usersDatabase[buyOrderArr[i]['username']]['ownedStocks'][k]["symbol"] === buyOrderArr[i].symbol) {
-                        usersDatabase[buyOrderArr[i]['username']]['ownedStocks'][k]['share'] += buyOrderArr[i].share;
+                    if(usersDatabase[buyOrder.username].ownedStocks[k].symbol === buyOrder.symbol) {
+                        usersDatabase[buyOrder.username].ownedStocks[k].share += buyOrder.share;
 
                         return;
                     }
                 }
 
-                usersDatabase[buyOrderArr[i]['username']]['ownedStocks'].push(newStock);
+                usersDatabase[buyOrder.username].ownedStocks.push(newStock);
 
             }
-
             updateInvestmentBalance(usersDatabase[buyOrderArr[i].username]);
             buyOrderArr.splice(i, 1);
         }
@@ -435,7 +468,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
         let newOpenOrder = createOpenOrder(name, quote, symbol, currentQuantity, orderType, orderId, username, limitPrice);
 
         sellOrderArr.push(newOpenOrder);
-        usersDatabase[username]["openOrders"].push(newOpenOrder);
+        usersDatabase[username].openOrders.push(newOpenOrder);
     }
 
     let updatedBuyOrderArr = buyOrderArr.filter(function (order) {

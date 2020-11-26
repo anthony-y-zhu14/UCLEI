@@ -28,8 +28,6 @@ app.use(session({
      - handles:
         - checking for valid sessions
         - updating data base  (currently JSON files)
-        - creating open sell and buy orders
-        - validating sell and buy Post requests
 **********************************************/
 
 function isSessionValid(s, u){
@@ -331,23 +329,24 @@ app.post('/addEventNotify', (req, res) => {
         });
         req.on('end', () => {
 
-
             let stock = stockDatabase[data.name];
-
-            console.log(stock)
 
             let eventItem = {
                 symbol: stock['symbol'],
                 quote: stock['quote'],
                 name: stock['name'],
-                active: true,
-                notify_num: data.num
+                active: "Active",
+                notified: false,
+                notify_num: data.num,
+                message: `${stock['name']}'s price has changed by ${data.num}%.`
             };
 
             let isItemInList = false;
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i] === eventItem) {
+                if(users[req.session.user]['eventList'][i]['symbol'] === eventItem.symbol) {
                     isItemInList = true;
+                    users[req.session.user]['eventList'][i]['notify_num'] = data.num;
+                    users[req.session.user]['eventList'][i]['active'] = "Active";
                 }
             }
             if(!isItemInList) {
@@ -370,7 +369,7 @@ app.post('/rmvEventNotify', (req, res) => {
         req.on('end', () => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i]['symbol'] === data) {
+                if(users[req.session.user]['eventList'][i]['symbol'] === data.item) {
                     users[req.session.user]['eventList'].splice(i, 1);
                 }
             }
@@ -380,7 +379,7 @@ app.post('/rmvEventNotify', (req, res) => {
     }
 });
 
-app.post('/deactivateEvent', (req, res) => {
+app.post('/reactivateEvent', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
         let data = "";
         req.on('data', (chunk) => {
@@ -390,28 +389,14 @@ app.post('/deactivateEvent', (req, res) => {
         req.on('end', () => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i]['symbol'] === data) {
-                    users[req.session.user]['eventList'][i]['active'] = false;
-                }
-            }
-            updateUserDataBase();
-            res.end();
-        });
-    }
-});
+                if(users[req.session.user]['eventList'][i]['symbol'] === data.item) {
 
-app.post('/activateEvent', (req, res) => {
-    if (isSessionValid(req.session, req.session.user)){
-        let data = "";
-        req.on('data', (chunk) => {
-            data = JSON.parse(chunk);
-        });
-
-        req.on('end', () => {
-
-            for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
-                if(users[req.session.user]['eventList'][i]['symbol'] === data) {
-                    users[req.session.user]['eventList'][i]['active'] = true;
+                    if(users[req.session.user]['eventList'][i]['active'] === "Active") {
+                        users[req.session.user]['eventList'][i]['active'] = "Deactive";
+                        users[req.session.user]['eventList'][i]['message'] = "";
+                    } else {
+                        users[req.session.user]['eventList'][i]['active'] = "Active";
+                    }
                 }
             }
             updateUserDataBase();
@@ -431,7 +416,9 @@ app.post('/updateEventNum', (req, res) => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data.value) {
-                    users[req.session.user]['eventList'][i]['num'] = data.num;
+                    users[req.session.user]['eventList'][i]['notify_num'] = data.num;
+                    users[req.session.user]['eventList'][i]['active'] = "Active";
+                    users[req.session.user]['eventList'][i]['message'] = "";
                 }
             }
             updateUserDataBase();
