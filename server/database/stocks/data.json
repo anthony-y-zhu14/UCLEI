@@ -222,7 +222,7 @@
       137.1,
       304.67
     ],
-    "volume": 10
+    "volume": 20
   },
   "GE": {
     "name": "General Electric Company",
@@ -493,7 +493,7 @@
       34.89,
       187.75
     ],
-    "volume": 0
+    "volume": 10
   },
   "SHOP": {
     "name": "Shopify Inc.",
