@@ -2,15 +2,9 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "a8c1f927-27f4-4cdd-94cc-c41c5cb9bbc7",
+    "session_id": "887ad6fc-e71f-42f9-80a6-c197262d698b",
     "name": "Jerry Smith",
     "watchlist": [
-      {
-        "symbol": "AMD",
-        "quote": "77.99",
-        "name": "Advanced Micro Devices, Inc.",
-        "volume": 0
-      },
       {
         "symbol": "SE",
         "quote": "156.53",
@@ -25,7 +19,17 @@
       }
     ],
     "openOrders": [],
-    "eventList": [],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": "156.53",
+        "name": "Sea Limited",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 20,
+        "message": "Sea Limited's price has changed by 20%."
+      }
+    ],
     "ownedStocks": [],
     "activity": [
       {
@@ -65,7 +69,7 @@
         "name": "Sea Limited",
         "active": "Active",
         "notified": false,
-        "notify_num": "23",
+        "notify_num": 23,
         "message": ""
       }
     ],
@@ -114,7 +118,16 @@
         "name": "Advanced Micro Devices, Inc.",
         "active": "Active",
         "notified": false,
-        "notify_num": "100",
+        "notify_num": 100,
+        "message": "Advanced Micro Devices, Inc.'s price has changed by 100%."
+      },
+      {
+        "symbol": "SE",
+        "quote": "77.99",
+        "name": "Sea Limited inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": -5,
         "message": "Advanced Micro Devices, Inc.'s price has changed by 100%."
       }
     ],

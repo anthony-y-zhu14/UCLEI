@@ -7,6 +7,7 @@ const session = require('express-session');
 const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
 
 let stockOrder = require("./stockOrder.js");
+let eventWatcher = require("./eventLoop.js");
 let users = {};
 
 
@@ -22,6 +23,14 @@ app.use(session({
         sameSite: true //strict
     }
 }));
+
+/* begins the event watcher on server start
+ * eventWatcher fires every 5 minutes,
+ * checking each user's events subscriptions
+ * and updating the user's data as required
+*/
+eventWatcher;
+console.log("Event Watcher: listening...")
 
 /**********************************************
     Helper Functions
@@ -319,13 +328,25 @@ app.get('/getEvents', (req, res) => {
     }
 });
 
+app.get('/getNotified', (req, res) => {
+  if (isSessionValid(req.session, req.session.user)){
+
+    for(i in eventWatcher.getCount) {
+      console.log(JSON.parse(i));
+    }
+      let data = eventWatcher.getCount[0];
+      res.statusCode = 200;
+      res.setHeader("Content-Type", "application/JSON");
+      res.write(data);
+      res.end();
+  }
+});
+
 app.post('/addEventNotify', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
-            console.log(data)
-            console.log(data.name)
         });
         req.on('end', () => {
 
@@ -337,8 +358,8 @@ app.post('/addEventNotify', (req, res) => {
                 name: stock['name'],
                 active: "Active",
                 notified: false,
-                notify_num: data.num,
-                message: `${stock['name']}'s price has changed by ${data.num}%.`
+                notify_num: parseFloat(data.num),
+                message: ''
             };
 
             let isItemInList = false;
@@ -416,7 +437,7 @@ app.post('/updateEventNum', (req, res) => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data.value) {
-                    users[req.session.user]['eventList'][i]['notify_num'] = data.num;
+                    users[req.session.user]['eventList'][i]['notify_num'] = parseFloat(data.num);
                     users[req.session.user]['eventList'][i]['active'] = "Active";
                     users[req.session.user]['eventList'][i]['message'] = "";
                 }
@@ -469,7 +490,7 @@ app.post('/buyStock', (req, res) => {
                 }
 
                 if (users[req.session.user]['account']['cashBalance'] - sum >= 0){
-                    
+
                     stockOrder.validateBuy(quantity, symbol, limitPrice, users[req.session.user]['username'], users, stockDatabase);
                     return;
                 }
