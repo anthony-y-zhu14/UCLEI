@@ -340,12 +340,12 @@ app.get('/getEvents', (req, res) => {
 app.get('/getNotified', (req, res) => {
   if (isSessionValid(req.session, req.session.user)){
     let data = {};
-    
+
     let d = eventWatcher.getCount();
     for (let i = 0; i < d.length; i++){
         let event = d[i];
         if (req.session.user === event.user){
-            data = event;            
+            data = event;
         }
     }
  res.statusCode = 200;
@@ -381,6 +381,8 @@ app.post('/addEventNotify', (req, res) => {
                     isItemInList = true;
                     users[req.session.user]['eventList'][i]['notify_num'] = data.num;
                     users[req.session.user]['eventList'][i]['active'] = "Active";
+                    users[req.session.user]['eventList'][i]['message'] = "";
+                    users[req.session.user]['eventList'][i]['notified'] = false;
                 }
             }
             if(!isItemInList) {
@@ -424,14 +426,13 @@ app.post('/reactivateEvent', (req, res) => {
 
             for(let i = 0; i < users[req.session.user]['eventList'].length; i++) {
                 if(users[req.session.user]['eventList'][i]['symbol'] === data.item) {
-
                     if(users[req.session.user]['eventList'][i]['active'] === "Active") {
                         users[req.session.user]['eventList'][i]['active'] = "Deactive";
                         users[req.session.user]['eventList'][i]['message'] = "";
                         users[req.session.user]['eventList'][i]['notified'] = false;
                     } else {
                         users[req.session.user]['eventList'][i]['active'] = "Active";
-                        users[req.session.user]['eventList'][i]['notified'] = true;
+                        users[req.session.user]['eventList'][i]['notified'] = false;
 
                     }
                 }
@@ -598,7 +599,7 @@ app.get('/pop-stock-data', (req, res) => {
     }
   });
 
-app.get("/stock-data", (req, res) => {        
+app.get("/stock-data", (req, res) => {
     let search = req.query['search'];
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
@@ -606,7 +607,7 @@ app.get("/stock-data", (req, res) => {
         data.push(stockDatabase[search]);
     }
     res.write(JSON.stringify(data));
-    res.end();    
+    res.end();
 });
 
 /**********************************************

@@ -131,7 +131,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
-    console.log(body);
     setNotifications(body.count);
     return;
   }
@@ -206,8 +205,8 @@ useEffect(() => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton color="inherit">
-          <NotificationsForm onClick={getEventsList} stockData={eventsList}/>
+        <IconButton color="inherit" onClick={getEventsList}>
+          <NotificationsForm stockData={eventsList}/>
         </IconButton>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>

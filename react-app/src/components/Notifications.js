@@ -54,11 +54,9 @@ export default function NotificationsForm({stockData, notifynums}) {
 
   return (
     <div >
-      <Button onClick={handleClickOpen}>
-      <Badge badgeContent={notifynums} color="secondary" >
+          <Badge onClick={handleClickOpen} badgeContent={notifynums} color="secondary" >
             <NotificationsIcon/>
           </Badge>
-      </Button>
       <Dialog  maxWidth={"lg"}
                 open={open}
                 onClose={handleClose}

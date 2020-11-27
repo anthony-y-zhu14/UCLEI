@@ -93,9 +93,18 @@
         "quote": "156.53",
         "name": "Sea Limited",
         "active": "Active",
-        "notified": true,
-        "notify_num": "23",
-        "message": "Alert: This is a notification."
+        "notified": false,
+        "notify_num": "4",
+        "message": ""
+      },
+      {
+        "symbol": "MAXR",
+        "quote": "23.94",
+        "name": "Maxar Technologies Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 2,
+        "message": ""
       }
     ],
     "ownedStocks": [
@@ -119,7 +128,7 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "849fe7ac-e0c7-4fa5-93f2-0e832554cd41",
+    "session_id": "b3e1ec67-3fb7-4bfa-be19-8390f3dbca62",
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -139,29 +148,20 @@
     "eventList": [
       {
         "symbol": "AMD",
-        "quote": "77.99",
+        "quote": "200.99",
         "name": "Advanced Micro Devices, Inc.",
-        "active": "Active",
+        "active": "Deactive",
         "notified": false,
         "notify_num": "100",
         "message": ""
       },
       {
-        "symbol": "SE",
-        "quote": "77.99",
-        "name": "Sea Limited.",
-        "active": "Deactive",
-        "notified": false,
-        "notify_num": "-12",
-        "message": ""
-      },
-      {
         "symbol": "TSLA",
-        "quote": "77.99",
+        "quote": "200.99",
         "name": "Tesla Inc.",
-        "active": "Deactive",
+        "active": "Active",
         "notified": false,
-        "notify_num": "-12",
+        "notify_num": "12",
         "message": ""
       }
     ],
@@ -179,13 +179,48 @@
             "date": "2020-11-27",
             "action": "deposite",
             "message": "Deposited $10 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "deposite",
+            "message": "Deposited $20 to account: 1003 - 2020-11-27"
           }
         ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 9074.12,
+      "cashBalance": 9214.12,
       "investmentBalance": 0
     },
     "balanceGrowth": "0"

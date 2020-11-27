@@ -1,7 +1,7 @@
 const fs = require("fs");
 let count = [];
 
-module.exports = {  
+module.exports = {
   getCount,
   updateUserDataBase
 };
@@ -12,7 +12,7 @@ module.exports = {
    console.log('Event Watcher: updated events.');
    getCount();
  },
- 5000); //rest for 2 mins
+ 60000); //rest for 1 minute
 
  function updateUserDataBase(users) {
      fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
@@ -24,7 +24,6 @@ module.exports = {
    let notifications = [];
 
    for(let user in users) {
-     // console.log(users[user]);
      let eventInfo =
      {
        'user': `${users[user]['username']}`,
@@ -45,9 +44,7 @@ module.exports = {
           console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (POSITIVE)`); //temp
 
           //changes the event to notified = true and gives a message to the user
-           users[user]['eventList'][i]['message'] = `Alert: ${users[user]['eventList'][i]['name']},
-            (${users[user]['eventList'][i]['symbol']}) price has increased by
-            ${users[user]['eventList'][i]['notify_num']}% or greater.`;
+           users[user]['eventList'][i]['message'] = `Alert: ${users[user]['eventList'][i]['name']}, (${users[user]['eventList'][i]['symbol']}) price has increased by ${users[user]['eventList'][i]['notify_num']}% or greater.`;
            users[user]['eventList'][i]['notified'] = true;
            updateUserDataBase(users);
          }
@@ -64,15 +61,11 @@ module.exports = {
            console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (NEGATIVE)`); //temp
 
            //changes the event to notified = true and gives a message to the user
-           users[user]['eventList'][i]['message'] = `Alert: ${users[user]['eventList'][i]['name']},
-            (${users[user]['eventList'][i]['symbol']}) price has decreased by
-            ${users[user]['eventList'][i]['notify_num']}% or greater.`;
+           users[user]['eventList'][i]['message'] = `Alert: ${users[user]['eventList'][i]['name']}, (${users[user]['eventList'][i]['symbol']}) price has decreased by ${users[user]['eventList'][i]['notify_num']}% or greater.`;
            users[user]['eventList'][i]['notified'] = true;
            updateUserDataBase(users);
          }
        }
-
-
      }
 
      notifications.push(eventInfo);
@@ -80,10 +73,11 @@ module.exports = {
      //sets the count of how many notifications the user shall recieve
      for(let i = 0; i < users[user]['eventList'].length; i++) {
        if(users[user]['eventList'][i]["notified"] === true) {
-        // [ {user : username, count : 0}, ]
         for (let j = 0; j < notifications.length; j++) {
           if (notifications[j].user === user){
             notifications[j]['count'] += 1;
+            updateUserDataBase(users);
+
           }
         }
        }
