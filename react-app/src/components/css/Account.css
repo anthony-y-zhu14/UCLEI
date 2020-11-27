@@ -3,10 +3,16 @@ body {
   background: #e2eaf2;
 }
 
-summary {
+details{
   padding: 1em;
+  text-align: center;
+}
+
+summary {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
   width: 100%;
-  margin: 0 auto;
+  margin: 0% auto;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
@@ -17,7 +23,7 @@ summary {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   -webkit-transition: background-color .3s, color .3s;
-  transition: background-color .3s, color .3s;
+  transition: background-color .3s, color .3s;  
 }
 
 summary:hover {
@@ -25,15 +31,12 @@ summary:hover {
   color: black;
 }
 
-summary::-webkit-details-marker {
-  color: #B4E2FC;
-}
+
 
 details[open] summary ~ * {
   -webkit-animation: sweep .5s ease-in-out;
           animation: sweep .5s ease-in-out;
 }
-
 @-webkit-keyframes sweep {
   from {
     opacity: 0;
@@ -178,9 +181,6 @@ details[open] summary ~ * {
   height: 50%;
   padding: 0.5em 1em 0.5em 1em;
   margin: 10% auto;
-  background: #393b41;
-  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   list-style-type: none;
 }
@@ -211,14 +211,14 @@ details[open] summary ~ * {
 }
 
 .stock-holding {
-  color: white;
-  margin: 4% auto;
+  margin: 1% auto;
   padding: 0.5em;
-  background: slategrey;
+  background:#6c9ff8;
   outline: none;
-  border-radius: .3em;
+  border-radius: 15px;
   font-family: 'Open Sans', sans-serif;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  
 }
 /*# sourceMappingURL=account.css.map */

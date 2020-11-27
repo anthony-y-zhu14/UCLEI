@@ -2,9 +2,15 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "887ad6fc-e71f-42f9-80a6-c197262d698b",
+    "session_id": null,
     "name": "Jerry Smith",
     "watchlist": [
+      {
+        "symbol": "AMD",
+        "quote": "77.99",
+        "name": "Advanced Micro Devices, Inc.",
+        "volume": 0
+      },
       {
         "symbol": "SE",
         "quote": "156.53",
@@ -19,18 +25,17 @@
       }
     ],
     "openOrders": [],
-    "eventList": [
+    "eventList": [],
+    "ownedStocks": [
       {
-        "symbol": "SE",
-        "quote": "156.53",
         "name": "Sea Limited",
-        "active": "Active",
-        "notified": false,
-        "notify_num": 20,
-        "message": "Sea Limited's price has changed by 20%."
+        "quote": 156.53,
+        "total_cost": 1565.3,
+        "average_cost": 156.53,
+        "symbol": "SE",
+        "share": 10
       }
     ],
-    "ownedStocks": [],
     "activity": [
       {
         "date": "2020-11-26",
@@ -59,21 +64,26 @@
             "date": "2020-11-27",
             "action": "withdraw",
             "message": "Withdrawn $20 to account: C-137-1001 - 2020-11-27"
+          },
+          {
+            "date": "2020-11-27",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $156.53 from rick137 - 2020-11-27"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 11620.16,
-      "investmentBalance": 0
+      "cashBalance": 10054.86,
+      "investmentBalance": 1565.3
     },
     "balanceGrowth": 0
   },
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": "c3d077e2-62bc-4508-aaf7-bebfbfecf17d",
+    "session_id": null,
     "name": "Morty Smith",
     "watchlist": [],
     "openOrders": [],
@@ -84,7 +94,7 @@
         "name": "Sea Limited",
         "active": "Active",
         "notified": false,
-        "notify_num": 23,
+        "notify_num": "23",
         "message": ""
       }
     ],
@@ -109,7 +119,7 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "6697a548-afe6-423b-b68f-80444900e6f2",
+    "session_id": null,
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -133,39 +143,27 @@
         "name": "Advanced Micro Devices, Inc.",
         "active": "Active",
         "notified": false,
-        "notify_num": 100,
-        "message": "Advanced Micro Devices, Inc.'s price has changed by 100%."
-      },
-      {
-        "symbol": "SE",
-        "quote": "77.99",
-        "name": "Sea Limited inc.",
-        "active": "Active",
-        "notified": false,
-        "notify_num": -5,
+        "notify_num": "100",
         "message": "Advanced Micro Devices, Inc.'s price has changed by 100%."
       }
     ],
-    "ownedStocks": [
+    "ownedStocks": [],
+    "activity": [      
       {
-        "name": "Sea Limited",
-        "quote": 156.53,
-        "total_cost": 1565.3,
-        "average_cost": 156.53,
-        "symbol": "SE",
-        "share": 10
-      }
-    ],
-    "activity": [
-      {
-        "date": "2020-11-26",
-        "activities": []
+        "date": "2020-11-27",
+        "activities": [
+          {
+            "date": "2020-11-27",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $156.53 to jerry137 - 2020-11-27"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 7498.820000000001,
-      "investmentBalance": 1565.3
+      "cashBalance": 9064.12,
+      "investmentBalance": 0
     },
     "balanceGrowth": "0"
   }

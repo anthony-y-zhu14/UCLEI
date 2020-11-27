@@ -85,6 +85,7 @@ app.post('/authentication', (req, res) => {
                 authentication: true,
                 session_id: USER_TOKEN
             };
+            updateUserDataBase();
             res.write(JSON.stringify(login_data));
         }
         else if(username === '' && password === '') {
@@ -161,6 +162,7 @@ app.post('/register', (req, res) => {
 app.get("/logout", function(req, res){
     console.log(`${users[req.session.user].username} Logged Out, Cookie destroyed`);
     users[req.session.user]["session_id"] = null;
+    updateUserDataBase();
     req.session.destroy();
 
 });
@@ -168,7 +170,7 @@ app.get("/logout", function(req, res){
 app.get("/session", function(req, res){
     let data = '';
     if (req.session.user){
-        data = users[req.session.user]['session_id'];
+        data = users[req.session.user].session_id;
     }
     else{
         data = null;
@@ -337,7 +339,8 @@ app.get('/getEvents', (req, res) => {
 app.get('/getNotified', (req, res) => {
   if (isSessionValid(req.session, req.session.user)){
 
-    for(i in eventWatcher.getCount) {
+    
+    for(const i in eventWatcher.getCount) {
       console.log(JSON.parse(i));
     }
       let data = eventWatcher.getCount[0];

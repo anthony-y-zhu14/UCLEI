@@ -207,7 +207,6 @@ class Account extends React.Component {
                                 </ButtonGroup>
                                 <ul id="table-container">
 
-
                                     {this.state.holdingBtn && (
                                         <React.Fragment>
                                             {this.state.user.ownedStocks.map(stock => (
@@ -221,8 +220,8 @@ class Account extends React.Component {
                                         <React.Fragment>
                                             {this.state.user.activity.map(activity => (
                                               <details>
+                                                <summary>{activity.date}</summary>
                                                 {activity.activities.map(message =>(
-
                                                 <li className="stock-holding">{message.message}</li>
                                               ))}
                                               </details>

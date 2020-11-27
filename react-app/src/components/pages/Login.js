@@ -57,9 +57,19 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-      if (this.props.session_id){
-        this.navToDsh();
-      }
+      fetch('/session')
+            .then((res) => res.json())
+            .then((data) => this.setState({
+              authenticated : data
+            }))
+            .finally(() =>{
+              if (this.state.authenticated){
+                this.navToDsh();
+              }
+            })            
+            .catch((error) => console.log(error.message));
+      
+      
     }
 
     login = async () => {
@@ -92,7 +102,7 @@ class Login extends React.Component {
     }
 
     navToDsh = () => {
-      // this.props.onSuccess();
+      
       this.props.history.push('/dashboard');
     }
 
