@@ -252,8 +252,8 @@ useEffect(() => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton color="inherit">
-            <NotificationsForm onClick={getEventsList}  notifynums={notifications} stockData={eventsList}/>
+            <IconButton onClick={getEventsList}  color="inherit">
+            <NotificationsForm  notifynums={notifications} stockData={eventsList}/>
             </IconButton>
             <IconButton
               edge="end"

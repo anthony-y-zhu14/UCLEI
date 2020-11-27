@@ -2,15 +2,9 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "5ddd283f-1bc0-4f57-8db4-5586103a5ca8",
+    "session_id": "af75b744-3483-46fd-9544-20cf6f5f174f",
     "name": "Jerry Smith",
     "watchlist": [
-      {
-        "symbol": "AMD",
-        "quote": "77.99",
-        "name": "Advanced Micro Devices, Inc.",
-        "volume": 0
-      },
       {
         "symbol": "SE",
         "quote": "156.53",
@@ -94,7 +88,7 @@
         "name": "Sea Limited",
         "active": "Active",
         "notified": false,
-        "notify_num": "4",
+        "notify_num": 8,
         "message": ""
       },
       {
@@ -128,7 +122,7 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "b3e1ec67-3fb7-4bfa-be19-8390f3dbca62",
+    "session_id": "7a35dfb3-e450-4bb4-a1ab-32ecfdd6219a",
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -148,12 +142,12 @@
     "eventList": [
       {
         "symbol": "AMD",
-        "quote": "200.99",
+        "quote": "600.99",
         "name": "Advanced Micro Devices, Inc.",
-        "active": "Deactive",
-        "notified": false,
+        "active": "Active",
+        "notified": true,
         "notify_num": "100",
-        "message": ""
+        "message": "Alert: Advanced Micro Devices, Inc., (AMD) price has increased by 100% or greater."
       },
       {
         "symbol": "TSLA",
