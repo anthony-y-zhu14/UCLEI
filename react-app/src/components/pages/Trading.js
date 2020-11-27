@@ -273,13 +273,13 @@ class Trading extends React.Component {
                                     <div id={this.state.stock_found.name} className="stock-holding">{this.state.stock_found.name}</div>
                                 )}
                             <div>
-                                <TextField label="Quantity" variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+                                <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
                                 <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
                                     <Button id="money-deposit" style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
                                     <Button id="money-withdraw" style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
                                 </ButtonGroup>
                             </div>
-                            <TextField label="Limit Price" variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
+                            <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
                             <br />
                             <br />
                             <br />

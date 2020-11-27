@@ -3,7 +3,9 @@ const { v4: uuidv4 } = require('uuid');
 
 module.exports = {  
     createOpenOrder,
+    creatNewActivity,
     updateInvestmentBalance,
+    updateUserActivity,
     validateBuy,
     validateSell,
     updateBuyOrdersData
@@ -13,7 +15,7 @@ function creatNewActivity(action, message){
     let date = new Date();
     let today = date.toISOString().slice(0,10);
 
-    message ="On " + date.toISOString().slice(0,10) + " " + message;
+    message = message + " - " + date.toISOString().slice(0,10);
 
     let newActivity = {
         date: today,
@@ -107,7 +109,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 -= (sellOrder.limitPrice * currentQuantity);
 
                 let activityMessage = `Bought ${currentQuantity} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrderArr[i].username}`;
-                let newActivity = creatNewActivity('Buy', activityMessage);
+                let newActivity = creatNewActivity('buy', activityMessage);
 
                 updateUserActivity(usersDataBase[buyerUserName].activity, newActivity);
 

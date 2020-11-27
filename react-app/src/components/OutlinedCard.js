@@ -60,7 +60,7 @@ export default function OutlinedCard({stock}, {h}) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={handleClick}>View Stock</Button>
+          <Button size="small" onClick={handleClick}>View Detail</Button>
         </CardActions>
       </Card>
   );

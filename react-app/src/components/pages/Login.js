@@ -56,6 +56,12 @@ class Login extends React.Component {
       };
     }
 
+    componentDidMount() {
+      if (this.props.session_id){
+        this.navToDsh();
+      }
+    }
+
     login = async () => {
       this._isMounted = true;
 

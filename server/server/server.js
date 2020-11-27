@@ -216,14 +216,20 @@ app.post('/updateBalance', (req, res) => {
         });
 
         function handleTransac(data) {
-        if(data.type === 'deposit') {
-            users[req.session.user]['account']['cashBalance'] += parseInt(data.amount);
-        }
-        else {
-            if(users[req.session.user]['account']['cashBalance'] >= parseInt(data.amount)) {
-            users[req.session.user]['account']['cashBalance'] -= parseInt(data.amount);
+            if(data.type === 'deposit') {
+                users[req.session.user]['account']['cashBalance'] += parseInt(data.amount);
+                let activityMessage = `Deposited $${parseInt(data.amount)} to account: ${users[req.session.user].account.accountName}`;
+                let newActivity = stockOrder.creatNewActivity('deposite', activityMessage);
+                stockOrder.updateUserActivity(users[req.session.user].activity, newActivity);
             }
-        }
+            else {
+                if(users[req.session.user]['account']['cashBalance'] >= parseInt(data.amount)) {
+                users[req.session.user]['account']['cashBalance'] -= parseInt(data.amount);
+                let activityMessage = `Withdrawn $${parseInt(data.amount)} to account: ${users[req.session.user].account.accountName}`;
+                let newActivity = stockOrder.creatNewActivity('withdraw', activityMessage);
+                stockOrder.updateUserActivity(users[req.session.user].activity, newActivity);
+                }
+            }
         }
     }
 });
@@ -561,17 +567,15 @@ app.get('/pop-stock-data', (req, res) => {
     }
   });
 
-app.get("/stock-data", (req, res) => {
-    if (isSessionValid(req.session, req.session.user)){
-        let search = req.query['search'];
-        let data = [];
-        res.setHeader("Content-Type", "application/JSON");
-        if(stockDatabase[search] != null) {
-            data.push(stockDatabase[search]);
-        }
-        res.write(JSON.stringify(data));
-        res.end();
+app.get("/stock-data", (req, res) => {        
+    let search = req.query['search'];
+    let data = [];
+    res.setHeader("Content-Type", "application/JSON");
+    if(stockDatabase[search] != null) {
+        data.push(stockDatabase[search]);
     }
+    res.write(JSON.stringify(data));
+    res.end();    
 });
 
 /**********************************************

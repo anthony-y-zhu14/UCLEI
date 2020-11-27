@@ -113,6 +113,15 @@ class Account extends React.Component {
 
       let target_url = "/updateBalance";
 
+      if (this.state.amount <= 0){
+        alert("Please enter a valid amount");
+        return;
+      }
+      if (!this.state.type){
+        alert("Please choose an option");
+        return;
+      }
+
       const requestOptions = {
           method: 'POST',
           headers: { 'Content-Type': "application/json" },
@@ -207,12 +216,17 @@ class Account extends React.Component {
                                             ))}
                                         </React.Fragment>
                                     )}
+
                                     {this.state.activityBtn && (
                                         <React.Fragment>
                                             {this.state.user.activity.map(activity => (
-                                              activity.activities.map(message =>(
+                                              <details>
+                                                {activity.activities.map(message =>(
+
                                                 <li className="stock-holding">{message.message}</li>
-                                              ))
+                                              ))}
+                                              </details>
+                                              
                                                 
                                             ))}
                                         </React.Fragment>
@@ -254,13 +268,13 @@ class Account extends React.Component {
                           <form>
                             <div id="modal-account-balance">
                               <span className="modal-text">Account Balance:</span>
-                              <span className="modal-text" className="cashBalance" id="money">
+                              <span className="modal-text"  id="money">
                               {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
                               </span>
                             </div>
+                            
 
-
-                            <TextField className="txtFld" label="Input Dollar Amount"
+                            <TextField className="txtFld" label="Enter Dollar Amount" type='number'
                             onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
                             variant="outlined" />
                             <div id="modal-container">

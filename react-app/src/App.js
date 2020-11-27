@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import {
     BrowserRouter as Router,
     Route,
-    Switch,
-    Redirect} from 'react-router-dom';
+    Switch
+} from 'react-router-dom';
 import "./components/Header.js"
 import Market from "./components/pages/Market.js"
 import Account from "./components/pages/Account.js"
@@ -43,7 +43,6 @@ function App(){
                         path="/login"
                         component={() => <Login session_id={auth} onChange={handleChange} />}
                         />
-
                         <Route  exact path="/" component={StoreFront}/>
                         <Route path="/register"  component={() => <Register onChange={handleChange} />}/>
                         <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>

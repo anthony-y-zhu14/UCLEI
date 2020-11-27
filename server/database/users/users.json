@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "a8c1f927-27f4-4cdd-94cc-c41c5cb9bbc7",
+    "session_id": "681689a5-9593-4327-95c5-6addcc651a85",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -25,7 +25,17 @@
       }
     ],
     "openOrders": [],
-    "eventList": [],
+    "eventList": [
+      {
+        "symbol": "AMD",
+        "quote": "77.99",
+        "name": "Advanced Micro Devices, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": "5",
+        "message": "Advanced Micro Devices, Inc.'s price has changed by 5%."
+      }
+    ],
     "ownedStocks": [],
     "activity": [
       {
@@ -33,20 +43,35 @@
         "activities": [
           {
             "date": "2020-11-26",
-            "action": "Buy",
-            "message": "On 2020-11-26T20:40:24.956Z Bought 10 shares of SE at $156.53 from rick137"
+            "action": "deposite",
+            "message": "Deposited $10 to account: C-137-1001 - 2020-11-26"
           },
           {
             "date": "2020-11-26",
-            "action": "sell",
-            "message": "On 2020-11-26T20:45:53.855Z Sold 10 shares of SE at $156.53 to rick137"
+            "action": "withdraw",
+            "message": "Withdrawn $10 to account: C-137-1001 - 2020-11-26"
+          },
+          {
+            "date": "2020-11-26",
+            "action": "withdraw",
+            "message": "Withdrawn $10 to account: C-137-1001 - 2020-11-26"
+          }
+        ]
+      },
+      {
+        "date": "2020-11-27",
+        "activities": [
+          {
+            "date": "2020-11-27",
+            "action": "withdraw",
+            "message": "Withdrawn $20 to account: C-137-1001 - 2020-11-27"
           }
         ]
       }
     ],
     "account": {
-      "accountName": 1001,
-      "cashBalance": 11650.16,
+      "accountName": "C-137-1001",
+      "cashBalance": 11620.16,
       "investmentBalance": 0
     },
     "balanceGrowth": 0
@@ -131,18 +156,7 @@
     "activity": [
       {
         "date": "2020-11-26",
-        "activities": [
-          {
-            "date": "2020-11-26",
-            "action": "sell",
-            "message": "On 2020-11-26T20:40:24.956Z Sold 10 shares of SE at $156.53 to jerry137"
-          },
-          {
-            "date": "2020-11-26",
-            "action": "Buy",
-            "message": "On 2020-11-26T20:45:53.855Z Bought 10 shares of SE at $156.53 from jerry137"
-          }
-        ]
+        "activities": []
       }
     ],
     "account": {
