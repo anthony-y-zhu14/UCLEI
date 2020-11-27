@@ -1,15 +1,20 @@
 const fs = require("fs");
-let count;
+let count = [];
+
+module.exports = {  
+  getCount,
+  updateUserDataBase
+};
 
 //the main function, intitializes the eventWatcher
  setInterval(function eventCheck() {
-   console.log("Event Watcher:");
    count = eventWatcher();
+   console.log('Event Watcher: updated events.');
    getCount();
  },
- 5000); //rest for 30 seconds
+ 5000); //rest for 2 mins
 
- function updateUserDataBase() {
+ function updateUserDataBase(users) {
      fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
  }
 
@@ -18,8 +23,7 @@ let count;
    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
    let notifications = [];
 
-   for(user in users) {
-     console.log(user)
+   for(let user in users) {
      // console.log(users[user]);
      let eventInfo =
      {
@@ -33,18 +37,19 @@ let count;
        let ticker = users[user]['eventList'][i]['symbol'];
 
        if(users[user]['eventList'][i]["notify_num"] > 0) {
-         if(users[user]['eventList'][i] !== true &&
+         if(users[user]['eventList'][i]['notified'] !== true &&
          users[user]['eventList'][i]["active"] === "Active" &&
          users[user]['eventList'][i]["quote"] >=
          parseFloat(stockDatabase[ticker]['quote']) * (1 + ((users[user]['eventList'][i]['notify_num']/100))))
          {
-          console.log(`We should Notify: ${JSON.stringify(users[user]['username'])},`); //temp
+          console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (POSITIVE)`); //temp
 
           //changes the event to notified = true and gives a message to the user
            users[user]['eventList'][i]['message'] = `Alert: ${users[user]['eventList'][i]['name']},
             (${users[user]['eventList'][i]['symbol']}) price has increased by
             ${users[user]['eventList'][i]['notify_num']}% or greater.`;
            users[user]['eventList'][i]['notified'] = true;
+           updateUserDataBase(users);
          }
        }
 
@@ -56,33 +61,38 @@ let count;
          parseFloat(stockDatabase[ticker]['quote']) - (parseFloat(stockDatabase[ticker]['quote']) *
          (-1 * (users[user]['eventList'][i]['notify_num']/100))))
          {
-           console.log(`We should Notify: ${JSON.stringify(users[user]['username'])},`); //temp
+           console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (NEGATIVE)`); //temp
 
            //changes the event to notified = true and gives a message to the user
            users[user]['eventList'][i]['message'] = `Alert: ${users[user]['eventList'][i]['name']},
-            (${users[user]['eventList'][i]['symbol']}) price has increased by
+            (${users[user]['eventList'][i]['symbol']}) price has decreased by
             ${users[user]['eventList'][i]['notify_num']}% or greater.`;
            users[user]['eventList'][i]['notified'] = true;
+           updateUserDataBase(users);
          }
        }
 
 
      }
 
+     notifications.push(eventInfo);
+
      //sets the count of how many notifications the user shall recieve
      for(let i = 0; i < users[user]['eventList'].length; i++) {
        if(users[user]['eventList'][i]["notified"] === true) {
-         notifications[i]['count']++;
+        // [ {user : username, count : 0}, ]
+        for (let j = 0; j < notifications.length; j++) {
+          if (notifications[j].user === user){
+            notifications[j]['count'] += 1;
+          }
+        }
        }
      }
-
-     notifications.push(eventInfo);
 
    }
    return notifications;
 }
 
 function getCount() {
-  // console.log(count)
   return count;
 }

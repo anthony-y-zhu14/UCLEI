@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-export default function NotificationsForm({stockData}) {
+export default function NotificationsForm({stockData, notifynums}) {
   const [open, setOpen] = React.useState(false);
   const classes = useStyles();
 
@@ -55,7 +55,7 @@ export default function NotificationsForm({stockData}) {
   return (
     <div >
       <Button onClick={handleClickOpen}>
-      <Badge badgeContent={3} color="secondary" >
+      <Badge badgeContent={notifynums} color="secondary" >
             <NotificationsIcon/>
           </Badge>
       </Button>

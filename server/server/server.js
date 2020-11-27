@@ -48,6 +48,7 @@ function isSessionValid(s, u){
 
 function updateUserDataBase(){
     fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
+    eventWatcher.updateUserDataBase(users);
 }
 
 /**********************************************
@@ -338,15 +339,18 @@ app.get('/getEvents', (req, res) => {
 
 app.get('/getNotified', (req, res) => {
   if (isSessionValid(req.session, req.session.user)){
-
+    let data = {};
     
-    for(const i in eventWatcher.getCount) {
-      console.log(JSON.parse(i));
+    let d = eventWatcher.getCount();
+    for (let i = 0; i < d.length; i++){
+        let event = d[i];
+        if (req.session.user === event.user){
+            data = event;            
+        }
     }
-      let data = eventWatcher.getCount[0];
-      res.statusCode = 200;
+ res.statusCode = 200;
       res.setHeader("Content-Type", "application/JSON");
-      res.write(data);
+      res.write(JSON.stringify(data));
       res.end();
   }
 });
@@ -424,8 +428,11 @@ app.post('/reactivateEvent', (req, res) => {
                     if(users[req.session.user]['eventList'][i]['active'] === "Active") {
                         users[req.session.user]['eventList'][i]['active'] = "Deactive";
                         users[req.session.user]['eventList'][i]['message'] = "";
+                        users[req.session.user]['eventList'][i]['notified'] = false;
                     } else {
                         users[req.session.user]['eventList'][i]['active'] = "Active";
+                        users[req.session.user]['eventList'][i]['notified'] = true;
+
                     }
                 }
             }

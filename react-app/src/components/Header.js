@@ -125,15 +125,16 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     return;
   }
 
-  // const getNotifications = async () => {
-  //   const response = await fetch('/getNotified');
-  //   const body = await response.json();
-  //   if(response.status !== 200) {
-  //     throw Error(body.message);
-  //   }
-  //   setNotifications(body);
-  //   return;
-  // }
+  const getNotifications = async () => {
+    const response = await fetch('/getNotified');
+    const body = await response.json();
+    if(response.status !== 200) {
+      throw Error(body.message);
+    }
+    console.log(body);
+    setNotifications(body.count);
+    return;
+  }
 
   const setSearchQuery = (event) => {
       setSearch(event.target.value);
@@ -155,7 +156,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
 
 useEffect(() => {
   getEventsList();
-  // getNotifications();
+  getNotifications();
 });
 
   const logout = (value) => {
@@ -187,7 +188,7 @@ useEffect(() => {
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
-      onClose={handleMenuClose}    >
+      onClose={handleMenuClose} >
 
       <MenuItem onClick={handleMenuClose} onClick={logout}>Sign Out</MenuItem>
     </Menu>
@@ -231,7 +232,6 @@ useEffect(() => {
 
             <TemporaryDrawer />
 
-
           <Typography className={classes.title} variant="h6" noWrap>
             {currentPage}
           </Typography>
@@ -254,7 +254,7 @@ useEffect(() => {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton color="inherit">
-            <NotificationsForm onClick={getEventsList} stockData={eventsList}/>
+            <NotificationsForm onClick={getEventsList}  notifynums={notifications} stockData={eventsList}/>
             </IconButton>
             <IconButton
               edge="end"
