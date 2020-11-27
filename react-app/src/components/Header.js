@@ -99,6 +99,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   const [search, setSearch] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [eventsList, setEventsList] = React.useState(null);
+  const [notifications, setNotifications] = React.useState(null);
 
 
   const isMenuOpen = Boolean(anchorEl);
@@ -127,6 +128,16 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     return;
   }
 
+  // const getNotifications = async () => {
+  //   const response = await fetch('/getNotified');
+  //   const body = await response.json();
+  //   if(response.status !== 200) {
+  //     throw Error(body.message);
+  //   }
+  //   setNotifications(body);
+  //   return;
+  // }
+
   const setSearchQuery = (event) => {
       setSearch(event.target.value);
   }
@@ -141,12 +152,13 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
           query: event.target.value
         }
       }
-      history.push(location); 
+      history.push(location);
     }
 }
 
 useEffect(() => {
   getEventsList();
+  // getNotifications();
 });
 
   const logout = (value) => {
@@ -196,7 +208,7 @@ useEffect(() => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton color="inherit">  
+        <IconButton color="inherit">
           <NotificationsForm onClick={getEventsList} stockData={eventsList}/>
         </IconButton>
       </MenuItem>

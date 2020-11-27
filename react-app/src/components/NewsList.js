@@ -79,8 +79,6 @@ class NewsList extends React.Component {
       .catch (err => console.log(err))
   }
 
-
-
   getNews = async (err) => {
     let date = new Date();
     let today = date.toISOString().slice(0,10);

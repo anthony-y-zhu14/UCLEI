@@ -76,7 +76,6 @@ const handleEventUpdate = async (id) => {
 }
 
   const removeEvent = async (id) => {
-    console.log(id);
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
