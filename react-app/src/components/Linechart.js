@@ -4,6 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Chart from "chart.js";
 import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 import FormDialog from './Dialog.js';
+import BasicTable from './StockTable.js';
 
 const styles = {
   font: {
@@ -67,8 +68,8 @@ class LineChart extends React.Component {
       this.state = {
           stockData: undefined,
           query: undefined,
-          q: undefined
-
+          q: undefined,
+          showChart: true,
       };
   }
   componentDidUpdate() {
@@ -115,6 +116,16 @@ class LineChart extends React.Component {
     this.componentDidMount();
   }
 
+  handleChart = async() => {
+    // this.setState( {showTable: false} );
+    this.setState( {showChart : true} );
+    this.readStock();
+  }
+
+  handleTable = async() => {
+    this.setState( {showChart : false} );
+}
+
   componentDidMount() {
 
     if(this.state.q !== window.location.href.slice(29)) {
@@ -134,10 +145,10 @@ class LineChart extends React.Component {
         window.ctx = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ['Day 1','Day 2','Day 3','Day 4'],
+            labels: ['Day 1','Day 2','Day 3','Day 4', 'Day 5'],
             datasets: [
               {
-                label: "Past 4 Days",
+                label: "Week",
                 data: [this.state.stockData.prev_close, this.state.stockData.open, this.state.stockData.historical[0],this.state.stockData.historical[1]],
                 backgroundColor: '#6C9FF8',
                 borderColor: '#35363C',
@@ -174,12 +185,11 @@ class LineChart extends React.Component {
                 <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
                 <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
                 <ButtonGroup className={classes.controller}>
-                  <Button variant="outlined" size="small" color="primary" className={classes.margin}>4 Day</Button>
-                  <Button variant="outlined" size="small" color="primary" className={classes.margin}>Historical</Button>
+                  <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
+                  <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
                 </ButtonGroup>
           <div className={classes.chart}>
-
-            <canvas id="marketChart"/>
+          {this.state.showChart ? <canvas id="marketChart"/> : <BasicTable stockData = {this.state.stockData}/>  }
           </div>
         </div>
         </div>

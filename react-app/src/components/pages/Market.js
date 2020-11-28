@@ -68,7 +68,7 @@ const styles = {
     },
     chartContainer: {
       // display: 'wrap',
-      overflow: 'hidden',
+      overflowY: 'auto',
       paddingTop: 20,
       wrap: 'wrap',
       flexDirection: 'column',
