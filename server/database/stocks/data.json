@@ -6,14 +6,14 @@
     "percentage": 6.5,
     "volume": 2030,
     "quote": 1200000.38,
-    "prev_close": 1190000.40,
+    "prev_close": 1190000.4,
     "totalTranscationAmount": 1199990,
     "daily_range": {
       "high": 100000,
       "low": 10
-    },   
+    },
     "historical": {
-      "2017-05-24" : 20000
+      "2017-05-24": 20000
     }
   },
   "AAL": {
@@ -23,8 +23,8 @@
     "percentage": "-0.82 (-6.21%)",
     "volume": 0,
     "quote": 12.38,
-    "prev_close": "13.20",
-    "totalTranscationAmount": "12.85",
+    "prev_close": 13.2,
+    "totalTranscationAmount": 12.85,
     "daily_range": "12.34 - 13.02",
     "historical": [
       29.3,
@@ -36,9 +36,9 @@
     "symbol": "AAPL",
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "-0.35 (-0.30%)",
-    "quote": "115.97",
-    "prev_close": "116.32",
-    "totalTranscationAmount": "115.55",
+    "quote": 115.97,
+    "prev_close": 116.32,
+    "totalTranscationAmount": 115.55,
     "daily_range": "114.13 - 117.59",
     "historical": [
       53.15,
@@ -51,9 +51,9 @@
     "symbol": "AC.TO",
     "market": "Toronto - Toronto Real Time Price. Currency in CAD",
     "percentage": "-0.23 (-1.13%)",
-    "quote": "20.12",
-    "prev_close": "20.35",
-    "totalTranscationAmount": "19.59",
+    "quote": 20.12,
+    "prev_close": 20.35,
+    "totalTranscationAmount": 19.59,
     "daily_range": "18.87 - 20.50",
     "historical": [
       9.26,
@@ -66,9 +66,9 @@
     "symbol": "AMD",
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "-5.13 (-6.17%)",
-    "quote": "77.99",
-    "prev_close": "83.12",
-    "totalTranscationAmount": "81.93",
+    "quote": 77.99,
+    "prev_close": 83.12,
+    "totalTranscationAmount": 81.93,
     "daily_range": "77.63 - 82.13",
     "historical": [
       36.4,
@@ -398,8 +398,8 @@
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "-1.69 (-2.17%)",
     "quote": "76.05",
-    "prev_close": "77.74",
-    "totalTranscationAmount": "80.00",
+    "prev_close": 77.74,
+    "totalTranscationAmount": 80,
     "daily_range": "73.52 - 80.38",
     "historical": [
       17.3,
@@ -412,9 +412,9 @@
     "symbol": "MSFT",
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "-7.38 (-3.38%)",
-    "quote": "211.01",
-    "prev_close": "218.39",
-    "totalTranscationAmount": "214.50",
+    "quote": 211.01,
+    "prev_close": 218.39,
+    "totalTranscationAmount": 214.5,
     "daily_range": "209.73 - 216.50",
     "historical": [
       132.52,
@@ -427,9 +427,9 @@
     "symbol": "MU",
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "-0.55 (-0.98%)",
-    "quote": "55.41",
-    "prev_close": "55.96",
-    "totalTranscationAmount": "55.13",
+    "quote": 55.41,
+    "prev_close": 55.96,
+    "totalTranscationAmount": 55.13,
     "daily_range": "54.36 - 55.94",
     "historical": [
       31.13,
@@ -442,9 +442,9 @@
     "symbol": "NFLX",
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "+9.74 (+2.07%)",
-    "quote": "480.24",
-    "prev_close": "470.50",
-    "totalTranscationAmount": "470.95",
+    "quote": 480.24,
+    "prev_close": 470.5,
+    "totalTranscationAmount": 470.95,
     "daily_range": "463.41 - 484.60",
     "historical": [
       281.14,
@@ -457,9 +457,9 @@
     "symbol": "NIO",
     "market": "NYSE - NYSE Delayed Price. Currency in USD",
     "percentage": "-2.47 (-5.61%)",
-    "quote": "41.55",
-    "prev_close": "44.02",
-    "totalTranscationAmount": "44.50",
+    "quote": 41.55,
+    "prev_close": 44.02,
+    "totalTranscationAmount": 44.5,
     "daily_range": "38.11 - 45.20",
     "historical": [
       1.66,
@@ -472,9 +472,9 @@
     "symbol": "NVDA",
     "market": "NasdaqGS - NasdaqGS Real Time Price. Currency in USD",
     "percentage": "-34.43 (-6.31%)",
-    "quote": "510.80",
-    "prev_close": "545.23",
-    "totalTranscationAmount": "544.26",
+    "quote": 510.8,
+    "prev_close": 545.23,
+    "totalTranscationAmount": 544.26,
     "daily_range": "505.13 - 542.45",
     "historical": [
       180.68,
@@ -487,15 +487,15 @@
     "symbol": "SE",
     "market": "NYSE - NYSE Delayed Price. Currency in USD",
     "percentage": "-12.55 (-7.42%)",
-    "quote": "156.53",
-    "prev_close": "169.08",
-    "totalTranscationAmount": "169.80",
+    "quote": 192.61322847348254,
+    "prev_close": 169.08,
+    "totalTranscationAmount": 14638.605363984672,
     "daily_range": "155.10 - 169.96",
     "historical": [
       34.89,
       187.75
     ],
-    "volume": 50
+    "volume": 76
   },
   "SHOP": {
     "name": "Shopify Inc.",
@@ -622,9 +622,9 @@
     "symbol": "V",
     "market": "NYSE - NYSE Delayed Price. Currency in USD",
     "percentage": "+0.63 (+0.30%)",
-    "quote": "213.31",
-    "prev_close": "212.68",
-    "totalTranscationAmount": "211.94",
+    "quote": 213.31,
+    "prev_close": 212.68,
+    "totalTranscationAmount": 211.94,
     "daily_range": "210.54 - 214.06",
     "historical": [
       133.93,
@@ -637,9 +637,9 @@
     "symbol": "WBAI",
     "market": "NYSE - Nasdaq Real Time Price. Currency in USD",
     "percentage": "-0.0500 (-1.75%)",
-    "quote": "2.8000",
-    "prev_close": "2.8500",
-    "totalTranscationAmount": "2.8300",
+    "quote": 2.8,
+    "prev_close": 2.85,
+    "totalTranscationAmount": 2.83,
     "daily_range": "2.7701 - 2.8000",
     "historical": [
       2.51,
@@ -652,9 +652,9 @@
     "symbol": "WMT",
     "market": "NYSE - NYSE Delayed Price. Currency in USD",
     "percentage": "+2.02 (+1.41%)",
-    "quote": "145.56",
-    "prev_close": "143.54",
-    "totalTranscationAmount": "143.75",
+    "quote": 145.56,
+    "prev_close": 143.54,
+    "totalTranscationAmount": 143.75,
     "daily_range": "143.53 - 146.44",
     "historical": [
       102,

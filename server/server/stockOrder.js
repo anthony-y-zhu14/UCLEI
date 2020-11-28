@@ -86,10 +86,12 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
         let sellOrder = sellOrderArr[i];
 
-        if(symbol === sellOrder.symbol
-            && sellOrder.username !== buyerUserName
-            && sellOrder.limitPrice <= limitPrice
+        if(symbol === sellOrder.symbol  && sellOrder.username !== buyerUserName  && sellOrder.limitPrice <= limitPrice
             && sellOrder.share >= currentQuantity) {
+                
+
+            
+            stockDatabase[symbol].totalTranscationAmount += (sellOrder.limitPrice * currentQuantity);
 
 
             updateBuyerAccount();
@@ -105,10 +107,10 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 };
 
                 //Update Buyer Balance and Holding
-                usersDataBase[buyerUserName]['account']["cashBalance"]
-                -= (sellOrder.limitPrice * currentQuantity);
+                usersDataBase[buyerUserName].account.cashBalance -= (sellOrder.limitPrice * currentQuantity);
+                
 
-                let activityMessage = `Bought ${currentQuantity} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrderArr[i].username}`;
+                let activityMessage = `Bought ${currentQuantity} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrder.username}`;
                 let newActivity = creatNewActivity('buy', activityMessage);
 
                 updateUserActivity(usersDataBase[buyerUserName].activity, newActivity);
@@ -142,7 +144,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 updateUserActivity(usersDataBase[sellOrder.username].activity, newActivity);
 
                 for(let k = 0; k < usersDataBase[sellOrder.username].ownedStocks.length; k++) {
-                    if(usersDataBase[sellOrder.username].ownedStocks[k].symbol === sellOrderArr[i].symbol) {
+                    if(usersDataBase[sellOrder.username].ownedStocks[k].symbol === sellOrder.symbol) {
 
                         usersDataBase[sellOrder.username].ownedStocks[k].share -= currentQuantity;
 
@@ -171,19 +173,18 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
 
             }
-                //decrement share total for partially fufilled sell order
-                sellOrderArr[i].share -= currentQuantity;
-                currentQuantity = 0;
-                break;
+            //decrement share total for partially fufilled sell order
+            sellOrder.share -= currentQuantity;
+            currentQuantity = 0;
+            
+            break;
 
         }
 
-        else if(symbol === sellOrderArr[i].symbol
-            && sellOrderArr[i].limitPrice >= limitPrice
-            && sellOrderArr[i].username !== buyerUserName
-            && 0 < sellOrderArr[i].share < currentQuantity) {
+        else if(symbol === sellOrder.symbol  && sellOrder.limitPrice <= limitPrice  && sellOrder.username !== buyerUserName  && 0 < sellOrder.share < currentQuantity) {
 
 
+            stockDatabase[symbol].totalTranscationAmount += (sellOrder.limitPrice * sellOrder.share);
 
             updateBuyerAccount();
             function updateBuyerAccount(){
@@ -191,7 +192,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 let newStock = {
                     name: stockDatabase[symbol].name,
                     quote: sellOrder.limitPrice,
-                    total_cost: sellOrder.limitPrice*sellOrderArr[i].share,
+                    total_cost: sellOrder.limitPrice*sellOrder.share,
                     average_cost: sellOrder.limitPrice,
                     symbol: stockDatabase[symbol].symbol,
                     share: sellOrder.share
@@ -200,7 +201,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 //Update Buyer Balance and Holding
                 usersDataBase[buyerUserName]['account']["cashBalance"] -= (sellOrder.limitPrice * sellOrder.share);
 
-                let activityMessage =  `Bought ${sellOrde.share} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrder.username}`;
+                let activityMessage =  `Bought ${sellOrder.share} shares of ${symbol} at $${sellOrder.limitPrice} from ${sellOrder.username}`;
                 let newActivity = creatNewActivity('buy', activityMessage);
 
                 updateUserActivity(usersDataBase[buyerUserName].activity, newActivity);
@@ -209,7 +210,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
                     if(usersDataBase[buyerUserName].ownedStocks[j].symbol === newStock.symbol) {
 
-                        usersDataBase[buyerUserName].ownedStocks[j].share += sellOrderArr[i].share;
+                        usersDataBase[buyerUserName].ownedStocks[j].share += sellOrder.share;
 
                         usersDataBase[buyerUserName].ownedStocks[j].total_cost += newStock.quote * sellOrder.share;
 
@@ -252,7 +253,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 updateInvestmentBalance(usersDataBase[sellOrder.username]);
             }
             currentQuantity -= sellOrder.share;
-            sellOrderArr[i].share = 0;
+            sellOrder.share = 0;
         }
     }
 
@@ -278,6 +279,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
     });
 
     stockDatabase[symbol].volume += (quantity - currentQuantity);
+    stockDatabase[symbol].quote = parseFloat(stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume);
 
     updateInvestmentBalance(usersDataBase[buyerUserName]);
     updateSellOrdersData(updatedSellOrderArr);
@@ -301,6 +303,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
         let buyOrder = buyOrderArr[i];
 
         if(symbol === buyOrder.symbol  && buyOrder.limitPrice >= limitPrice && buyOrder.username !== sellerUserName &&  buyOrder.share >= currentQuantity) {
+            stockDatabase[symbol].totalTranscationAmount += (buyOrder.limitPrice * currentQuantity);
 
             updateSellerAccount();
             function updateSellerAccount(){
@@ -381,7 +384,8 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
         }
 
         else if(symbol === buyOrder.symbol && buyOrder.limitPrice >= limitPrice && buyOrder.username !== sellerUserName && 0 < buyOrder.share < currentQuantity) {
-            currentQuantity -= buyOrder.share;
+            
+            stockDatabase[symbol].totalTranscationAmount += (buyOrder.limitPrice * buyOrder.share);
 
             updateSellerAccount();
             function updateSellerAccount(){
@@ -456,7 +460,8 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
 
             }
             updateInvestmentBalance(usersDatabase[buyOrderArr[i].username]);
-            buyOrderArr.splice(i, 1);
+            currentQuantity -= buyOrder.share;
+            buyOrder.share = 0;
         }
     }
 
@@ -478,25 +483,35 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
     });
 
     stockDatabase[symbol].volume += (quantity - currentQuantity);
+    stockDatabase[symbol].quote = parseFloat(stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume);
     updateInvestmentBalance(usersDatabase[sellerUserName]);
     updateSellOrdersData(sellOrderArr);
     updateBuyOrdersData(updatedBuyOrderArr);
     updateUserDataBase(usersDatabase);
     updateStockDatabase(stockDatabase);
 }
-
+/*
+    Write to buy order database
+*/
 function updateBuyOrdersData(d){
     fs.writeFileSync("../database/orders/openBuyOrders.json", JSON.stringify(d, null, 2));
 }
-
+/*
+    Write to sell order database
+*/
 function updateSellOrdersData(d){
     fs.writeFileSync("../database/orders/openSellOrders.json", JSON.stringify(d, null, 2));
 }
 
+/*
+    Write to user database
+*/
 function updateUserDataBase(usersDatabase){
     fs.writeFileSync("../database/users/users.json", JSON.stringify(usersDatabase, null, 2));
 }
-
+/*
+    Write to stock database
+*/
 function updateStockDatabase(stockDatabase){
     fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
 }
