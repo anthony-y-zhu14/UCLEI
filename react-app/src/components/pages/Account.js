@@ -225,8 +225,8 @@ class Account extends React.Component {
                                                 <li className="stock-holding">{message.message}</li>
                                               ))}
                                               </details>
-                                              
-                                                
+
+
                                             ))}
                                         </React.Fragment>
                                     )}
@@ -271,7 +271,7 @@ class Account extends React.Component {
                               {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
                               </span>
                             </div>
-                            
+
 
                             <TextField className="txtFld" label="Enter Dollar Amount" type='number'
                             onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
