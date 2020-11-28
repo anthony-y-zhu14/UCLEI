@@ -19,8 +19,8 @@ const useStyles = makeStyles({
   }
 });
 
-function createData(date, quote, volume) {
-  return { date, quote, volume};
+function createData(date, quote) {
+  return { date, quote };
 }
 
 
@@ -28,16 +28,16 @@ function createData(date, quote, volume) {
 export default function BasicTable({stockData}) {
   const classes = useStyles();
 
-  const rows = [
-    stockData.historical.map(stock =>(
-      createData(stock)
-    )),
-    createData('Frozen yoghurt', 159, 6.0),
-    createData('Ice cream sandwich', 237, 9.0),
-    createData('Eclair', 262, 16.0),
-    createData('Cupcake', 305, 3.7),
-    createData('Gingerbread', 356, 16.0),
-  ];
+  let data = [];
+
+  for(let entry of Object.entries(stockData.historical)) {
+    data.push(entry);
+  }
+
+  let rows =
+    data.map(stock => (
+      createData(`${stock[0]}`, `$${stock[1]}`)
+    ));
 
   return (
     <TableContainer component={Paper}>
@@ -48,7 +48,6 @@ export default function BasicTable({stockData}) {
           <TableRow>
             <TableCell>Date</TableCell>
             <TableCell align="right">Quote ($)</TableCell>
-            <TableCell align="right">Volume</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -58,7 +57,6 @@ export default function BasicTable({stockData}) {
                 {row.date}
               </TableCell>
               <TableCell align="right">{row.quote}</TableCell>
-              <TableCell align="right">{row.volume}</TableCell>
             </TableRow>
           ))}
         </TableBody>

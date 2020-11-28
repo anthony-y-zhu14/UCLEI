@@ -117,7 +117,6 @@ class LineChart extends React.Component {
   }
 
   handleChart = async() => {
-    // this.setState( {showTable: false} );
     this.setState( {showChart : true} );
     this.readStock();
   }
@@ -135,6 +134,19 @@ class LineChart extends React.Component {
   }
 
     makeChart = async (d) => {
+
+      function createData(date, quote) {
+        return { date, quote };
+      }
+
+      let data = [];
+      for(let entry of Object.entries(this.state.stockData.historical)) {
+        data.push(entry);
+      }
+      let rows = data.map(stock => (
+          createData(`${stock[0]}`, stock[1])
+        ));
+
       if(this.state.stockData) {
 
         const ctx = document.getElementById("marketChart");
@@ -145,11 +157,11 @@ class LineChart extends React.Component {
         window.ctx = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: ['Day 1','Day 2','Day 3','Day 4', 'Day 5'],
+            labels: rows.map((row) => ( row.date)),
             datasets: [
               {
-                label: "Week",
-                data: [this.state.stockData.prev_close, this.state.stockData.open, this.state.stockData.historical[0],this.state.stockData.historical[1]],
+                label: "Quote: CAD $",
+                data: rows.map((row) => ( row.quote)),
                 backgroundColor: '#6C9FF8',
                 borderColor: '#35363C',
                 borderWidth: 1
@@ -172,18 +184,20 @@ class LineChart extends React.Component {
       return (
         <div className="App">
           <span className={classes.titleFont} >{this.state.stockData.name}</span>
+          <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
           <span className={classes.ticker}><i onClick={() => this.handleWatchSave(this.state.stockData.symbol)}
            className="fa fa-bookmark"></i></span>
-
            <div className={classes.ticker}>
            <FormDialog name={this.state.stockData.name}/>
            </div>
 
 
         <div className={classes.chartContainer}>
-                <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
                 <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
                 <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
+                <br />
+                <span className={classes.font}>Today's High: ${this.state.stockData.daily_range.high}</span>
+                <span className={classes.font}>Today's Low: ${this.state.stockData.daily_range.low}</span>
                 <ButtonGroup className={classes.controller}>
                   <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
                   <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>

@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "cf82b435-fad5-4abf-b0ed-82f548ca224b",
+    "session_id": "f2950a86-ab2c-498f-b140-10dc38702412",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -82,9 +82,16 @@
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": null,
+    "session_id": "ecfebdf2-5a82-47ac-8dc7-c43f8a022746",
     "name": "Morty Smith",
-    "watchlist": [],
+    "watchlist": [
+      {
+        "symbol": "MAXR",
+        "quote": 23.94,
+        "name": "Maxar Technologies Inc.",
+        "volume": 0
+      }
+    ],
     "openOrders": [],
     "eventList": [
       {
@@ -103,6 +110,15 @@
         "active": "Active",
         "notified": false,
         "notify_num": 2,
+        "message": ""
+      },
+      {
+        "symbol": "FB",
+        "quote": 272.43,
+        "name": "Facebook, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 4,
         "message": ""
       }
     ],
