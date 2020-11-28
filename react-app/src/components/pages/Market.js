@@ -7,7 +7,6 @@ import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
-import LineChartB from '../lineChartB.js';
 
 
 const styles = {
@@ -16,14 +15,15 @@ const styles = {
       flexWrap: 'wrap',
       position: 'absolute',
       width: '90%',
-      height: '60%',
+      height: '100%',
       justifyContent: 'space-around',
       margin: '2%',
+      padding: 20,
       zIndex: 2
     },
     font: {
       fontSize: 18,
-      margin: '2%',
+      margin: '.5em',
       fontWeight: 'bold',
     },
     popStockContainer: {
@@ -32,12 +32,14 @@ const styles = {
       flexDirection: 'column',
       justifyContent: 'space-around',
       flexWrap: 'wrap',
+      overflowY: 'auto',
       width: '55%',
-      height: '50%',
+      height: '40%',
       borderRadius: '10px',
       background: '#393b41',
       color: '#fff',
       margin: '.5%',
+      padding: '0.5em 1em 1.5em 1em'
     },
     watchListContainer: {
         display: 'wrap',
@@ -46,7 +48,7 @@ const styles = {
         justifyContent: 'space-around',
         flexWrap: 'wrap',
         width: '35%',
-        height: '92%',
+        height: '40%',
         overflowY: 'auto',
         borderRadius: '10px',
         background: '#393b41',
@@ -55,7 +57,7 @@ const styles = {
       },
     newsContainer: {
       width: '35%',
-      height: '92%',
+      height: '62%',
       overflowY: 'auto',
       display: 'flex',
       flexWrap: 'wrap',
@@ -74,7 +76,7 @@ const styles = {
       flexDirection: 'column',
       flexWrap: 'wrap',
       width: '55%',
-      height: '90%',
+      height: '62%',
       borderRadius: '10px',
       position: 'relative',
       background: '#393b41',
@@ -83,6 +85,10 @@ const styles = {
     },
     oCard: {
       margin: '10%'
+    },
+    breaker: {
+      paddingTop: '3em',
+      paddingBottom: '1em'
     },
     ticker: {
       display: 'inline-block',
@@ -159,8 +165,6 @@ class Market extends React.Component {
 
     componentDidMount() {
 
-      // this.setState({session_id: this.props.session_id});
-
       this.callPopStock()
       .then(res => this.setState({popStocks: res}))
       .catch(err => console.log(err));
@@ -182,17 +186,6 @@ class Market extends React.Component {
       }
       return body;
     };
-
-    handleLog = data => {
-      console.log(data)
-      // if(this.state.watchlist) {
-      //   if(this.state.watchlist.length !== data.watchlist.length) {
-      //     this.setState({watchlist: data.watchlist});
-      //   } else {
-      //     return;
-      //   }
-      // }
-    }
 
     handleReRender = data => {
       if(!this.state.reload) {
@@ -242,7 +235,9 @@ class Market extends React.Component {
               </div>
               <div className={classes.newsContainer}>
                 <p className={classes.font}>Market News</p>
+                <div className={classes.breaker}>
                 <NewsList />
+                </div>
               </div>
               <div className={classes.popStockContainer}>
               <h3 className={classes.font}>Popular Stocks</h3>
@@ -255,7 +250,7 @@ class Market extends React.Component {
 
               <div className={classes.watchListContainer}>
               <h3 className={classes.font}>Watchlist</h3>
-              <CheckboxList onChange={this.handleLog}/>
+              <CheckboxList/>
               </div>
 
             </div>

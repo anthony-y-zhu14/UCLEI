@@ -1,24 +1,29 @@
 import React from 'react';
 import Header from "../Header.js";
+import { Button, ButtonGroup, Container } from '@material-ui/core';
 import NewsList from '../NewsList.js';
 import { withStyles } from "@material-ui/core/styles";
 import { LinearProgress } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
 import LineChartB from '../lineChartB.js';
+import LineChart from '../Linechart.js';
+
 
 const styles = {
   main: {
     display: 'flex',
     flexWrap: 'wrap',
     position: 'absolute',
-    width: '90%',
-    height: '100%',
+    width: '90rem',
+    height: '40rem',
     justifyContent: 'space-around',
-    margin: '2%',
+    margin: '1rem',
     zIndex: 2
   },
   font: {
-    marginLeft: '2%'
+    fontSize: 18,
+    margin: '.5rem',
+    fontWeight: 'bold',
   },
   accountContainer: {
     display: 'wrap',
@@ -26,23 +31,25 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    width: '45%',
-    height: '25%',
-    borderRadius: '10px',
+    width: '45rem',
+    height: '14rem',
+    borderRadius: 10,
     position: 'relative',
     background: '#393b41',
     color: '#fff',
-    margin: '.5%',
-    left: '-25%',
-    top: '-26%'
+    left: '-20rem',
+    top: '-30rem'
+  },
+  breaker: {
+    paddingTop: '3rem',
+    paddingBottom: '1rem'
   },
   newsContainer: {
-    width: '45%',
-    height: '92%',
+    width: '35rem',
+    height: '60rem',
     overflowY: 'auto',
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center',
     borderRadius: '10px',
     position: 'relative',
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
@@ -54,13 +61,20 @@ const styles = {
     display: 'wrap',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    width: '45%',
-    height: '65%',
+    width: '45rem',
+    height: '30rem',
     borderRadius: '10px',
     position: 'relative',
     background: '#393b41',
     color: '#fff',
     margin: '.5%'
+  },
+  button: {
+    marginRight: '1.25rem',
+    marginBottm: '.5rem',
+    float: 'right',
+    color: '#6C9FF8',
+    background: "#393b41"
   },
   mrkt: {
     position: 'absolute',
@@ -125,29 +139,26 @@ class Dashboard extends React.Component {
     this.state = {
       user: undefined,
       session_id: null,
-      stockData: {
-        "name": "Dimension 35-C",
-        "symbol": "D35-C",
-        "market": "Dimension 35-C - Real Time Price. Currency in USD",
-        "percentage": "-0.82 (-6.21%)",
-        "volume": 2030,
-        "quote": 1200000.38,
-        "prev_close": "1190000.40",
-        "open": "1199990.23",
-        "daily_range": "1189000.40 - 1304600.32",
-        "historical": [1189000.40, 1304600.32]
-    }
+      stockData: undefined
       };
   };
 
-  //this.props.location.state.session_id
+  readStock = async() => {
+    const response = await fetch(`/stock-data?search=D35-C`);
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    return body;
+  }
+
 
   componentDidMount() {
-
-    // this.setState({session_id: this.props.location.state.session_id})
-    // Calls our fetch below once the component mounts
-
   this.setState({session_id: this.props.session_id});
+
+  this.readStock()
+    .then(res => this.setState({ stockData : res } ))
+    .catch(err => console.log(err));
 
   this.callBackendAPI()
     .then(res => this.setState({ user: res}))
@@ -178,7 +189,7 @@ class Dashboard extends React.Component {
       );
     }
 
-    if(!this.state.user) {
+    if(!this.state.user || !this.state.stockData) {
       return (
 
         <div>
@@ -206,38 +217,44 @@ class Dashboard extends React.Component {
           <Header currentPage={crtPg} userName={username}/>
           <div className={classes.main}>
             <div className={classes.chartContainer}>
-            <h3 className={classes.font}>NASDAQ</h3>
+            <h3 className={classes.font}>At a Glance:</h3>
             <LineChartB className={classes.chart} cData={this.state.stockData}/>
             </div>
             <div className={classes.newsContainer}>
-            <h3 className='mrkt'>Market News</h3>
+            <h3 className={classes.font}>Market News</h3>
+            <div className={classes.breaker}>
             <NewsList />
-
+            </div>
             </div>
             <div className={classes.accountContainer}>
-            <h3 className={classes.font}>Account Details</h3>
+            <h3 className={classes.font}>Account</h3>
               <div className={classes.acctBln}>
                 <div className={classes.innBln}>
                   <span>Account Balance: </span>
-                  <span className={classes.acctTxt}>${this.state.user.account.cashBalance}</span>
+                  <span className={classes.acctTxt}>{"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</span>
                 </div>
                 <div className={classes.innBln}>
                   <span>Investment Balance: </span>
-                  <span className={classes.acctTxt}>${this.state.user.account.investmentBalance}</span>
+                  <span className={classes.acctTxt}>{"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}</span>
                 </div>
               </div>
 
               <div className={classes.acctGrw}>
-                <div className={classes.innBln}>
-                  <span>Account Growth: </span>
-                  <span className={classes.acctTxt}>
-                    <i className='fa fa-chevron-down'></i>{this.state.user.balanceGrowth}</span>
-                </div>
-                <div className={classes.innBln}>
-                  <span>Account Name: </span>
-                  <span className={classes.acctTxt}>{this.state.user.account.accountName}</span>
-                </div>
+
+              <div className={classes.innBln}>
+                <span>Account Name: </span>
+                <span className={classes.acctTxt}>{this.state.user.account.accountName}</span>
               </div>
+
+              <div className={classes.innBln}>
+                <span>Account Growth: </span>
+                <span className={classes.acctTxt}>
+                  <i className='fa fa-chevron-down'></i>{this.state.user.balanceGrowth}%</span>
+              </div>
+              </div>
+              <Button href='/account' className={classes.button}>
+                View More
+              </Button>
             </div>
           </div>
         </div>

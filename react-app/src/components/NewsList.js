@@ -4,6 +4,7 @@ import MediaCard from './card.js';
 
 const styles = {
   newsDiv: {
+    width: 100
   }
 };
 

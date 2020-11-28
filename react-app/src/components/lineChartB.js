@@ -64,20 +64,8 @@ class LineChartB extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-          stockData: {
-            "name": "Dimension 35-C",
-            "symbol": "D35-C",
-            "market": "Dimension 35-C - Real Time Price. Currency in USD",
-            "percentage": "-0.82 (-6.21%)",
-            "volume": 2030,
-            "quote": 1200000.38,
-            "prev_close": "1190000.40",
-            "open": "1199990.23",
-            "daily_range": "1189000.40 - 1304600.32",
-            "historical": [1189000.40, 1304600.32]
-        },
+          stockData: this.props.cData[0],
           query: window.location.href.slice(29),
-
       };
   }
   componentDidUpdate() {
@@ -95,43 +83,60 @@ class LineChartB extends React.Component {
     await fetch('/addWatchItem', requestOptions);
   }
 
-  componentDidMount() {
-    console.log(this.props.stockData);
-    // this.setState({stockData: this.props.cData});
+  makeChart = async (d) => {
 
-    const ctx = document.getElementById("marketChart");
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ['Day 1','Day 2','Day 3','Day 4'],
-        datasets: [
-          {
-            label: "Past 4 Days",
-            data: [this.state.stockData.prev_close, this.state.stockData.open, this.state.stockData.historical[0],this.state.stockData.historical[1]],
-            backgroundColor: '#6C9FF8',
-            borderColor: '#35363C',
-            borderWidth: 1
-          }
-        ]
+    function createData(date, quote) {
+      return { date, quote };
+    }
+
+    let data = [];
+    for(let entry of Object.entries(this.state.stockData.historical)) {
+      data.push(entry);
+    }
+    let rows = data.map(stock => (
+        createData(`${stock[0]}`, stock[1])
+      ));
+
+    if(this.state.stockData) {
+
+      const ctx = document.getElementById("marketChart");
+
+      if (window.ctx !== undefined) {
+        window.ctx.destroy();
       }
-    });
-    console.log(this.state.stockData)
+      window.ctx = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: rows.map((row) => ( row.date)),
+          datasets: [
+            {
+              label: "Quote: CAD $",
+              data: rows.map((row) => ( row.quote)),
+              backgroundColor: '#6C9FF8',
+              borderColor: '#35363C',
+              borderWidth: 1
+            }
+          ]
+        }
+      });
+    }
   }
+
+  componentDidMount() {
+    this.makeChart(this.state.stockData.name);
+  }
+
+
 
   render() {
     const { classes } = this.props;
       return (
         <div className="App">
         <span className={classes.titleFont} >{this.state.stockData.name}</span>
-        <span className={classes.ticker}><i onClick={() => this.handleWatchSave(this.state.stockData.symbol)} className="fa fa-bookmark"></i></span>
         <div className={classes.chartContainer}>
                 <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
                 <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
                 <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
-                <ButtonGroup className={classes.controller}>
-                  <Button variant="outlined" size="small" color="primary" className={classes.margin}>4 Day</Button>
-                  <Button variant="outlined" size="small" color="primary" className={classes.margin}>Historical</Button>
-                </ButtonGroup>
           <div className={classes.chart}>
             <canvas id="marketChart"/>
           </div>

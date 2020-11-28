@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "f2950a86-ab2c-498f-b140-10dc38702412",
+    "session_id": "59a06740-754c-48aa-8bd1-2e405087f928",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -16,6 +16,18 @@
         "quote": "272.43",
         "name": "Facebook, Inc.",
         "volume": 10
+      },
+      {
+        "symbol": "D35-C",
+        "quote": 1267350,
+        "name": "Dimension 35-C",
+        "volume": 0
+      },
+      {
+        "symbol": "AMD",
+        "quote": 77.99,
+        "name": "Advanced Micro Devices, Inc.",
+        "volume": 0
       }
     ],
     "openOrders": [],
