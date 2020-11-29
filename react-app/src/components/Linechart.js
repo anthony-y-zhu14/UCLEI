@@ -9,7 +9,7 @@ import BasicTable from './StockTable.js';
 const styles = {
   font: {
     margin: '2%',
-    fontSize: 18,
+    fontSize: '80%',
     fontWeight: 'bold',
   },
   chartContainer: {
@@ -17,7 +17,8 @@ const styles = {
     borderRadius: '10px',
     background: '#393b41',
     color: '#fff',
-    margin: '.5%'
+    margin: '1%',
+    padding: '2%'
   },
   oCard: {
     margin: '10%'
@@ -36,26 +37,26 @@ const styles = {
     margin: '2%'
   },
   smallFont: {
-    fontSize: '14px',
-    marginRight: '1rem',
-    marginLeft: '1rem'
+    fontSize: '70%',
+    marginRight: '1%',
+    marginLeft: '1%'
   },
   titleFont: {
-    fontSize: '24px',
-    marginRight: '1rem',
-    marginLeft: '1rem',
+    fontSize: '85%',
+    marginRight: '1%',
+    marginLeft: '1%',
     fontWeight: 'bold'
   },
   controller: {
     float: 'right',
-    marginRight: '1rem'
+    marginRight: '1%'
   },
   fourohone: {
-    marginLeft: '20rem',
+    marginLeft: '5%',
     color: '#000'
   },
   li: {
-    marginLeft: '20rem',
+    marginLeft: '10%',
     textDecoration: 'underline',
     color: '#000',
     '&:hover':{
@@ -196,18 +197,18 @@ class LineChart extends React.Component {
            <div className={classes.ticker}>
            <FormDialog name={this.state.stockData.name}/>
           </div>
-                <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
-                <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
-                <br />
-                <span className={classes.font}>Today's High: ${this.state.stockData.daily_range.high}</span>
-                <span className={classes.font}>Today's Low: ${this.state.stockData.daily_range.low}</span>
-                <ButtonGroup className={classes.controller}>
-                  <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
-                  <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
-                </ButtonGroup>
-
+              <br />
+              <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
+              <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
+              <br />
+              <span className={classes.font}>Today's High: ${this.state.stockData.daily_range.high}</span>
+              <span className={classes.font}>Today's Low: ${this.state.stockData.daily_range.low}</span>
+              <ButtonGroup className={classes.controller}>
+                <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
+                <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
+              </ButtonGroup>
           <div className={classes.chart}>
-          {this.state.showChart ? <canvas id="marketChart"/> : <BasicTable stockData = {this.state.stockData}/>  }
+            {this.state.showChart ? <canvas id="marketChart"/> : <BasicTable stockData = {this.state.stockData}/>  }
           </div>
         </div>
         <div className={classes.hide}>

@@ -21,6 +21,7 @@ const styles = {
   root: {
     background: '#393b41',
     color: '#fff',
+    borderRadius: '10px',
     margin: "1%",
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
     overflowY: 'auto',
