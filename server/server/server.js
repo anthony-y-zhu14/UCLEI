@@ -632,6 +632,39 @@ app.get("/stock-data", (req, res) => {
 });
 
 /**********************************************
+Public API (call requests to this api using port 3001)
+********************************************* */
+
+app.get("/stocks", (req, res) => {
+    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    keys = [];
+    for(let key in stockDatabase) {
+      keys.push(key);
+    }
+    let symbol = req.query.symbol;
+    let min = req.query.minprice;
+    let max = req.query.maxprice;
+
+    let data = [];
+    res.setHeader("Content-Type", "application/JSON");
+    if(req.query.search != null) {
+
+      for (let i = 0; i < keys.length; i++) {
+        if(keys[i].includes(search)) {
+          data.push(stockDatabase[keys[i]]);
+        }
+      }
+    }
+    else {
+      data.push(stockDatabase);
+      }
+
+    res.write(JSON.stringify(data));
+    res.end();
+});
+
+
+/**********************************************
  Server Information
 ********************************************* */
 app.listen(3001);
