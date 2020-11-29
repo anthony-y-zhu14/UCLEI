@@ -2,124 +2,24 @@ import React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import NewsList from '../NewsList.js';
 import Header from "../Header.js";
+import  { Breakpoint } from 'react-socks';
 import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 import OutlinedCard from '../OutlinedCard.js';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
-
-
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import { sizing } from '@material-ui/system';
+import returnStyles from '../css/marketStyle.js'
 const styles = {
-    main: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      position: 'absolute',
-      width: '90%',
-      height: '100%',
-      justifyContent: 'space-around',
-      margin: '2%',
-      padding: 20,
-      zIndex: 2
-    },
-    font: {
-      fontSize: 18,
-      margin: '.5em',
-      fontWeight: 'bold',
-    },
-    popStockContainer: {
-      display: 'wrap',
-      position: 'relative',
-      flexDirection: 'column',
-      justifyContent: 'space-around',
-      flexWrap: 'wrap',
-      overflowY: 'auto',
-      width: '55%',
-      height: '40%',
-      borderRadius: '10px',
-      background: '#393b41',
-      color: '#fff',
-      margin: '.5%',
-      padding: '0.5em 1em 1.5em 1em'
-    },
-    watchListContainer: {
-        display: 'wrap',
-        position: 'relative',
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
-        width: '35%',
-        height: '40%',
-        overflowY: 'auto',
-        borderRadius: '10px',
-        background: '#393b41',
-        color: '#fff',
-        margin: '.5%',
-      },
-    newsContainer: {
-      width: '35%',
-      height: '62%',
-      overflowY: 'auto',
-      display: 'flex',
-      flexWrap: 'wrap',
-      borderRadius: '10px',
-      position: 'relative',
-      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-      background: '#393b41',
-      color: '#fff',
-      margin: '.5%'
-    },
-    chartContainer: {
-      // display: 'wrap',
-      overflowY: 'auto',
-      paddingTop: 20,
-      wrap: 'wrap',
-      flexDirection: 'column',
-      flexWrap: 'wrap',
-      width: '55%',
-      height: '62%',
-      borderRadius: '10px',
-      position: 'relative',
-      background: '#393b41',
-      color: '#fff',
-      margin: '.5%'
-    },
-    oCard: {
-      margin: '10%'
-    },
-    breaker: {
-      paddingTop: '3em',
-      paddingBottom: '1em'
-    },
-    ticker: {
-      display: 'inline-block',
-     '&:hover':{
-        color: '#6C9FF8',
-        cursor: 'pointer'
-      },
-    },
-    smallFont: {
-      fontSize: '14px',
-      marginRight: '1rem',
-      marginLeft: '1rem'
-    },
-    controller: {
-      float: 'right',
-      marginRight: '1rem'
-    },
-    fourohone: {
-      marginLeft: '20rem',
-      color: '#000'
-    },
-    li: {
-      marginLeft: '20rem',
-      textDecoration: 'underline',
-      color: '#000',
-      '&:hover':{
-        color: '#6C9FF8',
-        cursor: 'pointer'
-      },
-    }
-  };
+  root: {
+    flexGrow: 1
+  },
+  section: {
+    height: '40%'
+  }
+};
 
 class Market extends React.Component {
     constructor(props) {
@@ -204,57 +104,52 @@ class Market extends React.Component {
 
     render() {
         const { classes } = this.props;
-
         if(!this.props.session_id) {
           return (
-            <div>
+            <React.Fragment>
               <h1 className={classes.fourohone}>401 Not Authorized.</h1>
               <a className={classes.li} href='/login'>Return to Login</a>
               <Fourohone />
-            </div>
+            </React.Fragment>
           );
         }
-
         if(!this.state.user || !this.state.popStocks) {
           return (
-
-            <div>
+            <React.Fragment>
                 <h1>   Loading   </h1>
                 <LinearProgress/>
-            </div>
+            </React.Fragment>
           );
         }
+
         return (
-            <div>
+            <React.Fragment>
+              <Header currentPage={`Market`} userName={this.state.user.username}/>
+              <Breakpoint medium up>
+                <Container>
+                  <Grid container>
+                      <Grid item xs={12}><LineChart/></Grid>
+                  </Grid>
+                  <Grid container spacing={2}>
+                    <Grid item xs={6}><CheckboxList /></Grid>
+                    <Grid item xs={6}><NewsList /></Grid>
+                  </Grid>
+                </Container>
+              </Breakpoint>
+              <Breakpoint small down>
+                <Container>
+                  <Grid container>
+                      <Grid item xs={12}><LineChart/></Grid>
+                  </Grid>
+                  <Grid container spacing={2}>
+                  <div style={{height: "300px", marginTop: "2%"}}>
+                    <Grid item xs={12}><CheckboxList /></Grid>
+                  </div>
+                  </Grid>
+                </Container>
+              </Breakpoint>
 
-            <Header currentPage={`Market`} userName={this.state.user.username}/>
-            <div className={classes.main}>
-              <div className={classes.chartContainer}>
-              <br />
-              <LineChart className={classes.chart} q={this.state.query} onChange={this.handleLog}/>
-              </div>
-              <div className={classes.newsContainer}>
-                <p className={classes.font}>Market News</p>
-                <div className={classes.breaker}>
-                <NewsList />
-                </div>
-              </div>
-              <div className={classes.popStockContainer}>
-              <h3 className={classes.font}>Popular Stocks</h3>
-              <div>
-                  {this.state.popStocks.map(stock => (
-                    <OutlinedCard stock={stock}/>
-                  ))}
-              </div>
-              </div>
-
-              <div className={classes.watchListContainer}>
-              <h3 className={classes.font}>Watchlist</h3>
-              <CheckboxList/>
-              </div>
-
-            </div>
-            </div>
+            </React.Fragment>
         );
     }
 };

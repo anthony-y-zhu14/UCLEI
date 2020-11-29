@@ -8,25 +8,34 @@ import ListItemText from '@material-ui/core/ListItemText';
 import QueueIcon from '@material-ui/icons/Queue';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Button, ButtonGroup, colors, Container, LinearProgress, TextField, Box } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import compose from 'recompose/compose'
 
 const styles = {
   root: {
-    width: '100%',
-    margin: '1% auto',
-    maxWidth: 360,
-    borderRadius: '2%',
-    color: '#000',
+    background: '#393b41',
+    color: '#fff',
+    margin: "1%",
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+    overflowY: 'auto',
+    height: '40%'
+
   },
-  inner: {
-    marginTop: '4%',
-    padding: '4%',
-    backgroundColor: '#fff',
-    color: '#000',
-    borderRadius: '4%'
-  }
+  listCard: {
+    background: '#35363C',
+    color: '#fff',
+    margin: "1%",
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+
+  },
 };
+
 
 class CheckboxList extends React.Component {
   constructor() {
@@ -94,32 +103,37 @@ class CheckboxList extends React.Component {
     }
 
     return (
-      <List className={classes.root}>
-        {this.state.userWatchlist.map((value) => {
-          const labelId = ``;
-
-
-          return (
-            <ListItem className={classes.inner}>
-              <IconButton onClick={() => this.viewWatchItem(value.symbol)}>
-                <QueueIcon/>
-              </IconButton>
-              <ListItemText id={labelId} primary={value.symbol}/>
-              <ListItemText id={labelId} primary={value.quote}/>
-              <ListItemText id={labelId} primary={value.volume}/>
-              <ListItemText id={labelId} primary={value.name}/>
-              <ListItemSecondaryAction>
-                <IconButton onClick={() => this.delWatchItem(value.symbol)} edge="end" aria-label="delete">
-                  <DeleteIcon />
+      <React.Fragment>
+        <Container className={classes.root}>
+          <h3>Watchlist</h3>
+          {this.state.userWatchlist.map(value => (
+            <Accordion className={classes.listCard}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="panel-content"
+                id="panel-header">
+                <Box p={{ xs: 1 }}>
+                  <Typography>{value.name}, ({value.symbol})</Typography>
+                </Box>
+                <IconButton onClick={() => this.viewWatchItem(value.symbol)}>
+                  <QueueIcon style={{fill: "#fff"}}/>
                 </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          );
-        })}
-      </List>
+                <IconButton onClick={() => this.delWatchItem(value.symbol)} edge="end" aria-label="delete">
+                  <DeleteIcon style={{fill: "#fff"}}/>
+                </IconButton>
+              </AccordionSummary>
+              <AccordionDetails>
+                <Box p={{ xs: 1 }}><p>Today's Quote: ${value.quote}</p></Box>
+                <Box p={{ xs: 1 }}><p>Today's Volume: ${value.volume}</p></Box>
+              </AccordionDetails>
+            </Accordion>
+          ))}
+        </Container>
+      </React.Fragment>
     );
   }
 }
+
 export default compose(
    withStyles(styles),
 )(withRouter(CheckboxList))

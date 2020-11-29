@@ -7,7 +7,7 @@ import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } fro
 const styles = {
   font: {
     margin: '2%',
-    fontSize: 18,
+    fontSize: "100%",
     fontWeight: 'bold',
   },
   chartContainer: {
@@ -31,26 +31,26 @@ const styles = {
     margin: '2%'
   },
   smallFont: {
-    fontSize: '14px',
-    marginRight: '1rem',
-    marginLeft: '1rem'
+    fontSize: '70%',
+    marginRight: '1%',
+    marginLeft: '1%'
   },
   titleFont: {
-    fontSize: '24px',
-    marginRight: '1rem',
-    marginLeft: '1rem',
+    fontSize: '100%',
+    marginRight: '1%',
+    marginLeft: '1%',
     fontWeight: 'bold'
   },
   controller: {
     float: 'right',
-    marginRight: '1rem'
+    marginRight: '1%'
   },
   fourohone: {
-    marginLeft: '20rem',
+    marginLeft: '2%',
     color: '#000'
   },
   li: {
-    marginLeft: '20rem',
+    marginLeft: '2%',
     textDecoration: 'underline',
     color: '#000',
     '&:hover':{
@@ -132,9 +132,10 @@ class LineChartB extends React.Component {
     const { classes } = this.props;
       return (
         <div className="App">
-        <span className={classes.titleFont} >{this.state.stockData.name}</span>
         <div className={classes.chartContainer}>
+                <span className={classes.titleFont} >{this.state.stockData.name}</span>
                 <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
+                <br />
                 <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
                 <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
           <div className={classes.chart}>

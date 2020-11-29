@@ -112,7 +112,6 @@ const handleEventUpdate = async (id) => {
                     <Typography className={classes.det}>
                         You have requested to be notified when {stock.symbol} changes by: {stock.notify_num}%.
                     </Typography>
-
                     <Typography className={classes.fieldO}>
                         Change notification?
                     <TextField

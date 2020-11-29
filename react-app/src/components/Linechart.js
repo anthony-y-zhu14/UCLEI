@@ -22,6 +22,9 @@ const styles = {
   oCard: {
     margin: '10%'
   },
+  hide: {
+    display: 'none'
+  },
   ticker: {
     display: 'inline-block',
    '&:hover':{
@@ -123,6 +126,8 @@ class LineChart extends React.Component {
 
   handleTable = async() => {
     this.setState( {showChart : false} );
+    this.readStock();
+
 }
 
   componentDidMount() {
@@ -182,6 +187,7 @@ class LineChart extends React.Component {
     }
 
       return (
+        <div className={classes.chartContainer}>
         <div className="App">
           <span className={classes.titleFont} >{this.state.stockData.name}</span>
           <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
@@ -189,10 +195,7 @@ class LineChart extends React.Component {
            className="fa fa-bookmark"></i></span>
            <div className={classes.ticker}>
            <FormDialog name={this.state.stockData.name}/>
-           </div>
-
-
-        <div className={classes.chartContainer}>
+          </div>
                 <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
                 <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
                 <br />
@@ -202,9 +205,13 @@ class LineChart extends React.Component {
                   <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
                   <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
                 </ButtonGroup>
+
           <div className={classes.chart}>
           {this.state.showChart ? <canvas id="marketChart"/> : <BasicTable stockData = {this.state.stockData}/>  }
           </div>
+        </div>
+        <div className={classes.hide}>
+          <canvas id="marketChart"/>
         </div>
         </div>
       );

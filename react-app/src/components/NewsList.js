@@ -1,11 +1,17 @@
 import React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import MediaCard from './card.js';
+import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 
 const styles = {
-  newsDiv: {
-    width: 100
-  }
+  newsCard: {
+    background: '#393b41',
+    color: '#fff',
+    borderRadius: 10,
+    overflowY: 'auto',
+    marginTop: '1%',
+    height: '40%'
+  },
 };
 
 class NewsList extends React.Component {
@@ -111,9 +117,12 @@ class NewsList extends React.Component {
     }
     return (
       <React.Fragment>
-        {this.state.data.articles.map(articles => (
-          <MediaCard className={classes.newsDiv} articleImg={articles.image} articleSource={articles.source.name} articleDesc={articles.title} articleLink={articles.url}/>
-        ))}
+        <Container className={classes.newsCard}>
+          <h3> Market News </h3>
+          {this.state.data.articles.map(articles => (
+            <MediaCard className={classes.newsDiv} articleImg={articles.image} articleSource={articles.source.name} articleDesc={articles.title} articleLink={articles.url}/>
+          ))}
+        </Container>
       </React.Fragment>
     )
   }
