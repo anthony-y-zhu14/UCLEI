@@ -132,7 +132,7 @@ app.post('/register', (req, res) => {
                 ownedStocks: [],
                 activity: [],
                 account: {
-                    accountName: 1004,
+                    accountName: "Tax Free Savings Account",
                     cashBalance: 0,
                     investmentBalance: 0,
                 },

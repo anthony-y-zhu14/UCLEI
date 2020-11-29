@@ -277,26 +277,26 @@ class Trading extends React.Component {
 
                             )}
 
-                            {this.state.isStockFound && (
-                                <React.Fragment>
+                            {this.state.isStockFound && (                                
                                     <details>
-                                        <summary className="stock-holding">
+                                        <summary style={{background: "cornflowerblue"}}>
                                             {`${this.state.stock_found.name}`}
                                         </summary>  
-                                        <Button variant="outlined">Cancel</Button>
-                                    </details>
-                                    
-                                    
-                                                                      
-                                </React.Fragment>
-                                    
+                                        <br/>
+                                        <Button style={{background: "aliceblue"}} onClick={() =>{
+                                            this.setState({
+                                                isStockFound: false,
+                                                stock_found: undefined
+                                            })
+                                        }}>Cancel</Button>
+                                    </details>                                                                                                                                                                  
                                 )}
                             
-                                <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
-                                <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
-                                    <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
-                                    <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
-                                </ButtonGroup>
+                            <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+                            <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
+                                <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                                <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
+                            </ButtonGroup>
                             
                             <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
                             <br />
