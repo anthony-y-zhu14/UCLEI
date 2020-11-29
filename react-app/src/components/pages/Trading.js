@@ -212,9 +212,31 @@ class Trading extends React.Component {
             this.updateComponentBuy();
 
         }
-        else {
+        else if(this.state.orderSell){
             this.updateComponentSell();
         }
+
+        else{
+            alert("Please select an option");
+        }
+    }
+
+    async cancelOrder(orderId){
+
+        let target_url = "/cancelOrder";
+        let requestOptions = {};  
+
+        requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify(orderId)
+        } 
+                
+        await fetch(target_url, requestOptions);
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+        
     }
 
     render() {
@@ -290,11 +312,16 @@ class Trading extends React.Component {
                                 Current Holding
                                 <React.Fragment>
                                     {this.state.user.ownedStocks.map(stock => (
-                                        <li id={stock.name} className="stock-holding">
-                                        <p>Name: {stock.name}</p>
-                                        <p>Shares: {stock.share},</p>
-                                        <p>Average Price: {stock.average_cost}</p>
-                                        </li>
+                                        <details>
+                                            <summary>{stock.name}</summary>
+                                            <li className="stock-holding">
+                                                <p>Symbol: {stock.symbol}</p>
+                                                <p>Shares Owned: {stock.share}</p>
+                                                <p>Average Cost: {stock.average_cost}</p>            
+                                            </li>
+
+                                        </details>
+                                        
                                     ))}
                                 </React.Fragment>
                             </ul>
@@ -306,7 +333,16 @@ class Trading extends React.Component {
                                 Open Orders
                                 <React.Fragment>
                                     {this.state.user.openOrders.map(stock => (
-                                        <li id={stock.name} className="stock-holding">{stock.orderType} Order: {stock.share} share(s) of {stock.name} for limit price of ${stock.limitPrice}</li>
+                                        <details>
+                                        <summary>Type: {stock.orderType} ---- Name: {stock.name} </summary>
+                                        <li id={stock.name} className="stock-holding">
+                                            <p>{stock.orderType} {stock.share} share(s) of {stock.name} for limit price of ${stock.limitPrice}</p>
+                                            <Button onClick={() => {this.cancelOrder(stock.orderId)}}>Cencel Order</Button>
+                                        </li>
+                                        
+
+                                    </details>
+                                        
                                     ))}
                                 </React.Fragment>
                             </ul>

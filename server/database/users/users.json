@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "59a06740-754c-48aa-8bd1-2e405087f928",
+    "session_id": "88ebbb2e-f019-4156-99f2-49193083fbf9",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -35,51 +35,21 @@
     "ownedStocks": [
       {
         "name": "Sea Limited",
-        "quote": 191.4157088122605,
-        "total_cost": 1948.494252873563,
-        "average_cost": 194.8494252873563,
+        "quote": 200,
+        "total_cost": 2000,
+        "average_cost": 200,
         "symbol": "SE",
         "share": 10
       }
     ],
     "activity": [
       {
-        "date": "2020-11-28",
+        "date": "2020-11-29",
         "activities": [
           {
-            "date": "2020-11-28",
-            "action": "sell",
-            "message": "Sold 2 shares of SE at $193 to rick137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "sell",
-            "message": "Sold 1 shares of SE at $195 to rick137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "sell",
-            "message": "Sold 1 shares of SE at $195 to rick137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
+            "date": "2020-11-29",
             "action": "buy",
-            "message": "Bought 6 shares of SE at $191.4157088122605 from rick137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "buy",
-            "message": "Bought 4 shares of SE at $200 from rick137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "sell",
-            "message": "Sold 4 shares of SE at $205 to rick137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "buy",
-            "message": "Bought 4 shares of SE at $192 from rick137 - 2020-11-28"
+            "message": "Bought 10 shares of SE at $200 from rick137 - 2020-11-29"
           }
         ]
       }
@@ -87,7 +57,7 @@
     "account": {
       "accountName": "C-137-1001",
       "cashBalance": 2453.5546360153257,
-      "investmentBalance": 1948.494252873563
+      "investmentBalance": 2000
     },
     "balanceGrowth": 0
   },
@@ -155,7 +125,7 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "52be7b9e-826e-4933-b147-facdae487455",
+    "session_id": null,
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -195,42 +165,12 @@
     "ownedStocks": [],
     "activity": [
       {
-        "date": "2020-11-28",
+        "date": "2020-11-29",
         "activities": [
           {
-            "date": "2020-11-28",
-            "action": "buy",
-            "message": "Bought 2 shares of SE at $193 from jerry137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "buy",
-            "message": "Bought 1 shares of SE at $195 from jerry137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "buy",
-            "message": "Bought 1 shares of SE at $195 from jerry137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
+            "date": "2020-11-29",
             "action": "sell",
-            "message": "Sold 6 shares of SE at $191.4157088122605 to jerry137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "sell",
-            "message": "Sold 4 shares of SE at $200 to jerry137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "buy",
-            "message": "Bought 4 shares of SE at $205 from jerry137 - 2020-11-28"
-          },
-          {
-            "date": "2020-11-28",
-            "action": "sell",
-            "message": "Sold 4 shares of SE at $192 to jerry137 - 2020-11-28"
+            "message": "Sold 10 shares of SE at $200 to jerry137 - 2020-11-29"
           }
         ]
       }

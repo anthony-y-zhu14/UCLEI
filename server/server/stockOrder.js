@@ -8,7 +8,8 @@ module.exports = {
     updateUserActivity,
     validateBuy,
     validateSell,
-    updateBuyOrdersData
+    updateBuyOrdersData,
+    cancelOrder
  }
 
 function creatNewActivity(action, message){
@@ -279,7 +280,12 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
     });
 
     stockDatabase[symbol].volume += (quantity - currentQuantity);
-    stockDatabase[symbol].quote = parseFloat(stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume);
+    let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
+    let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
+
+    stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
+    stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+
 
     updateInvestmentBalance(usersDataBase[buyerUserName]);
     updateSellOrdersData(updatedSellOrderArr);
@@ -483,7 +489,13 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
     });
 
     stockDatabase[symbol].volume += (quantity - currentQuantity);
-    stockDatabase[symbol].quote = parseFloat(stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume);
+    let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
+    let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
+
+    stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
+    stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+    
+    ;
     updateInvestmentBalance(usersDatabase[sellerUserName]);
     updateSellOrdersData(sellOrderArr);
     updateBuyOrdersData(updatedBuyOrderArr);
@@ -514,4 +526,34 @@ function updateUserDataBase(usersDatabase){
 */
 function updateStockDatabase(stockDatabase){
     fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
+}
+
+function cancelOrder(orderId, user){
+
+    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
+    let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
+
+    for (let index = 0; index < user.openOrders.length; index++){
+        if(user.openOrders[index].orderId === orderId){
+            user.openOrders.splice(index, 1);            
+            break;
+        }
+    }
+
+    for (let index = 0; index < sellOrderArr.length; index++){
+        if(sellOrderArr[index].orderId === orderId){
+            sellOrderArr.splice(index, 1);
+            break;
+        }
+    }
+
+    for (let index = 0; index < buyOrderArr.length; index++){
+        if(buyOrderArr[index].orderId === orderId){
+            buyOrderArr.splice(index, 1);
+            break;
+        }
+    }
+
+    updateBuyOrdersData(buyOrderArr);
+    updateSellOrdersData(sellOrderArr);
 }

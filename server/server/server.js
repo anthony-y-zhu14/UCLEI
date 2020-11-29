@@ -4,10 +4,10 @@ const path = require('path');
 const app = express();
 const { v4: uuidv4 } = require('uuid');
 const session = require('express-session');
-const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
 
 let stockOrder = require("./stockOrder.js");
 let eventWatcher = require("./eventLoop.js");
+const { request } = require("http");
 let users = {};
 
 
@@ -266,6 +266,7 @@ app.get('/getWatchlist', (req, res) => {
 
 app.post('/addWatchItem', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -357,6 +358,7 @@ app.get('/getNotified', (req, res) => {
 
 app.post('/addEventNotify', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -474,6 +476,7 @@ app.post('/updateEventNum', (req, res) => {
 
 app.post('/buyStock', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -522,6 +525,7 @@ app.post('/buyStock', (req, res) => {
 
 app.post('/sellStock', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -561,6 +565,21 @@ app.post('/sellStock', (req, res) => {
     }
 });
 
+app.post('/cancelOrder', (req, res) => {
+    if (isSessionValid(req.session, req.session.user)){
+        let orderId = "";
+        req.on('data', (chunk) => {
+            orderId = JSON.parse(chunk);
+        });
+
+        req.on('end', () => {
+            stockOrder.cancelOrder(orderId, users[req.session.user]);
+            updateUserDataBase();
+            res.end();
+        });
+    }
+});
+
 /**********************************************
     Stock Info Get Requests:
      - handles a user:
@@ -570,7 +589,7 @@ app.post('/sellStock', (req, res) => {
 
 app.get('/stock-data-w', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
         let data = [];
         res.setHeader("Content-Type", "application/JSON");
         for(let j = 0; j < users[req.session.user]['watchlist'].length; j++) {
@@ -584,6 +603,7 @@ app.get('/stock-data-w', (req, res) => {
   });
 
 app.get('/pop-stock-data', (req, res) => {
+    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
 
     let data = [];
 
@@ -600,6 +620,7 @@ app.get('/pop-stock-data', (req, res) => {
   });
 
 app.get("/stock-data", (req, res) => {
+    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     let search = req.query['search'];
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
