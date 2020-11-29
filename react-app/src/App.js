@@ -4,6 +4,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
+import  { Breakpoint, BreakpointProvider } from 'react-socks';
 import "./components/Header.js"
 import Market from "./components/pages/Market.js"
 import Account from "./components/pages/Account.js"
@@ -35,23 +36,25 @@ function App(){
 
 
     return (
-    <React.Fragment>
-            <Router>
-                    <Switch>
+    <BreakpointProvider>
+      <React.Fragment>
+              <Router>
+                      <Switch>
 
-                        <Route
-                        path="/login"
-                        component={() => <Login session_id={auth} onChange={handleChange} />}
-                        />
-                        <Route  exact path="/" component={StoreFront}/>
-                        <Route path="/register"  component={() => <Register onChange={handleChange} />}/>
-                        <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
-                        <Route path="/account"  component={() => <Account session_id={auth}/>}/>
-                        <Route path="/market"  component={() => <Market session_id={auth}/>}/>
-                        <Route path="/trading"  component={() => <Trading session_id={auth}/>}/>
-                    </Switch>
-            </Router>
-    </React.Fragment>
+                          <Route
+                          path="/login"
+                          component={() => <Login session_id={auth} onChange={handleChange} />}
+                          />
+                          <Route  exact path="/" component={StoreFront}/>
+                          <Route path="/register"  component={() => <Register onChange={handleChange} />}/>
+                          <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
+                          <Route path="/account"  component={() => <Account session_id={auth}/>}/>
+                          <Route path="/market"  component={() => <Market session_id={auth}/>}/>
+                          <Route path="/trading"  component={() => <Trading session_id={auth}/>}/>
+                      </Switch>
+              </Router>
+      </React.Fragment>
+    </BreakpointProvider>
     )
 }
 
