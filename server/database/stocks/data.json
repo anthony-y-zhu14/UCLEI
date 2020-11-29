@@ -633,10 +633,10 @@
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0,
-    "quote": 200,
+    "percentage": -6.67,
+    "quote": 186.67,
     "prev_close": 169.08,
-    "totalTranscationAmount": 2000,
+    "totalTranscationAmount": 5600,
     "daily_range": {
       "high": 192.61,
       "low": 169.08
@@ -648,7 +648,7 @@
       "2020-11-26": 169.08,
       "2020-11-27": 192.61
     },
-    "volume": 10
+    "volume": 30
   },
   "SHOP": {
     "name": "Shopify Inc.",

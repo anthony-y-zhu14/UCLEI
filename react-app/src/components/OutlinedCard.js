@@ -33,7 +33,6 @@ export default function OutlinedCard({stock}, {h}) {
   let history = useHistory();
 
   const handleClick = (event) => {
-      console.log(event.target.value);
       let location = {
         pathname: `/market/${stock.symbol}`,
         state: {
@@ -53,10 +52,10 @@ export default function OutlinedCard({stock}, {h}) {
             {stock.name}
           </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            {stock.quote}
+            Total Cost: ${stock.total_cost}
           </Typography>
           <Typography variant="body2" component="p">
-            ${stock.quote}
+            Average Cost: ${stock.average_cost}
           </Typography>
         </CardContent>
         <CardActions>

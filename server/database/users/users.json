@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "88ebbb2e-f019-4156-99f2-49193083fbf9",
+    "session_id": "ca20473f-280e-4bb6-aca2-db8de825e30b",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -35,9 +35,9 @@
     "ownedStocks": [
       {
         "name": "Sea Limited",
-        "quote": 200,
-        "total_cost": 2000,
-        "average_cost": 200,
+        "quote": 160,
+        "total_cost": 1600,
+        "average_cost": 160,
         "symbol": "SE",
         "share": 10
       }
@@ -50,14 +50,24 @@
             "date": "2020-11-29",
             "action": "buy",
             "message": "Bought 10 shares of SE at $200 from rick137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to rick137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $160 from rick137 - 2020-11-29"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 2453.5546360153257,
-      "investmentBalance": 2000
+      "cashBalance": 2853.5546360153257,
+      "investmentBalance": 1600
     },
     "balanceGrowth": 0
   },
@@ -125,7 +135,7 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "13d6383c-792b-4b90-ad34-e6d448448e88",
+    "session_id": "64a15df7-f575-4b39-9c78-89f80abc62d2",
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -171,13 +181,23 @@
             "date": "2020-11-29",
             "action": "sell",
             "message": "Sold 10 shares of SE at $200 to jerry137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-29"
           }
         ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 16815.42536398468,
+      "cashBalance": 16415.42536398468,
       "investmentBalance": 0
     },
     "balanceGrowth": "0"

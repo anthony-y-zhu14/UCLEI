@@ -42,8 +42,6 @@
   width: 40%;
   float: right;
   margin: 1% auto;
-  height: 40%;
-  color: #fff;
   font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
@@ -53,7 +51,6 @@
   margin-top: -20%;
   float: right;
   margin-right: 4%;
-
   height: 40%;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -70,8 +67,6 @@
   font-family: 'Open Sans', sans-serif;
   text-align: center;
 }
-
-
 
 #searchBtn {
   margin: 4% auto;
@@ -102,66 +97,40 @@
   background: #B4E2FC;
 }
 
-#buyBtn {
-  margin: 2% auto;
+.buyBtn {
   cursor: pointer;
-  display: inline-block;
-
-
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
-  color: #000000;
-
-  background-color: aliceblue;
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
 }
 
-#buyBtn:hover {
+.buyBtn:hover {
   text-shadow: 0 0 2em white;
   color: #FFFFFf;
   border-color: #FFFFFF;
   background: darkgreen;
 }
 
-#buyBtn:active {
+.buyBtn:active {
   background: #2ed47a;
 }
 
-#sellBtn {
-  margin: 2% auto;
-  font-family: 'Open Sans', sans-serif;
+.sellBtn {
   cursor: pointer;
-  display: inline-block;
-
-
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Roboto',sans-serif;
-  font-weight: 300;
-  color: #000000;
-
-  background-color: aliceblue;
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
   -webkit-transition: all 0.15s;
   transition: all 0.15s;
 }
 
-#sellBtn:hover {
+.sellBtn:hover {
   text-shadow: 0 0 2em white;
   color: #FFFFFf;
   border-color: #FFFFFF;
   background: darkred;
 }
 
-#sellBtn:active {
+.sellBtn:active {
   background: indianred;
 }
 
@@ -198,20 +167,17 @@
 }
 
 
-
-
 #stock-list {
   padding: 0.5em 1em 0.5em 1em;
-  background: #393b41;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   list-style-type: none;
-
 }
 
 .stock-holding {
   color: #FFFFFf;
+  text-align: center;
 
   outline: #fff;
 
@@ -219,4 +185,9 @@
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
+
+h4{
+  color: #000000;
+}
+
 /*# sourceMappingURL=trading.css.map */

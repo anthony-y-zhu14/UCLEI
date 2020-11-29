@@ -279,12 +279,20 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
         return order.share > 0
     });
 
-    stockDatabase[symbol].volume += (quantity - currentQuantity);
-    let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
-    let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
+    if (stockDatabase[symbol].volume === 0){
+        stockDatabase[symbol].percentage = 0;
+        stockDatabase[symbol].quote =  stockDatabase[symbol].prev_close;
+    }
+    else{
+        stockDatabase[symbol].volume += (quantity - currentQuantity);
+        let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
+        let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
 
-    stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
-    stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+        stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
+        stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+
+    }
+    
 
 
     updateInvestmentBalance(usersDataBase[buyerUserName]);
@@ -488,14 +496,19 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
         return order.share > 0
     });
 
-    stockDatabase[symbol].volume += (quantity - currentQuantity);
-    let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
-    let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
+    if (stockDatabase[symbol].volume === 0){
+        stockDatabase[symbol].percentage = 0;
+        stockDatabase[symbol].quote =  stockDatabase[symbol].prev_close;
+    }
+    else{
+        stockDatabase[symbol].volume += (quantity - currentQuantity);
+        let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
+        let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
 
-    stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
-    stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+        stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
+        stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+    }
     
-    ;
     updateInvestmentBalance(usersDatabase[sellerUserName]);
     updateSellOrdersData(sellOrderArr);
     updateBuyOrdersData(updatedBuyOrderArr);
