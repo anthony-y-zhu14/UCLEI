@@ -659,21 +659,47 @@ app.get("/stocks", (req, res) => {
       data.push(stockDatabase);
       }
 
-    res.write(JSON.stringify(data));
+    res.write(JSON.stringify(data, null, 2));
     res.end();
 });
 
-app.route("/stocks")
-.get((req, res) =>{
+app.get("/history", (req, res) =>{    
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    res.write(JSON.stringify(stockDatabase, null, 2));
+    let symbol = req.query.symbol.toUpperCase();
+    if (!stockDatabase[symbol]){
+        res.write("<h1>This stock symbol doesn't exist in our database</h1>");
+        res.end();
+        return;
+    }
+
+    let data = [];
+    const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
+    let date = new Date();
+    let today = date.toISOString().slice(0,10);
+    
+
+    for (const username in userDatabase){
+         
+        userDatabase[username].activity.forEach(activity =>{                          
+                if (activity.date === today){                    
+                    activity.activities.forEach(action =>{
+                        if (action.message.includes(symbol)){
+                            data.push(  {username: username, action: action.message}  );
+                        }
+                    });
+                }                
+        });
+    }
+    res.write(JSON.stringify({symbol: symbol, action: data}, null, 2));
     res.end();
-})
+});
 
 
 /**********************************************
  Server Information
 ********************************************* */
-app.listen(3001);
-console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
-console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');
+app.listen(3002);
+
+    console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
+    console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');    
+

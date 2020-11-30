@@ -141,7 +141,9 @@ export default function MarketTable({stockData}) {
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
             value={sort}
-            onChange={(e) => setSort(e.target.value)}>
+            onChange={(e) => {
+              setSort(e.target.value)             
+              }}>
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
