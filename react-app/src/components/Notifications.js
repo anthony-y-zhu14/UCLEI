@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     text: {
         backgroundColor: '#202023',
         color: '#fff',
-        padding: 10,
+        padding: '5%',
     }
   }));
 

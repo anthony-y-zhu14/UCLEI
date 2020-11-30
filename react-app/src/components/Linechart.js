@@ -232,7 +232,7 @@ class LineChart extends React.Component {
               autoHideDuration={3000}
           />
           <Tooltip title="Save to Watchlist">
-            <span className={classes.ticker}><i onClick={() => {
+            <span className={classes.ticker}><i onClick={(event) => {
               this.handleWatchSave(this.state.stockData.symbol);
               this.setState({display: 'block'});
             }}

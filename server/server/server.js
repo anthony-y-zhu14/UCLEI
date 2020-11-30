@@ -696,7 +696,7 @@ app.get("/stocks", (req, res) => {
     res.end();
 });
 
-app.get("/stocks/history", (req, res) =>{    
+app.get("/history", (req, res) =>{
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     let symbol = req.query.symbol.toUpperCase();
     if (!stockDatabase[symbol]){
@@ -707,17 +707,19 @@ app.get("/stocks/history", (req, res) =>{
     let data = [];
     const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
     let date = new Date();
-    let today = date.toISOString().slice(0,10);   
+    let today = date.toISOString().slice(0,10);
 
-    for (const username in userDatabase){         
-        userDatabase[username].activity.forEach(activity =>{                          
-                if (activity.date === today){                    
+
+    for (const username in userDatabase){
+
+        userDatabase[username].activity.forEach(activity =>{
+                if (activity.date === today){
                     activity.activities.forEach(action =>{
                         if (action.message.includes(symbol)){
                             data.push(  {username: username, action: action.message}  );
                         }
                     });
-                }                
+                }
         });
     }
     res.write(JSON.stringify({symbol: symbol, action: data}, null, 2));
@@ -731,5 +733,4 @@ app.get("/stocks/history", (req, res) =>{
 app.listen(3001);
 
     console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
-    console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');    
-
+    console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');
