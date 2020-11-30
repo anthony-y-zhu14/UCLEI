@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "7c33ca26-ac8c-42cd-a3c6-d6963465f0d3",
+    "session_id": null,
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -240,6 +240,26 @@
             "date": "2020-11-29",
             "action": "sell",
             "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-29"
+          }
+        ]
+      },
+      {
+        "date": "2020-11-30",
+        "activities": [
+          {
+            "date": "2020-11-30",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to jerry137 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-30"
           }
         ]
       }

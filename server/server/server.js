@@ -642,28 +642,29 @@ app.get("/stocks", (req, res) => {
       keys.push(key);
     }
     let symbol = req.query.symbol;
+    if (!symbol){
+        res.write(JSON.stringify(stockDatabase, null, 2));
+        res.end();
+        return;
+    }
     let min = req.query.minprice;
     let max = req.query.maxprice;
 
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
     if(req.query.symbol != null) {
-
       for (let i = 0; i < keys.length; i++) {
         if(keys[i].includes(symbol)) {
           data.push(stockDatabase[keys[i]]);
         }
       }
-    }
-    else {
-      data.push(stockDatabase);
-      }
+    }    
 
     res.write(JSON.stringify(data, null, 2));
     res.end();
 });
 
-app.get("/history", (req, res) =>{    
+app.get("/stocks/history", (req, res) =>{    
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     let symbol = req.query.symbol.toUpperCase();
     if (!stockDatabase[symbol]){
@@ -671,15 +672,12 @@ app.get("/history", (req, res) =>{
         res.end();
         return;
     }
-
     let data = [];
     const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
     let date = new Date();
-    let today = date.toISOString().slice(0,10);
-    
+    let today = date.toISOString().slice(0,10);   
 
-    for (const username in userDatabase){
-         
+    for (const username in userDatabase){         
         userDatabase[username].activity.forEach(activity =>{                          
                 if (activity.date === today){                    
                     activity.activities.forEach(action =>{
@@ -698,7 +696,7 @@ app.get("/history", (req, res) =>{
 /**********************************************
  Server Information
 ********************************************* */
-app.listen(3002);
+app.listen(3001);
 
     console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
     console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');    

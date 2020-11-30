@@ -3,9 +3,9 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 6.5,
+    "percentage": 0.82,
     "volume": 0,
-    "quote": 1267350,
+    "quote": 1277791.8,
     "prev_close": 1267350,
     "totalTranscationAmount": 0,
     "daily_range": {
@@ -698,7 +698,7 @@
     "prev_close": 186.67,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
+      "high": 186.67,
       "low": 0
     },
     "historical": {

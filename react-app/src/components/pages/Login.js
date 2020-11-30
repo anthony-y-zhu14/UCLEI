@@ -45,6 +45,10 @@ class Login extends React.Component {
     login = async () => {
       this._isMounted = true;
         // POST request using fetch with async/await
+      if (!this.state.username || !this.state.password){
+        alert("Please enter a username and password");
+        return;
+      }
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -150,7 +154,7 @@ class Login extends React.Component {
                 </div>
                 <div className={classes.sbuttonContainer}>
                   <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.rgsBtn} variant="contained" color="secondary" onClick={this.register}>Register</Button>
+                  <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
                 </div>
               </div>
           </form>
@@ -179,7 +183,7 @@ class Login extends React.Component {
                 </div>
                 <div className={classes.sbuttonContainer}>
                   <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.rgsBtn} variant="contained" color="secondary" onClick={this.register}>Register</Button>
+                  <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
                 </div>
               </div>
           </form>
@@ -207,7 +211,7 @@ class Login extends React.Component {
                 </div>
                 <div className={classes.xsbuttonContainer}>
                   <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.rgsBtn} variant="contained" color="secondary" onClick={this.register}>Register</Button>
+                  <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
                 </div>
               </div>
           </form>
