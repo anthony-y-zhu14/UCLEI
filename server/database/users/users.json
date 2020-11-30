@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "78129420-58e8-4d27-80cf-c42477903f0b",
+    "session_id": "21fda9ad-86fe-4bd8-b524-b3af3afaade5",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -30,7 +30,6 @@
         "volume": 0
       }
     ],
-    "openOrders": [],
     "eventList": [],
     "ownedStocks": [
       {
@@ -119,7 +118,8 @@
       "cashBalance": 40000.554636015324,
       "investmentBalance": 1600
     },
-    "balanceGrowth": 0
+    "balanceGrowth": 0,
+    "openOrders": []
   },
   "morty137": {
     "username": "morty137",
@@ -134,7 +134,6 @@
         "volume": 0
       }
     ],
-    "openOrders": [],
     "eventList": [
       {
         "symbol": "SE",
@@ -180,7 +179,8 @@
       "cashBalance": 41955.13999999999,
       "investmentBalance": 2724.3
     },
-    "balanceGrowth": "0"
+    "balanceGrowth": "0",
+    "openOrders": []
   },
   "rick137": {
     "username": "rick137",
@@ -201,7 +201,6 @@
         "volume": 0
       }
     ],
-    "openOrders": [],
     "eventList": [
       {
         "symbol": "AMD",
@@ -250,6 +249,7 @@
       "cashBalance": 16415.42536398468,
       "investmentBalance": 0
     },
-    "balanceGrowth": "0"
+    "balanceGrowth": "0",
+    "openOrders": []
   }
 }

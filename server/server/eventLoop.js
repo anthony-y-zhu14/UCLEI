@@ -12,7 +12,7 @@ module.exports = {
    console.log('Event Watcher: updated events.');
    getCount();
  },
- 60000); //rest for 1 minute
+ 10000); //rest for 5 minute
 
  function updateUserDataBase(users) {
      fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
@@ -39,7 +39,7 @@ module.exports = {
          if(users[user]['eventList'][i]['notified'] !== true &&
          users[user]['eventList'][i]["active"] === "Active" &&
          users[user]['eventList'][i]["quote"] >=
-         parseFloat(stockDatabase[ticker]['quote']) * (1 + ((users[user]['eventList'][i]['notify_num']/100))))
+         parseFloat(stockDatabase[ticker]['quote']) * (1 + (users[user]['eventList'][i]['notify_num']/100)))
          {
           console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (POSITIVE)`); //temp
 

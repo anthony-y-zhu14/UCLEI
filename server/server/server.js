@@ -4,12 +4,10 @@ const path = require('path');
 const app = express();
 const { v4: uuidv4 } = require('uuid');
 const session = require('express-session');
-
-let stockOrder = require("./stockOrder.js");
-let eventWatcher = require("./eventLoop.js");
+const stockOrder = require("./stockOrder.js");
+const serverReset = require("./serverRest.js");
 const { request } = require("http");
 let users = {};
-
 
 app.use(express.static(path.join(__dirname, '../')));
 app.use(session({
@@ -29,7 +27,7 @@ app.use(session({
  * checking each user's events subscriptions
  * and updating the user's data as required
 */
-eventWatcher;
+let eventWatcher = require("./eventLoop.js");
 console.log("Event Watcher: listening...")
 
 /**********************************************
@@ -180,7 +178,6 @@ app.get("/session", function(req, res){
     res.statusCode = 200;
     res.setHeader("Content-Type", "application/JSON");
     res.write(JSON.stringify(data));
-    console.log(data);
     res.end();
 });
 
@@ -219,7 +216,7 @@ app.post('/updateBalance', (req, res) => {
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
-            handleTransac(data);
+            handleTransac();
         });
         req.on('end', () => {
         console.log(`\nClient ${users[req.session.user].username} balance updated to ${data}.\n`)
@@ -227,7 +224,7 @@ app.post('/updateBalance', (req, res) => {
         res.end();
         });
 
-        function handleTransac(data) {
+        function handleTransac() {
             if(data.type === 'deposit') {
                 users[req.session.user]['account']['cashBalance'] += parseInt(data.amount);
                 let activityMessage = `Deposited $${parseInt(data.amount)} to account: ${users[req.session.user].account.accountName}`;
@@ -630,6 +627,7 @@ app.get("/stock-data", (req, res) => {
     res.write(JSON.stringify(data));
     res.end();
 });
+
 
 /**********************************************
 Public API (call requests to this api using port 3001)

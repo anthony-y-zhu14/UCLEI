@@ -61,8 +61,6 @@ class Trading extends React.Component {
     componentDidMount() {
 
         this.setState({session_id: this.props.session_id});
-
-
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));

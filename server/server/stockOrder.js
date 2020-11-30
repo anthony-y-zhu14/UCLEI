@@ -6,11 +6,43 @@ module.exports = {
     creatNewActivity,
     updateInvestmentBalance,
     updateUserActivity,
+    updateStockDatabase,
+    updateUserDataBase,
     validateBuy,
     validateSell,
     updateBuyOrdersData,
+    updateSellOrdersData,
     cancelOrder
  }
+function cancelOrder(orderId, user){
+
+    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
+    let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
+
+    for (let index = 0; index < user.openOrders.length; index++){
+        if(user.openOrders[index].orderId === orderId){
+            user.openOrders.splice(index, 1);            
+            break;
+        }
+    }
+
+    for (let index = 0; index < sellOrderArr.length; index++){
+        if(sellOrderArr[index].orderId === orderId){
+            sellOrderArr.splice(index, 1);
+            break;
+        }
+    }
+
+    for (let index = 0; index < buyOrderArr.length; index++){
+        if(buyOrderArr[index].orderId === orderId){
+            buyOrderArr.splice(index, 1);
+            break;
+        }
+    }
+
+    updateBuyOrdersData(buyOrderArr);
+    updateSellOrdersData(sellOrderArr);
+}
 
 function creatNewActivity(action, message){
     let date = new Date();
@@ -279,6 +311,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
         return order.share > 0
     });
 
+    //update percentage change, quote
     if (stockDatabase[symbol].volume === 0){
         stockDatabase[symbol].percentage = 0;
         stockDatabase[symbol].quote =  stockDatabase[symbol].prev_close;
@@ -286,11 +319,19 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
     else{
         stockDatabase[symbol].volume += (quantity - currentQuantity);
         let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
-        let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
+        let percentageChange = ((newQuote - stockDatabase[symbol].prev_close) / stockDatabase[symbol].prev_close * 100);
 
         stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
         stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+    }
 
+
+    //update daily low and high
+    if(stockDatabase[symbol].quote > stockDatabase[symbol].daily_range.high){
+        stockDatabase[symbol].daily_range.high = stockDatabase[symbol].quote;
+    }
+    if(stockDatabase[symbol].quote < stockDatabase[symbol].daily_range.low){
+        stockDatabase[symbol].daily_range.low = stockDatabase[symbol].quote;
     }
     
 
@@ -307,7 +348,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabase, stockDatabase) {
 
     let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"))
-    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));;
+    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"))
 
     let currentQuantity = parseInt(quantity);
 
@@ -503,10 +544,18 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
     else{
         stockDatabase[symbol].volume += (quantity - currentQuantity);
         let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
-        let percentageChange = ((newQuote - stockDatabase[symbol].quote) / stockDatabase[symbol].quote * 100);
+        let percentageChange = ((newQuote - stockDatabase[symbol].prev_close) / stockDatabase[symbol].prev_close * 100);
 
         stockDatabase[symbol].percentage = parseFloat(percentageChange.toFixed(2));
         stockDatabase[symbol].quote =  parseFloat(newQuote.toFixed(2));
+    }
+
+    //update daily low and high
+    if(stockDatabase[symbol].quote > stockDatabase[symbol].daily_range.high){
+        stockDatabase[symbol].daily_range.high = stockDatabase[symbol].quote;
+    }
+    if(stockDatabase[symbol].quote < stockDatabase[symbol].daily_range.low){
+        stockDatabase[symbol].daily_range.low = stockDatabase[symbol].quote;
     }
     
     updateInvestmentBalance(usersDatabase[sellerUserName]);
@@ -527,7 +576,6 @@ function updateBuyOrdersData(d){
 function updateSellOrdersData(d){
     fs.writeFileSync("../database/orders/openSellOrders.json", JSON.stringify(d, null, 2));
 }
-
 /*
     Write to user database
 */
@@ -538,35 +586,12 @@ function updateUserDataBase(usersDatabase){
     Write to stock database
 */
 function updateStockDatabase(stockDatabase){
+    for(const stock in stockDatabase){
+        if (stock !== "D35-C"){
+            stockDatabase["D35-C"].volume += stockDatabase[stock].volume;
+            stockDatabase["D35-C"].totalTranscationAmount += stockDatabase[stock].totalTranscationAmount;
+        }
+    }
     fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
 }
 
-function cancelOrder(orderId, user){
-
-    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
-    let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
-
-    for (let index = 0; index < user.openOrders.length; index++){
-        if(user.openOrders[index].orderId === orderId){
-            user.openOrders.splice(index, 1);            
-            break;
-        }
-    }
-
-    for (let index = 0; index < sellOrderArr.length; index++){
-        if(sellOrderArr[index].orderId === orderId){
-            sellOrderArr.splice(index, 1);
-            break;
-        }
-    }
-
-    for (let index = 0; index < buyOrderArr.length; index++){
-        if(buyOrderArr[index].orderId === orderId){
-            buyOrderArr.splice(index, 1);
-            break;
-        }
-    }
-
-    updateBuyOrdersData(buyOrderArr);
-    updateSellOrdersData(sellOrderArr);
-}
