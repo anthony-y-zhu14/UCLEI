@@ -1,17 +1,68 @@
-import { Button, ButtonGroup, LinearProgress, TextField } from '@material-ui/core';
 import React from 'react';
+import { Button, ButtonGroup, Container, LinearProgress, TextField } from '@material-ui/core';
 import Header from "../Header";
+import  { Breakpoint } from 'react-socks';
 import '../css/Trading.css'
 import { withStyles } from '@material-ui/styles';
+import { fade, makeStyles } from '@material-ui/core/styles';
+import InputBase from '@material-ui/core/InputBase';
 import Fourohone from '../fourohone.js';
+import Paper from '@material-ui/core/Paper';
+import SearchIcon from '@material-ui/icons/Search';
+import Grid from '@material-ui/core/Grid';
 
-
-const styles = {
+const styles = (theme) => ({
    input: {
       fullWidth: true,
       background: '#393b41',
       width: 300,
       color: 'white'
+    },
+    wrapper: {
+      background: '#393b41',
+      overflowY: 'auto',
+      height: '100%',
+      color: '#fff',
+      borderRadius: '10px',
+      margin: "1%",
+      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      alignText: 'center',
+      textDecoration: 'none',
+      listStyleType: 'none'
+    },
+    wrapper2: {
+      background: '#393b41',
+      overflowY: 'auto',
+      height: '100%',
+      color: '#fff',
+      borderRadius: '10px',
+      margin: "1%",
+      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      alignText: 'center'
+    },
+    search: {
+      position: 'relative',
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: fade(theme.palette.common.white, 0.15),
+      '&:hover': {
+        backgroundColor: fade(theme.palette.common.white, 0.25),
+      },
+      marginRight: theme.spacing(3),
+      marginLeft: 0,
+      width: '100%',
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: theme.spacing(3),
+        width: 'auto',
+      },
+    },
+    searchIcon: {
+      padding: theme.spacing(0, 3),
+      height: '100%',
+      position: 'absolute',
+      pointerEvents: 'none',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
     },
     button: {
         margin: '2% auto',
@@ -36,9 +87,9 @@ const styles = {
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         listStyleType: "none",
         borderRadius: "15px",
-        padding: "2em"        
+        padding: "2em"
     }
-  }
+  });
 
 class Trading extends React.Component {
 
@@ -58,6 +109,8 @@ class Trading extends React.Component {
           };
     }
 
+
+
     componentDidMount() {
 
         this.setState({session_id: this.props.session_id});
@@ -73,13 +126,13 @@ class Trading extends React.Component {
         let limit_price = this.state.limit_price;
         let target_url = "/sellStock";
         let requestOptions = {};
-        
+
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': "application/json" },
             body: JSON.stringify({ name: symbol, n: quantity , limit_price: limit_price})
-        }      
-        
+        }
+
         await fetch(target_url, requestOptions);
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
@@ -94,12 +147,12 @@ class Trading extends React.Component {
         let target_url = "/buyStock";
         let limit_price = this.state.limit_price;
         let requestOptions = {};
-        
+
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': "application/json" },
             body: JSON.stringify({ name: symbol, n: quantity , limit_price: limit_price})
-        }           
+        }
 
         await fetch(target_url, requestOptions);
         this.callBackendAPI()
@@ -152,7 +205,8 @@ class Trading extends React.Component {
         })
     }
 
-    handleSearch = async () =>{        
+    handleSearch = async (event) =>{
+      if(event.charCode === 13) {
         if (!this.state.search_symbol){
             alert("Please enter a search term")
             return;
@@ -169,16 +223,41 @@ class Trading extends React.Component {
                 stock_found: stock[0],
                 isStockFound: true
             });
-
         }
         else{
             alert("Failed to find a stock with that symbol");
         }
-
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
     }
+  }
+
+  handleSearch2 = async (event) =>{
+      if (!this.state.search_symbol){
+          alert("Please enter a search term")
+          return;
+      }
+      let url = `/stock-data?search=${this.state.search_symbol.toUpperCase()}`;
+      const response = await fetch(url);
+      const stock = await response.json();
+      if (response.status !== 200) {
+          throw Error(stock.message)
+      }
+
+      if (stock.length !== 0){
+          this.setState ({
+              stock_found: stock[0],
+              isStockFound: true
+          });
+      }
+      else{
+          alert("Failed to find a stock with that symbol");
+      }
+      this.callBackendAPI()
+        .then(res => this.setState({ user: res }))
+        .catch(err => console.log(err));
+}
 
     handleCompleteBtn = () =>{
         if (this.state.quantity <= 0 || this.state.limit_price <= 0){
@@ -192,39 +271,35 @@ class Trading extends React.Component {
 
         if (this.state.orderBuy){
             this.updateComponentBuy();
-
         }
         else if(this.state.orderSell){
             this.updateComponentSell();
         }
-
         else{
             alert("Please select an option");
         }
     }
 
     async cancelOrder(orderId){
-
         let target_url = "/cancelOrder";
-        let requestOptions = {};  
+        let requestOptions = {};
 
         requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': "application/json" },
             body: JSON.stringify(orderId)
-        } 
+        }
 
         await fetch(target_url, requestOptions);
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
-        
     }
 
     render() {
-        const { classes } = this.props;
+      const { classes } = this.props;
 
-        if(!this.state.user && !this.state.session_id) {
+        if(!this.state.session_id) {
             return (
               <div>
                 <h1 className={classes.fourohone}>401 Not Authorized.</h1>
@@ -233,131 +308,163 @@ class Trading extends React.Component {
               </div>
             );
           }
-
         if(!this.state.user) {
             return (
                 <div>
                     <h1>   Loading   </h1>
                     <LinearProgress/>
                 </div>
-
             );
         }
 
-        if(!this.state.session_id) {
-            return (
-              <React.Fragment className={classes.error}>
-                <h1>401 Not Authorized.</h1>
-                <a href='/login'>Go back to Login</a>
+        const account = (
+          <React.Fragment>
+            <h2>Ready to trade, {this.state.user.name}?</h2>
+            <h3>Account: {this.state.user.account.accountName}</h3>
+            <p>Account Balance: {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance)
+            + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</p>
+          </React.Fragment>
+        );
+
+        const tradingPanel = (
+          <ul>
+          <br/>
+          {!this.state.stock_found && (
+              <TextField label="Enter a stock symbol" variant="outlined" InputProps={{className: classes.input,
+                 startAdornment: <SearchIcon style={{paddingRight: "3%"}} />}} onChange={this.setSearch} onKeyPress={this.handleSearch}
+                 value={this.state.search_symbol}/>
+          )}
+          {this.state.isStockFound && (
+              <React.Fragment>
+                <details style={{width: "80%"}}>
+                  <summary style={{background: "cornflowerblue"}}>
+                      {`${this.state.stock_found.name}`}
+                  </summary>
+                  <div className={classes.wrapper}>
+                    <h4>Quote: ${this.state.stock_found.quote}</h4>
+                    <h4>Volume: {this.state.stock_found.volume}</h4>
+                    <h4>Market: {this.state.stock_found.market}</h4>
+                    <br/>
+                    <Button style={{background: "aliceblue"}} onClick={() =>{
+                        this.setState({
+                            isStockFound: false,
+                            stock_found: undefined
+                        })
+                    }}>Cancel</Button>
+                  </div>
+                </details>
+                <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+                <br />
+                <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
+                <br />
+                <br />
+                <ButtonGroup disableElevation variant="outlined"  id="option-group" >
+                    <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                    <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
+                </ButtonGroup>
+                <br/>
+                <br/>
+                <Button style={{background: "aliceblue"}} onClick={this.handleCompleteBtn}>Complete Transaction</Button>
               </React.Fragment>
-            );
-          }
+              )}
+          </ul>
+        );
+
+        const holdingPanel = (
+          <ul className={classes.wrapper}>
+              <h4>Current Holding</h4>
+              {this.state.user.ownedStocks.map(stock => (
+                  <details>
+                      <summary>{stock.name}</summary>
+                      <li className="stock-holding">
+                          <p>Symbol: {stock.symbol}</p>
+                          <p>Shares Owned: {stock.share}</p>
+                          <p>Average Cost: {stock.average_cost}</p>
+                          <Button className="buyBtn"
+                          onClick={()=>{
+                              this.setState({
+                                  search_symbol: stock.symbol
+                              }, () =>{
+                                  this.handleSearch2();
+                                  this.handleBuyBtn();
+                              })
+                          }}>Buy</Button>
+                          <Button className="sellBtn"
+                          onClick={()=>{
+                              this.setState({
+                                  search_symbol: stock.symbol
+                              }, () =>{
+                                  this.handleSearch2();
+                                  this.handleSellBtn();
+                              })
+                          }}>Sell</Button>
+                      </li>
+                  </details>
+              ))}
+          </ul>
+        )
+
+        const stockList = (
+          <ul className={classes.wrapper}>
+              <h4>Open Orders</h4>
+              <React.Fragment>
+                  {this.state.user.openOrders.map(stock => (
+                      <details>
+                      <summary>Type: {stock.orderType} ---- Name: {stock.name} </summary>
+                      <li id={stock.name} className="stock-holding">
+                          <p>{stock.orderType} {stock.share} share(s) of {stock.name} for limit price of ${stock.limitPrice}</p>
+                          <Button onClick={() => {this.cancelOrder(stock.orderId)}}>Cancel Order</Button>
+                      </li>
+                  </details>
+                  ))}
+              </React.Fragment>
+          </ul>
+        )
 
         return (
-            <div>
-                    <Header currentPage={`Trading`} userName={this.state.user.username}/>
-                    <div id="main">
-                        <div id="trade-container">
-                            <ul className={classes.tradingPanel}>                                                        
-                            <br/>
-                            <h2 id="account-container" type="text">Account: {this.state.user.account.accountName}</h2>
-                            <br/>
-
-                            <div id="fundsAvialable">
-                                <span style={{width: "80%"}}>Cash Balance: </span>
-                                <span id="cash">{"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}</span>
-                            </div>
-                            <br/>                     
-                            {!this.state.stock_found && (
-                                <div>
-                                    <TextField label="Enter a stock symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>
-                                    <Button id="searchBtn" onClick={this.handleSearch}><i className='fa fa-search'></i></Button>
-                                </div>
-                            )}
-
-                            {this.state.isStockFound && (                             
-                                <React.Fragment>
-                                        <details>
-                                        <summary style={{background: "cornflowerblue"}}>
-                                            {`${this.state.stock_found.name}`}
-                                        </summary>
-                                        <h4>Quote: ${this.state.stock_found.quote}</h4>
-                                        <h4>Volume: {this.state.stock_found.volume}</h4>   
-                                        <h4>Market: {this.state.stock_found.market}</h4>                                         
-                                        
-                                        
-                                        <br/> 
-                                        <Button style={{background: "aliceblue"}} onClick={() =>{
-                                            this.setState({
-                                                isStockFound: false,
-                                                stock_found: undefined
-                                            })
-                                        }}>Cancel</Button>                                       
-                                    </details>  
-                                        <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
-                                        <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
-                                        <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
-                                            <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
-                                            <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
-                                        </ButtonGroup>
-                                        <br/>
-                                        <br/>
-                                        <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
-                                </React.Fragment>                                                                                                                                                       
-                                )} 
-                            </ul>    
-                        </div>
-                        
-                        <div id="holding-container">
-                            <ul id="stock-list">
-                                <h4>Current Holding</h4>                                
-                                {this.state.user.ownedStocks.map(stock => (
-                                    <details>
-                                        <summary>{stock.name}</summary>
-                                        <li className="stock-holding">
-                                            <p>Symbol: {stock.symbol}</p>
-                                            <p>Shares Owned: {stock.share}</p>
-                                            <p>Average Cost: {stock.average_cost}</p>      
-                                            <Button className="buyBtn" 
-                                            onClick={()=>{                                                                                               
-                                                this.setState({
-                                                    search_symbol: stock.symbol                                                    
-                                                }, () =>{
-                                                    this.handleSearch(); 
-                                                    this.handleBuyBtn(); 
-                                                })                                                                    
-                                            }}>Buy</Button>
-                                            <Button className="sellBtn"
-                                            onClick={()=>{
-                                                this.setState({
-                                                    search_symbol: stock.symbol                                                    
-                                                }, () =>{
-                                                    this.handleSearch(); 
-                                                    this.handleSellBtn(); 
-                                                })                                                 
-                                            }}>Sell</Button>
-                                        </li>
-                                    </details>                                    
-                                ))}                                
-                            </ul>
-                            <ul id="stock-list">
-                                <h4>Open Orders</h4>
-                                <React.Fragment>
-                                    {this.state.user.openOrders.map(stock => (
-                                        <details>
-                                        <summary>Type: {stock.orderType} ---- Name: {stock.name} </summary>
-                                        <li id={stock.name} className="stock-holding">
-                                            <p>{stock.orderType} {stock.share} share(s) of {stock.name} for limit price of ${stock.limitPrice}</p>
-                                            <Button onClick={() => {this.cancelOrder(stock.orderId)}}>Cencel Order</Button>
-                                        </li>                                       
-                                    </details>
-                                    ))}
-                                </React.Fragment>
-                            </ul>
-                        </div>                       
-                    </div>
-            </div>
-
+          <React.Fragment>
+            <Header currentPage={`Trading`} userName={this.state.user.username}/>
+            <Breakpoint medium up>
+              <Container>
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Container className={classes.wrapper2}>
+                      {account}
+                      {tradingPanel}
+                    </Container>
+                  </Grid>
+                  <Grid style={{marginBottom: "10%"}}item xs={6}>
+                    <Container>
+                      {holdingPanel}
+                    </Container>
+                    <Container>
+                      {stockList}
+                    </Container>
+                  </Grid>
+                </Grid>
+              </Container>
+            </Breakpoint>
+            <Breakpoint small down>
+              <Container>
+                <Grid container>
+                  <Grid item xs={12}>
+                    <Container className={classes.wrapper2}>
+                      {account}
+                      {tradingPanel}
+                    </Container>
+                  </Grid>
+                  <Grid style={{marginBottom: "10%", marginTop: "10%"}}item xs={12}>
+                    <Container>
+                      {holdingPanel}
+                    </Container>
+                    <Container>
+                      {stockList}
+                    </Container>
+                  </Grid>
+                </Grid>
+              </Container>
+            </Breakpoint>
+          </React.Fragment>
         );
     }
   }

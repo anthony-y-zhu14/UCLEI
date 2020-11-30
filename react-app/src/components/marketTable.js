@@ -59,37 +59,78 @@ export default function MarketTable({stockData}) {
   const [sort, setSort] = React.useState('');
   const [rows, setRows] = React.useState([]);
 
-  // const handleChange = (event) => {
-  //   setSort(event.target.value)
-  // };
-
   let data = [];
   let rowsD = [];
 
   const createRows = () => {
+    for(let entry of Object.entries(stockData)) {
+      data.push(entry);
+    }
     for(let i = 0; i < data.length; i++) {
       rowsD.push(createData(data[i][1].name, data[i][1].symbol, data[i][1].quote, data[i][1].prev_close, data[i][1].volume, data[i][1].percentage));
-      if(rows.length === 0) { setRows(rowsD); }
+      setRows(rowsD);
     }
   }
 
-  useEffect(() => {    
-    createRows();   
-  });
+  useEffect(() => {
+    createRows();
 
- const sortByNameDes = () => {
-    setRows(rows.sort().reverse())
-  }
+    if(sort === 2) {
+      setRows(rowsD.sort().reverse())
+    }
+    if(sort === 1) {
+      setRows(rowsD.sort());
+    }
+    if(sort === 3) {
+      setRows(rowsD.sort((a, b) => {
+        return a.quote - b.quote;
+      }));
+    }
+    if(sort === 4) {
+      setRows(rowsD.sort((a, b) => {
+        return b.quote - a.quote;
+      }));
+    }
+    if(sort === 5) {
+      setRows(rowsD.sort((a, b) => {
+        return a.volume - b.volume;
+      }));
+    }
+    if(sort === 6) {
+      setRows(rowsD.sort((a, b) => {
+        return b.volume - a.volume;
+      }));
+    }
+  }, [sort]);
 
-  const sortByNameAs = () => {
-    setRows(rows.sort());
-  }
+  const table = (
+      <Table className={classes.table} aria-label="simple table">
+      <TableHead>
+        <TableRow >
+          <TableCell className={classes.font}>Name</TableCell>
+          <TableCell className={classes.font}>Symbol</TableCell>
+          <TableCell className={classes.font}>Quote</TableCell>
+          <TableCell className={classes.font}>Previous Close</TableCell>
+          <TableCell className={classes.font}>Volume</TableCell>
+          <TableCell className={classes.font} align="right">Percentage</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {rows.map((row) => (
+          <TableRow hover key={row.name}>
+            <TableCell className={classes.font} component="th" scope="row">{row.name}</TableCell>
+            <TableCell className={classes.font} component="th" scope="row">{row.symbol}</TableCell>
+            <TableCell className={classes.font} component="th" scope="row">${row.quote}</TableCell>
+            <TableCell className={classes.font} component="th" scope="row">${row.prev_close}</TableCell>
+            <TableCell className={classes.font} component="th" scope="row">{row.volume}</TableCell>
+            <TableCell className={classes.font} align="right">{row.percentage}%</TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  )
 
-  for(let entry of Object.entries(stockData)) {
-    data.push(entry);
-  }
-
-  if(rows.length > 0) {
+  if(rows) {
     return (
       <TableContainer style={{backgroundColor: "#35363C", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', height: '600px'}}component={Paper}>
       <Container>
@@ -101,50 +142,21 @@ export default function MarketTable({stockData}) {
             id="demo-simple-select-filled"
             value={sort}
             onChange={(e) => {
-              setSort(e.target.value)
-              if(sort === 2) {
-                sortByNameDes();
-                console.log(rows);
-              }
-              else if(sort === 0 || sort === 1) {
-                sortByNameAs();
-              }
+              setSort(e.target.value)             
               }}>
             <MenuItem value="">
               <em>None</em>
             </MenuItem>
-            <MenuItem value={1}>By Name: (A-Z)</MenuItem>
-            <MenuItem value={2}>By Name: (Z-A)</MenuItem>
+            <MenuItem value={1}>By Symbol: (A-Z)</MenuItem>
+            <MenuItem value={2}>By Symbol: (Z-A)</MenuItem>
             <MenuItem value={3}>By Quote (Low - High)</MenuItem>
             <MenuItem value={4}>By Quote (High - Low)</MenuItem>
+            <MenuItem value={5}>By Volume (Low - High)</MenuItem>
+            <MenuItem value={6}>By Volume (High - Low)</MenuItem>
           </Select>
         </FormControl>
+        {table}
       </Container>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow >
-              <TableCell className={classes.font}>Name</TableCell>
-              <TableCell className={classes.font}>Symbol</TableCell>
-              <TableCell className={classes.font}>Quote</TableCell>
-              <TableCell className={classes.font}>Previous Close</TableCell>
-              <TableCell className={classes.font}>Volume</TableCell>
-              <TableCell className={classes.font} align="right">Percentage</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow hover key={row.name}>
-                <TableCell className={classes.font} component="th" scope="row">{row.name}</TableCell>
-                <TableCell className={classes.font} component="th" scope="row">{row.symbol}</TableCell>
-                <TableCell className={classes.font} component="th" scope="row">${row.quote}</TableCell>
-                <TableCell className={classes.font} component="th" scope="row">${row.prev_close}</TableCell>
-                <TableCell className={classes.font} component="th" scope="row">{row.volume}</TableCell>
-                <TableCell className={classes.font} align="right">{row.percentage}%</TableCell>
-              </TableRow>
-            ))}
-
-          </TableBody>
-        </Table>
       </TableContainer>
     );
   } else {

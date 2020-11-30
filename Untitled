@@ -1,0 +1,254 @@
+import React from 'react';
+import { Button, ButtonGroup, Container, LinearProgress, TextField } from '@material-ui/core';
+import Header from "../Header";
+import  { Breakpoint } from 'react-socks';
+import '../css/Trading.css'
+import { withStyles } from '@material-ui/styles';
+import Fourohone from '../fourohone.js';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const styles = {
+   input: {
+      fullWidth: true,
+      background: '#393b41',
+      width: 300,
+      color: 'white'
+    },
+    button: {
+        margin: '2% auto',
+        marginLeft: 10,
+        display: 'inline-block'
+    },
+    fourohone: {
+      marginLeft: '20rem',
+      color: '#000'
+    },
+    li: {
+      marginLeft: '20rem',
+      textDecoration: 'underline',
+      color: '#000',
+      '&:hover':{
+        color: '#6C9FF8',
+        cursor: 'pointer'
+      },
+    },
+    tradingPanel: {
+        background: "#393b41",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        listStyleType: "none",
+        borderRadius: "15px",
+        padding: "2em"
+    }
+  }
+
+class Trading extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            user: undefined,
+            quantity: 0,
+            orderBuy: false,
+            orderSell: false,
+            completeBtn: false,
+            search_symbol: undefined,
+            stock_found: undefined,
+            isStockFound: false,
+            session_id: null,
+            limit_price: 0
+          };
+    }
+
+    componentDidMount() {
+
+        this.setState({session_id: this.props.session_id});
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+    }
+
+    updateComponentSell = async () => {
+
+        let symbol = this.state.stock_found.symbol;
+        let quantity = this.state.quantity;
+        let limit_price = this.state.limit_price;
+        let target_url = "/sellStock";
+        let requestOptions = {};
+
+        requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({ name: symbol, n: quantity , limit_price: limit_price})
+        }
+
+        await fetch(target_url, requestOptions);
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+
+    }
+
+    updateComponentBuy = async () => {
+
+        let symbol = this.state.stock_found.symbol;
+        let quantity = this.state.quantity;
+        let target_url = "/buyStock";
+        let limit_price = this.state.limit_price;
+        let requestOptions = {};
+
+        requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify({ name: symbol, n: quantity , limit_price: limit_price})
+        }
+
+        await fetch(target_url, requestOptions);
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+    }
+
+    callBackendAPI = async () => {
+          const response = await fetch('/getAccount');
+          const body = await response.json();
+          if (response.status !== 200) {
+            throw Error(body.message)
+          }
+          return body;
+    };
+
+    setQuantity = event => {
+          this.setState ({
+              quantity: event.target.value
+          });
+    }
+
+    setSearch = event => {
+        this.setState ({
+        search_symbol: event.target.value
+        });
+    }
+
+    setLimitPrice = event => {
+        this.setState({
+            limit_price:  parseFloat(event.target.value)
+        });
+    }
+
+    handleBuyBtn = () =>{
+        this.setState({
+            orderBuy: true
+        })
+        this.setState({
+            orderSell: false
+        })
+    }
+
+    handleSellBtn = () =>{
+        this.setState({
+            orderSell: true
+        })
+        this.setState({
+            orderBuy: false
+        })
+    }
+
+    handleSearch = async () =>{
+        if (!this.state.search_symbol){
+            alert("Please enter a search term")
+            return;
+        }
+        let url = `/stock-data?search=${this.state.search_symbol.toUpperCase()}`;
+        const response = await fetch(url);
+        const stock = await response.json();
+        if (response.status !== 200) {
+            throw Error(stock.message)
+        }
+
+        if (stock.length !== 0){
+            this.setState ({
+                stock_found: stock[0],
+                isStockFound: true
+            });
+
+        }
+        else{
+            alert("Failed to find a stock with that symbol");
+        }
+
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+    }
+
+    handleCompleteBtn = () =>{
+        if (this.state.quantity <= 0 || this.state.limit_price <= 0){
+            alert("Please enter a valid quantity and limit price");
+            return;
+        }
+        if (!this.state.stock_found){
+            alert("No Stock Selected")
+            return;
+        }
+
+        if (this.state.orderBuy){
+            this.updateComponentBuy();
+        }
+        else if(this.state.orderSell){
+            this.updateComponentSell();
+        }
+        else{
+            alert("Please select an option");
+        }
+    }
+
+    async cancelOrder(orderId){
+        let target_url = "/cancelOrder";
+        let requestOptions = {};
+
+        requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': "application/json" },
+            body: JSON.stringify(orderId)
+        }
+
+        await fetch(target_url, requestOptions);
+        this.callBackendAPI()
+          .then(res => this.setState({ user: res }))
+          .catch(err => console.log(err));
+    }
+
+    render() {
+        const { classes } = this.props;
+
+        if(!this.state.session_id) {
+            return (
+              <div>
+                <h1 className={classes.fourohone}>401 Not Authorized.</h1>
+                <a className={classes.li} href='/login'>Return to Login</a>
+                <Fourohone />
+              </div>
+            );
+          }
+        if(!this.state.user) {
+            return (
+                <div>
+                    <h1>   Loading   </h1>
+                    <LinearProgress/>
+                </div>
+            );
+        }
+        return (
+          <React.Fragment>
+            <Header currentPage={`Trading`} userName={this.state.user.username}/>
+            <Container>
+            </Container>
+            <Container>
+            </Container>
+          </React.Fragment>
+        );
+    }
+  }
+
+  export default withStyles(styles)(Trading);
