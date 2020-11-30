@@ -642,22 +642,23 @@ app.get("/stocks", (req, res) => {
       keys.push(key);
     }
     let symbol = req.query.symbol;
+    if (!symbol){
+        res.write(JSON.stringify(stockDatabase, null, 2));
+        res.end();
+        return;
+    }
     let min = req.query.minprice;
     let max = req.query.maxprice;
 
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
     if(req.query.symbol != null) {
-
       for (let i = 0; i < keys.length; i++) {
         if(keys[i].includes(symbol)) {
           data.push(stockDatabase[keys[i]]);
         }
       }
     }
-    else {
-      data.push(stockDatabase);
-      }
 
     res.write(JSON.stringify(data, null, 2));
     res.end();
@@ -671,7 +672,6 @@ app.get("/history", (req, res) =>{
         res.end();
         return;
     }
-
     let data = [];
     const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
     let date = new Date();

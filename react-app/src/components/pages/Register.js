@@ -60,31 +60,37 @@ class Register extends React.Component {
 
     register = async () => {
       this._isMounted = true;
+      if(this.state.username && this.state.password && this.state.fullName){
 
-      if(this.state.password !== this.state.rePassword){
-        this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', error: true})
+        if(this.state.password !== this.state.rePassword){
+          this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', error: true})
+          return;
+        }
+
+        // POST request using fetch with async/await
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username: this.state.username, password: this.state.password , name: this.state.fullName})
+        };
+        const response = await fetch('/register', requestOptions);
+        const data = await response.json();
+        this.setState({ authenticated: data.authentication});
+        this.props.onChange(data.session_id);
+        
+        if(this.state.authenticate === 'onload') {
+          this.setState({ id: 'outlined-basic', helperText: '', error: false})
+        }
+        else if(!this.state.authenticate) {
+          this.setState({ id: 'outlined-error-helper-text', helperText: 'Username Already Exists', error: true})
+        }
+        if(this.state.authenticated) {  
+          this.navToDsh();
+        }
+      }
+      else{
+        alert("Please fill out all the info");
         return;
-      }
-
-      // POST request using fetch with async/await
-      const requestOptions = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username: this.state.username, password: this.state.password , name: this.state.fullName})
-      };
-      const response = await fetch('/register', requestOptions);
-      const data = await response.json();
-      this.setState({ authenticated: data.authentication});
-      this.props.onChange(data.session_id);
-      
-      if(this.state.authenticate === 'onload') {
-        this.setState({ id: 'outlined-basic', helperText: '', error: false})
-      }
-      else if(!this.state.authenticate) {
-        this.setState({ id: 'outlined-error-helper-text', helperText: 'Username Already Exists', error: true})
-      }
-      if(this.state.authenticated) {  
-        this.navToDsh();
       }
     }
 

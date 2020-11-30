@@ -236,6 +236,26 @@
             "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-29"
           }
         ]
+      },
+      {
+        "date": "2020-11-30",
+        "activities": [
+          {
+            "date": "2020-11-30",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to jerry137 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-30"
+          }
+        ]
       }
     ],
     "account": {
