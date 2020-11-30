@@ -14,8 +14,8 @@ const styles = {
       color: 'white'
     },
     button: {
-        margin: '4% auto',
-        marginLeft: 20,
+        margin: '2% auto',
+        marginLeft: 10,
         display: 'inline-block'
     },
     fourohone: {
@@ -30,6 +30,13 @@ const styles = {
         color: '#6C9FF8',
         cursor: 'pointer'
       },
+    },
+    tradingPanel: {
+        background: "#393b41",
+        boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
+        listStyleType: "none",
+        borderRadius: "15px",
+        padding: "2em"        
     }
   }
 
@@ -147,7 +154,7 @@ class Trading extends React.Component {
         })
     }
 
-    handleSearch = async () =>{
+    handleSearch = async () =>{        
         if (!this.state.search_symbol){
             alert("Please enter a search term")
             return;
@@ -173,12 +180,9 @@ class Trading extends React.Component {
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));
-
-
-
     }
 
-    handleCompleteBtn = (e) =>{
+    handleCompleteBtn = () =>{
         if (this.state.quantity <= 0 || this.state.limit_price <= 0){
             alert("Please enter a valid quantity and limit price");
             return;
@@ -256,53 +260,55 @@ class Trading extends React.Component {
                     <Header currentPage={`Trading`} userName={this.state.user.username}/>
                     <div id="main">
                         <div id="trade-container">
-                            <br />
+                            <ul className={classes.tradingPanel}>                                                        
+                            <br/>
                             <h2 id="account-container" type="text">Account: {this.state.user.account.accountName}</h2>
                             <br/>
 
                             <div id="fundsAvialable">
-                                <span style={{width: "30%"}}>Cash Balance: </span>
+                                <span style={{width: "80%"}}>Cash Balance: </span>
                                 <span id="cash">{"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}</span>
                             </div>
-
-                            <br/>
-
-                            
+                            <br/>                     
                             {!this.state.stock_found && (
                                 <div>
-                                <TextField label="Enter a stock symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>
-
-                                <Button id="searchBtn" onClick={this.handleSearch}><i className='fa fa-search'></i></Button>
+                                    <TextField label="Enter a stock symbol" variant="outlined" InputProps={{className: classes.input}} onChange={this.setSearch} value={this.state.search_symbol}/>
+                                    <Button id="searchBtn" onClick={this.handleSearch}><i className='fa fa-search'></i></Button>
                                 </div>
-
                             )}
 
-                            {this.state.isStockFound && (                                
+                            {this.state.isStockFound && (                             
+                                                            
                                     <details>
                                         <summary style={{background: "cornflowerblue"}}>
                                             {`${this.state.stock_found.name}`}
-                                        </summary>  
-                                        <br/>
+                                        </summary>
+                                        <h4>Quote: ${this.state.stock_found.quote}</h4>
+                                        <h4>Volume: {this.state.stock_found.volume}</h4>   
+                                        <h4>Market: {this.state.stock_found.market}</h4>                                           
+                                        
+                                        
+                                        <br/> 
                                         <Button style={{background: "aliceblue"}} onClick={() =>{
                                             this.setState({
                                                 isStockFound: false,
                                                 stock_found: undefined
                                             })
-                                        }}>Cancel</Button>
-                                    </details>                                                                                                                                                                  
+                                        }}>Cancel</Button>                                       
+                                    </details>   
+                                                                                                                                                                                               
                                 )}
-                            
+
                             <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+                            <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
                             <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
                                 <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
                                 <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
                             </ButtonGroup>
-                            
-                            <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
-                            <br />
-                            <br />
-                            <br />
-                            <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>            
+                            <br/>
+                            <br/>
+                            <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
+                            </ul>    
                         </div>
                         <div id="holding-container">
                             <ul id="stock-list">
@@ -315,21 +321,21 @@ class Trading extends React.Component {
                                             <p>Shares Owned: {stock.share}</p>
                                             <p>Average Cost: {stock.average_cost}</p>      
                                             <Button className="buyBtn" 
-                                            onClick={()=>{
-                                                this.handleBuyBtn();
+                                            onClick={()=>{                                                                                               
                                                 this.setState({
-                                                    stock_found: stock,
-                                                    isStockFound: true
-                                                })                                                 
-                                            }}
-                                            >Buy</Button>
-
+                                                    search_symbol: stock.symbol                                                    
+                                                }, () =>{
+                                                    this.handleSearch(); 
+                                                    this.handleBuyBtn(); 
+                                                })                                                                    
+                                            }}>Buy</Button>
                                             <Button className="sellBtn"
                                             onClick={()=>{
-                                                this.handleSellBtn();
                                                 this.setState({
-                                                    stock_found: stock,
-                                                    isStockFound: true
+                                                    search_symbol: stock.symbol                                                    
+                                                }, () =>{
+                                                    this.handleSearch(); 
+                                                    this.handleSellBtn(); 
                                                 })                                                 
                                             }}>Sell</Button>
                                         </li>

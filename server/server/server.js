@@ -637,7 +637,7 @@ Public API (call requests to this api using port 3001)
 
 app.get("/stocks", (req, res) => {
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    keys = [];
+    let keys = [];
     for(let key in stockDatabase) {
       keys.push(key);
     }
@@ -647,10 +647,10 @@ app.get("/stocks", (req, res) => {
 
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
-    if(req.query.search != null) {
+    if(req.query.symbol != null) {
 
       for (let i = 0; i < keys.length; i++) {
-        if(keys[i].includes(search)) {
+        if(keys[i].includes(symbol)) {
           data.push(stockDatabase[keys[i]]);
         }
       }
