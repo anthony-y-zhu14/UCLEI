@@ -148,8 +148,6 @@ class Account extends React.Component {
           headers: { 'Content-Type': "application/json" },
           body: JSON.stringify({amount: this.state.amount, type: this.state.type})
       }
-      console.log(requestOptions);
-
       await fetch(target_url, requestOptions);
 
       this.callBackendAPI()

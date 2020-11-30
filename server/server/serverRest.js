@@ -1,7 +1,7 @@
 const fs = require("fs");
 const stockOrder = require("./stockOrder.js");
 
-module.exports = {  
+module.exports = {
     resetStock,
     resetOpenOrders
  }
@@ -19,7 +19,7 @@ module.exports = {
         stockDatabase[stock].daily_range.high = 0;
         stockDatabase[stock].daily_range.low = 0;
     }
-    
+
     stockOrder.updateStockDatabase(stockDatabase);
  }
 
