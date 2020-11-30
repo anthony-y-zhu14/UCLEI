@@ -28,7 +28,8 @@ app.use(session({
  * and updating the user's data as required
 */
 let eventWatcher = require("./eventLoop.js");
-console.log("Event Watcher: listening...")
+let today = new Date().toISOString().slice(0,10);
+
 
 /**********************************************
     Helper Functions
@@ -641,10 +642,9 @@ app.get("/stocks", (req, res) => {
     for(let key in stockDatabase) {
       keys.push(key);
     }
-    let symbol = req.query.symbol;
-    
-    let min = req.query.minprice;
-    let max = req.query.maxprice;
+    let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
+    let min = parseFloat(req.query.minprice);
+    let max = parseFloat(req.query.maxprice);
 
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
@@ -653,83 +653,210 @@ app.get("/stocks", (req, res) => {
         res.end();
         return;
     }
+    else if(!symbol && min && max){
+        for (const stock in stockDatabase){
+            if(stockDatabase[stock].quote <= max && stockDatabase[stock].quote >= min){
+                data.push(stockDatabase[stock]);
+            }
+        }
+    }
+    else if(!symbol && !min && max){
+        for (const stock in stockDatabase){
+            if(stockDatabase[stock].quote <= max){
+                data.push(stockDatabase[stock]);
+            }
+        }
+    }
+    else if(!symbol && min && !max){
+        for (const stock in stockDatabase){
+            if(stockDatabase[stock].quote >= min){
+                data.push(stockDatabase[stock]);
+            }
+        }
+    }
 
-    // for (let i = 0; i < keys.length; i++) {
-    //     if(keys[i].includes(symbol)) {
-    //       data.push(stockDatabase[keys[i]]);
-    //     }
-    //   }
+    else if(symbol && !min &&!max) {
+        for (const stock in stockDatabase){
+            if(stock.includes(symbol)){
+                data.push(stockDatabase[stock]);
+            } 
+        }     
+    }
 
+    else if(symbol && min && !max){
+        for (const stock in stockDatabase){
+            if(stock.includes(symbol) && stockDatabase[stock].quote >= min){
+                data.push(stockDatabase[stock]);
+            }
+        }
+    }
 
+    else if(symbol && !min && max){
+        for (const stock in stockDatabase){
+            if(stock.includes(symbol) && stockDatabase[stock].quote <= max){
+                data.push(stockDatabase[stock]);
+            }
+        }
+    }
 
-
-
-
-    // else if(symbol && !min &&!max) {
-      
-    // }
-    // else if(symbol && min && !max){
-    //     for (const stock in stockDatabase){
-    //         if(stock.includes(symbol) && stockDatabase[stock].quote >= min){
-    //             data.push(stockDatabase[stock]);
-    //         }
-    //     }
-    // }
-    // else if(symbol && !min && max){
-    //     for (const stock in stockDatabase){
-    //         if(stock.includes(symbol) && stockDatabase[stock].quote <= max){
-    //             data.push(stockDatabase[stock]);
-    //         }
-    //     }
-    // }
-    // else if(symbol && min && max){
-    //     for (const stock in stockDatabase){
-    //         if(stock.includes(symbol) && stockDatabase[stock].quote <= max){
-    //             data.push(stockDatabase[stock]);
-    //         }
-    //     }
-    // }
-    
-
+    else if(symbol && min && max){
+        for (const stock in stockDatabase){
+            if(stock.includes(symbol) && stockDatabase[stock].quote <= max && stockDatabase[stock].quote >= min){
+                data.push(stockDatabase[stock]);
+            }
+        }
+    }
 
     res.write(JSON.stringify(data, null, 2));
     res.end();
 });
 
-app.get("/history", (req, res) =>{
+app.get("/stocks/history", (req, res) =>{
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    let symbol = req.query.symbol.toUpperCase();
+    let symbol = req.query.symbol? req.query.symbol.toUpperCase() : undefined;
     if (!stockDatabase[symbol]){
-        res.write("<h1>This stock symbol doesn't exist in our database</h1>");
+        res.write("<h3>This stock symbol doesn't exist in our database or you have entered an incorrect param.</h3>");
         res.end();
         return;
     }
     let data = [];
     const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
-    let date = new Date();
-    let today = date.toISOString().slice(0,10);
 
+    let startDate = req.query.startDate;
+    let endDate = req.query.endDate;
 
-    for (const username in userDatabase){
+    if(!startDate&& !endDate){
+        for (const username in userDatabase){
 
-        userDatabase[username].activity.forEach(activity =>{
-                if (activity.date === today){
-                    activity.activities.forEach(action =>{
-                        if (action.message.includes(symbol)){
-                            data.push(  {username: username, action: action.message}  );
-                        }
-                    });
-                }
-        });
+            userDatabase[username].activity.forEach(activity =>{
+                    if (activity.date === today){
+                        activity.activities.forEach(action =>{
+                            if (action.message.includes(symbol)){
+                                data.push(  {username: username, action: action.message}  );
+                            }
+                        });
+                    }
+            });
+        }
     }
+    else if(startDate && !endDate){
+        for (const username in userDatabase){
+
+            userDatabase[username].activity.forEach(activity =>{
+                    if (activity.date >= startDate){
+                        activity.activities.forEach(action =>{
+                            if (action.message.includes(symbol)){
+                                data.push(  {username: username, action: action.message}  );
+                            }
+                        });
+                    }
+            });
+        }
+    }
+    else if(!startDate && endDate){
+        for (const username in userDatabase){
+
+            userDatabase[username].activity.forEach(activity =>{
+                    if (activity.date <= endDate){
+                        activity.activities.forEach(action =>{
+                            if (action.message.includes(symbol)){
+                                data.push(  {username: username, action: action.message}  );
+                            }
+                        });
+                    }
+            });
+        }
+    }
+    else if(startDate && endDate){
+        for (const username in userDatabase){
+
+            userDatabase[username].activity.forEach(activity =>{
+                    if (activity.date <= endDate && activity.date >= startDate){
+                        activity.activities.forEach(action =>{
+                            if (action.message.includes(symbol)){
+                                data.push(  {username: username, action: action.message}  );
+                            }
+                        });
+                    }
+            });
+        }
+    }
+    
     res.write(JSON.stringify({symbol: symbol, action: data}, null, 2));
     res.end();
 });
 
+app.get("/stocks/symbol", (req, res) => {
+    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
+    if (!stockDatabase[symbol]){
+        res.write("<h3>This stock symbol doesn't exist in our database or you have entered an incorrect param.</h3>");
+        res.end();
+        return;
+    }
+    
+    let startDate = req.query.startDate;
+    let endDate = req.query.endDate;
+
+    let data = [];
+
+    if (!startDate && !endDate) {        
+        data.push({
+            date: today,
+            symbol: symbol,
+            daily_range: stockDatabase[symbol].daily_range,
+            currentPrice: stockDatabase[symbol].quote,
+            prevClose: stockDatabase[symbol].prev_close,
+            volume: stockDatabase[symbol].volume
+        });                  
+    }       
+    else if(startDate && !endDate){
+        for (const date in stockDatabase[symbol].historical){
+            if (date >= startDate){
+                data.push({
+                    date: date,
+                    symbol: symbol,
+                    daily_range: stockDatabase[symbol].historicalDailyRange[date],
+                    closingPrice: stockDatabase[symbol].historical[date],
+                    volume: stockDatabase[symbol].historicalVolume[date]
+                }); 
+            }
+        }
+    }
+    else if(startDate && endDate){
+        for (const date in stockDatabase[symbol].historical){
+            if (date >= startDate && date <= endDate){
+                data.push({
+                    date: date,
+                    symbol: symbol,
+                    daily_range: stockDatabase[symbol].historicalDailyRange[date],
+                    closingPrice: stockDatabase[symbol].historical[date],
+                    volume: stockDatabase[symbol].historicalVolume[date]
+                }); 
+            }
+        }
+    }
+    res.setHeader("Content-Type", "application/JSON");
+    if(req.query.symbol === null) {
+      for (const stock in stockDatabase) {
+        data.push(stockDatabase[stock]);
+    }
+  }
+  res.write(JSON.stringify(data, null, 2));
+  res.end();
+});
 
 /**********************************************
  Server Information
 ********************************************* */
+setInterval(function checkRefresh() {
+    if(today !== new Date().toISOString().slice(0,10)) {
+        serverReset.resetStock(today);
+        serverReset.resetOpenOrders();
+        today = new Date().toISOString().slice(0,10);
+    }
+}, 10000);
+serverReset.resetStock(today);
 app.listen(3001);
 
     console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');

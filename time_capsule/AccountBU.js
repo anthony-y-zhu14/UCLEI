@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, ButtonGroup, Container, LinearProgress } from '@material-ui/core';
-import Header from "../Header";
+import Header from "../react-app/src/components/Header";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
-import Fourohone from '../fourohone.js';
-import OutlinedCard from '../OutlinedCard.js';
+import Fourohone from '../react-app/src/components/fourohone.js';
+import OutlinedCard from '../react-app/src/components/OutlinedCard.js';
 import { useHistory } from "react-router-dom";
 
 

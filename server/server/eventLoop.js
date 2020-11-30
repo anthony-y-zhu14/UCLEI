@@ -9,10 +9,9 @@ module.exports = {
 //the main function, intitializes the eventWatcher
  setInterval(function eventCheck() {
    count = eventWatcher();
-   console.log('Event Watcher: updated events.');
    getCount();
  },
- 10000); //rest for 5 minute
+ 10000); //rest for 1 minute
 
  function updateUserDataBase(users) {
      fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));

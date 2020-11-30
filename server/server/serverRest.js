@@ -6,20 +6,19 @@ module.exports = {
     resetOpenOrders
  }
 
- function resetStock(){
+ function resetStock(yesterday){
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    let date = new Date();
-    let today = date.toISOString().slice(0,10);
     for (const stock in stockDatabase){
-        stockDatabase[stock].volume = 0;
-        stockDatabase[stock].precentage = 0;
         stockDatabase[stock].prev_close =  stockDatabase[stock].quote;
         stockDatabase[stock].totalTranscationAmount = 0;
-        stockDatabase[stock].historical[today] = stockDatabase[stock].quote;
-        stockDatabase[stock].daily_range.high = 0;
-        stockDatabase[stock].daily_range.low = 0;
+        stockDatabase[stock].historical[yesterday] = stockDatabase[stock].quote;
+        stockDatabase[stock].historicalVolume[yesterday] = stockDatabase[stock].volume;
+        stockDatabase[stock].historicalDailyRange[yesterday] = stockDatabase[stock].daily_range;
+        stockDatabase[stock].daily_range.high = stockDatabase[stock].prev_close;
+        stockDatabase[stock].daily_range.low = stockDatabase[stock].prev_close;
+        stockDatabase[stock].volume = 0;
+        stockDatabase[stock].precentage = 0;
     }
-
     stockOrder.updateStockDatabase(stockDatabase);
  }
 
