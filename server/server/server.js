@@ -661,6 +661,13 @@ app.get("/stocks", (req, res) => {
     res.end();
 });
 
+app.route("/stocks")
+.get((req, res) =>{
+    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    res.write(JSON.stringify(stockDatabase, null, 2));
+    res.end();
+})
+
 
 /**********************************************
  Server Information
