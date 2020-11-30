@@ -623,6 +623,8 @@ app.get("/stock-data", (req, res) => {
     res.setHeader("Content-Type", "application/JSON");
     if(stockDatabase[search] != null) {
         data.push(stockDatabase[search]);
+    } else {
+      data.push(stockDatabase);
     }
     res.write(JSON.stringify(data));
     res.end();
