@@ -73,24 +73,15 @@ export default function MarketTable({stockData}) {
     }
   }
 
-  useEffect(() => {
-    console.log(sort)
-    if(rows.length === 0) {
-      createRows();
-    }
-    if(sort === 2) {
-      setRows(rows.sort().reverse())
-    }
-    else if(sort === 0 || sort === 1) {
-      setRows(rows.sort());
-    }
-  }, [sort, rows]);
+  useEffect(() => {    
+    createRows();   
+  });
 
-  function sortByNameDes() {
+ const sortByNameDes = () => {
     setRows(rows.sort().reverse())
   }
 
-  function sortByNameAs() {
+  const sortByNameAs = () => {
     setRows(rows.sort());
   }
 
@@ -98,7 +89,7 @@ export default function MarketTable({stockData}) {
     data.push(entry);
   }
 
-  if(rowsD) {
+  if(rows.length > 0) {
     return (
       <TableContainer style={{backgroundColor: "#35363C", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', height: '600px'}}component={Paper}>
       <Container>
@@ -109,7 +100,16 @@ export default function MarketTable({stockData}) {
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
             value={sort}
-            onChange={(e) => setSort(e.target.value)}>
+            onChange={(e) => {
+              setSort(e.target.value)
+              if(sort === 2) {
+                sortByNameDes();
+                console.log(rows);
+              }
+              else if(sort === 0 || sort === 1) {
+                sortByNameAs();
+              }
+              }}>
             <MenuItem value="">
               <em>None</em>
             </MenuItem>

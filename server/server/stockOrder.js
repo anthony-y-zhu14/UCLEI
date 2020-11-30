@@ -78,7 +78,7 @@ function createOpenOrder(name, quote, symbol, quantity, orderType, orderId, user
     return openOrder;
 }
 
-function updateUserActivity(activityArr, newActivity){
+function updateUserActivity(activityArr, newActivity, stockSymbol){
 
     for (let index = 0; index < activityArr.length; index++) {      
 
@@ -92,6 +92,7 @@ function updateUserActivity(activityArr, newActivity){
 
     let newActivityDate = {
         date: newActivity.date,
+        stock: stockSymbol,
         activities: []
     }
 
@@ -590,8 +591,11 @@ function updateStockDatabase(stockDatabase){
         if (stock !== "D35-C"){
             stockDatabase["D35-C"].volume += stockDatabase[stock].volume;
             stockDatabase["D35-C"].totalTranscationAmount += stockDatabase[stock].totalTranscationAmount;
+            stockDatabase["D35-C"].quote += stockDatabase[stock].quote;
         }
     }
+    let percentageChange = ((stockDatabase["D35-C"].quote - stockDatabase["D35-C"].prev_close) / stockDatabase["D35-C"].prev_close * 100);
+    stockDatabase["D35-C"].percentage = parseFloat(percentageChange.toFixed(2));
     fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
 }
 
