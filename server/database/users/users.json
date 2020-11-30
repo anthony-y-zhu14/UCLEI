@@ -2,31 +2,25 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "7c33ca26-ac8c-42cd-a3c6-d6963465f0d3",
+    "session_id": "d8d9416b-720d-4233-b076-3c95b2038edd",
     "name": "Jerry Smith",
     "watchlist": [
       {
         "symbol": "SE",
-        "quote": "156.53",
+        "quote": 186.67,
         "name": "Sea Limited",
         "volume": 0
       },
       {
-        "symbol": "FB",
-        "quote": "272.43",
-        "name": "Facebook, Inc.",
-        "volume": 10
+        "symbol": "GOOG",
+        "quote": 1740.39,
+        "name": "Alphabet Inc.",
+        "volume": 0
       },
       {
         "symbol": "D35-C",
         "quote": 1267350,
         "name": "Dimension 35-C",
-        "volume": 0
-      },
-      {
-        "symbol": "AMD",
-        "quote": 77.99,
-        "name": "Advanced Micro Devices, Inc.",
         "volume": 0
       }
     ],

@@ -9,7 +9,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
-
+import  { Breakpoint } from 'react-socks';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -97,6 +97,58 @@ const handleEventUpdate = async (id) => {
   return (
     <div className={classes.root}>
 
+    <Breakpoint medium up>
+      <React.Fragment>
+          {stockData.map(stock => (
+                    <Accordion className={classes.heading}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                      aria-controls="panel-content"
+                      id="panel-header"
+                    >
+                      <Typography className={classes.heading}>{stock.name}, ({stock.symbol}):</Typography>
+                      <Typography className={classes.sub}>{stock.message}</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails className={classes.cont}>
+                      <Typography className={classes.det}>
+                          You have requested to be notified when {stock.symbol} changes by: {stock.notify_num}%.
+                      </Typography>
+                      <Typography className={classes.fieldO}>
+                          Change notification?
+                      <TextField
+                              className={classes.field}
+                              autoFocus
+                              margin="dense"
+                              variant="outlined"
+                              id="name"
+                              label="Percentage"
+                              type="Percentage"
+                              onChange = {setTheNum}
+                              InputProps={{className: classes.input}}
+                          />
+                      </Typography>
+                      <Typography className={classes.but} onClick={() => handleEventUpdate(stock.symbol)}>
+                      <Button color="primary">
+                        Update
+                      </Button>
+                      </Typography>
+                      <Typography className={classes.but} onClick={() => setActive(stock.symbol)}>
+                      <Button color="primary">
+                          {stock.active}
+                      </Button>
+                      </Typography>
+                      <Typography>
+                      <IconButton className={classes.but} onClick={() => removeEvent(stock.symbol)}>
+                          <DeleteIcon color="primary"/>
+                      </IconButton>
+                      </Typography>
+                    </AccordionDetails>
+                  </Accordion>
+          ))}
+      </React.Fragment>
+    </Breakpoint>
+
+    <Breakpoint small down>
     <React.Fragment>
         {stockData.map(stock => (
                   <Accordion className={classes.heading}>
@@ -109,13 +161,13 @@ const handleEventUpdate = async (id) => {
                     <Typography className={classes.sub}>{stock.message}</Typography>
                   </AccordionSummary>
                   <AccordionDetails className={classes.cont}>
-                    <Typography className={classes.det}>
+                    <Typography style={{width: "45%"}}>
                         You have requested to be notified when {stock.symbol} changes by: {stock.notify_num}%.
                     </Typography>
-                    <Typography className={classes.fieldO}>
+                    <Typography style={{width: "55%"}}>
                         Change notification?
                     <TextField
-                            className={classes.field}
+                            style={{width: 100}}
                             autoFocus
                             margin="dense"
                             variant="outlined"
@@ -126,7 +178,12 @@ const handleEventUpdate = async (id) => {
                             InputProps={{className: classes.input}}
                         />
                     </Typography>
-                    <Typography className={classes.but} onClick={() => handleEventUpdate(stock.symbol)}>
+                    <Typography>
+                    <IconButton style={{marginTop: '70%'}} onClick={() => removeEvent(stock.symbol)}>
+                        <DeleteIcon color="primary"/>
+                    </IconButton>
+                    </Typography>
+                    <Typography style={{width:"100%"}} onClick={() => handleEventUpdate(stock.symbol)}>
                     <Button color="primary">
                       Update
                     </Button>
@@ -136,15 +193,12 @@ const handleEventUpdate = async (id) => {
                         {stock.active}
                     </Button>
                     </Typography>
-                    <Typography>
-                    <IconButton className={classes.but} onClick={() => removeEvent(stock.symbol)}>
-                        <DeleteIcon color="primary"/>
-                    </IconButton>
-                    </Typography>
+
                   </AccordionDetails>
                 </Accordion>
         ))}
     </React.Fragment>
+    </Breakpoint>
 
     </div>
   );
