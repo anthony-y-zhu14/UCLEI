@@ -633,7 +633,7 @@
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -6.67,
+    "percentage": 0,
     "quote": 186.67,
     "prev_close": 169.08,
     "totalTranscationAmount": 5600,

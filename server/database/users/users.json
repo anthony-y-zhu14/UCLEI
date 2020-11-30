@@ -2,7 +2,7 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "f9cc9668-c88b-4a21-8897-c2567fbec947",
+    "session_id": "78129420-58e8-4d27-80cf-c42477903f0b",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -62,11 +62,61 @@
             "message": "Bought 10 shares of SE at $160 from rick137 - 2020-11-29"
           }
         ]
+      },
+      {
+        "date": "2020-11-30",
+        "activities": [
+          {
+            "date": "2020-11-30",
+            "action": "deposite",
+            "message": "Deposited $40 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "deposite",
+            "message": "Deposited $40 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "deposite",
+            "message": "Deposited $40 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "withdraw",
+            "message": "Withdrawn $1600 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "withdraw",
+            "message": "Withdrawn $1373 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "withdraw",
+            "message": "Withdrawn $0 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "withdraw",
+            "message": "Withdrawn $0 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "withdraw",
+            "message": "Withdrawn $0 to account: C-137-1001 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "deposite",
+            "message": "Deposited $40000 to account: C-137-1001 - 2020-11-30"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 2853.5546360153257,
+      "cashBalance": 40000.554636015324,
       "investmentBalance": 1600
     },
     "balanceGrowth": 0

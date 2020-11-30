@@ -278,14 +278,14 @@ class Trading extends React.Component {
                             )}
 
                             {this.state.isStockFound && (                             
-                                                            
-                                    <details>
+                                <React.Fragment>
+                                        <details>
                                         <summary style={{background: "cornflowerblue"}}>
                                             {`${this.state.stock_found.name}`}
                                         </summary>
                                         <h4>Quote: ${this.state.stock_found.quote}</h4>
                                         <h4>Volume: {this.state.stock_found.volume}</h4>   
-                                        <h4>Market: {this.state.stock_found.market}</h4>                                           
+                                        <h4>Market: {this.state.stock_found.market}</h4>                                         
                                         
                                         
                                         <br/> 
@@ -295,21 +295,21 @@ class Trading extends React.Component {
                                                 stock_found: undefined
                                             })
                                         }}>Cancel</Button>                                       
-                                    </details>   
-                                                                                                                                                                                               
-                                )}
-
-                            <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
-                            <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
-                            <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
-                                <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
-                                <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
-                            </ButtonGroup>
-                            <br/>
-                            <br/>
-                            <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
+                                    </details>  
+                                        <TextField label="Quantity" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setQuantity} value={this.state.quantity}/>
+                                        <TextField label="Limit Price" type='number' variant="outlined" InputProps={{className: classes.input}} onChange={this.setLimitPrice} value={this.state.limit_price}/>
+                                        <ButtonGroup disableElevation variant="outlined"  id="option-group" className={classes.button}>
+                                            <Button  style={this.state.orderBuy ? {background: "#2ed47a"}:{background: "aliceblue"}} onClick={this.handleBuyBtn}>Buy</Button>
+                                            <Button  style={this.state.orderSell ? {background: "indianred"}:{background: "aliceblue"}} onClick={this.handleSellBtn}>Sell</Button>
+                                        </ButtonGroup>
+                                        <br/>
+                                        <br/>
+                                        <Button id="CompleteTransactionBtn" onClick={this.handleCompleteBtn}>Complete Transaction</Button>
+                                </React.Fragment>                                                                                                                                                       
+                                )} 
                             </ul>    
                         </div>
+                        
                         <div id="holding-container">
                             <ul id="stock-list">
                                 <h4>Current Holding</h4>                                
