@@ -23,7 +23,7 @@ summary {
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
   -webkit-transition: background-color .3s, color .3s;
-  transition: background-color .3s, color .3s;  
+  transition: background-color .3s, color .3s;
 }
 
 summary:hover {
@@ -219,6 +219,6 @@ details[open] summary ~ * {
   font-family: 'Open Sans', sans-serif;
   -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
           box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  
+
 }
 /*# sourceMappingURL=account.css.map */

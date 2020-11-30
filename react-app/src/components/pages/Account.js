@@ -1,12 +1,15 @@
 import React from 'react';
 import { Button, ButtonGroup, Container, LinearProgress } from '@material-ui/core';
 import Header from "../Header";
+import  { Breakpoint } from 'react-socks';
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
 import OutlinedCard from '../OutlinedCard.js';
 import { useHistory } from "react-router-dom";
-
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import AccountData from '../AccountData.js';
 
 import "../css/Account.css"
 
@@ -14,12 +17,30 @@ const styles = {
   input: {
     color: "#fff"
   },
+  acctCard: {
+    background: '#393b41',
+    textAlign: "center",
+    color: '#fff',
+    width: '50%',
+    padding: '1%',
+    marginTop: '6%',
+    borderRadius: 10,
+  },
+  wrapper: {
+    background: '#393b41',
+    overflowY: 'auto',
+    height: '80%',
+    color: '#fff',
+    borderRadius: '10px',
+    margin: "1%",
+    boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  },
   fourohone: {
-    marginLeft: '20rem',
+    marginLeft: '10%',
     color: '#000'
   },
   li: {
-    marginLeft: '20rem',
+    marginLeft: '10%',
     textDecoration: 'underline',
     color: '#000',
     '&:hover':{
@@ -148,161 +169,143 @@ class Account extends React.Component {
           </div>
         );
       }
-
         if(!this.state.user) {
             return (
-              <div>
-                  <h1>   Loading   </h1>
-                  <LinearProgress/>
-              </div>
+              <React.Fragment>
+                <h1>Loading</h1>
+                <LinearProgress/>
+              </React.Fragment>
             );
         }
 
-
         return(
-            <div>
-                    <Header currentPage={`Account`} userName={this.state.user.name}/>
-
-                    <Container maxWidth="sm">
-                      <div id="username">{this.state.user.name}</div>
-                      <br/>
-                      <div id="account-info">{this.state.user.account.accountName}</div>
+          <React.Fragment>
+            <Header currentPage={`Account`} userName={this.state.user.name}/>
+            <Container style={{ width: '95vw', padding: 0 }}>
+            <Container className={classes.acctCard}>
+              <h2>{this.state.user.name}</h2>
+              <h3>Account: {this.state.user.account.accountName}</h3>
+              <p>Account Balance: {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</p>
+              <p>Account Investment Balance: {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}</p>
+              <p>Account Growth: {this.state.user.balanceGrowth}%</p>
+            </Container>
+            <Breakpoint medium up>
+              <Grid container spacing={1}>
+                <Grid item xs={6}>
+                  <details>
+                    <summary>Holdings & Activities</summary>
+                    <div className={classes.wrapper}>
                       <br />
-                    </Container>
-                    <div className='wrapper'>
-                      <div className='innerCont'>
-                          <details>
-                          <summary>Account Balance</summary>
-                          <div id="add-funds-modal">
-                            <div className="modal-content">
-                              <div id="balance-container">
-                                  <div id="total-balance">
-                                      <span className="title-small">Total Balance: </span>
-                                      <span className="text-box" id="total-balance-text">
-                                          {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}
-                                      </span>
-                                  </div>
-                                  <div id="investments-cash-container">
-                                    <div id="investment">
-                                        <span className="title-small">Investment: </span>
-                                        <span className="text-box" id="investment-text">
-                                              {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}
-                                        </span>
-                                  </div>
-
-                                  <div id="cash-balance">
-                                      <span className="title-small">Cash Balance: </span>
-                                      <span className="text-box" id="cash-balance-text">
-                                              {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
-                                      </span>
-                                  </div>
-                                  </div>
-                                </div>
-
-                            <div id="account-activity-container">
-                                <br/>
-                                <ButtonGroup disableElevation variant="outlined"  id="option-group">
-                                    <Button id="money-deposit" style={this.state.holdingBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleHolding}>Holding</Button>
-                                    <Button id="money-withdraw" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
-                                </ButtonGroup>
-                                <ul id="table-container">
-
-                                    {this.state.holdingBtn && (
-                                        <React.Fragment>
-                                            {this.state.user.ownedStocks.map(stock => (
-                                                <OutlinedCard h={this.props.history} stock={stock}/>
-
-                                            ))}
-                                        </React.Fragment>
-                                    )}
-
-                                    {this.state.activityBtn && (
-                                        <React.Fragment>
-                                            {this.state.user.activity.map(activity => (
-                                              <details>
-                                                <summary>{activity.date}</summary>
-                                                {activity.activities.map(message =>(
-                                                <li className="stock-holding">{message.message}</li>
-                                              ))}
-                                              </details>
-
-
-                                            ))}
-                                        </React.Fragment>
-                                    )}
-
-                                </ul>
-
-                            </div>
-                            </div>
-                          </div>
-                          </details>
-                        </div>
-                      <div className='innerCont'>
-                        <details>
-                        <summary>Manage Account</summary>
-
-                        <div id="add-funds-modal" >
-                            <div className="modal-content">
-                          <br />
-                          <br />
-
-                          <div id="info-box">
-                            <div className="info-box">
-                              <div className="info-title">Add and Remove Funds</div>
-
-                              <div id="info-text">
-
-                                Type the amount of cash you would
-                                like to add or remove in the box to
-                                the left and select to deposit or withdrawl
-                                funds from your account.
-
-                                </div>
-                                <br />
-
-                            </div>
-                          </div>
-
-                          <form>
-                            <div id="modal-account-balance">
-                              <span className="modal-text">Account Balance:</span>
-                              <span className="modal-text"  id="money">
-                              {"$" + (Math.round( parseFloat(this.state.user.account.cashBalance) * 100) / 100).toFixed(2)}
-                              </span>
-                            </div>
-
-
-                            <TextField className="txtFld" label="Enter Dollar Amount" type='number'
-                            onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
-                            variant="outlined" />
-                            <div id="modal-container">
-
-                              <div id="buttons-modal">
-                              <br />
-                              <ButtonGroup disableElevation variant="outlined"  id="option-group">
-                                  <Button id="money-deposit" style={this.state.moneyDeposit ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleDeposit}>Deposit</Button>
-                                  <Button id="money-withdraw" style={this.state.moneyWithdraw ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleWithdrawl}>Withdrawl</Button>
-                              </ButtonGroup>
-                              <br />
-
-                              </div>
-
-                          </div>
-
-                          <Button id="submit" className='submit' onClick={this.handleSubmit}>Submit</Button>
-
-                          </form>
-                        </div>
-                        </div>
-
-
-                        </details>
+                      <h3>Hello, {this.state.user.name}</h3>
+                      <p>Below please find your activity and holdings by pressing the desired button.</p>
+                        <ButtonGroup disableElevation variant="outlined"  id="option-group">
+                            <Button id="money-deposit" style={this.state.holdingBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleHolding}>Holding</Button>
+                            <Button id="money-withdraw" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
+                        </ButtonGroup>
+                        <ul id="table-container">
+                          {this.state.holdingBtn && (
+                              <React.Fragment>
+                                  {this.state.user.ownedStocks.map(stock => (
+                                      <OutlinedCard h={this.props.history} stock={stock}/>))}
+                              </React.Fragment>)}
+                          {this.state.activityBtn && (
+                              <React.Fragment>
+                                  {this.state.user.activity.map(activity => (
+                                    <details>
+                                      <summary>{activity.date}</summary>
+                                      {activity.activities.map(message =>(
+                                      <li className="stock-holding">{message.message}</li>
+                                    ))}
+                                    </details>))}
+                              </React.Fragment>)}
+                          </ul>
+                    </div>
+                  </details>
+                </Grid>
+                <Grid item xs={6}>
+                  <details>
+                    <summary>Manage Account</summary>
+                    <div className={classes.wrapper} style={{paddingBottom: "2%"}}>
+                      <br />
+                      <h3>Add or Remove Funds</h3>
+                      <p>Type the amount of cash you would
+                      like to add or remove in the box to
+                      the left and select to deposit or withdrawl
+                      funds from your account.</p>
+                      <ButtonGroup disableElevation variant="outlined"  id="option-group">
+                          <Button id="money-deposit" style={this.state.moneyDeposit ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleDeposit}>Deposit</Button>
+                          <Button id="money-withdraw" style={this.state.moneyWithdraw ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleWithdrawl}>Withdrawl</Button>
+                      </ButtonGroup>
+                      <br />
+                      <TextField className="txtFld" label="Enter Dollar Amount" type='number'
+                      onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
+                      variant="outlined" />
+                      <Button id="submit" className='submit' onClick={this.handleSubmit}>Submit</Button>
+                    </div>
+                  </details>
+                </Grid>
+              </Grid>
+              </Breakpoint>
+              <Breakpoint small down>
+                <Grid container spacing={1}>
+                  <Grid item xs={12}>
+                    <details>
+                      <summary>Holdings & Activities</summary>
+                      <div className={classes.wrapper}>
+                        <br />
+                        <h3>Hello, {this.state.user.name}</h3>
+                        <p>Below please find your activity and holdings by pressing the desired button.</p>
+                          <ButtonGroup disableElevation variant="outlined"  id="option-group">
+                              <Button id="money-deposit" style={this.state.holdingBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleHolding}>Holding</Button>
+                              <Button id="money-withdraw" style={this.state.activityBtn ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleActivity}>Activity</Button>
+                          </ButtonGroup>
+                          <ul id="table-container">
+                            {this.state.holdingBtn && (
+                                <React.Fragment>
+                                    {this.state.user.ownedStocks.map(stock => (
+                                        <OutlinedCard h={this.props.history} stock={stock}/>))}
+                                </React.Fragment>)}
+                            {this.state.activityBtn && (
+                                <React.Fragment>
+                                    {this.state.user.activity.map(activity => (
+                                      <details>
+                                        <summary>{activity.date}</summary>
+                                        {activity.activities.map(message =>(
+                                        <li className="stock-holding">{message.message}</li>
+                                      ))}
+                                      </details>))}
+                                </React.Fragment>)}
+                            </ul>
                       </div>
-                </div>
-
-                </div>
-            )
+                    </details>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <details>
+                      <summary>Manage Account</summary>
+                      <div className={classes.wrapper} style={{paddingBottom: "2%"}}>
+                        <br />
+                        <h3>Add or Remove Funds</h3>
+                        <p>Type the amount of cash you would
+                        like to add or remove in the box to
+                        the left and select to deposit or withdrawl
+                        funds from your account.</p>
+                        <ButtonGroup disableElevation variant="outlined"  id="option-group">
+                            <Button id="money-deposit" style={this.state.moneyDeposit ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleDeposit}>Deposit</Button>
+                            <Button id="money-withdraw" style={this.state.moneyWithdraw ? {background: "cornflowerblue"}:{background: "aliceblue"}} onClick={this.handleWithdrawl}>Withdrawl</Button>
+                        </ButtonGroup>
+                        <br />
+                        <TextField className="txtFld" label="Enter Dollar Amount" type='number'
+                        onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
+                        variant="outlined" />
+                        <Button id="submit" className='submit' onClick={this.handleSubmit}>Submit</Button>
+                      </div>
+                    </details>
+                  </Grid>
+                </Grid>
+                </Breakpoint>
+            </Container>
+          </React.Fragment>
+        )
     }
 }
 

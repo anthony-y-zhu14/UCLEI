@@ -13,11 +13,11 @@ import Grid from '@material-ui/core/Grid';
 
 const styles = {
   fourohone: {
-    marginLeft: '20rem',
+    marginLeft: '10%',
     color: '#000'
   },
   li: {
-    marginLeft: '20rem',
+    marginLeft: '10%',
     textDecoration: 'underline',
     color: '#000',
     '&:hover':{
@@ -101,23 +101,24 @@ class Dashboard extends React.Component {
     return (
       <React.Fragment>
       <Header currentPage={crtPg} userName={username}/>
-        <Container style={{ width: '90vw', padding: 0 }}>
-          <Grid item xs={12}>
-            <AccountData acct={this.state.user}/>
-          </Grid>
+        <Container style={{ width: '95vw', padding: 0 }}>
           <Breakpoint medium up>
             <Grid container>
               <Grid item xs={8}>
-                <Container>
+                <Container style={{marginTop: "2.25%"}}>
                   <LineChartB cData={this.state.stockData}/>
                 </Container>
               </Grid>
               <Grid item xs={3}>
+              <AccountData acct={this.state.user}/>
                   <NewsList />
               </Grid>
             </Grid>
           </Breakpoint>
           <Breakpoint small down>
+          <Grid item xs={12}>
+            <AccountData acct={this.state.user}/>
+          </Grid>
               <Grid item xs={12}>
                   <NewsList />
               </Grid>

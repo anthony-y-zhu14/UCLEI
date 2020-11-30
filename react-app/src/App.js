@@ -36,8 +36,9 @@ function App(){
 
 
     return (
-    <BreakpointProvider>
       <React.Fragment>
+      <BreakpointProvider>
+
               <Router>
                       <Switch>
 
@@ -53,8 +54,9 @@ function App(){
                           <Route path="/trading"  component={() => <Trading session_id={auth}/>}/>
                       </Switch>
               </Router>
+                  </BreakpointProvider>
       </React.Fragment>
-    </BreakpointProvider>
+
     )
 }
 
