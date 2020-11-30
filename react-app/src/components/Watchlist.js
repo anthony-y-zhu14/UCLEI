@@ -7,6 +7,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import QueueIcon from '@material-ui/icons/Queue';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -116,12 +117,16 @@ class CheckboxList extends React.Component {
                 <Box p={{ xs: 1 }}>
                   <Typography>{value.name}, ({value.symbol})</Typography>
                 </Box>
-                <IconButton onClick={() => this.viewWatchItem(value.symbol)}>
-                  <QueueIcon style={{fill: "#fff"}}/>
-                </IconButton>
-                <IconButton onClick={() => this.delWatchItem(value.symbol)} edge="end" aria-label="delete">
-                  <DeleteIcon style={{fill: "#fff"}}/>
-                </IconButton>
+                <Tooltip title="View Stock">
+                  <IconButton onClick={() => this.viewWatchItem(value.symbol)}>
+                    <QueueIcon style={{fill: "#fff"}}/>
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title="Remove">
+                  <IconButton onClick={() => this.delWatchItem(value.symbol)} edge="end" aria-label="delete">
+                    <DeleteIcon style={{fill: "#fff"}}/>
+                  </IconButton>
+                </Tooltip>
               </AccordionSummary>
               <AccordionDetails>
                 <Box p={{ xs: 1 }}><p>Today's Quote: ${value.quote}</p></Box>

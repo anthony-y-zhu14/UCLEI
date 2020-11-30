@@ -5,6 +5,9 @@ import Chart from "chart.js";
 import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 import FormDialog from './Dialog.js';
 import BasicTable from './StockTable.js';
+import Snackbar from '@material-ui/core/Snackbar';
+import Tooltip from '@material-ui/core/Tooltip';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 
 const styles = {
   font: {
@@ -69,13 +72,30 @@ const styles = {
 class LineChart extends React.Component {
   constructor(props) {
       super(props);
+      this.handleOpen = this
+      .handleOpen
+      .bind(this)
       this.state = {
           stockData: undefined,
           query: undefined,
           q: undefined,
           showChart: true,
+          display: 'none',
+          vertical: 'bottom',
+          horizontal: 'right',
       };
   }
+
+  handleClose = () => {
+      this.setState({display: 'none' });
+ };
+
+ handleOpen = () => {
+   console.log("GOOOO")
+     this.setState({display: 'block' });
+};
+
+
   componentDidUpdate() {
     this.componentDidMount()
     if(this.state.query !== window.location.href.slice(29)) {
@@ -110,6 +130,8 @@ class LineChart extends React.Component {
     return body;
   }
 
+
+
   handleWatchSave = async(value) => {
     const requestOptions = {
         method: 'POST',
@@ -118,9 +140,10 @@ class LineChart extends React.Component {
     };
     await fetch('/addWatchItem', requestOptions);
     this.componentDidMount();
+
   }
 
-  handleChart = async() => {
+  handleChart = () => {
     this.setState( {showChart : true} );
     this.readStock();
   }
@@ -179,7 +202,14 @@ class LineChart extends React.Component {
     }
 
   render() {
+    const { open } = this.state
     const { classes } = this.props;
+    const msg = (
+      <Container>
+        <NotificationsIcon style={{marginRight:'1%', marginLeft:'-2%', marginTop:'1%'}}/>
+        <span>Watchlist item saved, refresh to see changes.</span>
+      </Container>
+    );
 
     if(!this.state.stockData) {
       return (
@@ -192,8 +222,22 @@ class LineChart extends React.Component {
         <div className="App">
           <span className={classes.titleFont} >{this.state.stockData.name}</span>
           <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
-          <span className={classes.ticker}><i onClick={() => this.handleWatchSave(this.state.stockData.symbol)}
-           className="fa fa-bookmark"></i></span>
+
+          <Snackbar
+              style={{zIndex: 10}}
+              anchorOrigin={ {vertical:'bottom', horizontal:'right' }}
+              style={{display: this.state.display}}
+              onClose={() => this.setState({open: 'display: none'})}
+              message= {msg}
+              autoHideDuration={3000}
+          />
+          <Tooltip title="Save to Watchlist">
+            <span className={classes.ticker}><i onClick={() => {
+              this.handleWatchSave(this.state.stockData.symbol);
+              this.setState({display: 'block'});
+            }}
+             className="fa fa-bookmark"></i></span>
+           </Tooltip>
            <div className={classes.ticker}>
            <FormDialog name={this.state.stockData.name}/>
           </div>
@@ -207,6 +251,8 @@ class LineChart extends React.Component {
                 <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
                 <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
               </ButtonGroup>
+
+
           <div className={classes.chart}>
             {this.state.showChart ? <canvas id="marketChart"/> : <BasicTable stockData = {this.state.stockData}/>  }
           </div>

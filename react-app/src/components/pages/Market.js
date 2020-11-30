@@ -12,6 +12,8 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import { sizing } from '@material-ui/system';
 import returnStyles from '../css/marketStyle.js'
+import Snackbar from '@material-ui/core/Snackbar';
+
 const styles = {
   root: {
     flexGrow: 1
