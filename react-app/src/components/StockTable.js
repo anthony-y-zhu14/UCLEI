@@ -13,9 +13,8 @@ const useStyles = makeStyles({
     minWidth: 650,
   },
   font: {
+    color: '#fff',
     margin: 15,
-    fontSize: 18,
-    fontWeight: 'bold',
   }
 });
 
@@ -40,23 +39,22 @@ export default function BasicTable({stockData}) {
     ));
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer style={{backgroundColor: "#35363C", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}component={Paper}>
     <h3 className={classes.font}>Historical Data: {stockData.symbol}</h3>
       <Table className={classes.table} aria-label="simple table">
-
         <TableHead>
-          <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell align="right">Quote ($)</TableCell>
+          <TableRow >
+            <TableCell className={classes.font}>Date</TableCell>
+            <TableCell className={classes.font} align="right">Quote ($)</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
+              <TableCell className={classes.font} component="th" scope="row">
                 {row.date}
               </TableCell>
-              <TableCell align="right">{row.quote}</TableCell>
+              <TableCell className={classes.font} align="right">{row.quote}</TableCell>
             </TableRow>
           ))}
         </TableBody>
