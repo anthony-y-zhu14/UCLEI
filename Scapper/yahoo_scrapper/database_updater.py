@@ -3,20 +3,22 @@ import stock
 import asyncio
 
 
-def update_database(database_path, url_path):
+async def update_database(database_path, url_path):
     stock_symbol_list = list(json_read(url_path).keys())
     stock_list = []
     data = {}
     for symbol in stock_symbol_list:
         stock_list.append(stock.Stock(symbol))
     for s in stock_list:
-        s.update_info()
-        data[s.symbol] = s.__dict__
-        print("Fetching Data: " + data[s.symbol]["name"])    
-        
+        await scrap(s, data)          
 
     with open(database_path, "w+") as database:
         json.dump(data, database, indent=4)
+
+async def scrap(s, data):
+    s.update_info()
+    data[s.symbol] = s.__dict__
+    print("Fetching Data: " + data[s.symbol]["name"])   
 
 def update_url(json_filename, stocks):
     json_url_data = json_read(json_filename)
@@ -42,9 +44,9 @@ def json_sort(file_name):
         json.dump(sorted_obj, database, indent=4)
 
 async def main():
-    data_path = "../../server/database/stocks/data.json"
+    data_path = "../../server/database/stocks/data_real.json"
     url_path = "../../server/database/stocks/stock_url.json"
-    update_database(data_path, url_path)
+    await update_database(data_path, url_path)
     json_sort(url_path)
 
 if __name__ == "__main__":
