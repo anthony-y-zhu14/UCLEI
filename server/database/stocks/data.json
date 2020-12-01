@@ -3,14 +3,14 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.82,
-    "volume": 0,
-    "quote": 1277791.8,
-    "prev_close": 1267350,
-    "totalTranscationAmount": 0,
+    "percentage": 6,
+    "volume": 35,
+    "quote": 1476242.660000001,
+    "prev_close": 1392651.6000000006,
+    "totalTranscationAmount": 9150,
     "daily_range": {
-      "high": 1277791.8,
-      "low": 1267350
+      "high": 1392651.6000000006,
+      "low": 1392651.6000000006
     },
     "historical": {
       "2020-11-23": 1213000.5,
@@ -18,40 +18,15 @@
       "2020-11-25": 1190400.65,
       "2020-11-26": 1190400.4,
       "2020-11-27": 1267350,
-      "2020-11-30": 1267350
+      "2020-11-30": 1392651.6000000006
     },
     "historicalVolume": {
-      "2020-11-23": 0,
-      "2020-11-24": 0,
-      "2020-11-25": 0,
-      "2020-11-26": 0,
-      "2020-11-27": 0,
       "2020-11-30": 0
     },
     "historicalDailyRange": {
-      "2020-11-23": {
-        "high": 1267350,
-        "low": 1267350
-      },
-      "2020-11-24": {
-        "high": 1267350,
-        "low": 1267350
-      },
-      "2020-11-25": {
-        "high": 1267350,
-        "low": 1267350
-      },
-      "2020-11-26": {
-        "high": 1267350,
-        "low": 1267350
-      },
-      "2020-11-27": {
-        "high": 1267350,
-        "low": 1267350
-      },
       "2020-11-30": {
-        "high": 1277791.8,
-        "low": 1267350
+        "high": 1392651.6000000006,
+        "low": 1392651.6000000006
       }
     },
     "precentage": 0
@@ -66,8 +41,8 @@
     "prev_close": 12.38,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 12.38,
+      "low": 12.38
     },
     "historical": {
       "2020-11-23": 12.5,
@@ -77,7 +52,16 @@
       "2020-11-27": 12.38,
       "2020-11-30": 12.38
     },
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 12.38,
+        "low": 12.38
+      }
+    }
   },
   "AAPL": {
     "name": "Apple Inc.",
@@ -88,8 +72,8 @@
     "prev_close": 115.97,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 115.97,
+      "low": 115.97
     },
     "historical": {
       "2020-11-23": 123.5,
@@ -100,7 +84,16 @@
       "2020-11-30": 115.97
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 115.97,
+        "low": 115.97
+      }
+    }
   },
   "AC.TO": {
     "name": "Air Canada",
@@ -111,8 +104,8 @@
     "prev_close": 20.12,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 20.12,
+      "low": 20.12
     },
     "historical": {
       "2020-11-23": 23.5,
@@ -123,7 +116,16 @@
       "2020-11-30": 20.12
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 20.12,
+        "low": 20.12
+      }
+    }
   },
   "AMD": {
     "name": "Advanced Micro Devices, Inc.",
@@ -134,8 +136,8 @@
     "prev_close": 77.99,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 77.99,
+      "low": 77.99
     },
     "historical": {
       "2020-11-23": 83.5,
@@ -146,7 +148,16 @@
       "2020-11-30": 77.99
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 77.99,
+        "low": 77.99
+      }
+    }
   },
   "AMZN": {
     "name": "Amazon.com, Inc.",
@@ -157,8 +168,8 @@
     "prev_close": 3035.02,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 3035.02,
+      "low": 3035.02
     },
     "historical": {
       "2020-11-23": 3183.5,
@@ -169,7 +180,16 @@
       "2020-11-30": 3035.02
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 3035.02,
+        "low": 3035.02
+      }
+    }
   },
   "BABA": {
     "name": "Alibaba Group Holding Limited",
@@ -180,8 +200,8 @@
     "prev_close": 266.54,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 266.54,
+      "low": 266.54
     },
     "historical": {
       "2020-11-23": 283.5,
@@ -192,7 +212,16 @@
       "2020-11-30": 266.54
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 266.54,
+        "low": 266.54
+      }
+    }
   },
   "BAC": {
     "name": "Bank of America Corporation",
@@ -203,8 +232,8 @@
     "prev_close": 27.66,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 27.66,
+      "low": 27.66
     },
     "historical": {
       "2020-11-23": 23.5,
@@ -215,7 +244,16 @@
       "2020-11-30": 27.66
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 27.66,
+        "low": 27.66
+      }
+    }
   },
   "CGC": {
     "name": "Canopy Growth Corporation",
@@ -226,8 +264,8 @@
     "prev_close": 23.71,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 23.71,
+      "low": 23.71
     },
     "historical": {
       "2020-11-23": 23.5,
@@ -238,7 +276,16 @@
       "2020-11-30": 23.71
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 23.71,
+        "low": 23.71
+      }
+    }
   },
   "CHCI": {
     "name": "Comstock Holding Companies, Inc.",
@@ -249,8 +296,8 @@
     "prev_close": 2.59,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 2.59,
+      "low": 2.59
     },
     "historical": {
       "2020-11-23": 2.5,
@@ -261,7 +308,16 @@
       "2020-11-30": 2.59
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 2.59,
+        "low": 2.59
+      }
+    }
   },
   "COST": {
     "name": "Costco Wholesale Corporation",
@@ -272,8 +328,8 @@
     "prev_close": 366.62,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 366.62,
+      "low": 366.62
     },
     "historical": {
       "2020-11-23": 322.5,
@@ -284,7 +340,16 @@
       "2020-11-30": 366.62
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 366.62,
+        "low": 366.62
+      }
+    }
   },
   "DAL": {
     "name": "Delta Air Lines, Inc.",
@@ -295,8 +360,8 @@
     "prev_close": 37.04,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 37.04,
+      "low": 37.04
     },
     "historical": {
       "2020-11-23": 32.5,
@@ -307,7 +372,16 @@
       "2020-11-30": 37.04
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 37.04,
+        "low": 37.04
+      }
+    }
   },
   "F": {
     "name": "Ford Motor Company",
@@ -318,8 +392,8 @@
     "prev_close": 8.38,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 8.38,
+      "low": 8.38
     },
     "historical": {
       "2020-11-23": 8.2,
@@ -330,7 +404,16 @@
       "2020-11-30": 8.38
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 8.38,
+        "low": 8.38
+      }
+    }
   },
   "FB": {
     "name": "Facebook, Inc.",
@@ -341,8 +424,8 @@
     "prev_close": 272.43,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 272.43,
+      "low": 272.43
     },
     "historical": {
       "2020-11-23": 278.2,
@@ -353,7 +436,16 @@
       "2020-11-30": 272.43
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 272.43,
+        "low": 272.43
+      }
+    }
   },
   "GE": {
     "name": "General Electric Company",
@@ -364,8 +456,8 @@
     "prev_close": 8.98,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 8.98,
+      "low": 8.98
     },
     "historical": {
       "2020-11-23": 8.2,
@@ -376,7 +468,16 @@
       "2020-11-30": 8.98
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 8.98,
+        "low": 8.98
+      }
+    }
   },
   "GILD": {
     "name": "Gilead Sciences, Inc.",
@@ -387,8 +488,8 @@
     "prev_close": 60.62,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 60.62,
+      "low": 60.62
     },
     "historical": {
       "2020-11-23": 58.2,
@@ -399,7 +500,16 @@
       "2020-11-30": 60.62
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 60.62,
+        "low": 60.62
+      }
+    }
   },
   "GLD": {
     "name": "SPDR Gold Shares",
@@ -410,8 +520,8 @@
     "prev_close": 175.66,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 175.66,
+      "low": 175.66
     },
     "historical": {
       "2020-11-23": 162.2,
@@ -422,7 +532,16 @@
       "2020-11-30": 175.66
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 175.66,
+        "low": 175.66
+      }
+    }
   },
   "GOOG": {
     "name": "Alphabet Inc.",
@@ -433,8 +552,8 @@
     "prev_close": 1740.39,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 1740.39,
+      "low": 1740.39
     },
     "historical": {
       "2020-11-23": 1762.2,
@@ -445,7 +564,16 @@
       "2020-11-30": 1740.39
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 1740.39,
+        "low": 1740.39
+      }
+    }
   },
   "INTC": {
     "name": "Intel Corporation",
@@ -456,8 +584,8 @@
     "prev_close": 45.44,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 45.44,
+      "low": 45.44
     },
     "historical": {
       "2020-11-23": 32.2,
@@ -468,7 +596,16 @@
       "2020-11-30": 45.44
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 45.44,
+        "low": 45.44
+      }
+    }
   },
   "JD": {
     "name": "JD.com, Inc.",
@@ -479,8 +616,8 @@
     "prev_close": 80.08,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 80.08,
+      "low": 80.08
     },
     "historical": {
       "2020-11-23": 82.2,
@@ -491,7 +628,16 @@
       "2020-11-30": 80.08
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 80.08,
+        "low": 80.08
+      }
+    }
   },
   "JNJ": {
     "name": "Johnson & Johnson",
@@ -502,8 +648,8 @@
     "prev_close": 148.28,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 148.28,
+      "low": 148.28
     },
     "historical": {
       "2020-11-23": 142.2,
@@ -514,7 +660,16 @@
       "2020-11-30": 148.28
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 148.28,
+        "low": 148.28
+      }
+    }
   },
   "LK": {
     "name": "Luckin Coffee Inc.",
@@ -525,8 +680,8 @@
     "prev_close": 1.38,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 1.38,
+      "low": 1.38
     },
     "historical": {
       "2020-11-23": 0.2,
@@ -537,7 +692,16 @@
       "2020-11-30": 1.38
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 1.38,
+        "low": 1.38
+      }
+    }
   },
   "MA": {
     "name": "Mastercard Incorporated",
@@ -548,8 +712,8 @@
     "prev_close": 334.78,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 334.78,
+      "low": 334.78
     },
     "historical": {
       "2020-11-23": 342.2,
@@ -560,7 +724,16 @@
       "2020-11-30": 334.78
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 334.78,
+        "low": 334.78
+      }
+    }
   },
   "MAXR": {
     "name": "Maxar Technologies Inc.",
@@ -571,8 +744,8 @@
     "prev_close": 23.94,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 23.94,
+      "low": 23.94
     },
     "historical": {
       "2020-11-23": 22.2,
@@ -583,7 +756,16 @@
       "2020-11-30": 23.94
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 23.94,
+        "low": 23.94
+      }
+    }
   },
   "MRNA": {
     "name": "Moderna, Inc.",
@@ -594,8 +776,8 @@
     "prev_close": 76.05,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 76.05,
+      "low": 76.05
     },
     "historical": {
       "2020-11-23": 72.2,
@@ -606,7 +788,16 @@
       "2020-11-30": 76.05
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 76.05,
+        "low": 76.05
+      }
+    }
   },
   "MSFT": {
     "name": "Microsoft Corporation",
@@ -617,8 +808,8 @@
     "prev_close": 211.01,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 211.01,
+      "low": 211.01
     },
     "historical": {
       "2020-11-23": 208.2,
@@ -629,7 +820,16 @@
       "2020-11-30": 211.01
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 211.01,
+        "low": 211.01
+      }
+    }
   },
   "MU": {
     "name": "Micron Technology, Inc.",
@@ -640,8 +840,8 @@
     "prev_close": 55.41,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 55.41,
+      "low": 55.41
     },
     "historical": {
       "2020-11-23": 55.2,
@@ -652,7 +852,16 @@
       "2020-11-30": 55.41
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 55.41,
+        "low": 55.41
+      }
+    }
   },
   "NFLX": {
     "name": "Netflix, Inc.",
@@ -663,8 +872,8 @@
     "prev_close": 480.24,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 480.24,
+      "low": 480.24
     },
     "historical": {
       "2020-11-23": 455.2,
@@ -675,7 +884,16 @@
       "2020-11-30": 480.24
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 480.24,
+        "low": 480.24
+      }
+    }
   },
   "NIO": {
     "name": "NIO Limited",
@@ -686,8 +904,8 @@
     "prev_close": 41.55,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 41.55,
+      "low": 41.55
     },
     "historical": {
       "2020-11-23": 55.2,
@@ -698,7 +916,16 @@
       "2020-11-30": 41.55
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 41.55,
+        "low": 41.55
+      }
+    }
   },
   "NVDA": {
     "name": "NVIDIA Corporation",
@@ -709,8 +936,8 @@
     "prev_close": 510.8,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 510.8,
+      "low": 510.8
     },
     "historical": {
       "2020-11-23": 525.2,
@@ -721,19 +948,28 @@
       "2020-11-30": 510.8
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 510.8,
+        "low": 510.8
+      }
+    }
   },
   "SE": {
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0,
-    "quote": 186.67,
+    "percentage": 16.07,
+    "quote": 216.67,
     "prev_close": 186.67,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 3250,
     "daily_range": {
-      "high": 186.67,
-      "low": 0
+      "high": 216.67,
+      "low": 186.67
     },
     "historical": {
       "2020-11-23": 125.2,
@@ -743,8 +979,17 @@
       "2020-11-27": 192.61,
       "2020-11-30": 186.67
     },
-    "volume": 0,
-    "precentage": 0
+    "volume": 15,
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 186.67,
+        "low": 186.67
+      }
+    }
   },
   "SHOP": {
     "name": "Shopify Inc.",
@@ -755,8 +1000,8 @@
     "prev_close": 885.76,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 885.76,
+      "low": 885.76
     },
     "historical": {
       "2020-11-23": 925.2,
@@ -767,7 +1012,16 @@
       "2020-11-30": 885.76
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 885.76,
+        "low": 885.76
+      }
+    }
   },
   "SPCE": {
     "name": "Virgin Galactic Holdings, Inc.",
@@ -778,8 +1032,8 @@
     "prev_close": 20.47,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 20.47,
+      "low": 20.47
     },
     "historical": {
       "2020-11-23": 12.34,
@@ -790,7 +1044,16 @@
       "2020-11-30": 20.47
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 20.47,
+        "low": 20.47
+      }
+    }
   },
   "SQ": {
     "name": "Square, Inc.",
@@ -801,8 +1064,8 @@
     "prev_close": 172,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 172,
+      "low": 172
     },
     "historical": {
       "2020-11-23": 182.34,
@@ -813,7 +1076,16 @@
       "2020-11-30": 172
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 172,
+        "low": 172
+      }
+    }
   },
   "TCEHY": {
     "name": "Tencent Holdings Limited",
@@ -824,8 +1096,8 @@
     "prev_close": 73.8,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 73.8,
+      "low": 73.8
     },
     "historical": {
       "2020-11-23": 82.34,
@@ -836,7 +1108,16 @@
       "2020-11-30": 73.8
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 73.8,
+        "low": 73.8
+      }
+    }
   },
   "TD.TO": {
     "name": "The Toronto-Dominion Bank",
@@ -847,8 +1128,8 @@
     "prev_close": 64.48,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 64.48,
+      "low": 64.48
     },
     "historical": {
       "2020-11-23": 62.34,
@@ -859,7 +1140,16 @@
       "2020-11-30": 64.48
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 64.48,
+        "low": 64.48
+      }
+    }
   },
   "TLRY": {
     "name": "Tilray, Inc.",
@@ -870,8 +1160,8 @@
     "prev_close": 8.33,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 8.33,
+      "low": 8.33
     },
     "historical": {
       "2020-11-23": 15.14,
@@ -882,7 +1172,16 @@
       "2020-11-30": 8.33
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 8.33,
+        "low": 8.33
+      }
+    }
   },
   "TSLA": {
     "name": "Tesla, Inc.",
@@ -893,8 +1192,8 @@
     "prev_close": 410.36,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 410.36,
+      "low": 410.36
     },
     "historical": {
       "2020-11-23": 415.14,
@@ -905,7 +1204,16 @@
       "2020-11-30": 410.36
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 410.36,
+        "low": 410.36
+      }
+    }
   },
   "V": {
     "name": "Visa Inc.",
@@ -916,8 +1224,8 @@
     "prev_close": 213.31,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 213.31,
+      "low": 213.31
     },
     "historical": {
       "2020-11-23": 215.14,
@@ -928,7 +1236,16 @@
       "2020-11-30": 213.31
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 213.31,
+        "low": 213.31
+      }
+    }
   },
   "WMT": {
     "name": "Walmart Inc.",
@@ -939,8 +1256,8 @@
     "prev_close": 145.56,
     "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 0,
-      "low": 0
+      "high": 145.56,
+      "low": 145.56
     },
     "historical": {
       "2020-11-23": 135.14,
@@ -951,6 +1268,15 @@
       "2020-11-30": 145.56
     },
     "volume": 0,
-    "precentage": 0
+    "precentage": 0,
+    "historicalVolume": {
+      "2020-11-30": 0
+    },
+    "historicalDailyRange": {
+      "2020-11-30": {
+        "high": 145.56,
+        "low": 145.56
+      }
+    }
   }
 }

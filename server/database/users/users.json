@@ -1,0 +1,278 @@
+{
+  "jerry137": {
+    "username": "jerry137",
+    "password": "123456",
+    "name": "Jerry Smith",
+    "watchlist": [
+      {
+        "symbol": "SE",
+        "quote": 186.67,
+        "name": "Sea Limited",
+        "volume": 0
+      },
+      {
+        "symbol": "GOOG",
+        "quote": 1740.39,
+        "name": "Alphabet Inc.",
+        "volume": 0
+      },
+      {
+        "symbol": "D35-C",
+        "quote": 1267350,
+        "name": "Dimension 35-C",
+        "volume": 0
+      }
+    ],
+    "eventList": [],
+    "ownedStocks": [
+      {
+        "name": "Sea Limited",
+        "quote": 250,
+        "total_cost": 1250,
+        "average_cost": 250,
+        "symbol": "SE",
+        "share": 5
+      }
+    ],
+    "activity": [
+      {
+        "date": "2020-11-29",
+        "activities": [
+          {
+            "date": "2020-11-29",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from rick137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to rick137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $160 from rick137 - 2020-11-29"
+          }
+        ]
+      },
+      {
+        "date": "2020-12-01",
+        "activities": [
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to rick137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $190 from rick137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to rick137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 5 shares of SE at $250 from rick137 - 2020-12-01"
+          }
+        ]
+      }
+    ],
+    "account": {
+      "accountName": "C-137-1001",
+      "cashBalance": 850,
+      "investmentBalance": 1250,
+      "totalDeposit": 1600
+    },
+    "balanceGrowth": 0,
+    "openOrders": []
+  },
+  "morty137": {
+    "username": "morty137",
+    "password": "123456",
+    "name": "Morty Smith",
+    "watchlist": [
+      {
+        "symbol": "MAXR",
+        "quote": 23.94,
+        "name": "Maxar Technologies Inc.",
+        "volume": 0
+      }
+    ],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": "156.53",
+        "name": "Sea Limited",
+        "active": "Active",
+        "notified": true,
+        "notify_num": 8,
+        "message": "Alert: Sea Limited, (SE) price has increased by 8% or greater."
+      },
+      {
+        "symbol": "MAXR",
+        "quote": "23.94",
+        "name": "Maxar Technologies Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 2,
+        "message": ""
+      },
+      {
+        "symbol": "FB",
+        "quote": 272.43,
+        "name": "Facebook, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 4,
+        "message": ""
+      }
+    ],
+    "ownedStocks": [
+      {
+        "name": "Facebook, Inc.",
+        "quote": 272.43,
+        "total_cost": 2724.3,
+        "average_cost": 272.43,
+        "symbol": "FB",
+        "share": 10
+      }
+    ],
+    "activity": [],
+    "account": {
+      "accountName": 1002,
+      "cashBalance": 0,
+      "investmentBalance": 2724.3,
+      "totalDeposit": 2724.3
+    },
+    "balanceGrowth": "0",
+    "openOrders": []
+  },
+  "rick137": {
+    "username": "rick137",
+    "password": "123456",
+    "name": "Rick Sanchez",
+    "watchlist": [
+      {
+        "symbol": "FB",
+        "quote": "272.43",
+        "name": "Facebook, Inc.",
+        "volume": 0
+      },
+      {
+        "symbol": "AMD",
+        "quote": "77.99",
+        "name": "Advanced Micro Devices, Inc.",
+        "volume": 0
+      }
+    ],
+    "eventList": [
+      {
+        "symbol": "AMD",
+        "quote": "600.99",
+        "name": "Advanced Micro Devices, Inc.",
+        "active": "Active",
+        "notified": true,
+        "notify_num": "100",
+        "message": "Alert: Advanced Micro Devices, Inc., (AMD) price has increased by 100% or greater."
+      },
+      {
+        "symbol": "TSLA",
+        "quote": "200.99",
+        "name": "Tesla Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": "12",
+        "message": ""
+      }
+    ],
+    "ownedStocks": [
+      {
+        "name": "Sea Limited",
+        "quote": 200,
+        "total_cost": 2000,
+        "average_cost": 200,
+        "symbol": "SE",
+        "share": 5
+      }
+    ],
+    "activity": [
+      {
+        "date": "2020-11-29",
+        "activities": [
+          {
+            "date": "2020-11-29",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to jerry137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-11-29"
+          },
+          {
+            "date": "2020-11-29",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-29"
+          }
+        ]
+      },
+      {
+        "date": "2020-11-30",
+        "activities": [
+          {
+            "date": "2020-11-30",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to jerry137 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-11-30"
+          },
+          {
+            "date": "2020-11-30",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-30"
+          }
+        ]
+      },
+      {
+        "date": "2020-12-01",
+        "activities": [
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $190 to jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 5 shares of SE at $250 to jerry137 - 2020-12-01"
+          }
+        ]
+      }
+    ],
+    "account": {
+      "accountName": 1003,
+      "cashBalance": 3150,
+      "investmentBalance": 2000,
+      "totalDeposit": 4000
+    },
+    "balanceGrowth": "0",
+    "openOrders": []
+  }
+}

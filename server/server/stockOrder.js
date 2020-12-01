@@ -313,11 +313,8 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
     });
 
     //update percentage change, quote
-    if (stockDatabase[symbol].volume === 0){
-        stockDatabase[symbol].percentage = 0;
-        stockDatabase[symbol].quote =  stockDatabase[symbol].prev_close;
-    }
-    else{
+    
+    if (quantity > currentQuantity){
         stockDatabase[symbol].volume += (quantity - currentQuantity);
         let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
         let percentageChange = ((newQuote - stockDatabase[symbol].prev_close) / stockDatabase[symbol].prev_close * 100);
@@ -538,11 +535,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
         return order.share > 0
     });
 
-    if (stockDatabase[symbol].volume === 0){
-        stockDatabase[symbol].percentage = 0;
-        stockDatabase[symbol].quote =  stockDatabase[symbol].prev_close;
-    }
-    else{
+    if (quantity > currentQuantity){
         stockDatabase[symbol].volume += (quantity - currentQuantity);
         let newQuote = stockDatabase[symbol].totalTranscationAmount / stockDatabase[symbol].volume;
         let percentageChange = ((newQuote - stockDatabase[symbol].prev_close) / stockDatabase[symbol].prev_close * 100);

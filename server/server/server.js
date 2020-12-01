@@ -71,7 +71,7 @@ app.post('/authentication', (req, res) => {
     let username = data.username;
     let password = data.password;
     authenticate(username, password);
-    res.end();
+    res.end();   
     });
 
     function authenticate(username, password) {
@@ -79,13 +79,14 @@ app.post('/authentication', (req, res) => {
             console.log(`Client ${username} authenticated succesfully.`);
             const USER_TOKEN = uuidv4();
             req.session.user = users[username]['username'];
+            req.session.session_id = USER_TOKEN;
 
-            users[username]['session_id'] = USER_TOKEN;
+            // users[username]['session_id'] = USER_TOKEN;
             const login_data = {
                 authentication: true,
                 session_id: USER_TOKEN
             };
-            updateUserDataBase();
+            // updateUserDataBase();
             res.write(JSON.stringify(login_data));
         }
         else if(username === '' && password === '') {
@@ -134,14 +135,16 @@ app.post('/register', (req, res) => {
                     accountName: "Tax Free Savings Account",
                     cashBalance: 0,
                     investmentBalance: 0,
+                    totalDeposit: 0
                 },
                 balanceGrowth: "0"
             }
 
             users[username] = newUser;
             req.session.user = users[username]['username'];
+            req.session.session_id = USER_TOKEN;
 
-            users[username]['session_id'] = USER_TOKEN;
+            // users[username]['session_id'] = USER_TOKEN;
             const login_data = {
                 authentication: true,
                 session_id: USER_TOKEN
@@ -160,9 +163,9 @@ app.post('/register', (req, res) => {
 });
 
 app.get("/logout", function(req, res){
-    console.log(`${users[req.session.user].username} Logged Out, Cookie destroyed`);
-    users[req.session.user]["session_id"] = null;
-    updateUserDataBase();
+    console.log(`${req.session.user} Logged Out, Cookie destroyed`);
+    // users[req.session.user]["session_id"] = null;
+    // updateUserDataBase();
     req.session.destroy();
 
 });
@@ -170,7 +173,7 @@ app.get("/logout", function(req, res){
 app.get("/session", function(req, res){
     let data = '';
     if (req.session.user){
-        data = users[req.session.user].session_id;
+        data = req.session.session_id;
     }
     else{
         data = null;
@@ -228,6 +231,7 @@ app.post('/updateBalance', (req, res) => {
         function handleTransac() {
             if(data.type === 'deposit') {
                 users[req.session.user]['account']['cashBalance'] += parseInt(data.amount);
+                users[req.session.user]['account']['totalDeposit'] += parseInt(data.amount);
                 let activityMessage = `Deposited $${parseInt(data.amount)} to account: ${users[req.session.user].account.accountName}`;
                 let newActivity = stockOrder.creatNewActivity('deposite', activityMessage);
                 stockOrder.updateUserActivity(users[req.session.user].activity, newActivity);
@@ -235,6 +239,7 @@ app.post('/updateBalance', (req, res) => {
             else {
                 if(users[req.session.user]['account']['cashBalance'] >= parseInt(data.amount)) {
                 users[req.session.user]['account']['cashBalance'] -= parseInt(data.amount);
+                users[req.session.user]['account']['totalDeposit'] -= parseInt(data.amount);
                 let activityMessage = `Withdrawn $${parseInt(data.amount)} to account: ${users[req.session.user].account.accountName}`;
                 let newActivity = stockOrder.creatNewActivity('withdraw', activityMessage);
                 stockOrder.updateUserActivity(users[req.session.user].activity, newActivity);
@@ -638,10 +643,6 @@ Public API (call requests to this api using port 3001)
 
 app.get("/stocks", (req, res) => {
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    let keys = [];
-    for(let key in stockDatabase) {
-      keys.push(key);
-    }
     let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
     let min = parseFloat(req.query.minprice);
     let max = parseFloat(req.query.maxprice);
@@ -856,7 +857,6 @@ setInterval(function checkRefresh() {
         today = new Date().toISOString().slice(0,10);
     }
 }, 10000);
-serverReset.resetStock(today);
 app.listen(3001);
 
     console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
