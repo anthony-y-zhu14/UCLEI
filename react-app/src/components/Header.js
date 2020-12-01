@@ -122,7 +122,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       throw Error(body.message);
     }
     setEventsList(body);
-    return;
   }
 
   const getNotifications = async () => {
@@ -132,7 +131,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       throw Error(body.message);
     }
     setNotifications(body.count);
-    return;
   }
 
   const setSearchQuery = (event) => {

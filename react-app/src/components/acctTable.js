@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import '@date-io/date-fns'
+import DateFnsUtils from '@date-io/date-fns';
+import formatISO from 'date-fns/formatISO'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -29,6 +36,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import Snackbar from '@material-ui/core/Snackbar';
+import CloseIcon from '@material-ui/icons/Close';
+// import { date } from 'date-fns/locale/af';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -48,15 +58,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData( d ) {
-  return { d };
-}
-
-function getDate() {
-  let date = new Date();
-  let today = date.toISOString().slice(0,10);
-  return today;
-}
 
 function Row(props) {
   const { row } = props;
@@ -91,11 +92,11 @@ function Row(props) {
                 </TableHead>
                 <TableBody>
                   {row.activities.map((historyRow) => (
-                    <TableRow key={historyRow[0]}>
+                    <TableRow key={historyRow.action}>
                       <TableCell component="th" scope="row">
-                        {historyRow[0]}
+                        {historyRow.action}
                       </TableCell>
-                      <TableCell>{historyRow[1]}</TableCell>
+                      <TableCell>{historyRow.message}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -110,34 +111,104 @@ function Row(props) {
 
 export default function AccountTable({userData}) {
   const classes = useStyles();
-  const [sort, setSort] = React.useState('');
+  const [filter, setFilter] = React.useState('');
   const [rows, setRows] = React.useState([]);
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  const [loaded, setLoaded] = React.useState(false);
+  const [selectedStartDate, setSelectedStartDate] = React.useState(new Date('2020-12-01T21:11:54'));
+  const [selectedEndDate, setSelectedEndDate] = React.useState(new Date('2020-12-01T21:11:54'));
 
-  let data = [];
+  const filterByDate = (date1, date2) => {
+    let newData = (userData.activity.filter((activity) => {
+      return (activity.date >= formatISO(date1, { representation: 'date' } ) && activity.date <= formatISO(date2, { representation: 'date' } ));
+    }));
+    if(newData.length === 0) {
+      setOpen(true)
+      setLoaded(true)
+    }
+    setRows(newData);
+  }
 
-  const createRows = () => {
-    let r = {};
-    userData.activity.map(activity => (
-      r = { date : undefined, activities: []},
-      r.date = (activity.date),
-      activity.activities.map(lines => (
-        r.activities.push([lines.action, lines.message])
-      )),
-      data.push(r)
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const handleDateChange = (date) => {   
+    setSelectedStartDate(date);
+  };
+
+  const handleDateChange2 = (date) => {   
+    setSelectedEndDate(date);
+  };
+
+  const createRows = () => {   
+    let data = [];   
+      
+    userData.activity.map(activity =>(     
+    data.push(activity)
     ))
 
-    if(rows.length !== data.length) {
-      setRows(data)
+    if(rows.length === 0) {
+      setRows(data);
     }
   }
 
   useEffect(() => {
+    if(!loaded){
       createRows();
-  })
-
+    }   
+  });
+  
     return (
       <TableContainer component={Paper}>
+         <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <KeyboardDatePicker
+            margin="normal"
+            label="Start Date"
+            format="yyyy/MM/dd"
+            value={selectedStartDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}            
+          />
+          <KeyboardDatePicker
+            margin="normal"           
+            label="End Date"
+            format="yyyy/MM/dd"
+            value={selectedEndDate}
+            onChange={handleDateChange2}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}            
+          />
+
+        <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="No results found for given range."
+        action={
+          <React.Fragment>
+            <Button color="secondary" size="small" onClick={handleClose}>
+              UNDO
+            </Button>
+            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </React.Fragment>
+        }
+        />
+          
+         </MuiPickersUtilsProvider>
+         <Button onClick={() => filterByDate(selectedStartDate, selectedEndDate)}>Confirm</Button>
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
@@ -152,4 +223,5 @@ export default function AccountTable({userData}) {
         </Table>
       </TableContainer>
     );
-}
+      
+  }

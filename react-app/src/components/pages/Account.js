@@ -61,7 +61,8 @@ class Account extends React.Component {
             moneyWithdraw: false,
             amount: 0,
             type: undefined,
-            session_id: undefined
+            session_id: undefined,
+            growth: undefined
           };
     }
 
@@ -69,8 +70,11 @@ class Account extends React.Component {
       this.setState({session_id: this.props.session_id});
 
       this.callBackendAPI()
-        .then(res => this.setState({ user: res }))
-        .catch(err => console.log(err));
+        .then(res => this.setState({ 
+          user: res
+         }))
+        .catch(err => console.log(err))        
+        
     }
 
     callBackendAPI = async () => {
@@ -81,6 +85,10 @@ class Account extends React.Component {
         }
         return body;
     };
+
+    calculateGrowth = () =>{
+      return ((this.state.user.account.cashBalance + this.state.user.account.investmentBalance - this.state.user.account.totalDeposit)/this.state.user.account.totalDeposit).toFixed(2)
+    }
 
     handleHolding = (e) =>{
         this.setState({
@@ -183,9 +191,9 @@ class Account extends React.Component {
             <Container className={classes.acctCard}>
               <h2>{this.state.user.name}</h2>
               <h3>Account: {this.state.user.account.accountName}</h3>
-              <p>Account Balance: {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</p>
+              <p>Account Total Balance: {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</p>
               <p>Account Investment Balance: {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}</p>
-              <p>Account Growth: {((this.state.user.account.cashBalance + this.state.user.account.investmentBalance - this.state.user.account.totalDeposit)/this.state.user.account.totalDeposit).toFixed(2)}%</p>
+              <p style={{color: "green"}}>Account Growth: {this.calculateGrowth()}%</p>
             </Container>
             <Breakpoint medium up>
               <Grid container spacing={1}>

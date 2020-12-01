@@ -5,12 +5,6 @@
     "name": "Jerry Smith",
     "watchlist": [
       {
-        "symbol": "SE",
-        "quote": 186.67,
-        "name": "Sea Limited",
-        "volume": 0
-      },
-      {
         "symbol": "GOOG",
         "quote": 1740.39,
         "name": "Alphabet Inc.",
@@ -23,17 +17,18 @@
         "volume": 0
       }
     ],
-    "eventList": [],
-    "ownedStocks": [
+    "eventList": [
       {
-        "name": "Sea Limited",
-        "quote": 250,
-        "total_cost": 1250,
-        "average_cost": 250,
         "symbol": "SE",
-        "share": 5
+        "quote": 175,
+        "name": "Sea Limited",
+        "active": "Active",
+        "notified": true,
+        "notify_num": 5,
+        "message": "Alert: Sea Limited, (SE) price has increased by 5% or greater."
       }
     ],
+    "ownedStocks": [],
     "activity": [
       {
         "date": "2020-11-29",
@@ -77,14 +72,29 @@
             "date": "2020-12-01",
             "action": "buy",
             "message": "Bought 5 shares of SE at $250 from rick137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 5 shares of SE at $200 to rick137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $100 from rick137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $350 to rick137 - 2020-12-01"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 850,
-      "investmentBalance": 1250,
+      "cashBalance": 4350,
+      "investmentBalance": 0,
       "totalDeposit": 1600
     },
     "balanceGrowth": 0,
@@ -117,9 +127,9 @@
         "quote": "23.94",
         "name": "Maxar Technologies Inc.",
         "active": "Active",
-        "notified": false,
+        "notified": true,
         "notify_num": 2,
-        "message": ""
+        "message": "Alert: Maxar Technologies Inc., (MAXR) price has increased by 2% or greater."
       },
       {
         "symbol": "FB",
@@ -192,11 +202,11 @@
     "ownedStocks": [
       {
         "name": "Sea Limited",
-        "quote": 200,
-        "total_cost": 2000,
-        "average_cost": 200,
+        "quote": 350,
+        "total_cost": 3500,
+        "average_cost": 350,
         "symbol": "SE",
-        "share": 5
+        "share": 10
       }
     ],
     "activity": [
@@ -262,15 +272,35 @@
             "date": "2020-12-01",
             "action": "sell",
             "message": "Sold 5 shares of SE at $250 to jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 5 shares of SE at $200 from jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $100 to jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "deposite",
+            "message": "Deposited $4000 to account: 1003 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $350 from jerry137 - 2020-12-01"
           }
         ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 3150,
-      "investmentBalance": 2000,
-      "totalDeposit": 4000
+      "cashBalance": 3650,
+      "investmentBalance": 3500,
+      "totalDeposit": 8000
     },
     "balanceGrowth": "0",
     "openOrders": []

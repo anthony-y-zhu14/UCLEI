@@ -37,8 +37,9 @@ module.exports = {
        if(users[user]['eventList'][i]["notify_num"] > 0) {
          if(users[user]['eventList'][i]['notified'] !== true &&
          users[user]['eventList'][i]["active"] === "Active" &&
-         users[user]['eventList'][i]["quote"] >=
-         parseFloat(stockDatabase[ticker]['quote']) * (1 + (users[user]['eventList'][i]['notify_num']/100)))
+         stockDatabase[users[user]['eventList'][i].symbol].percentage >=
+         (users[user]['eventList'][i]['notify_num']))
+
          {
           console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (POSITIVE)`); //temp
 
@@ -53,9 +54,8 @@ module.exports = {
 
          if(users[user]['eventList'][i] !== true &&
          users[user]['eventList'][i]["active"] === "Active" &&
-         users[user]['eventList'][i]["quote"] <=
-         parseFloat(stockDatabase[ticker]['quote']) - (parseFloat(stockDatabase[ticker]['quote']) *
-         (-1 * (users[user]['eventList'][i]['notify_num']/100))))
+         stockDatabase[users[user]['eventList'][i].symbol].percentage <=
+         users[user]['eventList'][i]['notify_num'])
          {
            console.log(`We should Notify: ${JSON.stringify(users[user]['username'])}, (NEGATIVE)`); //temp
 
