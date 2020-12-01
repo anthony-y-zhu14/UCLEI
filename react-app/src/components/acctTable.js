@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useRef, forwardRef, useImperativeHandle, } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import '@date-io/date-fns'
 import DateFnsUtils from '@date-io/date-fns';
@@ -13,28 +13,15 @@ import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import PropTypes from 'prop-types';
 import Box from '@material-ui/core/Box';
 import Collapse from '@material-ui/core/Collapse';
-import clsx from 'clsx';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
 import Paper from '@material-ui/core/Paper';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
-import FilterListIcon from '@material-ui/icons/FilterList';
-import { Button, ButtonGroup, Container } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import IconButton from '@material-ui/core/IconButton';
-import SortIcon from '@material-ui/icons/Sort';
-import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
@@ -59,10 +46,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-function Row(props) {
+const Row = forwardRef((props, ref) => {
   const { row } = props;
-  const [open, setOpen] = React.useState(false);
+  const { open2 } = props;
+  const [open, setOpen] = React.useState(open2);
   const classes = useStyles();
+
+  const hideRows = () => {
+    setOpen(false);
+  }
+
+  useImperativeHandle(ref, () => {
+    return {
+      hideRows : hideRows
+    };
+  });
 
   return (
     <React.Fragment>
@@ -94,7 +92,7 @@ function Row(props) {
                   {row.activities.map((historyRow) => (
                     <TableRow key={historyRow.action}>
                       <TableCell component="th" scope="row">
-                        {historyRow.action}
+                        {historyRow.action.toUpperCase()}
                       </TableCell>
                       <TableCell>{historyRow.message}</TableCell>
                     </TableRow>
@@ -107,21 +105,40 @@ function Row(props) {
       </TableRow>
     </React.Fragment>
   );
-}
+});
 
 export default function AccountTable({userData}) {
   const classes = useStyles();
-  const [filter, setFilter] = React.useState('');
+  const ref = useRef(null);
+  const [type, setType] = React.useState('All');
   const [rows, setRows] = React.useState([]);
   const [open, setOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
   const [loaded, setLoaded] = React.useState(false);
   const [selectedStartDate, setSelectedStartDate] = React.useState(new Date('2020-12-01T21:11:54'));
   const [selectedEndDate, setSelectedEndDate] = React.useState(new Date('2020-12-01T21:11:54'));
 
-  const filterByDate = (date1, date2) => {
-    let newData = (userData.activity.filter((activity) => {
-      return (activity.date >= formatISO(date1, { representation: 'date' } ) && activity.date <= formatISO(date2, { representation: 'date' } ));
-    }));
+  const filterByDate = () => {      
+    ref.current.hideRows();
+    let newData = (JSON.parse(JSON.stringify(userData.activity)).filter((activity) => {  
+      return (activity.date >= formatISO(selectedStartDate, { representation: 'date' } ) && activity.date <= formatISO(selectedEndDate, { representation: 'date' } ));         
+    }));    
+    newData.forEach((date) => {
+      if(type === 'All'){
+        return;
+      }      
+      else{
+        date.activities = date.activities.filter((activity) => {        
+          return (activity.action.toUpperCase() === type.toUpperCase());
+        });        
+      }
+    });
+    newData = newData.filter((date) =>{
+      return (date.activities.length > 0);
+    }) 
+
+    console.log(newData);
+    
     if(newData.length === 0) {
       setOpen(true)
       setLoaded(true)
@@ -144,20 +161,15 @@ export default function AccountTable({userData}) {
     setSelectedEndDate(date);
   };
 
-  const createRows = () => {   
-    let data = [];   
-      
-    userData.activity.map(activity =>(     
-    data.push(activity)
-    ))
+  const createRows = () => {      
 
     if(rows.length === 0) {
-      setRows(data);
+      setRows(userData.activity);
     }
   }
 
   useEffect(() => {
-    if(!loaded){
+    if(!loaded || !open){
       createRows();
     }   
   });
@@ -165,59 +177,62 @@ export default function AccountTable({userData}) {
     return (
       <TableContainer component={Paper}>
          <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            margin="normal"
-            label="Start Date"
-            format="yyyy/MM/dd"
-            value={selectedStartDate}
-            onChange={handleDateChange}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}            
-          />
-          <KeyboardDatePicker
-            margin="normal"           
-            label="End Date"
-            format="yyyy/MM/dd"
-            value={selectedEndDate}
-            onChange={handleDateChange2}
-            KeyboardButtonProps={{
-              'aria-label': 'change date',
-            }}            
-          />
+            <KeyboardDatePicker
+              margin="normal"
+              label="Start Date"
+              format="yyyy/MM/dd"
+              value={selectedStartDate}
+              onChange={handleDateChange}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}            
+            />
+            <KeyboardDatePicker
+              margin="normal"           
+              label="End Date"
+              format="yyyy/MM/dd"
+              value={selectedEndDate}
+              onChange={handleDateChange2}
+              KeyboardButtonProps={{
+                'aria-label': 'change date',
+              }}            
+            />
 
-        <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message="No results found for given range."
-        action={
-          <React.Fragment>
-            <Button color="secondary" size="small" onClick={handleClose}>
-              UNDO
-            </Button>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-        />
-          
+            <Snackbar anchorOrigin={{ vertical: 'bottom', horizontal: 'left', }} open={open} autoHideDuration={6000} onClose={handleClose} message="No results found for given range." action={
+            <React.Fragment>
+                <Button color="secondary" size="small" onClick={handleClose}>UNDO</Button>
+                <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
+                  <CloseIcon fontSize="small" />
+                </IconButton>
+              </React.Fragment>
+            }
+            />          
          </MuiPickersUtilsProvider>
-         <Button onClick={() => filterByDate(selectedStartDate, selectedEndDate)}>Confirm</Button>
+         <br/>         
+          <Select labelId="demo-simple-select-filled-label" value={type} onChange={(e)=>{
+            setType(e.target.value)}}>
+            <MenuItem value={"All"}>All</MenuItem>
+            <MenuItem value={"Sell"}>Sell</MenuItem>
+            <MenuItem value={"Buy"}>Buy</MenuItem>
+            <MenuItem value={"Withdraw"}>Withdraw</MenuItem>
+            <MenuItem value={"Deposit"}>Deposit</MenuItem>           
+          </Select>
+
+        <Button onClick={() => {
+        filterByDate();
+        setIsOpen(false);
+        }}>
+          Confirm</Button>
+        
         <Table aria-label="collapsible table">
           <TableHead>
             <TableRow>
               <TableCell align="left">Date</TableCell>
             </TableRow>
-          </TableHead>
+          </TableHead>          
           <TableBody>
             {rows.map((row) => (
-              <Row key={row.date} row={row} />
+              <Row key={row.date} open2={isOpen} ref={ref} row={row} />
             ))}
           </TableBody>
         </Table>

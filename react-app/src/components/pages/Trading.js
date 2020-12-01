@@ -215,18 +215,16 @@ class Trading extends React.Component {
         const response = await fetch(url);
         const stock = await response.json();
         if (response.status !== 200) {
-            throw Error(stock.message)
+          alert("Failed to find a stock with that symbol");
+          return;
         }
-
-        if (stock.length !== 0){
-            this.setState ({
-                stock_found: stock[0],
-                isStockFound: true
-            });
-        }
-        else{
-            alert("Failed to find a stock with that symbol");
-        }
+        
+        this.setState ({
+            stock_found: stock[0],
+            isStockFound: true
+        });
+        
+        
         this.callBackendAPI()
           .then(res => this.setState({ user: res }))
           .catch(err => console.log(err));

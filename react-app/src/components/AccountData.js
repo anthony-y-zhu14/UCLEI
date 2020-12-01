@@ -25,6 +25,10 @@ class AccountData extends React.Component {
       };
   }
 
+  calculateGrowth = () =>{
+    return ((this.state.user.account.cashBalance + this.state.user.account.investmentBalance - this.state.user.account.totalDeposit)/this.state.user.account.totalDeposit).toFixed(2)
+  }
+
   render() {
     const { classes } = this.props;
 
@@ -35,7 +39,8 @@ class AccountData extends React.Component {
           <h3>Account: {this.state.user.account.accountName}</h3>
           <p>Account Balance: {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</p>
           <p>Account Investment Balance: {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}</p>
-          <p>Account Growth: {((this.state.user.account.cashBalance + this.state.user.account.investmentBalance - this.state.user.account.totalDeposit)/this.state.user.account.totalDeposit).toFixed(2)}%</p>
+          <span>Account Growth:  </span>
+          <span style={ this.calculateGrowth() >= 0 ?{color: "#2ed47a"}:{color: "indianred"} }>{this.calculateGrowth()}%</span>
 
         </Container>
       </React.Fragment>

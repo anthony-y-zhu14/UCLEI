@@ -121,7 +121,7 @@ class Login extends React.Component {
                   </div>
                   <div className={classes.LbuttonContainer}>
                     <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                    <Button className={classes.lBtn} variant="contained" color="secondary" onClick={this.register}>Register</Button>
+                    <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
                   </div>
                   </div>
                 </div>

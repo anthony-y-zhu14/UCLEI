@@ -193,7 +193,8 @@ class Account extends React.Component {
               <h3>Account: {this.state.user.account.accountName}</h3>
               <p>Account Total Balance: {"$" + (Math.round( (parseFloat(this.state.user.account.cashBalance) + parseFloat(this.state.user.account.investmentBalance)) * 100) / 100).toFixed(2)}</p>
               <p>Account Investment Balance: {"$" + (Math.round( parseFloat(this.state.user.account.investmentBalance) * 100) / 100).toFixed(2)}</p>
-              <p style={{color: "green"}}>Account Growth: {this.calculateGrowth()}%</p>
+              <span>Account Growth:  </span>
+              <span style={ this.calculateGrowth() >= 0 ?{color: "#2ed47a"}:{color: "indianred"} }>{this.calculateGrowth()}%</span>
             </Container>
             <Breakpoint medium up>
               <Grid container spacing={1}>

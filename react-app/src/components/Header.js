@@ -105,7 +105,9 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const sleep = (milliseconds) => {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+  }
   const callBackendAPI = async () => {
     const response = await fetch('/logout');
     const body = await response.json();
@@ -121,7 +123,20 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
+    sleep(120000).then(() => {
+      setEventsList(body);
+    });
+  }
+
+  const getEventsListNow = async () => {
+    const response = await fetch('/getEvents');
+    const body = await response.json();
+    if(response.status !== 200) {
+      throw Error(body.message);
+    }
+    
     setEventsList(body);
+    
   }
 
   const getNotifications = async () => {
@@ -130,7 +145,18 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
-    setNotifications(body.count);
+    sleep(120000).then(() => {
+      setNotifications(body.count);
+    });    
+  }
+
+  const getNotificationsNow = async () => {
+    const response = await fetch('/getNotified');
+    const body = await response.json();
+    if(response.status !== 200) {
+      throw Error(body.message);
+    }    
+    setNotifications(body.count);       
   }
 
   const setSearchQuery = (event) => {
@@ -139,10 +165,9 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
 
   const handleSubmit = (event) => {
 
-    if(event.charCode === 13) {
-      console.log(event.target.value);
+    if(event.charCode === 13) {      
       let location = {
-        pathname: `/market/${event.target.value}`,
+        pathname: `/market/${event.target.value.toUpperCase()}`,
         state: {
           query: event.target.value
         }
@@ -151,7 +176,8 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     }
 }
 
-useEffect(() => {
+
+useEffect(() => {  
   getEventsList();
   getNotifications();
 });
@@ -203,7 +229,7 @@ useEffect(() => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton color="inherit" onClick={getEventsList}>
+        <IconButton color="inherit" onClick={getEventsListNow}>
           <NotificationsForm stockData={eventsList}/>
         </IconButton>
       </MenuItem>
@@ -250,7 +276,7 @@ useEffect(() => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton onClick={getEventsList}  color="inherit">
+            <IconButton onClick={getNotificationsNow}  color="inherit">
             <NotificationsForm  notifynums={notifications} stockData={eventsList}/>
             </IconButton>
             <IconButton

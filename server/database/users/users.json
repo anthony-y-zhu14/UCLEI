@@ -5,16 +5,10 @@
     "name": "Jerry Smith",
     "watchlist": [
       {
-        "symbol": "GOOG",
-        "quote": 1740.39,
-        "name": "Alphabet Inc.",
-        "volume": 0
-      },
-      {
         "symbol": "D35-C",
-        "quote": 1267350,
+        "quote": 1549451.49,
         "name": "Dimension 35-C",
-        "volume": 0
+        "volume": 210
       }
     ],
     "eventList": [
@@ -26,6 +20,33 @@
         "notified": true,
         "notify_num": 5,
         "message": "Alert: Sea Limited, (SE) price has increased by 5% or greater."
+      },
+      {
+        "symbol": "AMD",
+        "quote": 77.99,
+        "name": "Advanced Micro Devices, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 5,
+        "message": ""
+      },
+      {
+        "symbol": "GOOG",
+        "quote": 1740.39,
+        "name": "Alphabet Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 5,
+        "message": ""
+      },
+      {
+        "symbol": "FB",
+        "quote": 272.43,
+        "name": "Facebook, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 10,
+        "message": ""
       }
     ],
     "ownedStocks": [],

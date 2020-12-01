@@ -49,7 +49,7 @@ class Dashboard extends React.Component {
   }
 
   fetchMarket = async() => {
-    const response = await fetch(`/stock-data`);
+    const response = await fetch(`/all-stocks`);
     const body = await response.json();
     if (response.status !== 200) {
       throw Error(body.message)

@@ -99,7 +99,7 @@ const handleEventUpdate = async (id) => {
 
     <Breakpoint medium up>
       <React.Fragment>
-          {stockData.map(stock => (
+          {stockData && stockData.map(stock => (
                     <Accordion className={classes.heading}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
@@ -123,10 +123,12 @@ const handleEventUpdate = async (id) => {
                               id="name"
                               label="Percentage"
                               type="number" 
-                              step="0.01"
+                              stepUp="0.01"
+                              stepDown="0.01"
                               onChange = {setTheNum}
                               InputProps={{className: classes.input}}
                           />
+                         
                       </Typography>
                       <Typography className={classes.but} onClick={() => handleEventUpdate(stock.symbol)}>
                       <Button color="primary">
@@ -151,7 +153,7 @@ const handleEventUpdate = async (id) => {
 
     <Breakpoint small down>
     <React.Fragment>
-        {stockData.map(stock => (
+        {stockData && stockData.map(stock => (
                   <Accordion className={classes.heading}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -168,13 +170,15 @@ const handleEventUpdate = async (id) => {
                     <Typography style={{width: "55%"}}>
                         Change notification?
                     <TextField
-                            style={{width: 100}}
+                            style={{width: 80}}
                             autoFocus
                             margin="dense"
                             variant="outlined"
                             id="name"
                             label="Percentage"
-                            type="Percentage"
+                            type="number" 
+                            stepUp="0.01"
+                            stepDown="0.01"
                             onChange = {setTheNum}
                             InputProps={{className: classes.input}}
                         />

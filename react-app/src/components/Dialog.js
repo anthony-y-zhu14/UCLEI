@@ -56,7 +56,8 @@ export default function FormDialog({name}) {
             margin="dense"
             id="name"
             label="Percentage"
-            type="Percentage"
+            type="number" 
+            step="0.01"
             fullWidth
             onChange = {setTheNum}
           />

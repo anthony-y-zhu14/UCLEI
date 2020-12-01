@@ -5,9 +5,7 @@ import Chart from "chart.js";
 import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
 import FormDialog from './Dialog.js';
 import BasicTable from './StockTable.js';
-import Snackbar from '@material-ui/core/Snackbar';
 import Tooltip from '@material-ui/core/Tooltip';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 
 const styles = {
   font: {
@@ -72,9 +70,6 @@ const styles = {
 class LineChart extends React.Component {
   constructor(props) {
       super(props);
-      this.handleOpen = this
-      .handleOpen
-      .bind(this)
       this.state = {
           stockData: undefined,
           query: undefined,
@@ -85,15 +80,6 @@ class LineChart extends React.Component {
           horizontal: 'right',
       };
   }
-
-  handleClose = () => {
-      this.setState({display: 'none' });
- };
-
- handleOpen = () => {
-   console.log("GOOOO")
-     this.setState({display: 'block' });
-};
 
 
   componentDidUpdate() {
@@ -129,8 +115,6 @@ class LineChart extends React.Component {
 
     return body;
   }
-
-
 
   handleWatchSave = async(value) => {
     const requestOptions = {
@@ -169,10 +153,14 @@ class LineChart extends React.Component {
       }
 
       let data = [];
-      for(let entry of Object.entries(this.state.stockData.historical)) {
-        data.push(entry);
+      for(let entry of Object.entries(this.state.stockData.historical).reverse()) {
+        if(data.length < 7) {
+          data.push(entry);
+        } else {
+          break;
+        }
       }
-      let rows = data.map(stock => (
+      let rows = data.reverse().map(stock => (
           createData(`${stock[0]}`, stock[1])
         ));
 
@@ -202,14 +190,7 @@ class LineChart extends React.Component {
     }
 
   render() {
-    const { open } = this.state
     const { classes } = this.props;
-    const msg = (
-      <Container>
-        <NotificationsIcon style={{marginRight:'1%', marginLeft:'-2%', marginTop:'1%'}}/>
-        <span>Watchlist item saved, refresh to see changes.</span>
-      </Container>
-    );
 
     if(!this.state.stockData) {
       return (
@@ -223,14 +204,6 @@ class LineChart extends React.Component {
           <span className={classes.titleFont} >{this.state.stockData.name}</span>
           <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
 
-          <Snackbar
-              style={{zIndex: 10}}
-              anchorOrigin={ {vertical:'bottom', horizontal:'right' }}
-              style={{display: this.state.display}}
-              onClose={() => this.setState({open: 'display: none'})}
-              message= {msg}
-              autoHideDuration={3000}
-          />
           <Tooltip title="Save to Watchlist">
             <span className={classes.ticker}><i onClick={(event) => {
               this.handleWatchSave(this.state.stockData.symbol);

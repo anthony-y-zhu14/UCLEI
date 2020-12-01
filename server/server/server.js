@@ -606,32 +606,48 @@ app.get('/stock-data-w', (req, res) => {
   });
 
 app.get('/pop-stock-data', (req, res) => {
-    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-
-    let data = [];
-
-    //this will eventually give popular stocks by volume! We need more data!!
-    data.push(stockDatabase['AMD']);
-    data.push(stockDatabase['SE']);
-    data.push(stockDatabase['FB']);
-
     if (isSessionValid(req.session, req.session.user)){
-        res.setHeader("Content-Type", "application/JSON");
-        res.write(JSON.stringify(data));
-        res.end();
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+
+        let data = [];
+
+        //this will eventually give popular stocks by volume! We need more data!!
+        data.push(stockDatabase['AMD']);
+        data.push(stockDatabase['SE']);
+        data.push(stockDatabase['FB']);
+
+        if (isSessionValid(req.session, req.session.user)){
+            res.setHeader("Content-Type", "application/JSON");
+            res.write(JSON.stringify(data));
+            res.end();
+        }
     }
   });
 
 app.get("/stock-data", (req, res) => {
+    if (isSessionValid(req.session, req.session.user)){
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        let search = req.query['search'];
+        let data = [];
+        res.setHeader("Content-Type", "application/JSON");
+        if(stockDatabase[search] != null) {
+            data.push(stockDatabase[search]);    
+            res.status = 200;        
+        }
+        else {
+            data.push(stockDatabase['D35-C']);   
+            res.status = 404;         
+        }
+        res.write(JSON.stringify(data));
+        res.end();
+    }
+});
+
+app.get("/all-stocks", (req, res) => {
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    let search = req.query['search'];
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
-    if(stockDatabase[search] != null) {
-        data.push(stockDatabase[search]);
-    } else {
-      data.push(stockDatabase);
-    }
+    data.push(stockDatabase);
     res.write(JSON.stringify(data));
     res.end();
 });
@@ -855,6 +871,7 @@ setInterval(function checkRefresh() {
         serverReset.resetStock(today);
         serverReset.resetOpenOrders();
         today = new Date().toISOString().slice(0,10);
+        console.log("----server reseted----");
     }
 }, 10000);
 app.listen(3001);
