@@ -22,8 +22,6 @@ function createData(date, quote) {
   return { date, quote };
 }
 
-
-
 export default function BasicTable({stockData}) {
   const classes = useStyles();
 

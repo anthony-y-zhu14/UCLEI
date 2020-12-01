@@ -208,7 +208,13 @@ class Account extends React.Component {
                               </React.Fragment>)}
                           {this.state.activityBtn && (
                               <React.Fragment>
-                                <AccountTable userData={this.state.user}/>
+                                  {this.state.user.activity.map(activity => (
+                                    <details>
+                                      <summary>{activity.date}</summary>
+                                      {activity.activities.map(message =>(
+                                      <li className="stock-holding">{message.message}</li>
+                                    ))}
+                                    </details>))}
                               </React.Fragment>)}
                           </ul>
                     </div>
@@ -259,7 +265,13 @@ class Account extends React.Component {
                                 </React.Fragment>)}
                             {this.state.activityBtn && (
                                 <React.Fragment>
-                                  <AccountTable userData={this.state.user}/>
+                                    {this.state.user.activity.map(activity => (
+                                      <details>
+                                        <summary>{activity.date}</summary>
+                                        {activity.activities.map(message =>(
+                                        <li className="stock-holding">{message.message}</li>
+                                      ))}
+                                      </details>))}
                                 </React.Fragment>)}
                             </ul>
                       </div>
