@@ -10,6 +10,8 @@ import { useHistory } from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import AccountData from '../AccountData.js';
+import AccountTable from '../acctTable.js';
+
 
 import "../css/Account.css"
 
