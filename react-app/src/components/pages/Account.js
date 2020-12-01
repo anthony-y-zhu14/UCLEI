@@ -6,10 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { TextField } from '@material-ui/core';
 import Fourohone from '../fourohone.js';
 import OutlinedCard from '../OutlinedCard.js';
-import { useHistory } from "react-router-dom";
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import AccountData from '../AccountData.js';
 
 import "../css/Account.css"
 

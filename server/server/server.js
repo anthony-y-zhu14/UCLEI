@@ -643,10 +643,6 @@ Public API (call requests to this api using port 3001)
 
 app.get("/stocks", (req, res) => {
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
-    let keys = [];
-    for(let key in stockDatabase) {
-      keys.push(key);
-    }
     let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
     let min = parseFloat(req.query.minprice);
     let max = parseFloat(req.query.maxprice);
