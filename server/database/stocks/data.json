@@ -3,11 +3,11 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.75,
-    "volume": 0,
-    "quote": 1403093.4000000006,
+    "percentage": 6,
+    "volume": 35,
+    "quote": 1476242.660000001,
     "prev_close": 1392651.6000000006,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 9150,
     "daily_range": {
       "high": 1392651.6000000006,
       "low": 1392651.6000000006
@@ -963,12 +963,12 @@
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0,
-    "quote": 186.67,
+    "percentage": 16.07,
+    "quote": 216.67,
     "prev_close": 186.67,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 3250,
     "daily_range": {
-      "high": 186.67,
+      "high": 216.67,
       "low": 186.67
     },
     "historical": {
@@ -979,7 +979,7 @@
       "2020-11-27": 192.61,
       "2020-11-30": 186.67
     },
-    "volume": 0,
+    "volume": 15,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0

@@ -2,7 +2,6 @@
   "jerry137": {
     "username": "jerry137",
     "password": "123456",
-    "session_id": "9d997f3e-e0c0-4a9f-aa55-deeea38b81b4",
     "name": "Jerry Smith",
     "watchlist": [
       {
@@ -28,11 +27,11 @@
     "ownedStocks": [
       {
         "name": "Sea Limited",
-        "quote": 160,
-        "total_cost": 1600,
-        "average_cost": 160,
+        "quote": 250,
+        "total_cost": 1250,
+        "average_cost": 250,
         "symbol": "SE",
-        "share": 10
+        "share": 5
       }
     ],
     "activity": [
@@ -57,60 +56,36 @@
         ]
       },
       {
-        "date": "2020-11-30",
+        "date": "2020-12-01",
         "activities": [
           {
-            "date": "2020-11-30",
-            "action": "deposite",
-            "message": "Deposited $40 to account: C-137-1001 - 2020-11-30"
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to rick137 - 2020-12-01"
           },
           {
-            "date": "2020-11-30",
-            "action": "deposite",
-            "message": "Deposited $40 to account: C-137-1001 - 2020-11-30"
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $190 from rick137 - 2020-12-01"
           },
           {
-            "date": "2020-11-30",
-            "action": "deposite",
-            "message": "Deposited $40 to account: C-137-1001 - 2020-11-30"
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $200 to rick137 - 2020-12-01"
           },
           {
-            "date": "2020-11-30",
-            "action": "withdraw",
-            "message": "Withdrawn $1600 to account: C-137-1001 - 2020-11-30"
-          },
-          {
-            "date": "2020-11-30",
-            "action": "withdraw",
-            "message": "Withdrawn $1373 to account: C-137-1001 - 2020-11-30"
-          },
-          {
-            "date": "2020-11-30",
-            "action": "withdraw",
-            "message": "Withdrawn $0 to account: C-137-1001 - 2020-11-30"
-          },
-          {
-            "date": "2020-11-30",
-            "action": "withdraw",
-            "message": "Withdrawn $0 to account: C-137-1001 - 2020-11-30"
-          },
-          {
-            "date": "2020-11-30",
-            "action": "withdraw",
-            "message": "Withdrawn $0 to account: C-137-1001 - 2020-11-30"
-          },
-          {
-            "date": "2020-11-30",
-            "action": "deposite",
-            "message": "Deposited $40000 to account: C-137-1001 - 2020-11-30"
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 5 shares of SE at $250 from rick137 - 2020-12-01"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 40000.554636015324,
-      "investmentBalance": 1600
+      "cashBalance": 850,
+      "investmentBalance": 1250,
+      "totalDeposit": 1600
     },
     "balanceGrowth": 0,
     "openOrders": []
@@ -118,7 +93,6 @@
   "morty137": {
     "username": "morty137",
     "password": "123456",
-    "session_id": "ecfebdf2-5a82-47ac-8dc7-c43f8a022746",
     "name": "Morty Smith",
     "watchlist": [
       {
@@ -170,8 +144,9 @@
     "activity": [],
     "account": {
       "accountName": 1002,
-      "cashBalance": 41955.13999999999,
-      "investmentBalance": 2724.3
+      "cashBalance": 0,
+      "investmentBalance": 2724.3,
+      "totalDeposit": 2724.3
     },
     "balanceGrowth": "0",
     "openOrders": []
@@ -179,7 +154,6 @@
   "rick137": {
     "username": "rick137",
     "password": "123456",
-    "session_id": "64a15df7-f575-4b39-9c78-89f80abc62d2",
     "name": "Rick Sanchez",
     "watchlist": [
       {
@@ -215,7 +189,16 @@
         "message": ""
       }
     ],
-    "ownedStocks": [],
+    "ownedStocks": [
+      {
+        "name": "Sea Limited",
+        "quote": 200,
+        "total_cost": 2000,
+        "average_cost": 200,
+        "symbol": "SE",
+        "share": 5
+      }
+    ],
     "activity": [
       {
         "date": "2020-11-29",
@@ -256,12 +239,38 @@
             "message": "Sold 10 shares of SE at $160 to jerry137 - 2020-11-30"
           }
         ]
+      },
+      {
+        "date": "2020-12-01",
+        "activities": [
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $190 to jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $200 from jerry137 - 2020-12-01"
+          },
+          {
+            "date": "2020-12-01",
+            "action": "sell",
+            "message": "Sold 5 shares of SE at $250 to jerry137 - 2020-12-01"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 16415.42536398468,
-      "investmentBalance": 0
+      "cashBalance": 3150,
+      "investmentBalance": 2000,
+      "totalDeposit": 4000
     },
     "balanceGrowth": "0",
     "openOrders": []
