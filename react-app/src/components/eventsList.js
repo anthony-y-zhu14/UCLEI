@@ -122,7 +122,8 @@ const handleEventUpdate = async (id) => {
                               variant="outlined"
                               id="name"
                               label="Percentage"
-                              type="Percentage"
+                              type="number" 
+                              step="0.01"
                               onChange = {setTheNum}
                               InputProps={{className: classes.input}}
                           />
