@@ -101,7 +101,7 @@ const returnStyles = function() {
     },
     xstxtFld: {
       display: 'flex',
-      width: 180,
+      width: 150,
     },
     LtxtFld: {
       display: 'flex',
