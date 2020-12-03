@@ -123,7 +123,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
-    sleep(120000).then(() => {
+    sleep(10000).then(() => {
       setEventsList(body);
     });
   }
@@ -145,7 +145,7 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
-    sleep(120000).then(() => {
+    sleep(10000).then(() => {
       setNotifications(body.count);
     });    
   }
@@ -163,9 +163,17 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       setSearch(event.target.value);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
 
     if(event.charCode === 13) {      
+      let url = `/stock-data?search=${event.target.value.toUpperCase()}`;
+        const response = await fetch(url);
+        const stock = await response.json();
+        if (stock[0].symbol === "D35-C") {
+          alert("Failed to find a stock with that symbol");
+          return;
+        }
+
       let location = {
         pathname: `/market/${event.target.value.toUpperCase()}`,
         state: {
@@ -229,7 +237,10 @@ useEffect(() => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
-        <IconButton color="inherit" onClick={getEventsListNow}>
+        <IconButton color="inherit" onClick={() => {
+          getEventsListNow()
+          getNotificationsNow()          
+          }}>
           <NotificationsForm stockData={eventsList}/>
         </IconButton>
       </MenuItem>
@@ -276,7 +287,10 @@ useEffect(() => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton onClick={getNotificationsNow}  color="inherit">
+            <IconButton onClick={() => {
+            getEventsListNow()
+            getNotificationsNow()          
+            }}  color="inherit">
             <NotificationsForm  notifynums={notifications} stockData={eventsList}/>
             </IconButton>
             <IconButton

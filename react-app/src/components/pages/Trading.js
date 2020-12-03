@@ -214,7 +214,7 @@ class Trading extends React.Component {
         let url = `/stock-data?search=${this.state.search_symbol.toUpperCase()}`;
         const response = await fetch(url);
         const stock = await response.json();
-        if (response.status !== 200) {
+        if (stock[0].symbol === "D35-C") {
           alert("Failed to find a stock with that symbol");
           return;
         }

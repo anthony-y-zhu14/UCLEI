@@ -75,7 +75,7 @@ app.post('/authentication', (req, res) => {
     });
 
     function authenticate(username, password) {
-        if(users[username] !== null && users[username]['password'] === password) {
+        if(users[username] && users[username]['password'] === password) {
             console.log(`Client ${username} authenticated succesfully.`);
             const USER_TOKEN = uuidv4();
             req.session.user = users[username]['username'];
@@ -631,12 +631,11 @@ app.get("/stock-data", (req, res) => {
         let data = [];
         res.setHeader("Content-Type", "application/JSON");
         if(stockDatabase[search] != null) {
-            data.push(stockDatabase[search]);    
-            res.status = 200;        
+            data.push(stockDatabase[search]);          
         }
         else {
-            data.push(stockDatabase['D35-C']);   
-            res.status = 404;         
+            data.push(stockDatabase['D35-C']);  
+                  
         }
         res.write(JSON.stringify(data));
         res.end();

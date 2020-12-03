@@ -9,6 +9,12 @@
         "quote": 1549451.49,
         "name": "Dimension 35-C",
         "volume": 210
+      },
+      {
+        "symbol": "F",
+        "quote": 8.38,
+        "name": "Ford Motor Company",
+        "volume": 0
       }
     ],
     "eventList": [
@@ -16,36 +22,9 @@
         "symbol": "SE",
         "quote": 175,
         "name": "Sea Limited",
-        "active": "Active",
-        "notified": true,
-        "notify_num": 5,
-        "message": "Alert: Sea Limited, (SE) price has increased by 5% or greater."
-      },
-      {
-        "symbol": "AMD",
-        "quote": 77.99,
-        "name": "Advanced Micro Devices, Inc.",
-        "active": "Active",
+        "active": "Deactive",
         "notified": false,
         "notify_num": 5,
-        "message": ""
-      },
-      {
-        "symbol": "GOOG",
-        "quote": 1740.39,
-        "name": "Alphabet Inc.",
-        "active": "Active",
-        "notified": false,
-        "notify_num": 5,
-        "message": ""
-      },
-      {
-        "symbol": "FB",
-        "quote": 272.43,
-        "name": "Facebook, Inc.",
-        "active": "Active",
-        "notified": false,
-        "notify_num": 10,
         "message": ""
       }
     ],
