@@ -71,7 +71,7 @@ app.post('/authentication', (req, res) => {
     let username = data.username;
     let password = data.password;
     authenticate(username, password);
-    res.end();   
+    res.end();
     });
 
     function authenticate(username, password) {
@@ -80,23 +80,25 @@ app.post('/authentication', (req, res) => {
             const USER_TOKEN = uuidv4();
             req.session.user = users[username]['username'];
             req.session.session_id = USER_TOKEN;
-
-            // users[username]['session_id'] = USER_TOKEN;
             const login_data = {
-                authentication: true,
+                authentication: 'true',
                 session_id: USER_TOKEN
             };
-            // updateUserDataBase();
             res.write(JSON.stringify(login_data));
         }
-        else if(username === '' && password === '') {
-            res.write('onload');
+        else if(user[username] && users[username]['password'] !== password) {
+          const login_data = {
+              authentication: 'passwordError',
+              session_id: false
+          };
+          res.write(JSON.stringify(login_data));
+        } else {
+            const login_data = {
+                authentication: 'usernameError',
+                session_id: false
+            };
+            res.write(JSON.stringify(login_data));
         }
-        else {
-            res.write("false");
-            console.log(`\nClient ${username} provided invalid login.\n`);
-        }
-    }
  });
 
 app.post('/register', (req, res) => {
@@ -634,7 +636,7 @@ app.get("/stock-data", (req, res) => {
             data.push(stockDatabase[search]);          
         }
         else {
-            data.push(stockDatabase['D35-C']);  
+            data.push(stockDatabase['D35-C']); 
                   
         }
         res.write(JSON.stringify(data));
@@ -695,8 +697,8 @@ app.get("/stocks", (req, res) => {
         for (const stock in stockDatabase){
             if(stock.includes(symbol)){
                 data.push(stockDatabase[stock]);
-            } 
-        }     
+            }
+        }
     }
 
     else if(symbol && min && !max){
@@ -797,7 +799,7 @@ app.get("/stocks/history", (req, res) =>{
             });
         }
     }
-    
+
     res.write(JSON.stringify({symbol: symbol, action: data}, null, 2));
     res.end();
 });
@@ -810,13 +812,13 @@ app.get("/stocks/symbol", (req, res) => {
         res.end();
         return;
     }
-    
+
     let startDate = req.query.startDate;
     let endDate = req.query.endDate;
 
     let data = [];
 
-    if (!startDate && !endDate) {        
+    if (!startDate && !endDate) {
         data.push({
             date: today,
             symbol: symbol,
@@ -824,8 +826,8 @@ app.get("/stocks/symbol", (req, res) => {
             currentPrice: stockDatabase[symbol].quote,
             prevClose: stockDatabase[symbol].prev_close,
             volume: stockDatabase[symbol].volume
-        });                  
-    }       
+        });
+    }
     else if(startDate && !endDate){
         for (const date in stockDatabase[symbol].historical){
             if (date >= startDate){
@@ -835,7 +837,7 @@ app.get("/stocks/symbol", (req, res) => {
                     daily_range: stockDatabase[symbol].historicalDailyRange[date],
                     closingPrice: stockDatabase[symbol].historical[date],
                     volume: stockDatabase[symbol].historicalVolume[date]
-                }); 
+                });
             }
         }
     }
@@ -848,7 +850,7 @@ app.get("/stocks/symbol", (req, res) => {
                     daily_range: stockDatabase[symbol].historicalDailyRange[date],
                     closingPrice: stockDatabase[symbol].historical[date],
                     volume: stockDatabase[symbol].historicalVolume[date]
-                }); 
+                });
             }
         }
     }

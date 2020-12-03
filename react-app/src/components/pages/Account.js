@@ -70,11 +70,11 @@ class Account extends React.Component {
       this.setState({session_id: this.props.session_id});
 
       this.callBackendAPI()
-        .then(res => this.setState({ 
+        .then(res => this.setState({
           user: res
          }))
-        .catch(err => console.log(err))        
-        
+        .catch(err => console.log(err))
+
     }
 
     callBackendAPI = async () => {
