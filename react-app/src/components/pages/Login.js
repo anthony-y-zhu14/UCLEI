@@ -20,7 +20,8 @@ class Login extends React.Component {
             helperTextPsw: '',
             id: 'outlined-basic',
             authenticated: 'onload',
-            error: false,
+            errorPsw: false,
+            errorUsr: false
         };
         this.login = this.login.bind(this);
     }
@@ -32,11 +33,8 @@ class Login extends React.Component {
     componentDidMount() {
       fetch('/session')
             .then((res) => res.json())
-            .then((data) => this.setState({
-              authenticated : data
-            }))
             .finally(() =>{
-              if (this.state.authenticated){
+              if (this.state.authenticated === 'true'){
                 this.navToDsh();
               }
             })
@@ -44,7 +42,6 @@ class Login extends React.Component {
     }
     login = async () => {
       this._isMounted = true;
-        // POST request using fetch with async/await
       if (!this.state.username || !this.state.password){
         alert("Please enter a username and password");
         return;
@@ -57,15 +54,21 @@ class Login extends React.Component {
         const response = await fetch('/authentication', requestOptions);
         const data = await response.json();
         this.setState({ authenticated: data.authentication});
+        console.log(data.authentication)
         this.props.onChange(data.session_id);
 
-        if(this.state.authenticate === 'onload') {
+        if(this.state.authenticated === 'onload') {
           this.setState({ id: 'outlined-basic', helperText: '', error: false})
         }
-        else if(!this.state.authenticate) {
-          this.setState({ id: 'outlined-error-helper-text', helperText: 'Invalid Username', error: true, helperTextPsw: 'Invalid Password'})
+        if(this.state.authenticated === 'passwordError') {
+          this.setState({ errorUsr: false, helperText: ''})
+          this.setState({ errorPsw: true, helperTextPsw: 'Invalid Password'})
         }
-        if(this.state.authenticated) {
+        if(this.state.authenticated === 'usernameError') {
+          this.setState({ errorUsr: true, helperText: 'Invalid Username'})
+          this.setState({ errorPsw: true, helperTextPsw: 'Invalid Password'})
+        }
+        if(this.state.authenticated === 'true') {
           this.navToDsh();
         }
     }
@@ -99,7 +102,7 @@ class Login extends React.Component {
               <p className={classes.lFont}>We're happy to see you back.</p>
                   <div className={classes.innerContainer}>
                   <div className={classes.LtxtFldCont}>
-                    <TextField id={this.state.id} className={classes.LtxtFld} label="Username" error={this.state.error}
+                    <TextField id={this.state.id} className={classes.LtxtFld} label="Username" error={this.state.errorUsr}
                     InputProps={{classes: {
                       input: classes.Linput,
                       },
@@ -107,7 +110,7 @@ class Login extends React.Component {
                     InputLabelProps={{style:{fontSize:40}}}
 
                     variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.LtxtFld} helperText={this.state.helperTextPsw} error={this.state.error}
+                    <TextField className={classes.LtxtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
                     label="Password" variant="outlined" type="password"
                     InputProps={{classes: {
                       input: classes.Linput,
@@ -139,10 +142,10 @@ class Login extends React.Component {
               <p>We're happy to see you back.</p>
                   <div className={classes.innerContainer}>
                   <div className={classes.txtFldCont}>
-                    <TextField id={this.state.id} className={classes.txtFld} label="Username" error={this.state.error}
+                    <TextField id={this.state.id} className={classes.txtFld} label="Username" error={this.state.errorUsr}
                     InputProps={{className: classes.input}} helperText={this.state.helperText}
                     variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.txtFld} helperText={this.state.helperTextPsw} error={this.state.error}
+                    <TextField className={classes.txtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
                     label="Password" variant="outlined" type="password" id={this.state.id}
                     InputProps={{className: classes.input}}
                     onChange = {this.setPassword} value = {this.state.password} />
@@ -169,10 +172,10 @@ class Login extends React.Component {
               <p>We're happy to see you back.</p>
                   <div className={classes.innerContainer}>
                   <div className={classes.txtFldCont}>
-                    <TextField id={this.state.id} className={classes.txtFld} label="Username" error={this.state.error}
+                    <TextField id={this.state.id} className={classes.txtFld} label="Username" error={this.state.errorUsr}
                     InputProps={{className: classes.input}} helperText={this.state.helperText}
                     variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.txtFld} helperText={this.state.helperTextPsw} error={this.state.error}
+                    <TextField className={classes.txtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
                     label="Password" variant="outlined" type="password" id={this.state.id}
                     InputProps={{className: classes.input}}
                     onChange = {this.setPassword} value = {this.state.password} />
@@ -197,10 +200,10 @@ class Login extends React.Component {
               <p>We're happy to see you back.</p>
                   <div className={classes.innerContainer}>
                   <div className={classes.xstxtFldCont}>
-                    <TextField id={this.state.id} className={classes.xstxtFld} label="Username" error={this.state.error}
+                    <TextField id={this.state.id} className={classes.xstxtFld} label="Username" error={this.state.errorUsr}
                     InputProps={{className: classes.input}} helperText={this.state.helperText}
                     variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.xstxtFld} helperText={this.state.helperTextPsw} error={this.state.error}
+                    <TextField className={classes.xstxtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
                     label="Password" variant="outlined" type="password" id={this.state.id}
                     InputProps={{className: classes.input}}
                     onChange = {this.setPassword} value = {this.state.password} />
