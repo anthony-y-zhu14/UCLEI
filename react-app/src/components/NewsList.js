@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from "@material-ui/core/styles";
 import MediaCard from './card.js';
-import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
 const styles = {
   newsCard: {

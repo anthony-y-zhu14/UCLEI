@@ -5,7 +5,6 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { blueGrey } from '@material-ui/core/colors';
 import { useHistory } from "react-router-dom";
 
 
@@ -29,7 +28,6 @@ const useStyles = makeStyles({
 
 export default function OutlinedCard({stock}, {h}) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
   let history = useHistory();
 
   const handleClick = (event) => {

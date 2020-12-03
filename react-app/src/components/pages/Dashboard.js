@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "../Header.js";
 import  { Breakpoint } from 'react-socks';
-import { Button, ButtonGroup, Container } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 import NewsList from '../NewsList.js';
 import { withStyles } from "@material-ui/core/styles";
 import { LinearProgress } from '@material-ui/core';
@@ -9,7 +9,6 @@ import Fourohone from '../fourohone.js';
 import LineChartB from '../lineChartB.js';
 import MarketTable from '../marketTable.js';
 import AccountData from '../AccountData.js';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 const styles = {

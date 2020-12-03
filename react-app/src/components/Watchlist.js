@@ -1,10 +1,5 @@
 import React from 'react';
 import { withStyles } from "@material-ui/core/styles";
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
 import QueueIcon from '@material-ui/icons/Queue';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
@@ -14,7 +9,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import { Button, ButtonGroup, colors, Container, LinearProgress, TextField, Box } from '@material-ui/core';
+import { Box, Container } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import compose from 'recompose/compose'
 

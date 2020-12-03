@@ -4,7 +4,7 @@ import {
     Route,
     Switch
 } from 'react-router-dom';
-import  { Breakpoint, BreakpointProvider } from 'react-socks';
+import  { BreakpointProvider } from 'react-socks';
 import "./components/Header.js"
 import Market from "./components/pages/Market.js"
 import Account from "./components/pages/Account.js"

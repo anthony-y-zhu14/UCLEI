@@ -1,8 +1,7 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import { withStyles } from "@material-ui/core/styles";
 import Chart from "chart.js";
-import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
+import { Button, ButtonGroup } from '@material-ui/core';
 import FormDialog from './Dialog.js';
 import BasicTable from './StockTable.js';
 import Tooltip from '@material-ui/core/Tooltip';

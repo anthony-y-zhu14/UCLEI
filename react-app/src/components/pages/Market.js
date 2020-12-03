@@ -3,16 +3,11 @@ import { withStyles } from "@material-ui/core/styles";
 import NewsList from '../NewsList.js';
 import Header from "../Header.js";
 import  { Breakpoint } from 'react-socks';
-import { Button, ButtonGroup, colors, Container, LinearProgress, TextField } from '@material-ui/core';
-import OutlinedCard from '../OutlinedCard.js';
+import { Container, LinearProgress } from '@material-ui/core';
 import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { sizing } from '@material-ui/system';
-import returnStyles from '../css/marketStyle.js'
-import Snackbar from '@material-ui/core/Snackbar';
 
 const styles = {
   root: {

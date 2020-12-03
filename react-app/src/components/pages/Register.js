@@ -48,6 +48,7 @@ class Register extends React.Component {
             id: 'outlined-basic',
             authenticated: 'onload',
             error: false,
+            errorPsw: false
         };
         this.register = this.register.bind(this);
     } 
@@ -60,10 +61,14 @@ class Register extends React.Component {
 
     register = async () => {
       this._isMounted = true;
+
       if(this.state.username && this.state.password && this.state.fullName){
 
+        this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', errorPsw: false})
+
+
         if(this.state.password !== this.state.rePassword){
-          this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', error: true})
+          this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', errorPsw: true})
           return;
         }
 
@@ -76,15 +81,16 @@ class Register extends React.Component {
         const response = await fetch('/register', requestOptions);
         const data = await response.json();
         this.setState({ authenticated: data.authentication});
+        console.log(data)
         this.props.onChange(data.session_id);
         
-        if(this.state.authenticate === 'onload') {
+        if(this.state.authenticated === 'onload') {
           this.setState({ id: 'outlined-basic', helperText: '', error: false})
         }
-        else if(!this.state.authenticate) {
+        else if(this.state.authenticated === 'usernameError') {
           this.setState({ id: 'outlined-error-helper-text', helperText: 'Username Already Exists', error: true})
         }
-        if(this.state.authenticated) {  
+        else if(this.state.authenticated === 'true') {  
           this.navToDsh();
         }
       }
@@ -147,13 +153,13 @@ class Register extends React.Component {
                   InputProps={{className: classes.input}} variant="outlined" onChange = {this.setFullName} value = {this.state.fullName} />
 
 
-                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.error}
-                  className="txtFld" label="Enter Your Password" variant="outlined"
+                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
+                  className="txtFld" label="Enter Your Password" variant="outlined" type='password'
                   InputProps={{className: classes.input}}
                   onChange = {this.setPassword} value = {this.state.password} />
 
-                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.error}
-                  className="txtFld" label="Confirm Password" variant="outlined"
+                  <TextField id={this.state.id} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
+                  className="txtFld" label="Confirm Password" variant="outlined" type='password'
                   InputProps={{className: classes.input}}
                   onChange = {this.setRePassword} value = {this.state.Repassword} />
 

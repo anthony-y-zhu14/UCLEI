@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import  { Breakpoint, BreakpointProvider } from 'react-socks';
+import  { Breakpoint} from 'react-socks';
 import { TextField } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
 import UncontrolledLottie from "../UncontrolledLottie";

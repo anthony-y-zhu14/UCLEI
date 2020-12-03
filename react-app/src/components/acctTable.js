@@ -118,8 +118,11 @@ export default function AccountTable({userData}) {
   const [selectedStartDate, setSelectedStartDate] = React.useState(new Date('2020-12-01T21:11:54'));
   const [selectedEndDate, setSelectedEndDate] = React.useState(new Date('2020-12-01T21:11:54'));
 
-  const filterByDate = () => {      
-    ref.current.hideRows();
+  const filterByDate = () => {   
+    
+    if(ref.current !== null) {
+      ref.current.hideRows();
+    }
     let newData = (JSON.parse(JSON.stringify(userData.activity)).filter((activity) => {  
       return (activity.date >= formatISO(selectedStartDate, { representation: 'date' } ) && activity.date <= formatISO(selectedEndDate, { representation: 'date' } ));         
     }));    

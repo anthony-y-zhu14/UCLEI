@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import NotificationsForm from './Notifications.js';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -123,9 +123,9 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
-    sleep(10000).then(() => {
-      setEventsList(body);
-    });
+    // sleep(10000).then(() => {
+    //   setEventsList(body);
+    // });
   }
 
   const getEventsListNow = async () => {
@@ -183,7 +183,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
       history.push(location);
     }
 }
-
 
 useEffect(() => {  
   getEventsList();
@@ -260,12 +259,10 @@ useEffect(() => {
 
   const content  = (
 
-      <div className={classes.grow}>
-      <AppBar position="static">
+      <div style={{marginBottom:75}} className={classes.grow}>
+      <AppBar position="fixed">
         <Toolbar>
-
             <TemporaryDrawer />
-
           <Typography className={classes.title} variant="h6" noWrap>
             {currentPage}
           </Typography>

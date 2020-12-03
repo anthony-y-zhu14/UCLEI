@@ -285,7 +285,7 @@
           },
           {
             "date": "2020-12-01",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $4000 to account: 1003 - 2020-12-01"
           },
           {
@@ -304,5 +304,23 @@
     },
     "balanceGrowth": "0",
     "openOrders": []
+  },
+  "asd": {
+    "username": "asd",
+    "password": "123",
+    "session_id": "ae2d445a-5a8a-436b-994d-91b2ba887362",
+    "name": "asda",
+    "watchlist": [],
+    "openOrders": [],
+    "eventList": [],
+    "ownedStocks": [],
+    "activity": [],
+    "account": {
+      "accountName": "Tax Free Savings Account",
+      "cashBalance": 0,
+      "investmentBalance": 0,
+      "totalDeposit": 0
+    },
+    "balanceGrowth": "0"
   }
 }

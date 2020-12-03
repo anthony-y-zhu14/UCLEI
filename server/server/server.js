@@ -86,7 +86,7 @@ app.post('/authentication', (req, res) => {
             };
             res.write(JSON.stringify(login_data));
         }
-        else if(user[username] && users[username]['password'] !== password) {
+        else if(users[username] && users[username]['password'] !== password) {
           const login_data = {
               authentication: 'passwordError',
               session_id: false
@@ -99,7 +99,8 @@ app.post('/authentication', (req, res) => {
             };
             res.write(JSON.stringify(login_data));
         }
- });
+    }
+});
 
 app.post('/register', (req, res) => {
 
@@ -146,16 +147,19 @@ app.post('/register', (req, res) => {
             req.session.user = users[username]['username'];
             req.session.session_id = USER_TOKEN;
 
-            // users[username]['session_id'] = USER_TOKEN;
             const login_data = {
-                authentication: true,
+                authentication: 'true',
                 session_id: USER_TOKEN
             };
             updateUserDataBase();
             res.write(JSON.stringify(login_data));
         }
         else if(users[username]) {
-            res.write('onload');
+            const login_data = {
+                authentication: 'usernameError',
+                session_id: false
+            };
+            res.write(JSON.stringify(login_data));
         }
         else {
             res.write("false");

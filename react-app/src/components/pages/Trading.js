@@ -4,10 +4,8 @@ import Header from "../Header";
 import  { Breakpoint } from 'react-socks';
 import '../css/Trading.css'
 import { withStyles } from '@material-ui/styles';
-import { fade, makeStyles } from '@material-ui/core/styles';
-import InputBase from '@material-ui/core/InputBase';
+import { fade } from '@material-ui/core/styles';
 import Fourohone from '../fourohone.js';
-import Paper from '@material-ui/core/Paper';
 import SearchIcon from '@material-ui/icons/Search';
 import Grid from '@material-ui/core/Grid';
 
