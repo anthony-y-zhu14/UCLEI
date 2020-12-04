@@ -25,7 +25,6 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
-// import { date } from 'date-fns/locale/af';
 
 
 const useStyles = makeStyles((theme) => ({

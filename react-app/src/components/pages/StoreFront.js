@@ -79,9 +79,8 @@ class StoreFront extends React.Component {
                 </AppBar>
                 {background}
                 <Container maxWidth="sm">
-              
                     <h1 className={classes.font}>UCLEI</h1>          
-              <Typography variant="h6" className={classes.title}>
+                   <Typography variant="h6" className={classes.title}>
         
                             UCLEI is a stock trading simulation website that provides a safe, easy-to-use sandbox environment for users to experience how stock market trading works.
                             Simply create an account and you will be welcomed to the website and free to explore the excitement of stock trading without consequence! However, do be careful,

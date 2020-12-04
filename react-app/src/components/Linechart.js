@@ -5,6 +5,13 @@ import { Button, ButtonGroup } from '@material-ui/core';
 import FormDialog from './Dialog.js';
 import BasicTable from './StockTable.js';
 import Tooltip from '@material-ui/core/Tooltip';
+import formatISO from 'date-fns/formatISO'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
 
 const styles = {
   font: {
@@ -35,6 +42,10 @@ const styles = {
   },
   chart: {
     margin: '2%'
+  },
+  back: {
+    background: '#fff',
+    borderRadius: 10
   },
   smallFont: {
     fontSize: '70%',
@@ -77,14 +88,42 @@ class LineChart extends React.Component {
           display: 'none',
           vertical: 'bottom',
           horizontal: 'right',
+          selectedStartDate: new Date('2020-12-01T21:11:54'),
+          selectedEndDate: new Date('2020-12-01T21:11:54'),
+          filterData: undefined
       };
   }
+
+  handleDateChange = (date) => {   
+    this.setState({selectedStartDate: date});
+  };
+
+  handleDateChange2 = (date) => {   
+    this.setState({selectedEndDate: date});
+  };
 
   componentDidUpdate() {
     this.componentDidMount()
     if(this.state.query !== window.location.href.slice(29)) {
       this.setState({query: window.location.href.slice(29)});
     }
+  }
+
+  readFilter = async() => {
+    let url = `/stocks/history/?symbol=${window.location.href.slice(29)}&startDate=${formatISO(this.state.selectedStartDate, { representation: 'date'})}&endDate=${formatISO(this.state.selectedEndDate,{ representation: 'date'})}`
+    console.log(url)
+    const response = await fetch(url);
+    const body = await response.json();
+    if (response.status !== 200) {
+      throw Error(body.message)
+    }
+    console.log(body)
+    this.setState({ filterData: body[0]});
+    console.log(this.state.filterData)
+    this.componentDidMount()
+    this.makeChart(this.state.filterData.name);
+    console.log(response.json());
+    return body;
   }
 
   readStock = async() => {
@@ -190,6 +229,41 @@ class LineChart extends React.Component {
   render() {
     const { classes } = this.props;
 
+    const filter = (
+      <Grid container space={2} className={classes.back} style={{background: '#fff'}}>
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid className={classes.back} item xs={4} style={{marginLeft: "5%"}}>
+                        <KeyboardDatePicker
+                          margin="normal"
+                          value={this.state.selectedStartDate}
+                          onChange={this.handleDateChange}
+                          label="Start Date"
+                          format="yyyy/MM/dd"
+                          KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                          }}            
+                        />
+                    </Grid>
+                    <Grid className={classes.back} item xs={4}>
+                    <KeyboardDatePicker
+                          margin="normal"           
+                          label="End Date"
+                          value={this.state.selectedEndDate}
+                          onChange={this.handleDateChange2}
+                          format="yyyy/MM/dd"
+                          KeyboardButtonProps={{
+                            'aria-label': 'change date',
+                          }}            
+                        />    
+                    </Grid>   
+                </MuiPickersUtilsProvider>
+                <Grid className={classes.back} item xs={2} style={{marginTop: '2.5%'}}>
+                   <Button variant="contained" onClick={this.readFilter} style={{color: "primary", marginLeft: "20% auto"}} >Submit</Button> 
+                </Grid>
+              </Grid>
+              
+    );
+
     if(!this.state.stockData) {
       return (
         <h1>Loading</h1>
@@ -224,9 +298,8 @@ class LineChart extends React.Component {
                 <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
               </ButtonGroup>
 
-
           <div className={classes.chart}>
-            {this.state.showChart ? <canvas id="marketChart"/> : <BasicTable stockData = {this.state.stockData}/>  }
+            {this.state.showChart ? <canvas id="marketChart"/> : <React.Fragment>{filter} <BasicTable stockData = {this.state.stockData}/> </React.Fragment> }
           </div>
         </div>
         <div className={classes.hide}>

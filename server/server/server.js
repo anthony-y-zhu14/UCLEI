@@ -208,17 +208,19 @@ app.get('/getBalance', (req, res) => {
         res.write(data.toString());
         res.end();
     }
+
 });
 
 app.get('/getAccount', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        let data = JSON.stringify(users[req.session.user]);
+        let data = JSON.stringify(users[req.session.user], null, 2);
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
         // console.log(`Client ${users[req.session.user].username} requested account info`)
         res.write(data);
         res.end();
     }
+
 });
 
 app.post('/updateBalance', (req, res) => {
@@ -253,6 +255,7 @@ app.post('/updateBalance', (req, res) => {
             }
         }
     }
+
 });
 
 /**********************************************
@@ -271,6 +274,7 @@ app.get('/getWatchlist', (req, res) => {
         res.write(data);
         res.end();
     }
+
 });
 
 app.post('/addWatchItem', (req, res) => {
@@ -305,6 +309,7 @@ app.post('/addWatchItem', (req, res) => {
             res.end();
         });
     }
+
 });
 
 app.post('/delWatchItem', (req, res) => {
@@ -345,6 +350,9 @@ app.get('/getEvents', (req, res) => {
         res.write(data);
         res.end();
     }
+    res.statusCode = 401;
+    res.write("<h1>401 Not Authorized.</h1>");
+    res.end();
 });
 
 app.get('/getNotified', (req, res) => {
@@ -733,7 +741,7 @@ app.get("/stocks", (req, res) => {
     res.end();
 });
 
-app.get("/stocks/history", (req, res) =>{
+app.get("/stocks/userActivity", (req, res) =>{
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     let symbol = req.query.symbol? req.query.symbol.toUpperCase() : undefined;
     if (!stockDatabase[symbol]){
@@ -808,7 +816,7 @@ app.get("/stocks/history", (req, res) =>{
     res.end();
 });
 
-app.get("/stocks/symbol", (req, res) => {
+app.get("/stocks/history", (req, res) => {
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
     if (!stockDatabase[symbol]){

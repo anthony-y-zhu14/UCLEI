@@ -413,5 +413,39 @@
       "totalDeposit": 80
     },
     "balanceGrowth": "0"
+  },
+  "robinhood": {
+    "username": "robinhood",
+    "password": "steal from the rich",
+    "session_id": "cde85da8-158e-4f60-9fdc-c10c63e71975",
+    "name": "Robin Hood",
+    "watchlist": [],
+    "openOrders": [],
+    "eventList": [],
+    "ownedStocks": [],
+    "activity": [
+      {
+        "date": "2020-12-04",
+        "activities": [
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $7 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $7 to account: Tax Free Savings Account - 2020-12-04"
+          }
+        ]
+      }
+    ],
+    "account": {
+      "accountName": "Tax Free Savings Account",
+      "cashBalance": 14,
+      "investmentBalance": 0,
+      "totalDeposit": 14
+    },
+    "balanceGrowth": "0"
   }
 }
