@@ -86,53 +86,32 @@ class Login extends React.Component {
         });
     }
 
-    render() {
+    content = (size, classSize) => {
       const { classes } = this.props;    
-
-      const background = (
-            <Particles style={{zIndex: '0', position: 'absolute', width: 100, height: 100}}
-            params={{
-              "particles": {
-                  "number": {
-                      "value": 30
-                  },
-                  "size": {
-                      "value": 4
-                  }
-              },
-              "interactivity": {
-                  "events": {
-                      "onhover": {
-                          "enable": true,
-                          "mode": "repulse"
-                      }
-                  }
-            }
-        }} />
-      );
-
-      const content = (
+ 
+      const formContent = (
         <Grid container>
-          {background}
-
           <Grid item xs={12}>
+                <h1> UCLEI </h1>
+                <h3>Welcome,</h3>
+                <p>We're happy to see you back.</p>
+
             <TextField id={this.state.id} label="Username" error={this.state.errorUsr}
             InputProps={{classes: {
-              input: classes.Linput,
+              input: classSize,
               },
             }} helperText={this.state.helperText}
-            InputLabelProps={{style:{fontSize:40}}}
-
+            InputLabelProps={{style:{fontSize:size}}}
             variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
           </Grid>
           <Grid item xs={12}>
             <TextField helperText={this.state.helperTextPsw} error={this.state.errorPsw}
             label="Password" variant="outlined" type="password"
             InputProps={{classes: {
-              input: classes.Linput,
+              input: classSize,
               },
             }}
-            InputLabelProps={{style:{fontSize:40}}}
+            InputLabelProps={{style:{fontSize:size}}}
             onChange = {this.setPassword} value = {this.state.password} />
           </Grid>
           <Grid item xs={12}>
@@ -142,16 +121,43 @@ class Login extends React.Component {
         </Grid>
       );
 
+      return formContent;
+    }
+      
+
+    render() {
+      const { classes } = this.props;    
+
+      const background = (
+        <Particles style={{zIndex: '0', position: 'absolute'}}
+          params={{
+            "particles": {
+                "number": {
+                    "value": 20
+                },
+                "size": {
+                    "value": 4
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    }
+                }
+          }
+        }} />
+      );
+
       return (
         <React.Fragment>
           <Breakpoint large up>
             <React.Fragment>
               <form className={classes.LloginContainer}>
-              <div style={{margin: 40}}>
-                  <h1> UCLEI </h1>
-                  <h3>Welcome,</h3>
-                  <p>We're happy to see you back.</p>
-                      {content}
+              <div  className={classes.wrapper} style={{margin: 40}}>
+              {background}
+                      {this.content(28, classes.Linput)}
                   </div>
               </form>
             </React.Fragment>
@@ -160,15 +166,14 @@ class Login extends React.Component {
           <Breakpoint medium down>
           <React.Fragment>
             <form className={classes.loginContainer}>
-            <div style={{margin: 40}}>
-                <h1> UCLEI </h1>
-                <h3>Welcome,</h3>
-                <p>We're happy to see you back.</p>
-                    {content}
+            <div className={classes.wrapper} style={{margin: '6%'}}>
+            {background}
+                    {this.content(16, classes.input)}
                 </div>
             </form>
           </React.Fragment>
           </Breakpoint>
+
         </React.Fragment>
       );
     }

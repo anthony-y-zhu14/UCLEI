@@ -7,7 +7,7 @@ const returnStyles = function() {
       fontSize: 56
     },
     lFont: {
-      fontSize: 48
+      fontSize: 46
     },
     xlTitle: {
       fontsize: 200
@@ -15,7 +15,7 @@ const returnStyles = function() {
     loginContainer: {
       margin: '3% auto',
       paddingBottom: '4%',
-      width: 450,
+      width: 300,
       background: '#202023',
       color: '#fff',
       borderRadius: 15,
@@ -70,10 +70,10 @@ const returnStyles = function() {
       overflowY: 'hidden',
       position: 'relative',
       flexWrap: 'wrap',
-      margin: '8%',
-      width: 400
+      margin: '5%',
+      width: 500
     },
-    sWrapper: {
+    wrapper: {
       overflowX: 'hidden',
       overflowY: 'hidden',
       display: 'flex',
