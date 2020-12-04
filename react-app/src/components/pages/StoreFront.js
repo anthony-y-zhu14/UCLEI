@@ -31,7 +31,9 @@ const styles = {
 class StoreFront extends React.Component {
 
     handleLogin = () =>{   
-        this.props.history.push('/login');
+      
+      this.props.history.push('/login');
+      window.location.reload(false);
     }
 
     render() {

@@ -41,11 +41,13 @@ const returnStyles = function() {
       margin: '2%'
     },
     lgnBtn:{
-      width: '20%',
+      width: '6em',
+      height: "3em",
       margin: '2%'
     },
     rgsBtn:{
-      width: '20%',
+      width: '6em',
+      height: "3em",
       margin: '2%'
     },
     Linput: {
