@@ -1,1 +1,35 @@
-[]
+[
+  {
+    "name": "Maxar Technologies Inc.",
+    "quote": 23.94,
+    "symbol": "MAXR",
+    "share": 2,
+    "orderType": "buy",
+    "orderId": "9d62cb1c-0e46-42ae-9750-c6ea81a75181",
+    "username": "jerry137",
+    "date": "2020-12-04",
+    "limitPrice": 100
+  },
+  {
+    "name": "Tesla, Inc.",
+    "quote": 410.36,
+    "symbol": "TSLA",
+    "share": 2,
+    "orderType": "buy",
+    "orderId": "39c06207-d4dc-43f3-84a6-2d52de762bfc",
+    "username": "jerry137",
+    "date": "2020-12-04",
+    "limitPrice": 500
+  },
+  {
+    "name": "Virgin Galactic Holdings, Inc.",
+    "quote": 20.47,
+    "symbol": "SPCE",
+    "share": 50,
+    "orderType": "buy",
+    "orderId": "28dba937-a1dc-4544-aeec-746b4691385b",
+    "username": "robinhood",
+    "date": "2020-12-04",
+    "limitPrice": 25
+  }
+]

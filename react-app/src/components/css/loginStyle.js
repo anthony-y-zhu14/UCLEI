@@ -15,7 +15,7 @@ const returnStyles = function() {
     loginContainer: {
       margin: '3% auto',
       paddingBottom: '4%',
-      width: '55%',
+      width: 450,
       background: '#202023',
       color: '#fff',
       borderRadius: 15,
@@ -25,7 +25,7 @@ const returnStyles = function() {
       margin: '2% auto',
       paddingBottom: '4%',
       fontSize: 40,
-      width: '85%',
+      width: 1000,
       background: '#202023',
       color: '#fff',
       borderRadius: 15,
@@ -33,22 +33,23 @@ const returnStyles = function() {
     },
     input: {
       color: "#fff",
+      zIndex: 5
     },
     lBtn: {
       width: 200,
       fontSize: 18,
       height: 80,
-      margin: '2%'
+      margin: 10
     },
     lgnBtn:{
-      width: '6em',
-      height: "3em",
-      margin: '2%'
+      width: 100,
+      height: 40,
+      margin: 10
     },
     rgsBtn:{
-      width: '6em',
-      height: "3em",
-      margin: '2%'
+      width: 100,
+      height: 40,
+      margin: 10
     },
     Linput: {
       color: "#fff",
@@ -56,18 +57,27 @@ const returnStyles = function() {
     },
     LWrapper: {
       display: 'flex',
+      position: 'relative',
       flexWrap: 'wrap',
+      overflowX: 'hidden',
+      overflowY: 'hidden',
       margin: '3%',
       width: 4000
     },
     xsWrapper: {
+      overflowX: 'hidden',
       display: 'flex',
+      overflowY: 'hidden',
+      position: 'relative',
       flexWrap: 'wrap',
       margin: '8%',
-      width: '80%'
+      width: 400
     },
     sWrapper: {
+      overflowX: 'hidden',
+      overflowY: 'hidden',
       display: 'flex',
+      position: 'relative',
       flexWrap: 'wrap',
       margin: '5%',
       width: '100%'
@@ -78,18 +88,18 @@ const returnStyles = function() {
     },
     sbuttonContainer: {
       marginTop: 10,
-      width: '80%',
+      width: 300,
       display: 'flex',
       flexWrap: 'wrap'
     },
     xsbuttonContainer: {
       marginTop: 10,
-      width: '80%',
+      width: 190,
       display: 'flex',
       flexWrap: 'wrap'
     },
     LbuttonContainer: {
-      width: '80%',
+      width: 400,
       marginLeft: -100,
       marginTop: 20
     },
@@ -99,30 +109,34 @@ const returnStyles = function() {
       justifyContent: 'space-around'
     },
     txtFldCont : {
-      width: '40%',
-      float: 'left',
       fontSize: 48
     },
     txtFld: {
       display: 'flex',
       width: 250,
+      zIndex: 5
     },
     xstxtFldCont : {
       width: '100%',
+      zIndex: 5
+
     },
     xstxtFld: {
       display: 'flex',
       width: 150,
+      zIndex: 5
+
     },
     LtxtFld: {
       display: 'flex',
       width: 480,
+      zIndex: 5,
       fontSize: 48
     },
     LtxtFldCont : {
-      width: '40%',
-      float: 'left',
-      fontSize: 40
+      fontSize: 40,
+      zIndex: 5
+
     },
     lottieCont: {
       width: '40%',

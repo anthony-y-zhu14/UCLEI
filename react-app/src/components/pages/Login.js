@@ -3,10 +3,11 @@ import Button from '@material-ui/core/Button';
 import  { Breakpoint} from 'react-socks';
 import { TextField } from '@material-ui/core';
 import { withStyles } from "@material-ui/core/styles";
-import UncontrolledLottie from "../UncontrolledLottie";
 import {withRouter} from 'react-router-dom';
 import compose from 'recompose/compose'
 import returnStyles from '../css/loginStyle.js'
+import Grid from '@material-ui/core/Grid';
+import Particles from 'react-particles-js';
 const styles = returnStyles;
 
 class Login extends React.Component {
@@ -35,8 +36,6 @@ class Login extends React.Component {
         this.navToDsh();
       }      
     }
-
-
 
     login = async () => {
       this._isMounted = true;
@@ -90,134 +89,86 @@ class Login extends React.Component {
     render() {
       const { classes } = this.props;    
 
+      const background = (
+            <Particles style={{zIndex: '0', position: 'absolute', width: 100, height: 100}}
+            params={{
+              "particles": {
+                  "number": {
+                      "value": 30
+                  },
+                  "size": {
+                      "value": 4
+                  }
+              },
+              "interactivity": {
+                  "events": {
+                      "onhover": {
+                          "enable": true,
+                          "mode": "repulse"
+                      }
+                  }
+            }
+        }} />
+      );
+
+      const content = (
+        <Grid container>
+          {background}
+
+          <Grid item xs={12}>
+            <TextField id={this.state.id} label="Username" error={this.state.errorUsr}
+            InputProps={{classes: {
+              input: classes.Linput,
+              },
+            }} helperText={this.state.helperText}
+            InputLabelProps={{style:{fontSize:40}}}
+
+            variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField helperText={this.state.helperTextPsw} error={this.state.errorPsw}
+            label="Password" variant="outlined" type="password"
+            InputProps={{classes: {
+              input: classes.Linput,
+              },
+            }}
+            InputLabelProps={{style:{fontSize:40}}}
+            onChange = {this.setPassword} value = {this.state.password} />
+          </Grid>
+          <Grid item xs={12}>
+            <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
+            <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button> 
+          </Grid>
+        </Grid>
+      );
+
       return (
         <React.Fragment>
-        <Breakpoint customQuery="(min-width: 2201px) and (max-width: 16000px)">
-          <form className={classes.LloginContainer}>
-          <div className={classes.LWrapper}>
-            <div>
-              <h1 className={classes.xlTitle}> UCLEI </h1>
-              <h3 className={classes.lTitle}>Welcome,</h3>
-              <p className={classes.lFont}>We're happy to see you back.</p>
-                  <div className={classes.innerContainer}>
-                  <div className={classes.LtxtFldCont}>
-                    <TextField id={this.state.id} className={classes.LtxtFld} label="Username" error={this.state.errorUsr}
-                    InputProps={{classes: {
-                      input: classes.Linput,
-                      },
-                    }} helperText={this.state.helperText}
-                    InputLabelProps={{style:{fontSize:40}}}
+          <Breakpoint large up>
+            <React.Fragment>
+              <form className={classes.LloginContainer}>
+              <div style={{margin: 40}}>
+                  <h1> UCLEI </h1>
+                  <h3>Welcome,</h3>
+                  <p>We're happy to see you back.</p>
+                      {content}
+                  </div>
+              </form>
+            </React.Fragment>
+          </Breakpoint>
 
-                    variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.LtxtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
-                    label="Password" variant="outlined" type="password"
-                    InputProps={{classes: {
-                      input: classes.Linput,
-                      },
-                    }}
-                    InputLabelProps={{style:{fontSize:40}}}
-                    onChange = {this.setPassword} value = {this.state.password} />
-                  </div>
-                  <div className={classes.lottieCont}>
-                    <UncontrolledLottie />
-                  </div>
-                  <div className={classes.LbuttonContainer}>
-                    <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                    <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
-                  </div>
-                  </div>
+          <Breakpoint medium down>
+          <React.Fragment>
+            <form className={classes.loginContainer}>
+            <div style={{margin: 40}}>
+                <h1> UCLEI </h1>
+                <h3>Welcome,</h3>
+                <p>We're happy to see you back.</p>
+                    {content}
                 </div>
-
-              </div>
-          </form>
-        </Breakpoint>
-
-        <Breakpoint customQuery="(min-width: 901px) and (max-width: 2200px)">
-          <form className={classes.loginContainer}>
-          <div className={classes.sWrapper}>
-            <div>
-              <h1> UCLEI </h1>
-              <h3>Welcome,</h3>
-              <p>We're happy to see you back.</p>
-                  <div className={classes.innerContainer}>
-                  <div className={classes.txtFldCont}>
-                    <TextField id={this.state.id} className={classes.txtFld} label="Username" error={this.state.errorUsr}
-                    InputProps={{className: classes.input}} helperText={this.state.helperText}
-                    variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.txtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
-                    label="Password" variant="outlined" type="password" id={this.state.id}
-                    InputProps={{className: classes.input}}
-                    onChange = {this.setPassword} value = {this.state.password} />
-                  </div>
-                  <div className={classes.lottieCont}>
-                  <UncontrolledLottie />
-                  </div>
-                  </div>
-                </div>
-                <div className={classes.sbuttonContainer}>
-                  <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
-                </div>
-              </div>
-          </form>
-        </Breakpoint>
-
-        <Breakpoint customQuery="(min-width: 600px) and (max-width: 900px)">
-          <form className={classes.loginContainer}>
-          <div className={classes.sWrapper}>
-            <div>
-              <h1> UCLEI </h1>
-              <h3>Welcome,</h3>
-              <p>We're happy to see you back.</p>
-                  <div className={classes.innerContainer}>
-                  <div className={classes.txtFldCont}>
-                    <TextField id={this.state.id} className={classes.txtFld} label="Username" error={this.state.errorUsr}
-                    InputProps={{className: classes.input}} helperText={this.state.helperText}
-                    variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.txtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
-                    label="Password" variant="outlined" type="password" id={this.state.id}
-                    InputProps={{className: classes.input}}
-                    onChange = {this.setPassword} value = {this.state.password} />
-                  </div>
-                  <div className={classes.lottieCont}>
-                  </div>
-                  </div>
-                </div>
-                <div className={classes.sbuttonContainer}>
-                  <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
-                </div>
-              </div>
-          </form>
-        </Breakpoint>
-        <Breakpoint customQuery="(min-width: 0) and (max-width: 599px)">
-          <form className={classes.loginContainer}>
-          <div className={classes.xsWrapper}>
-            <div>
-              <h1> UCLEI </h1>
-              <h3>Welcome,</h3>
-              <p>We're happy to see you back.</p>
-                  <div className={classes.innerContainer}>
-                  <div className={classes.xstxtFldCont}>
-                    <TextField id={this.state.id} className={classes.xstxtFld} label="Username" error={this.state.errorUsr}
-                    InputProps={{className: classes.input}} helperText={this.state.helperText}
-                    variant="outlined" onChange = {this.setUsername} value = {this.state.username} />
-                    <TextField className={classes.xstxtFld} helperText={this.state.helperTextPsw} error={this.state.errorPsw}
-                    label="Password" variant="outlined" type="password" id={this.state.id}
-                    InputProps={{className: classes.input}}
-                    onChange = {this.setPassword} value = {this.state.password} />
-                  </div>
-                  <div className={classes.lottieCont}>
-                  </div>
-                  </div>
-                </div>
-                <div className={classes.xsbuttonContainer}>
-                  <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
-                </div>
-              </div>
-          </form>
-        </Breakpoint>
+            </form>
+          </React.Fragment>
+          </Breakpoint>
         </React.Fragment>
       );
     }

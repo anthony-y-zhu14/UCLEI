@@ -80,7 +80,6 @@ class LineChart extends React.Component {
       };
   }
 
-
   componentDidUpdate() {
     this.componentDidMount()
     if(this.state.query !== window.location.href.slice(29)) {
@@ -210,6 +209,7 @@ class LineChart extends React.Component {
             }}
              className="fa fa-bookmark"></i></span>
            </Tooltip>
+
            <div className={classes.ticker}>
            <FormDialog name={this.state.stockData.name}/>
           </div>

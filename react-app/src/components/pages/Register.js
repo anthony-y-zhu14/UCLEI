@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import {withRouter} from 'react-router-dom';
 import compose from 'recompose/compose'
 import  { Breakpoint} from 'react-socks';
+import UncontrolledLottie from "../UncontrolledLottie";
 import Grid from '@material-ui/core/Grid';
 
 const styles = {
@@ -43,7 +44,7 @@ const styles = {
     alignText: 'center',
     margin: '2% auto',
     padding: '2%',
-    width: '50%',
+    width: '600px',
   },
   lottie: {
     width: '20%',
@@ -220,11 +221,16 @@ class Register extends React.Component {
           <Breakpoint large up>
               <div className={classes.wrapperXL}>
                 <h1> UCLEI </h1>
+                <div style={{width: 20, marginTop: -150, marginLeft: 400, position: 'absolute'}}>
+                <UncontrolledLottie/>
+                  </div>
                 <h3>Welcome,</h3>
                 <p>Let's get you ready to trade.</p>
                 <div className={classes.rgsTxtFldsXL}>
                   {this.textFields({classes: {input: classes.inputXL}})}
+         
                 </div>
+                
               </div>
           </Breakpoint>
         </form>
