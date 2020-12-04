@@ -46,8 +46,8 @@ function App(){
                           path="/login"
                           component={() => <Login session_id={auth} onChange={handleChange} />}
                           />
-                          <Route  exact path="/" component={StoreFront}/>
-                          <Route path="/register"  component={() => <Register onChange={handleChange} />}/>
+                          <Route exact path="/" component={StoreFront}/>
+                          <Route path="/register"  component={() => <Register session_id={auth} onChange={handleChange} />}/>
                           <Route path="/dashboard"  component={() => <Dashboard session_id={auth}/>}/>
                           <Route path="/account"  component={() => <Account session_id={auth}/>}/>
                           <Route path="/market"  component={() => <Market session_id={auth}/>}/>

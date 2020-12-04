@@ -56,21 +56,23 @@ class Dashboard extends React.Component {
     return body;
   }
 
-  componentDidMount() {
-  this.setState({session_id: this.props.session_id});
+  componentDidMount() {   
 
-  this.readStock()
-    .then(res => this.setState({ stockData : res } ))
-    .catch(err => console.log(err));
+    this.setState({session_id: this.props.session_id});
 
-  this.fetchMarket()
-    .then(res => this.setState({ market : res[0] } ))
-    .catch(err => console.log(err));
+    this.readStock()
+      .then(res => this.setState({ stockData : res } ))
+      .catch(err => console.log(err));
 
-  this.callBackendAPI()
-    .then(res => this.setState({ user: res}))
-    .catch(err => console.log(err));
+    this.fetchMarket()
+      .then(res => this.setState({ market : res[0] } ))
+      .catch(err => console.log(err));
+
+    this.callBackendAPI()
+      .then(res => this.setState({ user: res}))
+      .catch(err => console.log(err));
   }
+
   // Fetches our GET route to account info from server.js
   callBackendAPI = async () => {
     const response = await fetch('/getAccount');

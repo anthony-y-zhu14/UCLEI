@@ -1,21 +1,25 @@
 import json
 import stock
 import asyncio
+import threading
 
 
-async def update_database(database_path, url_path):
+def update_database(database_path, url_path):
     stock_symbol_list = list(json_read(url_path).keys())
     stock_list = []
     data = {}
     for symbol in stock_symbol_list:
         stock_list.append(stock.Stock(symbol))
     for s in stock_list:
-        await scrap(s, data)          
+        t = threading.Thread(target=scrap, args=(s, data,))
+        t.start()
+       
+                 
 
     with open(database_path, "w+") as database:
         json.dump(data, database, indent=4)
 
-async def scrap(s, data):
+def scrap(s, data):
     s.update_info()
     data[s.symbol] = s.__dict__
     print("Fetching Data: " + data[s.symbol]["name"])   
@@ -43,12 +47,11 @@ def json_sort(file_name):
     with open(file_name, "w+") as database:
         json.dump(sorted_obj, database, indent=4)
 
-async def main():
+def main():
     data_path = "../../server/database/stocks/data_real.json"
     url_path = "../../server/database/stocks/stock_url.json"
-    await update_database(data_path, url_path)
+    update_database(data_path, url_path)
     json_sort(url_path)
 
 if __name__ == "__main__":
-    loop = asyncio.get_event_loop()
-    loop.run_until_complete(main())
+    main()

@@ -236,12 +236,14 @@ useEffect(() => {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+        
         <IconButton color="inherit" onClick={() => {
           getEventsListNow()
           getNotificationsNow()          
           }}>
           <NotificationsForm stockData={eventsList}/>
         </IconButton>
+        
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -252,7 +254,7 @@ useEffect(() => {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        
       </MenuItem>
     </Menu>
   );

@@ -36,8 +36,17 @@ const returnStyles = function() {
     },
     lBtn: {
       width: 200,
-      fontSize: 24,
-      height: 80
+      fontSize: 18,
+      height: 80,
+      margin: '2%'
+    },
+    lgnBtn:{
+      width: '20%',
+      margin: '2%'
+    },
+    rgsBtn:{
+      width: '20%',
+      margin: '2%'
     },
     Linput: {
       color: "#fff",

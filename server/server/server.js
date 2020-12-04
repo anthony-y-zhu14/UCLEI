@@ -179,7 +179,7 @@ app.get("/logout", function(req, res){
 app.get("/session", function(req, res){
     let data = '';
     if (req.session.user){
-        data = req.session.session_id;
+        data = req.session.session_id;  
     }
     else{
         data = null;

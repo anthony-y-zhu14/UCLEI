@@ -31,7 +31,6 @@ const styles = {
 class StoreFront extends React.Component {
 
     handleLogin = () =>{   
-
         this.props.history.push('/login');
     }
 

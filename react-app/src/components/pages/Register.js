@@ -89,6 +89,12 @@ class Register extends React.Component {
       };
     }
 
+    componentDidMount(){
+      if (this.props.session_id){
+        this.navToDsh();
+      }
+    }
+
     register = async () => {
       this._isMounted = true;
 

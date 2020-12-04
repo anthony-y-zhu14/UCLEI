@@ -17,18 +17,17 @@
         "volume": 0
       }
     ],
-    "eventList": [
+    "eventList": [],
+    "ownedStocks": [
       {
-        "symbol": "SE",
-        "quote": 175,
         "name": "Sea Limited",
-        "active": "Deactive",
-        "notified": false,
-        "notify_num": 5,
-        "message": ""
+        "quote": 360,
+        "total_cost": 3600,
+        "average_cost": 360,
+        "symbol": "SE",
+        "share": 10
       }
     ],
-    "ownedStocks": [],
     "activity": [
       {
         "date": "2020-11-29",
@@ -89,12 +88,22 @@
             "message": "Sold 10 shares of SE at $350 to rick137 - 2020-12-01"
           }
         ]
+      },
+      {
+        "date": "2020-12-04",
+        "activities": [
+          {
+            "date": "2020-12-04",
+            "action": "buy",
+            "message": "Bought 10 shares of SE at $360 from rick137 - 2020-12-04"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 4350,
-      "investmentBalance": 0,
+      "cashBalance": 750,
+      "investmentBalance": 3600,
       "totalDeposit": 1600
     },
     "balanceGrowth": 0,
@@ -199,16 +208,7 @@
         "message": ""
       }
     ],
-    "ownedStocks": [
-      {
-        "name": "Sea Limited",
-        "quote": 350,
-        "total_cost": 3500,
-        "average_cost": 350,
-        "symbol": "SE",
-        "share": 10
-      }
-    ],
+    "ownedStocks": [],
     "activity": [
       {
         "date": "2020-11-29",
@@ -294,12 +294,22 @@
             "message": "Bought 10 shares of SE at $350 from jerry137 - 2020-12-01"
           }
         ]
+      },
+      {
+        "date": "2020-12-04",
+        "activities": [
+          {
+            "date": "2020-12-04",
+            "action": "sell",
+            "message": "Sold 10 shares of SE at $360 to jerry137 - 2020-12-04"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 3650,
-      "investmentBalance": 3500,
+      "cashBalance": 7250,
+      "investmentBalance": 0,
       "totalDeposit": 8000
     },
     "balanceGrowth": "0",
@@ -322,5 +332,86 @@
     },
     "balanceGrowth": "0",
     "openOrders": []
+  },
+  "ANTHONYZHU1114": {
+    "username": "ANTHONYZHU1114",
+    "password": "12121212",
+    "session_id": "8c00c492-c59d-4d5b-ab1b-b0bc64926a02",
+    "name": "Anthony Zhu",
+    "watchlist": [
+      {
+        "symbol": "SE",
+        "quote": 218.75,
+        "name": "Sea Limited",
+        "volume": 0
+      }
+    ],
+    "openOrders": [],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": 218.75,
+        "name": "Sea Limited",
+        "active": "Active",
+        "notified": true,
+        "notify_num": 20,
+        "message": "Alert: Sea Limited, (SE) price has increased by 20% or greater."
+      }
+    ],
+    "ownedStocks": [],
+    "activity": [
+      {
+        "date": "2020-12-04",
+        "activities": [
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          },
+          {
+            "date": "2020-12-04",
+            "action": "deposite",
+            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
+          }
+        ]
+      }
+    ],
+    "account": {
+      "accountName": "Tax Free Savings Account",
+      "cashBalance": 80,
+      "investmentBalance": 0,
+      "totalDeposit": 80
+    },
+    "balanceGrowth": "0"
   }
 }

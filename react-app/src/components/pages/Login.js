@@ -31,15 +31,13 @@ class Login extends React.Component {
       };
     }
     componentDidMount() {
-      fetch('/session')
-            .then((res) => res.json())
-            .finally(() =>{
-              if (this.state.authenticated === 'true'){
-                this.navToDsh();
-              }
-            })
-            .catch((error) => console.log(error.message));
+      if (this.props.session_id){
+        this.navToDsh();
+      }      
     }
+
+
+
     login = async () => {
       this._isMounted = true;
       if (!this.state.username || !this.state.password){
@@ -90,7 +88,8 @@ class Login extends React.Component {
     }
 
     render() {
-      const { classes } = this.props;
+      const { classes } = this.props;    
+
       return (
         <React.Fragment>
         <Breakpoint customQuery="(min-width: 2201px) and (max-width: 16000px)">
@@ -123,8 +122,8 @@ class Login extends React.Component {
                     <UncontrolledLottie />
                   </div>
                   <div className={classes.LbuttonContainer}>
-                    <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                    <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
+                    <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
+                    <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
                   </div>
                   </div>
                 </div>
@@ -213,8 +212,8 @@ class Login extends React.Component {
                   </div>
                 </div>
                 <div className={classes.xsbuttonContainer}>
-                  <Button className={classes.lgnBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
-                  <Button className={classes.rgsBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
+                  <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.login}>Login</Button>
+                  <Button className={classes.lBtn} variant="contained" color="primary" onClick={this.register}>Register</Button>
                 </div>
               </div>
           </form>
