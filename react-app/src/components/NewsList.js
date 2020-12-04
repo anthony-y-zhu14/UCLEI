@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 
 const styles = {
   newsCard: {
-    background: '#393b41',
+    background: '#202023',
     color: '#fff',
     borderRadius: 10,
     overflowY: 'auto',

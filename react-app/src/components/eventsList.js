@@ -14,10 +14,11 @@ import  { Breakpoint } from 'react-socks';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    background: '#202024'
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    backgroundColor: "#393B41",
+    backgroundColor: "#222023",
     color: "#fff",
     fontWeight: theme.typography.fontWeightRegular,
   },
@@ -167,10 +168,10 @@ const handleEventUpdate = async (id) => {
                     <Typography style={{width: "45%"}}>
                         You have requested to be notified when {stock.symbol} changes by: {stock.notify_num}%.
                     </Typography>
-                    <Typography style={{width: "55%"}}>
+                    <Typography style={{width: "100%"}}>
                         Change notification?
                     <TextField
-                            style={{width: 80}}
+                            style={{width: 150}}
                             autoFocus
                             margin="dense"
                             variant="outlined"

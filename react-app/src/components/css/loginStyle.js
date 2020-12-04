@@ -16,7 +16,7 @@ const returnStyles = function() {
       margin: '3% auto',
       paddingBottom: '4%',
       width: '55%',
-      background: '#393B41',
+      background: '#202023',
       color: '#fff',
       borderRadius: 15,
       boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'
@@ -26,7 +26,7 @@ const returnStyles = function() {
       paddingBottom: '4%',
       fontSize: 40,
       width: '85%',
-      background: '#393B41',
+      background: '#202023',
       color: '#fff',
       borderRadius: 15,
       boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'

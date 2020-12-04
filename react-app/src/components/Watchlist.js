@@ -15,7 +15,7 @@ import compose from 'recompose/compose'
 
 const styles = {
   root: {
-    background: '#393b41',
+    background: '#202023',
     color: '#fff',
     borderRadius: '10px',
     margin: "1%",
@@ -25,7 +25,7 @@ const styles = {
 
   },
   listCard: {
-    background: '#35363C',
+    background: '#222024',
     color: '#fff',
     margin: "1%",
     boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',

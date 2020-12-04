@@ -18,7 +18,7 @@ summary {
   border-radius: 15px;
   cursor: pointer;
   outline: none;
-  background: #393b41;
+  background: #202023;
   color: white;
   font-family: 'Open Sans', sans-serif;
   font-weight: bold;
@@ -29,6 +29,10 @@ summary {
 summary:hover {
   background: aliceblue;
   color: black;
+}
+
+.submit {
+  background-color: #222024;
 }
 
 

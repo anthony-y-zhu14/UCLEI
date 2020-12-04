@@ -10,12 +10,13 @@ import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Tooltip from '@material-ui/core/Tooltip';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
-      backgroundColor: "#2b2c30",
+      backgroundColor: "#202023",
     },
     back: {
         backgroundColor: '#202023',
@@ -63,11 +64,9 @@ export default function NotificationsForm({stockData, notifynums}) {
             Notifications
         </DialogTitle>
         <DialogContent className={classes.back}>
-            <Typography className={classes.text}>
-            This list will appear empty if you have yet to subscribe to a stock.
+        <Tooltip title="This list will appear empty if you have yet to subscribe to a stock.
             To subscribe to a stock navigate to the market page or simply search for a stock.
-            Then, select 'set notification'. The notifications will be waiting here :) .
-            </Typography>
+            Then, select 'set notification'. The notifications will be waiting here :) ."><InfoIcon /></Tooltip>
           <DialogContentText className={classes.back}>
               <EventsList stockData={stockData}/>
           </DialogContentText>

@@ -24,7 +24,7 @@ const styles = {
     width: 350,
   },
   wrapper: {
-    background: '#393b41',
+    background: '#202023',
     color: '#fff',
     borderRadius: '10px',
     margin: "1%",
@@ -35,7 +35,7 @@ const styles = {
     width: '60%',
   },
   wrapperXL: {
-    background: '#393b41',
+    background: '#202023',
     color: '#fff',
     borderRadius: 20,
     margin: "2%",

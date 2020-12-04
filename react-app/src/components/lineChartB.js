@@ -11,7 +11,7 @@ const styles = {
   chartContainer: {
     overflow: 'hidden',
     borderRadius: '10px',
-    background: '#393b41',
+    background: '#202023',
     color: '#fff',
     margin: '.5%'
   },

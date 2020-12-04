@@ -15,10 +15,10 @@ import "../css/Account.css"
 
 const styles = {
   input: {
-    color: "#fff"
+    color: "#fff",
   },
   acctCard: {
-    background: '#393b41',
+    background: '#202023',
     textAlign: "center",
     color: '#fff',
     width: '50%',
@@ -27,7 +27,7 @@ const styles = {
     borderRadius: 10,
   },
   wrapper: {
-    background: '#393b41',
+    background: '#202023',
     overflowY: 'auto',
     height: '80%',
     color: '#fff',
@@ -241,7 +241,7 @@ class Account extends React.Component {
                       <TextField className="txtFld" label="Enter Dollar Amount" type='number'
                       onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
                       variant="outlined" />
-                      <Button id="submit" className='submit' onClick={this.handleSubmit}>Submit</Button>
+                      <Button style={{backgroundColor: '#fff', margin:'2.5%'}} onClick={this.handleSubmit}>Submit</Button>
                     </div>
                   </details>
                 </Grid>
@@ -292,7 +292,7 @@ class Account extends React.Component {
                         <TextField className="txtFld" label="Enter Dollar Amount" type='number'
                         onChange={this.setAmnt} InputProps={{className: classes.input}} value={this.state.amount}
                         variant="outlined" />
-                        <Button id="submit" className='submit' onClick={this.handleSubmit}>Submit</Button>
+                      <Button style={{backgroundColor: '#fff', margin:'2.5%'}} onClick={this.handleSubmit}>Submit</Button>
                       </div>
                     </details>
                   </Grid>

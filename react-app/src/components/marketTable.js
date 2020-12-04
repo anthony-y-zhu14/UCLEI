@@ -119,7 +119,7 @@ export default function MarketTable({stockData}) {
 
   if(rows) {
     return (
-      <TableContainer style={{backgroundColor: "#35363C", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', height: '600px'}}component={Paper}>
+      <TableContainer style={{backgroundColor: "#202023", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', height: '600px'}}component={Paper}>
       <Container>
         <h3 className={classes.font}>Market (D35-C) on: {getDate()} {stockData.symbol}</h3>
         <FormControl variant="outlined" style={{float: 'right', marginTop: "-5%"}}className={classes.formControl}>

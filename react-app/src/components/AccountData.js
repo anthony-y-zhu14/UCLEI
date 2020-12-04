@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 const styles = {
   acctCard: {
-    background: '#393b41',
+    background: '#202023',
     textAlign: "center",
     color: '#fff',
     padding: '1%',

@@ -37,7 +37,7 @@ export default function BasicTable({stockData}) {
     ));
 
   return (
-    <TableContainer style={{backgroundColor: "#35363C", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}component={Paper}>
+    <TableContainer style={{backgroundColor: "#222024", color:"#fff", boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)'}}component={Paper}>
     <h3 className={classes.font}>Historical Data: {stockData.symbol}</h3>
       <Table className={classes.table} aria-label="simple table">
         <TableHead>

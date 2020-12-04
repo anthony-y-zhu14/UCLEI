@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexWrap: 'wrap',
     color: '#fff',
-    backgroundColor: '#35363C',
+    backgroundColor: '#222024',
     margin: '2% auto'
   },
   media: {

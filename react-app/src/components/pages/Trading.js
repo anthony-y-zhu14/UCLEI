@@ -12,12 +12,12 @@ import Grid from '@material-ui/core/Grid';
 const styles = (theme) => ({
    input: {
       fullWidth: true,
-      background: '#393b41',
+      background: '#202023',
       width: 300,
       color: 'white'
     },
     wrapper: {
-      background: '#393b41',
+      background: '#202024',
       overflowY: 'auto',
       height: '100%',
       color: '#fff',
@@ -28,8 +28,21 @@ const styles = (theme) => ({
       textDecoration: 'none',
       listStyleType: 'none'
     },
+    searchCard: {
+      background: '#222023',
+      overflowY: 'auto',
+      height: '100%',
+      color: '#fff',
+      borderRadius: '10px',
+      margin: "1%",
+      padding: '2%',
+      boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      alignText: 'center',
+      textDecoration: 'none',
+      listStyleType: 'none'
+    },
     wrapper2: {
-      background: '#393b41',
+      background: '#202024',
       overflowY: 'auto',
       height: '100%',
       color: '#fff',
@@ -81,7 +94,7 @@ const styles = (theme) => ({
       },
     },
     tradingPanel: {
-        background: "#393b41",
+        background: "#202024",
         boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         listStyleType: "none",
         borderRadius: "15px",
@@ -336,7 +349,7 @@ class Trading extends React.Component {
                   <summary style={{background: "cornflowerblue"}}>
                       {`${this.state.stock_found.name}`}
                   </summary>
-                  <div className={classes.wrapper}>
+                  <div className={classes.searchCard}>
                     <h4>Quote: ${this.state.stock_found.quote}</h4>
                     <h4>Volume: {this.state.stock_found.volume}</h4>
                     <h4>Market: {this.state.stock_found.market}</h4>
