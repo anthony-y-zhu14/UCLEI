@@ -3,11 +3,11 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 3.34,
-    "volume": 10,
-    "quote": 1622909.9,
+    "percentage": 4.02,
+    "volume": 22,
+    "quote": 1633601.09,
     "prev_close": 1570399.25,
-    "totalTranscationAmount": 3600,
+    "totalTranscationAmount": 7400,
     "daily_range": {
       "high": 1570399.25,
       "low": 1570399.25
@@ -1022,12 +1022,12 @@
     "name": "Maxar Technologies Inc.",
     "symbol": "MAXR",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 10.48,
-    "quote": 23.94,
+    "percentage": 317.71,
+    "quote": 100,
     "prev_close": 23.94,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 200,
     "daily_range": {
-      "high": 23.94,
+      "high": 100,
       "low": 23.94
     },
     "historical": {
@@ -1040,7 +1040,7 @@
       "2020-12-01": 23.94,
       "2020-12-03": 23.94
     },
-    "volume": 0,
+    "volume": 2,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,

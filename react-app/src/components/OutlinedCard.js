@@ -55,6 +55,9 @@ export default function OutlinedCard({stock}, {h}) {
           <Typography variant="body2" component="p">
             Average Cost: ${stock.average_cost}
           </Typography>
+          <Typography variant="body2" component="p">
+            Amount of Shares: {stock.share}
+          </Typography>
         </CardContent>
         <CardActions>
           <Button size="small" onClick={handleClick}>View Detail</Button>
