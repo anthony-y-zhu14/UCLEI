@@ -170,8 +170,7 @@ class LineChart extends React.Component {
     };
     fetch('/addWatchItem', requestOptions)
     .then(this.componentDidMount())
-    .then (this.props.reloadWatchList())
-
+    this.props.reloadWatchList()
   }
 
   handleChart = () => {

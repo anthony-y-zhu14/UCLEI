@@ -21,6 +21,18 @@
         "quote": 1740.39,
         "name": "Alphabet Inc.",
         "volume": 0
+      },
+      {
+        "symbol": "SE",
+        "quote": 360,
+        "name": "Sea Limited",
+        "volume": 10
+      },
+      {
+        "symbol": "MAXR",
+        "quote": 23.94,
+        "name": "Maxar Technologies Inc.",
+        "volume": 0
       }
     ],
     "eventList": [

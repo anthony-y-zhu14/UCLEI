@@ -8,6 +8,7 @@ import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
 import Grid from '@material-ui/core/Grid';
+import { id } from 'date-fns/locale';
 
 const styles = {
   root: {
@@ -71,7 +72,8 @@ class Market extends React.Component {
       .catch(err => console.log(err));
 
       this.callBackendAPI()
-        .then(res => this.setState({user:res, watchlist:res.watchlist}))
+        .then(res => this.setState({user:res}))
+        .then(() => this.setState({watchlist: this.state.user.watchlist}))
         .catch(err => console.log(err));
     }
 
@@ -99,6 +101,29 @@ class Market extends React.Component {
         return body;
     };
 
+    delWatchItem = data => {
+      const requestOptions = {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ item: data })
+      };
+      fetch('/delWatchItem', requestOptions);
+      // const data = await response.json();
+  
+      this.callBackendAPI()
+      .then(res => this.setState({user:res}))
+      .then(() => this.setState({watchlist: this.state.user.watchlist}))
+      .catch(err => console.log(err));
+  
+    }
+
+
+    updateList = () => {
+      this.callBackendAPI()
+      .then(res => this.setState({user:res}))
+      .then(() => this.setState({watchlist: this.state.user.watchlist}))
+    }
+
     render() {
         const { classes } = this.props;
         if(!this.props.session_id) {
@@ -110,7 +135,7 @@ class Market extends React.Component {
             </React.Fragment>
           );
         }
-        if(!this.state.user) {
+        if(!this.state.watchlist) {
           return (
             <React.Fragment>
                 <h1>   Loading   </h1>
@@ -125,10 +150,10 @@ class Market extends React.Component {
               <Breakpoint medium up>
                 <Container>
                   <Grid container>
-                      <Grid item xs={12}><LineChart/></Grid>
+                      <Grid item xs={12}><LineChart reloadWatchList={this.updateList}/></Grid>
                   </Grid>
                   <Grid container spacing={2}>
-                    <Grid item xs={6}><CheckboxList /></Grid>
+                    <Grid item xs={6}><CheckboxList w={this.state.user.watchlist} del={this.delWatchItem}/></Grid>
                     <Grid item xs={6}><NewsList /></Grid>
                   </Grid>
                 </Container>
@@ -136,11 +161,11 @@ class Market extends React.Component {
               <Breakpoint small down>
                 <Container>
                   <Grid container>
-                      <Grid item xs={12}><LineChart reloadWatchList={()=>{alert("im clicked")}}/></Grid>
+                      <Grid item xs={12}><LineChart reloadWatchList={this.updateList}/></Grid>
                   </Grid>
                   <Grid container spacing={2}>
                   <div style={{height: "300px", marginTop: "2%"}}>
-                    <Grid item xs={12}><CheckboxList watchlist={this.state.watchlist}/></Grid>
+                    <Grid item xs={12}><CheckboxList w={this.state.user.watchlist} del={this.delWatchItem}/></Grid>
                   </div>
                   </Grid>
                 </Container>
