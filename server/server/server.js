@@ -241,7 +241,7 @@ app.post('/updateBalance', (req, res) => {
                 users[req.session.user]['account']['cashBalance'] += parseInt(data.amount);
                 users[req.session.user]['account']['totalDeposit'] += parseInt(data.amount);
                 let activityMessage = `Deposited $${parseInt(data.amount)} to account: ${users[req.session.user].account.accountName}`;
-                let newActivity = stockOrder.creatNewActivity('deposite', activityMessage);
+                let newActivity = stockOrder.creatNewActivity('deposit', activityMessage);
                 stockOrder.updateUserActivity(users[req.session.user].activity, newActivity);
             }
             else {

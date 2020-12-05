@@ -33,10 +33,15 @@ const background = (
     params={{
       "particles": {
           "number": {
-              "value": 50
+              "value": 70
           },
           "size": {
               "value": 4
+          },
+          "line_linked": {
+            "color": {
+              'value': "#6c9ff8"
+            },
           },
           "color": {
             "value": "#6c9ff8",            
@@ -50,9 +55,7 @@ const background = (
               }
           }
       },
-      "line_linked": {
-        "color": "#202023"
-      }
+
   }} />
 );
 
