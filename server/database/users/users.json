@@ -447,5 +447,23 @@
       "totalDeposit": 14
     },
     "balanceGrowth": "0"
+  },
+  "TheDonald": {
+    "username": "TheDonald",
+    "password": "123",
+    "session_id": "70176565-a2cf-4228-858c-89dc85a61584",
+    "name": "Tronald Dump",
+    "watchlist": [],
+    "openOrders": [],
+    "eventList": [],
+    "ownedStocks": [],
+    "activity": [],
+    "account": {
+      "accountName": "Tax Free Savings Account",
+      "cashBalance": 0,
+      "investmentBalance": 0,
+      "totalDeposit": 0
+    },
+    "balanceGrowth": "0"
   }
 }

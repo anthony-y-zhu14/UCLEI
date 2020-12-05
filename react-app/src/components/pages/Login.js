@@ -20,7 +20,7 @@ class Login extends React.Component {
             helperText: '',
             helperTextPsw: '',
             id: 'outlined-basic',
-            authenticated: 'onload',
+            authenticated: '',
             errorPsw: false,
             errorUsr: false
         };
@@ -51,21 +51,17 @@ class Login extends React.Component {
         const response = await fetch('/authentication', requestOptions);
         const data = await response.json();
         this.setState({ authenticated: data.authentication});
-        console.log(data.authentication)
-        this.props.onChange(data.session_id);
 
-        if(this.state.authenticated === 'onload') {
-          this.setState({ id: 'outlined-basic', helperText: '', error: false})
-        }
         if(this.state.authenticated === 'passwordError') {
           this.setState({ errorUsr: false, helperText: ''})
           this.setState({ errorPsw: true, helperTextPsw: 'Invalid Password'})
         }
-        if(this.state.authenticated === 'usernameError') {
+        else if(this.state.authenticated === 'usernameError') {
           this.setState({ errorUsr: true, helperText: 'Invalid Username'})
           this.setState({ errorPsw: true, helperTextPsw: 'Invalid Password'})
         }
-        if(this.state.authenticated === 'true') {
+        else if(this.state.authenticated === 'true') {
+          this.props.onChange(data.session_id);
           this.navToDsh();
         }
     }

@@ -105,6 +105,7 @@ class Register extends React.Component {
 
 
         if(this.state.password !== this.state.rePassword){
+          this.setState({ id: 'outlined-error-helper-text', helperText: '', error: false})
           this.setState({ id: 'outlined-error-helper-text', helperTextPsw: 'Passwords not Matching', errorPsw: true})
           return;
         }
@@ -119,7 +120,6 @@ class Register extends React.Component {
         const data = await response.json();
         this.setState({ authenticated: data.authentication});
         console.log(data)
-        this.props.onChange(data.session_id);
         
         if(this.state.authenticated === 'onload') {
           this.setState({ id: 'outlined-basic', helperText: '', error: false})
@@ -128,6 +128,7 @@ class Register extends React.Component {
           this.setState({ id: 'outlined-error-helper-text', helperText: 'Username Already Exists', error: true})
         }
         if(this.state.authenticated === 'true') {  
+          this.props.onChange(data.session_id);
           this.navToDsh();
         }
       }
