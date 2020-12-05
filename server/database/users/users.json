@@ -227,9 +227,9 @@
         "volume": 0
       },
       {
-        "symbol": "SE",
-        "quote": 360,
-        "name": "Sea Limited",
+        "symbol": "D35-C",
+        "quote": 1622909.9,
+        "name": "Dimension 35-C",
         "volume": 10
       }
     ],
@@ -350,106 +350,7 @@
     },
     "balanceGrowth": "0",
     "openOrders": []
-  },
-  "asd": {
-    "username": "asd",
-    "password": "123",
-    "session_id": "ae2d445a-5a8a-436b-994d-91b2ba887362",
-    "name": "asda",
-    "watchlist": [],
-    "eventList": [],
-    "ownedStocks": [],
-    "activity": [],
-    "account": {
-      "accountName": "Tax Free Savings Account",
-      "cashBalance": 0,
-      "investmentBalance": 0,
-      "totalDeposit": 0
-    },
-    "balanceGrowth": "0",
-    "openOrders": []
-  },
-  "ANTHONYZHU1114": {
-    "username": "ANTHONYZHU1114",
-    "password": "12121212",
-    "session_id": "8c00c492-c59d-4d5b-ab1b-b0bc64926a02",
-    "name": "Anthony Zhu",
-    "watchlist": [
-      {
-        "symbol": "SE",
-        "quote": 218.75,
-        "name": "Sea Limited",
-        "volume": 0
-      }
-    ],
-    "openOrders": [],
-    "eventList": [
-      {
-        "symbol": "SE",
-        "quote": 218.75,
-        "name": "Sea Limited",
-        "active": "Active",
-        "notified": true,
-        "notify_num": 20,
-        "message": "Alert: Sea Limited, (SE) price has increased by 20% or greater."
-      }
-    ],
-    "ownedStocks": [],
-    "activity": [
-      {
-        "date": "2020-12-04",
-        "activities": [
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          },
-          {
-            "date": "2020-12-04",
-            "action": "deposit",
-            "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
-          }
-        ]
-      }
-    ],
-    "account": {
-      "accountName": "Tax Free Savings Account",
-      "cashBalance": 80,
-      "investmentBalance": 0,
-      "totalDeposit": 80
-    },
-    "balanceGrowth": "0"
-  },
+  },  
   "robinhood": {
     "username": "robinhood",
     "password": "steal from the rich",
