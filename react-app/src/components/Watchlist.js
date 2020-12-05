@@ -125,7 +125,7 @@ class CheckboxList extends React.Component {
               </AccordionSummary>
               <AccordionDetails>
                 <Box p={{ xs: 1 }}><p>Today's Quote: ${value.quote}</p></Box>
-                <Box p={{ xs: 1 }}><p>Today's Volume: ${value.volume}</p></Box>
+                <Box p={{ xs: 1 }}><p>Today's Volume: {value.volume}</p></Box>
               </AccordionDetails>
             </Accordion>
           ))}

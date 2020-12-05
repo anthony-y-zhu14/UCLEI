@@ -349,7 +349,8 @@ app.get('/getEvents', (req, res) => {
         res.setHeader("Content-Type", "application/JSON");
         res.write(data);
         res.end();
-    }    
+    }
+    res.end();
 });
 
 app.get('/getNotified', (req, res) => {
