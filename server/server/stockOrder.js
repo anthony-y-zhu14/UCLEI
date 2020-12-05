@@ -101,11 +101,11 @@ function updateUserActivity(activityArr, newActivity, stockSymbol){
 
 }
 
-function updateInvestmentBalance(user){
+function updateInvestmentBalance(user, stockDatabase){
     //reset to 0
     user.account.investmentBalance = 0;
     for (let i = 0; i < user.ownedStocks.length; i++){
-        user.account.investmentBalance += user.ownedStocks[i].total_cost;
+        user.account.investmentBalance += user.ownedStocks[i].share * stockDatabase[user.ownedStocks[i].symbol].quote;
     }
 
 }
@@ -134,7 +134,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                 let newStock = {
                     name: stockDatabase[symbol].name,
                     quote: sellOrder.limitPrice,
-                    total_cost: sellOrder.limitPrice*currentQuantity,
+                    total_cost: sellOrder.limitPrice * currentQuantity,
                     average_cost: sellOrder.limitPrice,
                     symbol: stockDatabase[symbol].symbol,
                     share: currentQuantity
@@ -157,7 +157,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
                         usersDataBase[buyerUserName].ownedStocks[j].total_cost += newStock.quote * currentQuantity;
 
-                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = (usersDataBase[buyerUserName]['ownedStocks'][j].total_cost / usersDataBase[buyerUserName]['ownedStocks'][j].share);
+                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = parseFloat((usersDataBase[buyerUserName]['ownedStocks'][j].total_cost / usersDataBase[buyerUserName]['ownedStocks'][j].share).toFixed(2));
 
                         return;
                     }
@@ -202,7 +202,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                     }
                 }
 
-                updateInvestmentBalance(usersDataBase[sellOrder.username]);
+                updateInvestmentBalance(usersDataBase[sellOrder.username], stockDatabase);
 
 
 
@@ -248,7 +248,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
                         usersDataBase[buyerUserName].ownedStocks[j].total_cost += newStock.quote * sellOrder.share;
 
-                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = (usersDataBase[buyerUserName].ownedStocks[j].total_cost / usersDataBase[buyerUserName].ownedStocks[j].share);
+                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = pareseFloat((usersDataBase[buyerUserName].ownedStocks[j].total_cost / usersDataBase[buyerUserName].ownedStocks[j].share).toFixed(2));
 
                         return;
                     }
@@ -284,7 +284,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
                     }
                 }
 
-                updateInvestmentBalance(usersDataBase[sellOrder.username]);
+                updateInvestmentBalance(usersDataBase[sellOrder.username], stockDatabase);
             }
             currentQuantity -= sellOrder.share;
             sellOrder.share = 0;
@@ -334,7 +334,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
     
 
 
-    updateInvestmentBalance(usersDataBase[buyerUserName]);
+    updateInvestmentBalance(usersDataBase[buyerUserName], stockDatabase);
     updateSellOrdersData(updatedSellOrderArr);
     updateBuyOrdersData(buyOrderArr);
     updateUserDataBase(usersDataBase);
@@ -378,7 +378,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
 
                         usersDatabase[sellerUserName].ownedStocks[j].total_cost -= (buyOrderArr[i].limitPrice * currentQuantity);
 
-                        usersDatabase[sellerUserName].ownedStocks[j].average_cost = (usersDatabase[sellerUserName].ownedStocks[j].total_cost / usersDatabase[sellerUserName].ownedStocks[j].share);
+                        usersDatabase[sellerUserName].ownedStocks[j].average_cost = parseFloat((usersDatabase[sellerUserName].ownedStocks[j].total_cost / usersDatabase[sellerUserName].ownedStocks[j].share).toFixed(2));
 
                         if (usersDatabase[sellerUserName].ownedStocks[j].share === 0){
                             usersDatabase[sellerUserName].ownedStocks.splice(j, 1);
@@ -431,7 +431,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
             //decrement share total for partially fufilled sell order
             buyOrder.share -= currentQuantity;
             currentQuantity = 0;
-            updateInvestmentBalance(usersDatabase[buyOrder.username]);
+            updateInvestmentBalance(usersDatabase[buyOrder.username], stockDatabase);
             break;
 
         }
@@ -459,8 +459,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
 
                         usersDatabase[sellerUserName].ownedStocks[j].total_cost -= (buyOrderArr[i].limitPrice * buyOrderArr[i].share);
 
-                        usersDatabase[sellerUserName].ownedStocks[j].average_cost
-                        = (usersDatabase[sellerUserName].ownedStocks[j].total_cost / usersDatabase[sellerUserName].ownedStocks[j].share);
+                        usersDatabase[sellerUserName].ownedStocks[j].average_cost = parseFloat((usersDatabase[sellerUserName].ownedStocks[j].total_cost / usersDatabase[sellerUserName].ownedStocks[j].share).toFixed(2));
 
                         if (usersDatabase[sellerUserName].ownedStocks[j].share === 0){
                             usersDatabase[sellerUserName].ownedStocks.splice(j, 1);
@@ -512,7 +511,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
                 usersDatabase[buyOrder.username].ownedStocks.push(newStock);
 
             }
-            updateInvestmentBalance(usersDatabase[buyOrderArr[i].username]);
+            updateInvestmentBalance(usersDatabase[buyOrderArr[i].username], stockDatabase);
             currentQuantity -= buyOrder.share;
             buyOrder.share = 0;
         }
@@ -552,7 +551,7 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
         stockDatabase[symbol].daily_range.low = stockDatabase[symbol].quote;
     }
     
-    updateInvestmentBalance(usersDatabase[sellerUserName]);
+    updateInvestmentBalance(usersDatabase[sellerUserName], stockDatabase);
     updateSellOrdersData(sellOrderArr);
     updateBuyOrdersData(updatedBuyOrderArr);
     updateUserDataBase(usersDatabase);

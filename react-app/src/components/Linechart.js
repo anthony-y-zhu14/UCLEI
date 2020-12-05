@@ -302,6 +302,8 @@ class LineChart extends React.Component {
               <br />
               <span className={classes.font}>Today's High: ${this.state.stockData.daily_range.high}</span>
               <span className={classes.font}>Today's Low: ${this.state.stockData.daily_range.low}</span>
+              <span className={classes.font}>Percent Change: {this.state.stockData.percentage}%</span>
+
               <ButtonGroup className={classes.controller}>
                 <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
                 <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
