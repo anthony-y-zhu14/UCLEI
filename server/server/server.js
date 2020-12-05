@@ -349,10 +349,7 @@ app.get('/getEvents', (req, res) => {
         res.setHeader("Content-Type", "application/JSON");
         res.write(data);
         res.end();
-    }
-    res.statusCode = 401;
-    res.write("<h1>401 Not Authorized.</h1>");
-    res.end();
+    }    
 });
 
 app.get('/getNotified', (req, res) => {
@@ -366,7 +363,7 @@ app.get('/getNotified', (req, res) => {
             data = event;
         }
     }
- res.statusCode = 200;
+    res.statusCode = 200;
       res.setHeader("Content-Type", "application/JSON");
       res.write(JSON.stringify(data));
       res.end();
