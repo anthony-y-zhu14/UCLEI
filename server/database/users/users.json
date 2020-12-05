@@ -98,13 +98,33 @@
             "message": "Bought 10 shares of SE at $360 from rick137 - 2020-12-04"
           }
         ]
+      },
+      {
+        "date": "2020-12-05",
+        "activities": [
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $1210 to account: C-137-1001 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $1210 to account: C-137-1001 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $1210 to account: C-137-1001 - 2020-12-05"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 750,
+      "cashBalance": 4380,
       "investmentBalance": 3600,
-      "totalDeposit": 1600
+      "totalDeposit": 5230
     },
     "balanceGrowth": 0,
     "openOrders": []
@@ -365,42 +385,42 @@
         "activities": [
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $10 to account: Tax Free Savings Account - 2020-12-04"
           }
         ]
@@ -429,12 +449,12 @@
         "activities": [
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $7 to account: Tax Free Savings Account - 2020-12-04"
           },
           {
             "date": "2020-12-04",
-            "action": "deposite",
+            "action": "deposit",
             "message": "Deposited $7 to account: Tax Free Savings Account - 2020-12-04"
           }
         ]
