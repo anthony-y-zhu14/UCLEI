@@ -350,8 +350,6 @@ app.get('/getEvents', (req, res) => {
         res.write(data);
         res.end();
     }
-    res.statusCode = 401;
-    res.write("<h1>401 Not Authorized.</h1>");
     res.end();
 });
 
