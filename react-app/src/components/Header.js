@@ -16,8 +16,6 @@ import { Avatar } from '@material-ui/core';
 import { deepOrange } from '@material-ui/core/colors';
 import { useHistory } from "react-router-dom";
 import {withRouter} from 'react-router-dom';
-// import { Router, Route } from 'react-router-dom';
-
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -117,27 +115,27 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     return body;
   };
 
-  const getEventsList = async () => {
-    const response = await fetch('/getEvents');
-    const body = await response.json();
-    if(response.status !== 200) {
-      throw Error(body.message);
-    }
-    // sleep(10000).then(() => {
-    //   setEventsList(body);
-    // });
-  }
+  // const getEventsList = async () => {
+  //   const response = await fetch('/getEvents');
+  //   const body = await response.json();
+  //   if(response.status !== 200) {
+  //     throw Error(body.message);
+  //   }
+  //   sleep(10000).then(() => {
+  //   setEventsList(body);
+  // });    
+  // }
 
-  const getEventsListNow = async () => {
-    const response = await fetch('/getEvents');
-    const body = await response.json();
-    if(response.status !== 200) {
-      throw Error(body.message);
-    }
+  // const getEventsListNow = async () => {
+  //   const response = await fetch('/getEvents');
+  //   const body = await response.json();
+  //   if(response.status !== 200) {
+  //     throw Error(body.message);
+  //   }
     
-    setEventsList(body);
+  //   setEventsList(body);
     
-  }
+  // }
 
   const getNotifications = async () => {
     const response = await fetch('/getNotified');
@@ -145,18 +143,9 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
     if(response.status !== 200) {
       throw Error(body.message);
     }
-    sleep(10000).then(() => {
+    sleep(5000).then(() => {
       setNotifications(body.count);
     });    
-  }
-
-  const getNotificationsNow = async () => {
-    const response = await fetch('/getNotified');
-    const body = await response.json();
-    if(response.status !== 200) {
-      throw Error(body.message);
-    }    
-    setNotifications(body.count);       
   }
 
   const setSearchQuery = (event) => {
@@ -185,7 +174,6 @@ const PrimarySearchAppBar = ({currentPage, userName}) => {
 }
 
 useEffect(() => {  
-  getEventsList();
   getNotifications();
 });
 
@@ -220,7 +208,11 @@ useEffect(() => {
       open={isMenuOpen}
       onClose={handleMenuClose} >
 
-      <MenuItem onClick={handleMenuClose} onClick={logout}>Sign Out</MenuItem>
+      <MenuItem onClick={() => {
+          handleMenuClose()
+          logout()
+            }}>
+        Sign Out</MenuItem>
     </Menu>
   );
 
@@ -237,12 +229,11 @@ useEffect(() => {
     >
       <MenuItem>
         
-        <IconButton color="inherit" onClick={() => {
-          getEventsListNow()
-          getNotificationsNow()          
-          }}>
-          <NotificationsForm stockData={eventsList}/>
+        <IconButton color="inherit">
+          <NotificationsForm notifynums={notifications}stockData={eventsList}/>
+          
         </IconButton>
+        
         
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
@@ -286,10 +277,7 @@ useEffect(() => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton onClick={() => {
-            getEventsListNow()
-            getNotificationsNow()          
-            }}  color="inherit">
+            <IconButton color="inherit">
             <NotificationsForm  notifynums={notifications} stockData={eventsList}/>
             </IconButton>
             <IconButton

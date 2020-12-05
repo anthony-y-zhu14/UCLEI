@@ -35,14 +35,15 @@ const styles = {
 
 
 class CheckboxList extends React.Component {
-  constructor() {
-      super();
+  constructor(props) {
+      super(props)
       this.state = {
           userWatchlist: undefined,
           selectedStock: undefined,
           view: false
         };
   }
+
 
   componentDidMount() {
     // Calls our fetch below once the component mounts
@@ -60,50 +61,28 @@ class CheckboxList extends React.Component {
     return body;
   };
 
-  delWatchItem = async(id) => {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ item: id })
-    };
-    await fetch('/delWatchItem', requestOptions);
-    // const data = await response.json();
-
-    this.callBackendAPI()
-    .then(res => this.setState({ userWatchlist: res }))
-    .catch(err => console.log(err));
+  onDel = (a) => {
+    this.props.del(a);
   }
 
   viewWatchItem = async(value) => {
-      let location = {
-        pathname: `/market/${value}`,
-        state: {
-          query: value
-        }
+    let location = {
+      pathname: `/market/${value}`,
+      state: {
+        query: value
       }
-      this.props.history.push(location);
-  }
-
-  componentDidUpdate() {
-     if (this.props.onChange) {
-       this.props.onChange(this.state);
-     }
-   }
+    }
+    this.props.history.push(location);
+}
 
   render() {
     const { classes } = this.props;
-
-    if(!this.state.userWatchlist) {
-      return (
-        <h1>401 Not Authorized...</h1>
-      )
-    }
 
     return (
       <React.Fragment>
         <Container className={classes.root}>
           <h3>Watchlist</h3>
-          {this.state.userWatchlist.map(value => (
+          {this.props.w.map(value => (
             <Accordion className={classes.listCard}>
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
@@ -118,8 +97,8 @@ class CheckboxList extends React.Component {
                   </IconButton>
                 </Tooltip>
                 <Tooltip title="Remove">
-                  <IconButton onClick={() => this.delWatchItem(value.symbol)} edge="end" aria-label="delete">
-                    <DeleteIcon style={{fill: "#fff"}}/>
+                  <IconButton name={value.symbol} onClick={() => this.onDel(value.symbol)} edge="end" aria-label="delete">
+                    <DeleteIcon name={value.symbol} style={{fill: "#fff"}}/>
                   </IconButton>
                 </Tooltip>
               </AccordionSummary>

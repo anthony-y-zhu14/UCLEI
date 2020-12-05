@@ -127,7 +127,6 @@ app.post('/register', (req, res) => {
             let newUser = {
                 username: username,
                 password: password,
-                session_id: USER_TOKEN,
                 name: name,
                 watchlist: [],
                 openOrders: [],
@@ -344,7 +343,8 @@ app.post('/delWatchItem', (req, res) => {
 
 app.get('/getEvents', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        let data = JSON.stringify(users[req.session.user]['eventList']);
+        const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
+        let data = JSON.stringify(userDatabase[req.session.user]['eventList']);
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
         res.write(data);
@@ -364,7 +364,7 @@ app.get('/getNotified', (req, res) => {
             data = event;
         }
     }
-    res.statusCode = 200;
+        res.statusCode = 200;
       res.setHeader("Content-Type", "application/JSON");
       res.write(JSON.stringify(data));
       res.end();

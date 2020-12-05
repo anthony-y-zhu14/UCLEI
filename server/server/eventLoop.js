@@ -28,12 +28,7 @@ module.exports = {
        'user': `${users[user]['username']}`,
        'count': 0
      }
-
-
      for(let i = 0; i < users[user]['eventList'].length; i++) {
-
-       let ticker = users[user]['eventList'][i]['symbol'];
-
        if(users[user]['eventList'][i]["notify_num"] > 0) {
          if(users[user]['eventList'][i]['notified'] !== true &&
          users[user]['eventList'][i]["active"] === "Active" &&

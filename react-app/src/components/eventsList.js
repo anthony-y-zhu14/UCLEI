@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -58,12 +58,35 @@ const useStyles = makeStyles((theme) => ({
 const EventsList = ({stockData}) => {
   const classes = useStyles();
   const [num, setNum] = React.useState(false);
+  const [eventList, setEventsList] = React.useState([]);
+
 
   const setTheNum = (event) => {
     setNum(event.target.value)
 }
 
-const handleEventUpdate = async (id) => {
+const getEventsListNow = () => {
+  fetch('/getEvents')
+  .then(res => res.json())
+  .then(data => {
+    if (data.length !== eventList.length){
+      setEventsList(data);
+    }    
+  })
+}
+
+const updateEventList = () => {
+  fetch('/getEvents')
+  .then(res => res.json())
+  .then(data => setEventsList(data));
+}
+
+useEffect(() =>{
+  getEventsListNow();
+})
+
+
+const handleEventUpdate = (id) => {
   let data = {
     num: num,
     value: id
@@ -73,16 +96,20 @@ const handleEventUpdate = async (id) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
   };
-  await fetch('/updateEventNum', requestOptions);
+  fetch('/updateEventNum', requestOptions)
+  .then(()=>updateEventList())
+  
 }
 
-  const removeEvent = async (id) => {
+  const removeEvent = (id) => {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ item: id })
   };
-    await fetch('/rmvEventNotify', requestOptions);
+  fetch('/rmvEventNotify', requestOptions)
+    .then(()=>{ updateEventList() });    
+
   };
 
   const setActive = async (id) => {
@@ -92,7 +119,8 @@ const handleEventUpdate = async (id) => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ item: id })
   };
-    await fetch('/reactivateEvent', requestOptions);
+    fetch('/reactivateEvent', requestOptions)
+    .then(() => { updateEventList() });
   };
 
   return (
@@ -100,7 +128,7 @@ const handleEventUpdate = async (id) => {
 
     <Breakpoint medium up>
       <React.Fragment>
-          {stockData && stockData.map(stock => (
+          {eventList && eventList.map(stock => (
                     <Accordion className={classes.heading}>
                     <AccordionSummary
                       expandIcon={<ExpandMoreIcon />}
