@@ -267,6 +267,11 @@ app.post('/updateBalance', (req, res) => {
 
 app.get('/getWatchlist', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
+        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        users[req.session.user]['watchlist'].forEach(stock => {
+            stock.quote = stockDatabase[stock.symbol].quote
+            stock.volume = stockDatabase[stock.symbol].volume
+        })
         let data = JSON.stringify(users[req.session.user]['watchlist']);
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
