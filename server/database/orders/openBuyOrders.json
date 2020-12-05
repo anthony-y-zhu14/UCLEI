@@ -20,5 +20,16 @@
     "username": "robinhood",
     "date": "2020-12-04",
     "limitPrice": 25
+  },
+  {
+    "name": "Sea Limited",
+    "quote": 360,
+    "symbol": "SE",
+    "share": 5,
+    "orderType": "buy",
+    "orderId": "9cb8f9c8-8c01-46f4-9a78-7924a41ea71a",
+    "username": "TheDonald",
+    "date": "2020-12-05",
+    "limitPrice": 160
   }
 ]

@@ -15,6 +15,18 @@
         "quote": 8.38,
         "name": "Ford Motor Company",
         "volume": 0
+      },
+      {
+        "symbol": "MAXR",
+        "quote": 74,
+        "name": "Maxar Technologies Inc.",
+        "volume": 3
+      },
+      {
+        "symbol": "GOOG",
+        "quote": 1740.39,
+        "name": "Alphabet Inc.",
+        "volume": 0
       }
     ],
     "eventList": [],
@@ -129,15 +141,30 @@
             "date": "2020-12-05",
             "action": "buy",
             "message": "Bought 2 shares of MAXR at $100 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $8000 to account: C-137-1001 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "withdraw",
+            "message": "Withdrawn $8000 to account: C-137-1001 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $8000 to account: C-137-1001 - 2020-12-05"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 4180,
+      "cashBalance": 12180,
       "investmentBalance": 3800,
-      "totalDeposit": 5230
+      "totalDeposit": 13230
     },
     "balanceGrowth": 0,
     "openOrders": []
@@ -178,9 +205,9 @@
         "quote": 272.43,
         "name": "Facebook, Inc.",
         "active": "Active",
-        "notified": false,
+        "notified": true,
         "notify_num": 4,
-        "message": ""
+        "message": "Alert: Facebook, Inc., (FB) price has increased by 4% or greater."
       }
     ],
     "ownedStocks": [
@@ -219,6 +246,12 @@
         "quote": "77.99",
         "name": "Advanced Micro Devices, Inc.",
         "volume": 0
+      },
+      {
+        "symbol": "MAXR",
+        "quote": 100,
+        "name": "Maxar Technologies Inc.",
+        "volume": 2
       }
     ],
     "eventList": [
@@ -241,7 +274,16 @@
         "message": ""
       }
     ],
-    "ownedStocks": [],
+    "ownedStocks": [
+      {
+        "name": "Maxar Technologies Inc.",
+        "quote": 22,
+        "total_cost": 22,
+        "average_cost": 22,
+        "symbol": "MAXR",
+        "share": 1
+      }
+    ],
     "activity": [
       {
         "date": "2020-11-29",
@@ -337,12 +379,22 @@
             "message": "Sold 10 shares of SE at $360 to jerry137 - 2020-12-04"
           }
         ]
+      },
+      {
+        "date": "2020-12-05",
+        "activities": [
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 1 shares of MAXR at $22 from TheDonald - 2020-12-05"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 7250,
-      "investmentBalance": 0,
+      "cashBalance": 7228,
+      "investmentBalance": 22,
       "totalDeposit": 8000
     },
     "balanceGrowth": "0",
@@ -486,18 +538,58 @@
     "password": "123",
     "session_id": "70176565-a2cf-4228-858c-89dc85a61584",
     "name": "Tronald Dump",
-    "watchlist": [],
+    "watchlist": [
+      {
+        "symbol": "NFLX",
+        "quote": 480,
+        "name": "Netflix, Inc.",
+        "volume": 9
+      }
+    ],
     "openOrders": [
       {
         "name": "Maxar Technologies Inc.",
         "quote": 23.94,
         "symbol": "MAXR",
-        "share": 3,
+        "share": 2,
         "orderType": "sell",
         "orderId": "1a7e0d0e-708b-472d-971d-459faba042c7",
         "username": "TheDonald",
         "date": "2020-12-05",
         "limitPrice": 22
+      },
+      {
+        "name": "Walmart Inc.",
+        "quote": 145.56,
+        "symbol": "WMT",
+        "share": 2,
+        "orderType": "sell",
+        "orderId": "e3a0d47e-91f9-4b7c-b1a6-a68a314f668a",
+        "username": "TheDonald",
+        "date": "2020-12-05",
+        "limitPrice": 150
+      },
+      {
+        "name": "Sea Limited",
+        "quote": 360,
+        "symbol": "SE",
+        "share": 5,
+        "orderType": "buy",
+        "orderId": "9cb8f9c8-8c01-46f4-9a78-7924a41ea71a",
+        "username": "TheDonald",
+        "date": "2020-12-05",
+        "limitPrice": 160
+      },
+      {
+        "name": "Facebook, Inc.",
+        "quote": 272.43,
+        "symbol": "FB",
+        "share": 4,
+        "orderType": "sell",
+        "orderId": "3c0dec8e-7ba0-4959-a2d8-98329b3f11be",
+        "username": "TheDonald",
+        "date": "2020-12-05",
+        "limitPrice": 350
       }
     ],
     "eventList": [],
@@ -505,8 +597,8 @@
       {
         "name": "Facebook, Inc.",
         "quote": 272.43,
-        "total_cost": 2724.3,
-        "average_cost": 272.43,
+        "total_cost": 3424.3,
+        "average_cost": 342.43,
         "symbol": "FB",
         "share": 10
       },
@@ -516,13 +608,13 @@
         "total_cost": 518.2,
         "average_cost": 18.50714285714286,
         "symbol": "MAXR",
-        "share": 28
+        "share": 27
       },
       {
         "name": "Netflix, Inc.",
         "quote": 480.24,
-        "total_cost": 19209.6,
-        "average_cost": 480.24,
+        "total_cost": 34209.6,
+        "average_cost": 855.24,
         "symbol": "NFLX",
         "share": 40
       },
@@ -532,7 +624,7 @@
         "total_cost": 1455.6,
         "average_cost": 145.56,
         "symbol": "WMT",
-        "share": 10
+        "share": 7
       }
     ],
     "activity": [
@@ -543,16 +635,148 @@
             "date": "2020-12-05",
             "action": "sell",
             "message": "Sold 2 shares of MAXR at $100 to jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 1 shares of MAXR at $22 to rick137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 9 shares of NFLX at $480 to dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 1 shares of NFLX at $480 to dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 10 shares of NFLX at $500 from dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 10 shares of NFLX at $300 to dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $50000 to account: Tax Free Savings Account - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $50000 to account: Tax Free Savings Account - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 10 shares of NFLX at $1000 from dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 2 shares of FB at $300 to dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 3 shares of WMT at $150 to dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 2 shares of FB at $350 from dave123 - 2020-12-05"
           }
         ]
       }
     ],
     "account": {
       "accountName": "Tax Free Savings Account",
-      "cashBalance": 5200,
-      "investmentBalance": 23907.699999999997,
-      "totalDeposit": 29107.7
+      "cashBalance": 98372,
+      "investmentBalance": 39607.7,
+      "totalDeposit": 129107.7
     },
     "balanceGrowth": "10"
+  },
+  "dave123": {
+    "username": "dave123",
+    "password": "123456",
+    "name": "Dave",
+    "watchlist": [],
+    "openOrders": [],
+    "eventList": [],
+    "ownedStocks": [
+      {
+        "name": "Walmart Inc.",
+        "quote": 150,
+        "total_cost": 450,
+        "average_cost": 150,
+        "symbol": "WMT",
+        "share": 3
+      }
+    ],
+    "activity": [
+      {
+        "date": "2020-12-05",
+        "activities": [
+          {
+            "date": "2020-12-05",
+            "action": "deposit",
+            "message": "Deposited $10000 to account: Tax Free Savings Account - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 9 shares of NFLX at $480 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 1 shares of NFLX at $480 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 10 shares of NFLX at $500 to TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 10 shares of NFLX at $300 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 10 shares of NFLX at $1000 to TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 2 shares of FB at $300 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 3 shares of WMT at $150 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 2 shares of FB at $350 to TheDonald - 2020-12-05"
+          }
+        ]
+      }
+    ],
+    "account": {
+      "accountName": "Tax Free Savings Account",
+      "cashBalance": 16850,
+      "investmentBalance": 450,
+      "totalDeposit": 10000
+    },
+    "balanceGrowth": "0"
   }
 }

@@ -3,11 +3,11 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 4.02,
-    "volume": 22,
-    "quote": 1633601.09,
+    "percentage": 16.98,
+    "volume": 735,
+    "quote": 1837070.04,
     "prev_close": 1570399.25,
-    "totalTranscationAmount": 7400,
+    "totalTranscationAmount": 325944,
     "daily_range": {
       "high": 1570399.25,
       "low": 1570399.25
@@ -582,12 +582,12 @@
     "name": "Facebook, Inc.",
     "symbol": "FB",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -2.27,
-    "quote": 272.43,
+    "percentage": 19.3,
+    "quote": 325,
     "prev_close": 272.43,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 1300,
     "daily_range": {
-      "high": 272.43,
+      "high": 325,
       "low": 272.43
     },
     "historical": {
@@ -600,7 +600,7 @@
       "2020-12-01": 272.43,
       "2020-12-03": 272.43
     },
-    "volume": 0,
+    "volume": 4,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1022,10 +1022,10 @@
     "name": "Maxar Technologies Inc.",
     "symbol": "MAXR",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 317.71,
-    "quote": 100,
+    "percentage": 209.11,
+    "quote": 74,
     "prev_close": 23.94,
-    "totalTranscationAmount": 200,
+    "totalTranscationAmount": 222,
     "daily_range": {
       "high": 100,
       "low": 23.94
@@ -1040,7 +1040,7 @@
       "2020-12-01": 23.94,
       "2020-12-03": 23.94
     },
-    "volume": 2,
+    "volume": 3,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1198,13 +1198,13 @@
     "name": "Netflix, Inc.",
     "symbol": "NFLX",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 2.07,
-    "quote": 480.24,
+    "percentage": 18.69,
+    "quote": 570,
     "prev_close": 480.24,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 22800,
     "daily_range": {
-      "high": 480.24,
-      "low": 480.24
+      "high": 570,
+      "low": 426.67
     },
     "historical": {
       "2020-11-23": 455.2,
@@ -1216,7 +1216,7 @@
       "2020-12-01": 480.24,
       "2020-12-03": 480.24
     },
-    "volume": 0,
+    "volume": 40,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1728,12 +1728,12 @@
     "name": "Walmart Inc.",
     "symbol": "WMT",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 1.41,
-    "quote": 145.56,
+    "percentage": 3.05,
+    "quote": 150,
     "prev_close": 145.56,
-    "totalTranscationAmount": 0,
+    "totalTranscationAmount": 450,
     "daily_range": {
-      "high": 145.56,
+      "high": 150,
       "low": 145.56
     },
     "historical": {
@@ -1746,7 +1746,7 @@
       "2020-12-01": 145.56,
       "2020-12-03": 145.56
     },
-    "volume": 0,
+    "volume": 3,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
