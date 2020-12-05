@@ -114,8 +114,12 @@ class LineChart extends React.Component {
   }
 
   readFilter = async() => {
-    let url = `/stocks/history/?symbol=${window.location.href.slice(29)}&startDate=${formatISO(this.state.selectedStartDate, { representation: 'date'})}&endDate=${formatISO(this.state.selectedEndDate,{ representation: 'date'})}`
-    console.log(url)
+    let url;
+    if(!this.state.query) {
+      url = `/stocks/history/?symbol=D35-C&startDate=${formatISO(this.state.selectedStartDate, { representation: 'date'})}&endDate=${formatISO(this.state.selectedEndDate,{ representation: 'date'})}`
+    } else {
+      url = `/stocks/history/?symbol=${window.location.href.slice(29)}&startDate=${formatISO(this.state.selectedStartDate, { representation: 'date'})}&endDate=${formatISO(this.state.selectedEndDate,{ representation: 'date'})}`
+    }
     const response = await fetch(url);
     const body = await response.json();
     if (response.status !== 200) {
