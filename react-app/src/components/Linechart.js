@@ -12,6 +12,8 @@ import {
 } from '@material-ui/pickers';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
+import FilterTable from './stockFilterTbl';
+
 
 const styles = {
   font: {
@@ -90,7 +92,9 @@ class LineChart extends React.Component {
           horizontal: 'right',
           selectedStartDate: new Date('2020-12-01T21:11:54'),
           selectedEndDate: new Date('2020-12-01T21:11:54'),
-          filterData: undefined
+          filterData: undefined,
+          showFilter: false,
+          showTable: true
       };
   }
 
@@ -117,12 +121,10 @@ class LineChart extends React.Component {
     if (response.status !== 200) {
       throw Error(body.message)
     }
-    console.log(body)
-    this.setState({ filterData: body[0]});
-    console.log(this.state.filterData)
+    this.setState({ filterData: body});
+    // this.setState({showFilter: true});
+    this.setState({showFilter: false});
     this.componentDidMount()
-    this.makeChart(this.state.filterData.name);
-    console.log(response.json());
     return body;
   }
 
@@ -136,6 +138,7 @@ class LineChart extends React.Component {
         throw Error(body.message)
       }
       this.setState({ stockData: body[0]})
+      this.setState({showTable: true});
       this.makeChart(this.state.stockData.name);
       this.componentDidMount()
 
@@ -147,6 +150,8 @@ class LineChart extends React.Component {
       throw Error(body.message)
     }
     this.setState({ stockData: body[0]})
+    this.setState({ filterData: undefined})
+
     this.makeChart(this.state.stockData.name);
     this.componentDidMount()
 
@@ -270,6 +275,7 @@ class LineChart extends React.Component {
       );
     }
 
+    else if(this.state.stockData && !this.state.filterData) {
       return (
         <div className={classes.chartContainer}>
         <div className="App">
@@ -283,7 +289,6 @@ class LineChart extends React.Component {
             }}
              className="fa fa-bookmark"></i></span>
            </Tooltip>
-
            <div className={classes.ticker}>
            <FormDialog name={this.state.stockData.name}/>
           </div>
@@ -299,7 +304,8 @@ class LineChart extends React.Component {
               </ButtonGroup>
 
           <div className={classes.chart}>
-            {this.state.showChart ? <canvas id="marketChart"/> : <React.Fragment>{filter} <BasicTable stockData = {this.state.stockData}/> </React.Fragment> }
+            {this.state.showChart? <canvas id="marketChart"/> : <React.Fragment>{filter} <BasicTable stockData = {this.state.stockData}/> </React.Fragment> }
+
           </div>
         </div>
         <div className={classes.hide}>
@@ -307,6 +313,46 @@ class LineChart extends React.Component {
         </div>
         </div>
       );
+    } else {
+      return (
+        <div className={classes.chartContainer}>
+        <div className="App">
+          <span className={classes.titleFont} >{this.state.stockData.name}</span>
+          <span className={classes.smallFont}>{this.state.stockData.symbol}</span>
+
+          <Tooltip title="Save to Watchlist">
+            <span className={classes.ticker}><i onClick={(event) => {
+              this.handleWatchSave(this.state.stockData.symbol);
+              this.setState({display: 'block'});
+            }}
+             className="fa fa-bookmark"></i></span>
+           </Tooltip>
+           <div className={classes.ticker}>
+           <FormDialog name={this.state.stockData.name}/>
+          </div>
+              <br />
+              <span className={classes.font}>Market Rate: ${this.state.stockData.quote}</span>
+              <span className={classes.font}>Daily Volume: {this.state.stockData.volume}</span>
+              <br />
+              <span className={classes.font}>Today's High: ${this.state.stockData.daily_range.high}</span>
+              <span className={classes.font}>Today's Low: ${this.state.stockData.daily_range.low}</span>
+              <ButtonGroup className={classes.controller}>
+                <Button variant="outlined" size="small" color="primary" onClick={this.handleChart} className={classes.margin}>Week</Button>
+                <Button variant="outlined" size="small" color="primary" onClick={this.handleTable} className={classes.margin}>Historical</Button>
+              </ButtonGroup>
+
+          <div className={classes.chart}>
+            {this.state.showChart? <canvas id="marketChart"/> : <React.Fragment>{filter} <FilterTable stockData = {this.state.filterData}/> </React.Fragment> }
+          </div>
+        </div>
+        <div className={classes.hide}>
+          <canvas id="marketChart"/>
+        </div>
+        </div>
+      );
+    }
+
+ 
     }
   }
 
