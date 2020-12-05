@@ -31,5 +31,16 @@
     "username": "TheDonald",
     "date": "2020-12-05",
     "limitPrice": 160
+  },
+  {
+    "name": "Netflix, Inc.",
+    "quote": 570,
+    "symbol": "NFLX",
+    "share": 2,
+    "orderType": "buy",
+    "orderId": "9e3bdc39-7b15-44b8-aabc-311b2fe2d3dd",
+    "username": "jerry137",
+    "date": "2020-12-05",
+    "limitPrice": 500
   }
 ]

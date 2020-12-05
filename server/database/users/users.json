@@ -46,6 +46,14 @@
         "average_cost": 100,
         "symbol": "MAXR",
         "share": 2
+      },
+      {
+        "name": "Walmart Inc.",
+        "quote": 150,
+        "total_cost": 300,
+        "average_cost": 150,
+        "symbol": "WMT",
+        "share": 2
       }
     ],
     "activity": [
@@ -156,18 +164,35 @@
             "date": "2020-12-05",
             "action": "deposit",
             "message": "Deposited $8000 to account: C-137-1001 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 2 shares of WMT at $150 from TheDonald - 2020-12-05"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 12180,
-      "investmentBalance": 3800,
+      "cashBalance": 11880,
+      "investmentBalance": 4100,
       "totalDeposit": 13230
     },
     "balanceGrowth": 0,
-    "openOrders": []
+    "openOrders": [
+      {
+        "name": "Netflix, Inc.",
+        "quote": 570,
+        "symbol": "NFLX",
+        "share": 2,
+        "orderType": "buy",
+        "orderId": "9e3bdc39-7b15-44b8-aabc-311b2fe2d3dd",
+        "username": "jerry137",
+        "date": "2020-12-05",
+        "limitPrice": 500
+      }
+    ]
   },
   "morty137": {
     "username": "morty137",
@@ -559,17 +584,6 @@
         "limitPrice": 22
       },
       {
-        "name": "Walmart Inc.",
-        "quote": 145.56,
-        "symbol": "WMT",
-        "share": 2,
-        "orderType": "sell",
-        "orderId": "e3a0d47e-91f9-4b7c-b1a6-a68a314f668a",
-        "username": "TheDonald",
-        "date": "2020-12-05",
-        "limitPrice": 150
-      },
-      {
         "name": "Sea Limited",
         "quote": 360,
         "symbol": "SE",
@@ -624,7 +638,7 @@
         "total_cost": 1455.6,
         "average_cost": 145.56,
         "symbol": "WMT",
-        "share": 7
+        "share": 5
       }
     ],
     "activity": [
@@ -690,13 +704,18 @@
             "date": "2020-12-05",
             "action": "buy",
             "message": "Bought 2 shares of FB at $350 from dave123 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 2 shares of WMT at $150 to jerry137 - 2020-12-05"
           }
         ]
       }
     ],
     "account": {
       "accountName": "Tax Free Savings Account",
-      "cashBalance": 98372,
+      "cashBalance": 98672,
       "investmentBalance": 39607.7,
       "totalDeposit": 129107.7
     },

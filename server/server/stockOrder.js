@@ -592,6 +592,8 @@ function updateStockDatabase(stockDatabase){
     stockDatabase["D35-C"].totalTranscationAmount = parseFloat(stockDatabase["D35-C"].totalTranscationAmount.toFixed(2));
     let percentageChange = ((stockDatabase["D35-C"].quote - stockDatabase["D35-C"].prev_close) / stockDatabase["D35-C"].prev_close * 100);
     stockDatabase["D35-C"].percentage = parseFloat(percentageChange.toFixed(2));
+    stockDatabase["D35-C"].daily_range.high = stockDatabase["D35-C"].quote > stockDatabase["D35-C"].daily_range.high? stockDatabase["D35-C"].quote : stockDatabase["D35-C"].daily_range.high;
+    stockDatabase["D35-C"].daily_range.low = stockDatabase["D35-C"].quote < stockDatabase["D35-C"].daily_range.high? stockDatabase["D35-C"].quote : stockDatabase["D35-C"].daily_range.low;
     fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
 }
 

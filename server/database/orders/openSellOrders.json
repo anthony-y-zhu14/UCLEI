@@ -11,17 +11,6 @@
     "limitPrice": 22
   },
   {
-    "name": "Walmart Inc.",
-    "quote": 145.56,
-    "symbol": "WMT",
-    "share": 2,
-    "orderType": "sell",
-    "orderId": "e3a0d47e-91f9-4b7c-b1a6-a68a314f668a",
-    "username": "TheDonald",
-    "date": "2020-12-05",
-    "limitPrice": 150
-  },
-  {
     "name": "Facebook, Inc.",
     "quote": 272.43,
     "symbol": "FB",
