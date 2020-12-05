@@ -15,9 +15,25 @@
         "quote": 8.38,
         "name": "Ford Motor Company",
         "volume": 0
+      },
+      {
+        "symbol": "GOOG",
+        "quote": 1740.39,
+        "name": "Alphabet Inc.",
+        "volume": 0
       }
     ],
-    "eventList": [],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": 360,
+        "name": "Sea Limited",
+        "active": "Active",
+        "notified": true,
+        "notify_num": 5,
+        "message": "Alert: Sea Limited, (SE) price has increased by 5% or greater."
+      }
+    ],
     "ownedStocks": [
       {
         "name": "Sea Limited",
@@ -143,31 +159,22 @@
     ],
     "eventList": [
       {
-        "symbol": "SE",
-        "quote": "156.53",
-        "name": "Sea Limited",
-        "active": "Active",
-        "notified": true,
-        "notify_num": 8,
-        "message": "Alert: Sea Limited, (SE) price has increased by 8% or greater."
-      },
-      {
-        "symbol": "MAXR",
-        "quote": "23.94",
-        "name": "Maxar Technologies Inc.",
-        "active": "Active",
-        "notified": true,
-        "notify_num": 2,
-        "message": "Alert: Maxar Technologies Inc., (MAXR) price has increased by 2% or greater."
-      },
-      {
-        "symbol": "FB",
-        "quote": 272.43,
-        "name": "Facebook, Inc.",
+        "symbol": "GOOG",
+        "quote": 1740.39,
+        "name": "Alphabet Inc.",
         "active": "Active",
         "notified": false,
-        "notify_num": 4,
+        "notify_num": 2,
         "message": ""
+      },
+      {
+        "symbol": "F",
+        "quote": 8.38,
+        "name": "Ford Motor Company",
+        "active": "Active",
+        "notified": true,
+        "notify_num": 1,
+        "message": "Alert: Ford Motor Company, (F) price has increased by 1% or greater."
       }
     ],
     "ownedStocks": [
@@ -206,26 +213,23 @@
         "quote": "77.99",
         "name": "Advanced Micro Devices, Inc.",
         "volume": 0
+      },
+      {
+        "symbol": "SE",
+        "quote": 360,
+        "name": "Sea Limited",
+        "volume": 10
       }
     ],
     "eventList": [
       {
-        "symbol": "AMD",
-        "quote": "600.99",
-        "name": "Advanced Micro Devices, Inc.",
+        "symbol": "F",
+        "quote": 8.38,
+        "name": "Ford Motor Company",
         "active": "Active",
         "notified": true,
-        "notify_num": "100",
-        "message": "Alert: Advanced Micro Devices, Inc., (AMD) price has increased by 100% or greater."
-      },
-      {
-        "symbol": "TSLA",
-        "quote": "200.99",
-        "name": "Tesla Inc.",
-        "active": "Active",
-        "notified": false,
-        "notify_num": "12",
-        "message": ""
+        "notify_num": 2,
+        "message": "Alert: Ford Motor Company, (F) price has increased by 2% or greater."
       }
     ],
     "ownedStocks": [],

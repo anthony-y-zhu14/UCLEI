@@ -17,7 +17,7 @@ module.exports = {
         stockDatabase[stock].daily_range.high = stockDatabase[stock].prev_close;
         stockDatabase[stock].daily_range.low = stockDatabase[stock].prev_close;
         stockDatabase[stock].volume = 0;
-        stockDatabase[stock].precentage = 0;
+        stockDatabase[stock].percentage = 0;
     }
     stockOrder.updateStockDatabase(stockDatabase);
  }

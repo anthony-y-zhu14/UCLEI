@@ -110,7 +110,7 @@ class Market extends React.Component {
             </React.Fragment>
           );
         }
-        if(!this.state.user || !this.state.popStocks) {
+        if(!this.state.user) {
           return (
             <React.Fragment>
                 <h1>   Loading   </h1>
@@ -136,11 +136,11 @@ class Market extends React.Component {
               <Breakpoint small down>
                 <Container>
                   <Grid container>
-                      <Grid item xs={12}><LineChart/></Grid>
+                      <Grid item xs={12}><LineChart reloadWatchList={()=>{alert("im clicked")}}/></Grid>
                   </Grid>
                   <Grid container spacing={2}>
                   <div style={{height: "300px", marginTop: "2%"}}>
-                    <Grid item xs={12}><CheckboxList /></Grid>
+                    <Grid item xs={12}><CheckboxList watchlist={this.state.watchlist}/></Grid>
                   </div>
                   </Grid>
                 </Container>

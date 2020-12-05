@@ -162,14 +162,15 @@ class LineChart extends React.Component {
     return body;
   }
 
-  handleWatchSave = async(value) => {
+  handleWatchSave = (value) => {
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ value })
     };
-    await fetch('/addWatchItem', requestOptions);
-    this.componentDidMount();
+    fetch('/addWatchItem', requestOptions)
+    .then(this.componentDidMount())
+    .then (this.props.reloadWatchList())
 
   }
 
