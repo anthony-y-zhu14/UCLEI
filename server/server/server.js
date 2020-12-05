@@ -201,7 +201,7 @@ app.get("/session", function(req, res){
 
 app.get('/getBalance', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        let data = users[username]['account']['cashBalance'];
+        let data = users[req.session.user]['account']['cashBalance'];
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
         console.log(`\nClient ${users[req.session.user].username} balance info sent.\n`)
