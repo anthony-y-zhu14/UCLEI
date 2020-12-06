@@ -3,13 +3,13 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 18.36,
-    "volume": 857,
-    "quote": 1858693.96,
+    "percentage": 27.35,
+    "volume": 1931,
+    "quote": 1999852.97,
     "prev_close": 1570399.25,
-    "totalTranscationAmount": 382988,
+    "totalTranscationAmount": 858874,
     "daily_range": {
-      "high": 1858693.96,
+      "high": 1999852.97,
       "low": 1570399.25
     },
     "historical": {
@@ -1022,13 +1022,13 @@
     "name": "Maxar Technologies Inc.",
     "symbol": "MAXR",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 209.11,
-    "quote": 74,
+    "percentage": -41.52,
+    "quote": 14,
     "prev_close": 23.94,
-    "totalTranscationAmount": 222,
+    "totalTranscationAmount": 322,
     "daily_range": {
       "high": 100,
-      "low": 23.94
+      "low": 14
     },
     "historical": {
       "2020-11-23": 22.2,
@@ -1040,7 +1040,7 @@
       "2020-12-01": 23.94,
       "2020-12-03": 23.94
     },
-    "volume": 3,
+    "volume": 23,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1198,10 +1198,10 @@
     "name": "Netflix, Inc.",
     "symbol": "NFLX",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 18.69,
-    "quote": 570,
+    "percentage": 18,
+    "quote": 566.67,
     "prev_close": 480.24,
-    "totalTranscationAmount": 22800,
+    "totalTranscationAmount": 23800,
     "daily_range": {
       "high": 570,
       "low": 426.67
@@ -1216,7 +1216,7 @@
       "2020-12-01": 480.24,
       "2020-12-03": 480.24
     },
-    "volume": 40,
+    "volume": 42,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1330,12 +1330,12 @@
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 64.57,
-    "quote": 360,
+    "percentage": 123.49,
+    "quote": 488.89,
     "prev_close": 218.75,
-    "totalTranscationAmount": 3600,
+    "totalTranscationAmount": 17600,
     "daily_range": {
-      "high": 360,
+      "high": 492.42,
       "low": 218.75
     },
     "historical": {
@@ -1348,7 +1348,7 @@
       "2020-12-01": 218.75,
       "2020-12-03": 218.75
     },
-    "volume": 10,
+    "volume": 36,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
