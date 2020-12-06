@@ -882,14 +882,12 @@ app.get("/stocks/history", (req, res) => {
 /**********************************************
  Server Information
 ********************************************* */
-setInterval(function checkRefresh() {
-    if(today !== new Date().toISOString().slice(0,10)) {
+setInterval(function checkRefresh() {    
         serverReset.resetStock(today);
         serverReset.resetOpenOrders();
         today = new Date().toISOString().slice(0,10);
-        console.log("----server reseted----");
-    }
-}, 10000);
+        console.log("----server reseted----");    
+}, 86400000);
 app.listen(3001);
 
     console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
