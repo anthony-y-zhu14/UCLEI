@@ -9,6 +9,7 @@ module.exports = {
  function resetStock(yesterday){
     const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
     for (const stock in stockDatabase){
+        console.log("stock symbol: " + stock + " has been reseted")
         stockDatabase[stock].prev_close =  stockDatabase[stock].quote;
         stockDatabase[stock].totalTranscationAmount = 0;
         stockDatabase[stock].historical[yesterday] = stockDatabase[stock].quote;

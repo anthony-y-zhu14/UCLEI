@@ -3,14 +3,14 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 18.36,
-    "volume": 857,
-    "quote": 1858693.96,
-    "prev_close": 1570399.25,
-    "totalTranscationAmount": 382988,
+    "percentage": 0.57,
+    "volume": 0,
+    "quote": 1912753.76,
+    "prev_close": 1901941.8,
+    "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 1858693.96,
-      "low": 1570399.25
+      "high": 1912753.76,
+      "low": 1901941.8
     },
     "historical": {
       "2020-11-23": 1213000.5,
@@ -21,7 +21,8 @@
       "2020-11-30": 1392651.6000000006,
       "2020-12-01": 1559925.37,
       "2020-12-02": 1559925.37,
-      "2020-12-03": 1570399.25
+      "2020-12-03": 1570399.25,
+      "2020-12-06": 1901941.8
     },
     "historicalVolume": {
       "2020-11-23": 0,
@@ -32,7 +33,8 @@
       "2020-11-30": 10,
       "2020-12-01": 250,
       "2020-12-02": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -46,6 +48,10 @@
       "2020-12-03": {
         "high": 1570399.25,
         "low": 1570399.25
+      },
+      "2020-12-06": {
+        "high": 1912753.76,
+        "low": 1901941.8
       }
     },
     "precentage": 0
@@ -54,7 +60,7 @@
     "name": "American Airlines Group Inc.",
     "symbol": "AAL",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -6.21,
+    "percentage": 0,
     "volume": 0,
     "quote": 12.38,
     "prev_close": 12.38,
@@ -71,13 +77,15 @@
       "2020-11-27": 12.38,
       "2020-11-30": 12.38,
       "2020-12-01": 12.38,
-      "2020-12-03": 12.38
+      "2020-12-03": 12.38,
+      "2020-12-06": 12.38
     },
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -91,6 +99,10 @@
       "2020-12-03": {
         "high": 12.38,
         "low": 12.38
+      },
+      "2020-12-06": {
+        "high": 12.38,
+        "low": 12.38
       }
     }
   },
@@ -98,7 +110,7 @@
     "name": "Apple Inc.",
     "symbol": "AAPL",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -0.3,
+    "percentage": 0,
     "quote": 115.97,
     "prev_close": 115.97,
     "totalTranscationAmount": 0,
@@ -114,14 +126,16 @@
       "2020-11-27": 115.97,
       "2020-11-30": 115.97,
       "2020-12-01": 115.97,
-      "2020-12-03": 115.97
+      "2020-12-03": 115.97,
+      "2020-12-06": 115.97
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -135,6 +149,10 @@
       "2020-12-03": {
         "high": 115.97,
         "low": 115.97
+      },
+      "2020-12-06": {
+        "high": 115.97,
+        "low": 115.97
       }
     }
   },
@@ -142,7 +160,7 @@
     "name": "Air Canada",
     "symbol": "AC.TO",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -1.13,
+    "percentage": 0,
     "quote": 20.12,
     "prev_close": 20.12,
     "totalTranscationAmount": 0,
@@ -158,14 +176,16 @@
       "2020-11-27": 20.12,
       "2020-11-30": 20.12,
       "2020-12-01": 20.12,
-      "2020-12-03": 20.12
+      "2020-12-03": 20.12,
+      "2020-12-06": 20.12
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -179,6 +199,10 @@
       "2020-12-03": {
         "high": 20.12,
         "low": 20.12
+      },
+      "2020-12-06": {
+        "high": 20.12,
+        "low": 20.12
       }
     }
   },
@@ -186,7 +210,7 @@
     "name": "Advanced Micro Devices, Inc.",
     "symbol": "AMD",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -6.17,
+    "percentage": 0,
     "quote": 77.99,
     "prev_close": 77.99,
     "totalTranscationAmount": 0,
@@ -202,14 +226,16 @@
       "2020-11-27": 77.99,
       "2020-11-30": 77.99,
       "2020-12-01": 77.99,
-      "2020-12-03": 77.99
+      "2020-12-03": 77.99,
+      "2020-12-06": 77.99
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -223,6 +249,10 @@
       "2020-12-03": {
         "high": 77.99,
         "low": 77.99
+      },
+      "2020-12-06": {
+        "high": 77.99,
+        "low": 77.99
       }
     }
   },
@@ -230,7 +260,7 @@
     "name": "Amazon.com, Inc.",
     "symbol": "AMZN",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -3.46,
+    "percentage": 0,
     "quote": 3035.02,
     "prev_close": 3035.02,
     "totalTranscationAmount": 0,
@@ -246,14 +276,16 @@
       "2020-11-27": 3035.02,
       "2020-11-30": 3035.02,
       "2020-12-01": 3035.02,
-      "2020-12-03": 3035.02
+      "2020-12-03": 3035.02,
+      "2020-12-06": 3035.02
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -267,6 +299,10 @@
       "2020-12-03": {
         "high": 3035.02,
         "low": 3035.02
+      },
+      "2020-12-06": {
+        "high": 3035.02,
+        "low": 3035.02
       }
     }
   },
@@ -274,7 +310,7 @@
     "name": "Alibaba Group Holding Limited",
     "symbol": "BABA",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -8.26,
+    "percentage": 0,
     "quote": 266.54,
     "prev_close": 266.54,
     "totalTranscationAmount": 0,
@@ -290,14 +326,16 @@
       "2020-11-27": 266.54,
       "2020-11-30": 266.54,
       "2020-12-01": 266.54,
-      "2020-12-03": 266.54
+      "2020-12-03": 266.54,
+      "2020-12-06": 266.54
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -311,6 +349,10 @@
       "2020-12-03": {
         "high": 266.54,
         "low": 266.54
+      },
+      "2020-12-06": {
+        "high": 266.54,
+        "low": 266.54
       }
     }
   },
@@ -318,7 +360,7 @@
     "name": "Bank of America Corporation",
     "symbol": "BAC",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -0.36,
+    "percentage": 0,
     "quote": 27.66,
     "prev_close": 27.66,
     "totalTranscationAmount": 0,
@@ -334,14 +376,16 @@
       "2020-11-27": 27.66,
       "2020-11-30": 27.66,
       "2020-12-01": 27.66,
-      "2020-12-03": 27.66
+      "2020-12-03": 27.66,
+      "2020-12-06": 27.66
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -355,6 +399,10 @@
       "2020-12-03": {
         "high": 27.66,
         "low": 27.66
+      },
+      "2020-12-06": {
+        "high": 27.66,
+        "low": 27.66
       }
     }
   },
@@ -362,7 +410,7 @@
     "name": "Canopy Growth Corporation",
     "symbol": "CGC",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -3.54,
+    "percentage": 0,
     "quote": 23.71,
     "prev_close": 23.71,
     "totalTranscationAmount": 0,
@@ -378,14 +426,16 @@
       "2020-11-27": 23.71,
       "2020-11-30": 23.71,
       "2020-12-01": 23.71,
-      "2020-12-03": 23.71
+      "2020-12-03": 23.71,
+      "2020-12-06": 23.71
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -399,6 +449,10 @@
       "2020-12-03": {
         "high": 23.71,
         "low": 23.71
+      },
+      "2020-12-06": {
+        "high": 23.71,
+        "low": 23.71
       }
     }
   },
@@ -406,7 +460,7 @@
     "name": "Comstock Holding Companies, Inc.",
     "symbol": "CHCI",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -8.48,
+    "percentage": 0,
     "quote": 2.59,
     "prev_close": 2.59,
     "totalTranscationAmount": 0,
@@ -422,14 +476,16 @@
       "2020-11-27": 2.59,
       "2020-11-30": 2.59,
       "2020-12-01": 2.59,
-      "2020-12-03": 2.59
+      "2020-12-03": 2.59,
+      "2020-12-06": 2.59
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -443,6 +499,10 @@
       "2020-12-03": {
         "high": 2.59,
         "low": 2.59
+      },
+      "2020-12-06": {
+        "high": 2.59,
+        "low": 2.59
       }
     }
   },
@@ -450,7 +510,7 @@
     "name": "Costco Wholesale Corporation",
     "symbol": "COST",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.44,
+    "percentage": 0,
     "quote": 366.62,
     "prev_close": 366.62,
     "totalTranscationAmount": 0,
@@ -466,14 +526,16 @@
       "2020-11-27": 366.62,
       "2020-11-30": 366.62,
       "2020-12-01": 366.62,
-      "2020-12-03": 366.62
+      "2020-12-03": 366.62,
+      "2020-12-06": 366.62
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -487,6 +549,10 @@
       "2020-12-03": {
         "high": 366.62,
         "low": 366.62
+      },
+      "2020-12-06": {
+        "high": 366.62,
+        "low": 366.62
       }
     }
   },
@@ -494,7 +560,7 @@
     "name": "Delta Air Lines, Inc.",
     "symbol": "DAL",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.73,
+    "percentage": 0,
     "quote": 37.04,
     "prev_close": 37.04,
     "totalTranscationAmount": 0,
@@ -510,14 +576,16 @@
       "2020-11-27": 37.04,
       "2020-11-30": 37.04,
       "2020-12-01": 37.04,
-      "2020-12-03": 37.04
+      "2020-12-03": 37.04,
+      "2020-12-06": 37.04
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -531,6 +599,10 @@
       "2020-12-03": {
         "high": 37.04,
         "low": 37.04
+      },
+      "2020-12-06": {
+        "high": 37.04,
+        "low": 37.04
       }
     }
   },
@@ -538,7 +610,7 @@
     "name": "Ford Motor Company",
     "symbol": "F",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 2.2,
+    "percentage": 0,
     "quote": 8.38,
     "prev_close": 8.38,
     "totalTranscationAmount": 0,
@@ -554,14 +626,16 @@
       "2020-11-27": 8.38,
       "2020-11-30": 8.38,
       "2020-12-01": 8.38,
-      "2020-12-03": 8.38
+      "2020-12-03": 8.38,
+      "2020-12-06": 8.38
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -573,6 +647,10 @@
         "low": 8.38
       },
       "2020-12-03": {
+        "high": 8.38,
+        "low": 8.38
+      },
+      "2020-12-06": {
         "high": 8.38,
         "low": 8.38
       }
@@ -582,13 +660,13 @@
     "name": "Facebook, Inc.",
     "symbol": "FB",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 19.3,
+    "percentage": 0,
     "quote": 325,
-    "prev_close": 272.43,
-    "totalTranscationAmount": 1300,
+    "prev_close": 325,
+    "totalTranscationAmount": 0,
     "daily_range": {
       "high": 325,
-      "low": 272.43
+      "low": 325
     },
     "historical": {
       "2020-11-23": 278.2,
@@ -598,14 +676,16 @@
       "2020-11-27": 272.43,
       "2020-11-30": 272.43,
       "2020-12-01": 272.43,
-      "2020-12-03": 272.43
+      "2020-12-03": 272.43,
+      "2020-12-06": 325
     },
-    "volume": 4,
+    "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -619,6 +699,10 @@
       "2020-12-03": {
         "high": 272.43,
         "low": 272.43
+      },
+      "2020-12-06": {
+        "high": 325,
+        "low": 325
       }
     }
   },
@@ -626,7 +710,7 @@
     "name": "General Electric Company",
     "symbol": "GE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 2.98,
+    "percentage": 0,
     "quote": 8.98,
     "prev_close": 8.98,
     "totalTranscationAmount": 0,
@@ -642,14 +726,16 @@
       "2020-11-27": 8.98,
       "2020-11-30": 8.98,
       "2020-12-01": 8.98,
-      "2020-12-03": 8.98
+      "2020-12-03": 8.98,
+      "2020-12-06": 8.98
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -663,6 +749,10 @@
       "2020-12-03": {
         "high": 8.98,
         "low": 8.98
+      },
+      "2020-12-06": {
+        "high": 8.98,
+        "low": 8.98
       }
     }
   },
@@ -670,7 +760,7 @@
     "name": "Gilead Sciences, Inc.",
     "symbol": "GILD",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 2.66,
+    "percentage": 0,
     "quote": 60.62,
     "prev_close": 60.62,
     "totalTranscationAmount": 0,
@@ -686,14 +776,16 @@
       "2020-11-27": 60.62,
       "2020-11-30": 60.62,
       "2020-12-01": 60.62,
-      "2020-12-03": 60.62
+      "2020-12-03": 60.62,
+      "2020-12-06": 60.62
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -707,6 +799,10 @@
       "2020-12-03": {
         "high": 60.62,
         "low": 60.62
+      },
+      "2020-12-06": {
+        "high": 60.62,
+        "low": 60.62
       }
     }
   },
@@ -714,7 +810,7 @@
     "name": "SPDR Gold Shares",
     "symbol": "GLD",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.33,
+    "percentage": 0,
     "quote": 175.66,
     "prev_close": 175.66,
     "totalTranscationAmount": 0,
@@ -730,14 +826,16 @@
       "2020-11-27": 175.66,
       "2020-11-30": 175.66,
       "2020-12-01": 175.66,
-      "2020-12-03": 175.66
+      "2020-12-03": 175.66,
+      "2020-12-06": 175.66
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -751,6 +849,10 @@
       "2020-12-03": {
         "high": 175.66,
         "low": 175.66
+      },
+      "2020-12-06": {
+        "high": 175.66,
+        "low": 175.66
       }
     }
   },
@@ -758,7 +860,7 @@
     "name": "Alphabet Inc.",
     "symbol": "GOOG",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -1.28,
+    "percentage": 0,
     "quote": 1740.39,
     "prev_close": 1740.39,
     "totalTranscationAmount": 0,
@@ -774,14 +876,16 @@
       "2020-11-27": 1740.39,
       "2020-11-30": 1740.39,
       "2020-12-01": 1740.39,
-      "2020-12-03": 1740.39
+      "2020-12-03": 1740.39,
+      "2020-12-06": 1740.39
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -795,6 +899,10 @@
       "2020-12-03": {
         "high": 1740.39,
         "low": 1740.39
+      },
+      "2020-12-06": {
+        "high": 1740.39,
+        "low": 1740.39
       }
     }
   },
@@ -802,7 +910,7 @@
     "name": "Intel Corporation",
     "symbol": "INTC",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -0.35,
+    "percentage": 0,
     "quote": 45.44,
     "prev_close": 45.44,
     "totalTranscationAmount": 0,
@@ -818,14 +926,16 @@
       "2020-11-27": 45.44,
       "2020-11-30": 45.44,
       "2020-12-01": 45.44,
-      "2020-12-03": 45.44
+      "2020-12-03": 45.44,
+      "2020-12-06": 45.44
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -839,6 +949,10 @@
       "2020-12-03": {
         "high": 45.44,
         "low": 45.44
+      },
+      "2020-12-06": {
+        "high": 45.44,
+        "low": 45.44
       }
     }
   },
@@ -846,7 +960,7 @@
     "name": "JD.com, Inc.",
     "symbol": "JD",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -5.63,
+    "percentage": 0,
     "quote": 80.08,
     "prev_close": 80.08,
     "totalTranscationAmount": 0,
@@ -862,14 +976,16 @@
       "2020-11-27": 80.08,
       "2020-11-30": 80.08,
       "2020-12-01": 80.08,
-      "2020-12-03": 80.08
+      "2020-12-03": 80.08,
+      "2020-12-06": 80.08
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -883,6 +999,10 @@
       "2020-12-03": {
         "high": 80.08,
         "low": 80.08
+      },
+      "2020-12-06": {
+        "high": 80.08,
+        "low": 80.08
       }
     }
   },
@@ -890,7 +1010,7 @@
     "name": "Johnson & Johnson",
     "symbol": "JNJ",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 1.51,
+    "percentage": 0,
     "quote": 148.28,
     "prev_close": 148.28,
     "totalTranscationAmount": 0,
@@ -906,14 +1026,16 @@
       "2020-11-27": 148.28,
       "2020-11-30": 148.28,
       "2020-12-01": 148.28,
-      "2020-12-03": 148.28
+      "2020-12-03": 148.28,
+      "2020-12-06": 148.28
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -927,6 +1049,10 @@
       "2020-12-03": {
         "high": 148.28,
         "low": 148.28
+      },
+      "2020-12-06": {
+        "high": 148.28,
+        "low": 148.28
       }
     }
   },
@@ -934,7 +1060,7 @@
     "name": "Luckin Coffee Inc.",
     "symbol": "LK",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -54,
+    "percentage": 0,
     "quote": 1.38,
     "prev_close": 1.38,
     "totalTranscationAmount": 0,
@@ -950,14 +1076,16 @@
       "2020-11-27": 1.38,
       "2020-11-30": 1.38,
       "2020-12-01": 1.38,
-      "2020-12-03": 1.38
+      "2020-12-03": 1.38,
+      "2020-12-06": 1.38
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -971,6 +1099,10 @@
       "2020-12-03": {
         "high": 1.38,
         "low": 1.38
+      },
+      "2020-12-06": {
+        "high": 1.38,
+        "low": 1.38
       }
     }
   },
@@ -978,7 +1110,7 @@
     "name": "Mastercard Incorporated",
     "symbol": "MA",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -2.84,
+    "percentage": 0,
     "quote": 334.78,
     "prev_close": 334.78,
     "totalTranscationAmount": 0,
@@ -994,14 +1126,16 @@
       "2020-11-27": 334.78,
       "2020-11-30": 334.78,
       "2020-12-01": 334.78,
-      "2020-12-03": 334.78
+      "2020-12-03": 334.78,
+      "2020-12-06": 334.78
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1013,6 +1147,10 @@
         "low": 334.78
       },
       "2020-12-03": {
+        "high": 334.78,
+        "low": 334.78
+      },
+      "2020-12-06": {
         "high": 334.78,
         "low": 334.78
       }
@@ -1022,13 +1160,13 @@
     "name": "Maxar Technologies Inc.",
     "symbol": "MAXR",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 209.11,
+    "percentage": 0,
     "quote": 74,
-    "prev_close": 23.94,
-    "totalTranscationAmount": 222,
+    "prev_close": 74,
+    "totalTranscationAmount": 0,
     "daily_range": {
-      "high": 100,
-      "low": 23.94
+      "high": 74,
+      "low": 74
     },
     "historical": {
       "2020-11-23": 22.2,
@@ -1038,14 +1176,16 @@
       "2020-11-27": 23.94,
       "2020-11-30": 23.94,
       "2020-12-01": 23.94,
-      "2020-12-03": 23.94
+      "2020-12-03": 23.94,
+      "2020-12-06": 74
     },
-    "volume": 3,
+    "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1059,6 +1199,10 @@
       "2020-12-03": {
         "high": 23.94,
         "low": 23.94
+      },
+      "2020-12-06": {
+        "high": 74,
+        "low": 74
       }
     }
   },
@@ -1066,7 +1210,7 @@
     "name": "Moderna, Inc.",
     "symbol": "MRNA",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -2.17,
+    "percentage": 0,
     "quote": 76.05,
     "prev_close": 76.05,
     "totalTranscationAmount": 0,
@@ -1082,14 +1226,16 @@
       "2020-11-27": 76.05,
       "2020-11-30": 76.05,
       "2020-12-01": 76.05,
-      "2020-12-03": 76.05
+      "2020-12-03": 76.05,
+      "2020-12-06": 76.05
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1103,6 +1249,10 @@
       "2020-12-03": {
         "high": 76.05,
         "low": 76.05
+      },
+      "2020-12-06": {
+        "high": 76.05,
+        "low": 76.05
       }
     }
   },
@@ -1110,7 +1260,7 @@
     "name": "Microsoft Corporation",
     "symbol": "MSFT",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -3.38,
+    "percentage": 0,
     "quote": 211.01,
     "prev_close": 211.01,
     "totalTranscationAmount": 0,
@@ -1126,14 +1276,16 @@
       "2020-11-27": 211.01,
       "2020-11-30": 211.01,
       "2020-12-01": 211.01,
-      "2020-12-03": 211.01
+      "2020-12-03": 211.01,
+      "2020-12-06": 211.01
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1147,6 +1299,10 @@
       "2020-12-03": {
         "high": 211.01,
         "low": 211.01
+      },
+      "2020-12-06": {
+        "high": 211.01,
+        "low": 211.01
       }
     }
   },
@@ -1154,7 +1310,7 @@
     "name": "Micron Technology, Inc.",
     "symbol": "MU",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -0.98,
+    "percentage": 0,
     "quote": 55.41,
     "prev_close": 55.41,
     "totalTranscationAmount": 0,
@@ -1170,14 +1326,16 @@
       "2020-11-27": 55.41,
       "2020-11-30": 55.41,
       "2020-12-01": 55.41,
-      "2020-12-03": 55.41
+      "2020-12-03": 55.41,
+      "2020-12-06": 55.41
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1189,6 +1347,10 @@
         "low": 55.41
       },
       "2020-12-03": {
+        "high": 55.41,
+        "low": 55.41
+      },
+      "2020-12-06": {
         "high": 55.41,
         "low": 55.41
       }
@@ -1198,13 +1360,13 @@
     "name": "Netflix, Inc.",
     "symbol": "NFLX",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 18.69,
+    "percentage": 0,
     "quote": 570,
-    "prev_close": 480.24,
-    "totalTranscationAmount": 22800,
+    "prev_close": 570,
+    "totalTranscationAmount": 0,
     "daily_range": {
       "high": 570,
-      "low": 426.67
+      "low": 570
     },
     "historical": {
       "2020-11-23": 455.2,
@@ -1214,14 +1376,16 @@
       "2020-11-27": 480.24,
       "2020-11-30": 480.24,
       "2020-12-01": 480.24,
-      "2020-12-03": 480.24
+      "2020-12-03": 480.24,
+      "2020-12-06": 570
     },
-    "volume": 40,
+    "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1235,6 +1399,10 @@
       "2020-12-03": {
         "high": 480.24,
         "low": 480.24
+      },
+      "2020-12-06": {
+        "high": 570,
+        "low": 570
       }
     }
   },
@@ -1242,7 +1410,7 @@
     "name": "NIO Limited",
     "symbol": "NIO",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -5.61,
+    "percentage": 0,
     "quote": 41.55,
     "prev_close": 41.55,
     "totalTranscationAmount": 0,
@@ -1258,14 +1426,16 @@
       "2020-11-27": 41.55,
       "2020-11-30": 41.55,
       "2020-12-01": 41.55,
-      "2020-12-03": 41.55
+      "2020-12-03": 41.55,
+      "2020-12-06": 41.55
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1279,6 +1449,10 @@
       "2020-12-03": {
         "high": 41.55,
         "low": 41.55
+      },
+      "2020-12-06": {
+        "high": 41.55,
+        "low": 41.55
       }
     }
   },
@@ -1286,7 +1460,7 @@
     "name": "NVIDIA Corporation",
     "symbol": "NVDA",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -6.31,
+    "percentage": 0,
     "quote": 510.8,
     "prev_close": 510.8,
     "totalTranscationAmount": 0,
@@ -1302,14 +1476,16 @@
       "2020-11-27": 510.8,
       "2020-11-30": 510.8,
       "2020-12-01": 510.8,
-      "2020-12-03": 510.8
+      "2020-12-03": 510.8,
+      "2020-12-06": 510.8
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1323,6 +1499,10 @@
       "2020-12-03": {
         "high": 510.8,
         "low": 510.8
+      },
+      "2020-12-06": {
+        "high": 510.8,
+        "low": 510.8
       }
     }
   },
@@ -1330,13 +1510,13 @@
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 64.57,
+    "percentage": 0,
     "quote": 360,
-    "prev_close": 218.75,
-    "totalTranscationAmount": 3600,
+    "prev_close": 360,
+    "totalTranscationAmount": 0,
     "daily_range": {
       "high": 360,
-      "low": 218.75
+      "low": 360
     },
     "historical": {
       "2020-11-23": 125.2,
@@ -1346,14 +1526,16 @@
       "2020-11-27": 192.61,
       "2020-11-30": 186.67,
       "2020-12-01": 218.75,
-      "2020-12-03": 218.75
+      "2020-12-03": 218.75,
+      "2020-12-06": 360
     },
-    "volume": 10,
+    "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 40,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1367,6 +1549,10 @@
       "2020-12-03": {
         "high": 218.75,
         "low": 218.75
+      },
+      "2020-12-06": {
+        "high": 360,
+        "low": 360
       }
     }
   },
@@ -1374,7 +1560,7 @@
     "name": "Shopify Inc.",
     "symbol": "SHOP",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -1.87,
+    "percentage": 0,
     "quote": 885.76,
     "prev_close": 885.76,
     "totalTranscationAmount": 0,
@@ -1390,14 +1576,16 @@
       "2020-11-27": 885.76,
       "2020-11-30": 885.76,
       "2020-12-01": 885.76,
-      "2020-12-03": 885.76
+      "2020-12-03": 885.76,
+      "2020-12-06": 885.76
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1411,6 +1599,10 @@
       "2020-12-03": {
         "high": 885.76,
         "low": 885.76
+      },
+      "2020-12-06": {
+        "high": 885.76,
+        "low": 885.76
       }
     }
   },
@@ -1418,7 +1610,7 @@
     "name": "Virgin Galactic Holdings, Inc.",
     "symbol": "SPCE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.1,
+    "percentage": 0,
     "quote": 20.47,
     "prev_close": 20.47,
     "totalTranscationAmount": 0,
@@ -1436,14 +1628,16 @@
       "2020-11-29": 20.47,
       "2020-11-30": 20.47,
       "2020-12-01": 20.47,
-      "2020-12-03": 20.47
+      "2020-12-03": 20.47,
+      "2020-12-06": 20.47
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1457,6 +1651,10 @@
       "2020-12-03": {
         "high": 20.47,
         "low": 20.47
+      },
+      "2020-12-06": {
+        "high": 20.47,
+        "low": 20.47
       }
     }
   },
@@ -1464,7 +1662,7 @@
     "name": "Square, Inc.",
     "symbol": "SQ",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -6.56,
+    "percentage": 0,
     "quote": 172,
     "prev_close": 172,
     "totalTranscationAmount": 0,
@@ -1480,14 +1678,16 @@
       "2020-11-27": 172,
       "2020-11-30": 172,
       "2020-12-01": 172,
-      "2020-12-03": 172
+      "2020-12-03": 172,
+      "2020-12-06": 172
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1501,6 +1701,10 @@
       "2020-12-03": {
         "high": 172,
         "low": 172
+      },
+      "2020-12-06": {
+        "high": 172,
+        "low": 172
       }
     }
   },
@@ -1508,7 +1712,7 @@
     "name": "Tencent Holdings Limited",
     "symbol": "TCEHY",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -6.06,
+    "percentage": 0,
     "quote": 73.8,
     "prev_close": 73.8,
     "totalTranscationAmount": 0,
@@ -1524,14 +1728,16 @@
       "2020-11-27": 73.8,
       "2020-11-30": 73.8,
       "2020-12-01": 73.8,
-      "2020-12-03": 73.8
+      "2020-12-03": 73.8,
+      "2020-12-06": 73.8
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1545,6 +1751,10 @@
       "2020-12-03": {
         "high": 73.8,
         "low": 73.8
+      },
+      "2020-12-06": {
+        "high": 73.8,
+        "low": 73.8
       }
     }
   },
@@ -1552,7 +1762,7 @@
     "name": "The Toronto-Dominion Bank",
     "symbol": "TD.TO",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 2.53,
+    "percentage": 0,
     "quote": 64.48,
     "prev_close": 64.48,
     "totalTranscationAmount": 0,
@@ -1568,14 +1778,16 @@
       "2020-11-27": 64.48,
       "2020-11-30": 64.48,
       "2020-12-01": 64.48,
-      "2020-12-03": 64.48
+      "2020-12-03": 64.48,
+      "2020-12-06": 64.48
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1589,6 +1801,10 @@
       "2020-12-03": {
         "high": 64.48,
         "low": 64.48
+      },
+      "2020-12-06": {
+        "high": 64.48,
+        "low": 64.48
       }
     }
   },
@@ -1596,7 +1812,7 @@
     "name": "Tilray, Inc.",
     "symbol": "TLRY",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -17.52,
+    "percentage": 0,
     "quote": 8.33,
     "prev_close": 8.33,
     "totalTranscationAmount": 0,
@@ -1612,14 +1828,16 @@
       "2020-11-27": 8.33,
       "2020-11-30": 8.33,
       "2020-12-01": 8.33,
-      "2020-12-03": 8.33
+      "2020-12-03": 8.33,
+      "2020-12-06": 8.33
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1633,6 +1851,10 @@
       "2020-12-03": {
         "high": 8.33,
         "low": 8.33
+      },
+      "2020-12-06": {
+        "high": 8.33,
+        "low": 8.33
       }
     }
   },
@@ -1640,7 +1862,7 @@
     "name": "Tesla, Inc.",
     "symbol": "TSLA",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": -2.59,
+    "percentage": 0,
     "quote": 410.36,
     "prev_close": 410.36,
     "totalTranscationAmount": 0,
@@ -1656,14 +1878,16 @@
       "2020-11-27": 410.36,
       "2020-11-30": 410.36,
       "2020-12-01": 410.36,
-      "2020-12-03": 410.36
+      "2020-12-03": 410.36,
+      "2020-12-06": 410.36
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1677,6 +1901,10 @@
       "2020-12-03": {
         "high": 410.36,
         "low": 410.36
+      },
+      "2020-12-06": {
+        "high": 410.36,
+        "low": 410.36
       }
     }
   },
@@ -1684,7 +1912,7 @@
     "name": "Visa Inc.",
     "symbol": "V",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.3,
+    "percentage": 0,
     "quote": 213.31,
     "prev_close": 213.31,
     "totalTranscationAmount": 0,
@@ -1700,14 +1928,16 @@
       "2020-11-27": 213.31,
       "2020-11-30": 213.31,
       "2020-12-01": 213.31,
-      "2020-12-03": 213.31
+      "2020-12-03": 213.31,
+      "2020-12-06": 213.31
     },
     "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1719,6 +1949,10 @@
         "low": 213.31
       },
       "2020-12-03": {
+        "high": 213.31,
+        "low": 213.31
+      },
+      "2020-12-06": {
         "high": 213.31,
         "low": 213.31
       }
@@ -1728,13 +1962,13 @@
     "name": "Walmart Inc.",
     "symbol": "WMT",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 3.05,
+    "percentage": 0,
     "quote": 150,
-    "prev_close": 145.56,
-    "totalTranscationAmount": 750,
+    "prev_close": 150,
+    "totalTranscationAmount": 0,
     "daily_range": {
       "high": 150,
-      "low": 145.56
+      "low": 150
     },
     "historical": {
       "2020-11-23": 135.14,
@@ -1744,14 +1978,16 @@
       "2020-11-27": 145.56,
       "2020-11-30": 145.56,
       "2020-12-01": 145.56,
-      "2020-12-03": 145.56
+      "2020-12-03": 145.56,
+      "2020-12-06": 150
     },
-    "volume": 5,
+    "volume": 0,
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
       "2020-12-01": 0,
-      "2020-12-03": 0
+      "2020-12-03": 0,
+      "2020-12-06": 0
     },
     "historicalDailyRange": {
       "2020-11-30": {
@@ -1765,6 +2001,10 @@
       "2020-12-03": {
         "high": 145.56,
         "low": 145.56
+      },
+      "2020-12-06": {
+        "high": 150,
+        "low": 150
       }
     }
   }
