@@ -6,9 +6,9 @@
     "watchlist": [
       {
         "symbol": "D35-C",
-        "quote": 1549451.49,
+        "quote": 1956275.83,
         "name": "Dimension 35-C",
-        "volume": 210
+        "volume": 1517
       },
       {
         "symbol": "F",
@@ -32,20 +32,12 @@
     "eventList": [],
     "ownedStocks": [
       {
-        "name": "Sea Limited",
-        "quote": 360,
-        "total_cost": 3600,
-        "average_cost": 360,
-        "symbol": "SE",
-        "share": 10
-      },
-      {
         "name": "Maxar Technologies Inc.",
         "quote": 100,
-        "total_cost": 200,
-        "average_cost": 100,
+        "total_cost": 300,
+        "average_cost": 13.64,
         "symbol": "MAXR",
-        "share": 2
+        "share": 22
       },
       {
         "name": "Walmart Inc.",
@@ -53,6 +45,14 @@
         "total_cost": 300,
         "average_cost": 150,
         "symbol": "WMT",
+        "share": 2
+      },
+      {
+        "name": "Netflix, Inc.",
+        "quote": 500,
+        "total_cost": 1000,
+        "average_cost": 500,
+        "symbol": "NFLX",
         "share": 2
       }
     ],
@@ -169,30 +169,53 @@
             "date": "2020-12-05",
             "action": "buy",
             "message": "Bought 2 shares of WMT at $150 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 3 shares of SE at $400 to TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 6 shares of SE at $400 to TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 1 shares of SE at $400 to TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 2 shares of NFLX at $500 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 5 shares of SE at $450 from TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 8 shares of SE at $800 to TheDonald - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 20 shares of MAXR at $5 from TheDonald - 2020-12-05"
           }
         ]
       }
     ],
     "account": {
       "accountName": "C-137-1001",
-      "cashBalance": 11880,
-      "investmentBalance": 4100,
+      "cashBalance": 18930,
+      "investmentBalance": 1741.34,
       "totalDeposit": 13230
     },
     "balanceGrowth": 0,
-    "openOrders": [
-      {
-        "name": "Netflix, Inc.",
-        "quote": 570,
-        "symbol": "NFLX",
-        "share": 2,
-        "orderType": "buy",
-        "orderId": "9e3bdc39-7b15-44b8-aabc-311b2fe2d3dd",
-        "username": "jerry137",
-        "date": "2020-12-05",
-        "limitPrice": 500
-      }
-    ]
+    "openOrders": []
   },
   "morty137": {
     "username": "morty137",
@@ -566,9 +589,21 @@
     "watchlist": [
       {
         "symbol": "NFLX",
-        "quote": 480,
+        "quote": 566.67,
         "name": "Netflix, Inc.",
-        "volume": 9
+        "volume": 42
+      },
+      {
+        "symbol": "SE",
+        "quote": 492.42,
+        "name": "Sea Limited",
+        "volume": 33
+      },
+      {
+        "symbol": "WMT",
+        "quote": 150,
+        "name": "Walmart Inc.",
+        "volume": 5
       }
     ],
     "openOrders": [
@@ -604,9 +639,48 @@
         "username": "TheDonald",
         "date": "2020-12-05",
         "limitPrice": 350
+      },
+      {
+        "name": "Sea Limited",
+        "quote": 378.95,
+        "symbol": "SE",
+        "share": 1,
+        "orderType": "sell",
+        "orderId": "be1b02f0-e027-4c26-8b62-4e68dd1b502a",
+        "username": "TheDonald",
+        "date": "2020-12-05",
+        "limitPrice": 450
       }
     ],
-    "eventList": [],
+    "eventList": [
+      {
+        "symbol": "SE",
+        "quote": 360,
+        "name": "Sea Limited",
+        "active": "Deactive",
+        "notified": false,
+        "notify_num": 74,
+        "message": ""
+      },
+      {
+        "symbol": "WMT",
+        "quote": 150,
+        "name": "Walmart Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 10,
+        "message": ""
+      },
+      {
+        "symbol": "MAXR",
+        "quote": 74,
+        "name": "Maxar Technologies Inc.",
+        "active": "Deactive",
+        "notified": false,
+        "notify_num": -10,
+        "message": ""
+      }
+    ],
     "ownedStocks": [
       {
         "name": "Facebook, Inc.",
@@ -622,15 +696,15 @@
         "total_cost": 518.2,
         "average_cost": 18.50714285714286,
         "symbol": "MAXR",
-        "share": 27
+        "share": 7
       },
       {
         "name": "Netflix, Inc.",
         "quote": 480.24,
-        "total_cost": 34209.6,
-        "average_cost": 855.24,
+        "total_cost": 33209.6,
+        "average_cost": 873.9368421052632,
         "symbol": "NFLX",
-        "share": 40
+        "share": 38
       },
       {
         "name": "Walmart Inc.",
@@ -639,6 +713,14 @@
         "average_cost": 145.56,
         "symbol": "WMT",
         "share": 5
+      },
+      {
+        "name": "Sea Limited",
+        "quote": 400,
+        "total_cost": 10400,
+        "average_cost": 800,
+        "symbol": "SE",
+        "share": 10
       }
     ],
     "activity": [
@@ -709,14 +791,59 @@
             "date": "2020-12-05",
             "action": "sell",
             "message": "Sold 2 shares of WMT at $150 to jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 3 shares of SE at $400 from jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 6 shares of SE at $400 from jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 1 shares of SE at $400 from jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 2 shares of NFLX at $500 to jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 5 shares of SE at $450 to jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "buy",
+            "message": "Bought 8 shares of SE at $800 from jerry137 - 2020-12-05"
+          },
+          {
+            "date": "2020-12-05",
+            "action": "sell",
+            "message": "Sold 20 shares of MAXR at $5 to jerry137 - 2020-12-05"
+          }
+        ]
+      },
+      {
+        "date": "2020-12-06",
+        "activities": [
+          {
+            "date": "2020-12-06",
+            "action": "sell",
+            "message": "Sold 3 shares of SE at $450 to Voldemort - 2020-12-06"
           }
         ]
       }
     ],
     "account": {
       "accountName": "Tax Free Savings Account",
-      "cashBalance": 98672,
-      "investmentBalance": 39607.7,
+      "cashBalance": 92972,
+      "investmentBalance": 30555.66,
       "totalDeposit": 129107.7
     },
     "balanceGrowth": "10"
@@ -795,6 +922,77 @@
       "cashBalance": 16850,
       "investmentBalance": 450,
       "totalDeposit": 10000
+    },
+    "balanceGrowth": "0"
+  },
+  "Voldemort": {
+    "username": "Voldemort",
+    "password": "fXffc3CnnTqms9S",
+    "name": "Harry Potter",
+    "watchlist": [
+      {
+        "symbol": "TSLA",
+        "quote": 410.36,
+        "name": "Tesla, Inc.",
+        "volume": 0
+      }
+    ],
+    "openOrders": [
+      {
+        "name": "Netflix, Inc.",
+        "quote": 566.67,
+        "symbol": "NFLX",
+        "share": 10,
+        "orderType": "buy",
+        "orderId": "5dd41952-3883-4079-a956-edc9f5e38a2c",
+        "username": "Voldemort",
+        "date": "2020-12-06",
+        "limitPrice": 600
+      }
+    ],
+    "eventList": [
+      {
+        "symbol": "TSLA",
+        "quote": 410.36,
+        "name": "Tesla, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 9,
+        "message": ""
+      }
+    ],
+    "ownedStocks": [
+      {
+        "name": "Sea Limited",
+        "quote": 450,
+        "total_cost": 1350,
+        "average_cost": 450,
+        "symbol": "SE",
+        "share": 3
+      }
+    ],
+    "activity": [
+      {
+        "date": "2020-12-06",
+        "activities": [
+          {
+            "date": "2020-12-06",
+            "action": "deposit",
+            "message": "Deposited $1000000000 to account: Tax Free Savings Account - 2020-12-06"
+          },
+          {
+            "date": "2020-12-06",
+            "action": "buy",
+            "message": "Bought 3 shares of SE at $450 from TheDonald - 2020-12-06"
+          }
+        ]
+      }
+    ],
+    "account": {
+      "accountName": "Tax Free Savings Account",
+      "cashBalance": 999998650,
+      "investmentBalance": 1466.67,
+      "totalDeposit": 1000000000
     },
     "balanceGrowth": "0"
   }

@@ -20,5 +20,16 @@
     "username": "TheDonald",
     "date": "2020-12-05",
     "limitPrice": 350
+  },
+  {
+    "name": "Sea Limited",
+    "quote": 378.95,
+    "symbol": "SE",
+    "share": 1,
+    "orderType": "sell",
+    "orderId": "be1b02f0-e027-4c26-8b62-4e68dd1b502a",
+    "username": "TheDonald",
+    "date": "2020-12-05",
+    "limitPrice": 450
   }
 ]

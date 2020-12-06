@@ -3,14 +3,14 @@
     "name": "Dimension 35-C",
     "symbol": "D35-C",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
-    "percentage": 0.57,
-    "volume": 0,
-    "quote": 1912753.76,
-    "prev_close": 1901941.8,
-    "totalTranscationAmount": 0,
+    "percentage": 27.35,
+    "volume": 1931,
+    "quote": 1999852.97,
+    "prev_close": 1570399.25,
+    "totalTranscationAmount": 858874,
     "daily_range": {
-      "high": 1912753.76,
-      "low": 1901941.8
+      "high": 1999852.97,
+      "low": 1570399.25
     },
     "historical": {
       "2020-11-23": 1213000.5,
@@ -1160,6 +1160,7 @@
     "name": "Maxar Technologies Inc.",
     "symbol": "MAXR",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
+<<<<<<< HEAD
     "percentage": 0,
     "quote": 74,
     "prev_close": 74,
@@ -1167,6 +1168,15 @@
     "daily_range": {
       "high": 74,
       "low": 74
+=======
+    "percentage": -41.52,
+    "quote": 14,
+    "prev_close": 23.94,
+    "totalTranscationAmount": 322,
+    "daily_range": {
+      "high": 100,
+      "low": 14
+>>>>>>> a8f2eb74b11c41936ed81192e00056048e9d1700
     },
     "historical": {
       "2020-11-23": 22.2,
@@ -1179,7 +1189,11 @@
       "2020-12-03": 23.94,
       "2020-12-06": 74
     },
+<<<<<<< HEAD
     "volume": 0,
+=======
+    "volume": 23,
+>>>>>>> a8f2eb74b11c41936ed81192e00056048e9d1700
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1360,10 +1374,17 @@
     "name": "Netflix, Inc.",
     "symbol": "NFLX",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
+<<<<<<< HEAD
     "percentage": 0,
     "quote": 570,
     "prev_close": 570,
     "totalTranscationAmount": 0,
+=======
+    "percentage": 18,
+    "quote": 566.67,
+    "prev_close": 480.24,
+    "totalTranscationAmount": 23800,
+>>>>>>> a8f2eb74b11c41936ed81192e00056048e9d1700
     "daily_range": {
       "high": 570,
       "low": 570
@@ -1379,7 +1400,11 @@
       "2020-12-03": 480.24,
       "2020-12-06": 570
     },
+<<<<<<< HEAD
     "volume": 0,
+=======
+    "volume": 42,
+>>>>>>> a8f2eb74b11c41936ed81192e00056048e9d1700
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
@@ -1510,6 +1535,7 @@
     "name": "Sea Limited",
     "symbol": "SE",
     "market": "Dimension 35-C - Real Time Price. Currency in CAD",
+<<<<<<< HEAD
     "percentage": 0,
     "quote": 360,
     "prev_close": 360,
@@ -1517,6 +1543,15 @@
     "daily_range": {
       "high": 360,
       "low": 360
+=======
+    "percentage": 123.49,
+    "quote": 488.89,
+    "prev_close": 218.75,
+    "totalTranscationAmount": 17600,
+    "daily_range": {
+      "high": 492.42,
+      "low": 218.75
+>>>>>>> a8f2eb74b11c41936ed81192e00056048e9d1700
     },
     "historical": {
       "2020-11-23": 125.2,
@@ -1529,7 +1564,11 @@
       "2020-12-03": 218.75,
       "2020-12-06": 360
     },
+<<<<<<< HEAD
     "volume": 0,
+=======
+    "volume": 36,
+>>>>>>> a8f2eb74b11c41936ed81192e00056048e9d1700
     "precentage": 0,
     "historicalVolume": {
       "2020-11-30": 0,
