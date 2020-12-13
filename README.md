@@ -42,26 +42,6 @@ and use the any of the following login credentials:
 
 Happy trading :-)
 
-<h3>Using on Carleton's Network (for TAs):</h3>
-To use our app on Carleton's Network:
-(note please follow steps to run locally before attempting this)
-
-```bash
-ssh -L 9999:localhost:3000 student@134.117.133.231
-```
-password:
-```bash
-tophats made from money
-```
-
-navigate to http://127.0.0.1:9999/
-and use the any of the following login credentials:
-<ul>
-   <li> user: jerry137 password: 123456 </li>
-   <li> user: morty137 password: 123456 </li>
-   <li> user: rick137 password: 123456 </li>
-</ul>
-
 ## Files
 
 ```bash
