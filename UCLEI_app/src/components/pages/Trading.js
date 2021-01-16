@@ -22,11 +22,11 @@ const styles = (theme) => ({
       height: '100%',
       color: '#fff',
       borderRadius: '10px',
-      margin: "1%",
+      margin: "1% auto",
       boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
       alignText: 'center',
       textDecoration: 'none',
-      listStyleType: 'none'
+      listStyleType: 'none',
     },
     searchCard: {
       background: '#222023',

@@ -8,7 +8,6 @@ import CheckboxList from '../Watchlist.js';
 import LineChart from '../Linechart.js';
 import Fourohone from '../fourohone.js';
 import Grid from '@material-ui/core/Grid';
-import { id } from 'date-fns/locale';
 
 const styles = {
   root: {

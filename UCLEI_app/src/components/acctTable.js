@@ -108,7 +108,6 @@ const Row = forwardRef((props, ref) => {
 });
 
 export default function AccountTable({userData}) {
-  const classes = useStyles();
   const ref = useRef(null);
   const [type, setType] = React.useState('All');
   const [rows, setRows] = React.useState([]);

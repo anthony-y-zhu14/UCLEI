@@ -230,8 +230,7 @@ useEffect(() => {
       <MenuItem>
         
         <IconButton color="inherit">
-          <NotificationsForm notifynums={notifications}stockData={eventsList}/>
-          
+          <NotificationsForm notifynums={notifications}stockData={eventsList}/>          
         </IconButton>
         
         

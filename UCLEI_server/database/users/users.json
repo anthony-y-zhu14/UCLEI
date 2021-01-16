@@ -284,22 +284,22 @@
     "name": "Rick Sanchez",
     "watchlist": [
       {
-        "symbol": "FB",
-        "quote": "272.43",
-        "name": "Facebook, Inc.",
-        "volume": 0
-      },
-      {
         "symbol": "AMD",
-        "quote": "77.99",
+        "quote": 77.99,
         "name": "Advanced Micro Devices, Inc.",
         "volume": 0
       },
       {
         "symbol": "MAXR",
-        "quote": 100,
+        "quote": 14,
         "name": "Maxar Technologies Inc.",
-        "volume": 2
+        "volume": 23
+      },
+      {
+        "symbol": "FB",
+        "quote": 325,
+        "name": "Facebook, Inc.",
+        "volume": 0
       }
     ],
     "eventList": [
@@ -309,8 +309,8 @@
         "name": "Advanced Micro Devices, Inc.",
         "active": "Active",
         "notified": true,
-        "notify_num": "100",
-        "message": "Alert: Advanced Micro Devices, Inc., (AMD) price has increased by 100% or greater."
+        "notify_num": null,
+        "message": ""
       },
       {
         "symbol": "TSLA",
@@ -320,16 +320,25 @@
         "notified": false,
         "notify_num": "12",
         "message": ""
+      },
+      {
+        "symbol": "FB",
+        "quote": 325,
+        "name": "Facebook, Inc.",
+        "active": "Active",
+        "notified": false,
+        "notify_num": 5,
+        "message": ""
       }
     ],
     "ownedStocks": [
       {
         "name": "Maxar Technologies Inc.",
         "quote": 22,
-        "total_cost": 22,
+        "total_cost": 66,
         "average_cost": 22,
         "symbol": "MAXR",
-        "share": 1
+        "share": 3
       }
     ],
     "activity": [
@@ -437,12 +446,22 @@
             "message": "Bought 1 shares of MAXR at $22 from TheDonald - 2020-12-05"
           }
         ]
+      },
+      {
+        "date": "2021-01-16",
+        "activities": [
+          {
+            "date": "2021-01-16",
+            "action": "buy",
+            "message": "Bought 2 shares of MAXR at $22 from TheDonald - 2021-01-16"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": 1003,
-      "cashBalance": 7228,
-      "investmentBalance": 22,
+      "cashBalance": 7184,
+      "investmentBalance": 43.92,
       "totalDeposit": 8000
     },
     "balanceGrowth": "0",
@@ -608,17 +627,6 @@
     ],
     "openOrders": [
       {
-        "name": "Maxar Technologies Inc.",
-        "quote": 23.94,
-        "symbol": "MAXR",
-        "share": 2,
-        "orderType": "sell",
-        "orderId": "1a7e0d0e-708b-472d-971d-459faba042c7",
-        "username": "TheDonald",
-        "date": "2020-12-05",
-        "limitPrice": 22
-      },
-      {
         "name": "Sea Limited",
         "quote": 360,
         "symbol": "SE",
@@ -696,7 +704,7 @@
         "total_cost": 518.2,
         "average_cost": 18.50714285714286,
         "symbol": "MAXR",
-        "share": 7
+        "share": 5
       },
       {
         "name": "Netflix, Inc.",
@@ -838,12 +846,22 @@
             "message": "Sold 3 shares of SE at $450 to Voldemort - 2020-12-06"
           }
         ]
+      },
+      {
+        "date": "2021-01-16",
+        "activities": [
+          {
+            "date": "2021-01-16",
+            "action": "sell",
+            "message": "Sold 2 shares of MAXR at $22 to rick137 - 2021-01-16"
+          }
+        ]
       }
     ],
     "account": {
       "accountName": "Tax Free Savings Account",
-      "cashBalance": 92972,
-      "investmentBalance": 30555.66,
+      "cashBalance": 93016,
+      "investmentBalance": 30492.36,
       "totalDeposit": 129107.7
     },
     "balanceGrowth": "10"

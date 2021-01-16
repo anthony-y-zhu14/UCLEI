@@ -248,7 +248,7 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
                         usersDataBase[buyerUserName].ownedStocks[j].total_cost += newStock.quote * sellOrder.share;
 
-                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = pareseFloat((usersDataBase[buyerUserName].ownedStocks[j].total_cost / usersDataBase[buyerUserName].ownedStocks[j].share).toFixed(2));
+                        usersDataBase[buyerUserName].ownedStocks[j].average_cost = parseFloat((usersDataBase[buyerUserName].ownedStocks[j].total_cost / usersDataBase[buyerUserName].ownedStocks[j].share).toFixed(2));
 
                         return;
                     }

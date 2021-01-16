@@ -24,8 +24,6 @@ class Modal extends React.Component {
 
     render() {
 
-      const { classes } = this.props;
-
     return(
         <div id="add-funds-modal" className={this.state.display} >
             <div className="modal-content">
@@ -34,7 +32,7 @@ class Modal extends React.Component {
           <form>
             <div id="modal-account-balance">
               <span className="modal-text">Account Balance:</span>
-              <span className="modal-text" className="cashBalance" id="money">2020.28</span>
+              <span className="cashBalance" id="money">2020.28</span>
             </div>
 
             <p id="text-labels" className="text">Input Dollar Amount</p>

@@ -76,7 +76,7 @@ details[open] summary ~ * {
 }
 
 #account-info {
-  margin: 0 auto;
+  margin: 0% auto;
   width: 50%;
   display: flex;
   background: #393b41;
@@ -96,7 +96,7 @@ details[open] summary ~ * {
 
 
 #balance-container {
-  margin: 0 auto;
+  margin: 0% auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

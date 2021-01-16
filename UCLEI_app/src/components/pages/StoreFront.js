@@ -20,7 +20,7 @@ const styles = {
     },
     li: {
       color: "#000",
-      textDecoration: 'underline',
+      textDecoration: 'none',
       '&:hover':{
         color: '#6C9FF8',
         cursor: 'pointer'
@@ -97,11 +97,11 @@ class StoreFront extends React.Component {
                     <br />
 
                     <Typography variant="p" className={classes.title}>
-                    <a className={classes.li} href="https://github.com/anthony-y-zhu14/UCLEI---Stock-Trading-Platform-Sandbox" target="_blank">Check out the repo here</a>
+                    <Fab variant="extended" className={classes.li} href="https://github.com/anthony-y-zhu14/UCLEI---Stock-Trading-Platform-Sandbox" rel="noreferrer" target="_blank">Check out the repo here</Fab>
                     </Typography>
                     <br />
                     <br />
-                    <Fab variant="extended" onClick={this.handleLogin}>
+                    <Fab variant="extended" color='primary' onClick={this.handleLogin}>
                         <NavigationIcon />
                             Get Started
                     </Fab>

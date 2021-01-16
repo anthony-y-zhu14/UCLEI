@@ -888,7 +888,6 @@ setInterval(function checkRefresh() {
         today = new Date().toISOString().slice(0,10);
         console.log("----server reseted----");    
 }, 86400000);
-app.listen(3001);
+app.listen(process.env.PORT || 3001);
 
-    console.log('Please ensure the react-app is running and navigate to http://127.0.0.1:3000/');
-    console.log('If using Carleton network please navigate to http://127.0.0.1:9999/ once the react-app is running.\n');
+    console.log(`Please ensure the react-app is running and navigate to ${process.env.PORT || 3001}`);
