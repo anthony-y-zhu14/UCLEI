@@ -1,5 +1,0 @@
-{
-    "python.pythonPath": "/usr/local/bin/python3",
-    "compile-hero.disable-compile-files-on-did-save-code": true,
-    "git.ignoreLimitWarning": true
-}
