@@ -16,8 +16,8 @@ module.exports = {
  }
 function cancelOrder(orderId, user){
 
-    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
-    let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
+    let sellOrderArr = JSON.parse(fs.readFileSync("./database/orders/openSellOrders.json"));
+    let buyOrderArr = JSON.parse(fs.readFileSync("./database/orders/openBuyOrders.json"));
 
     for (let index = 0; index < user.openOrders.length; index++){
         if(user.openOrders[index].orderId === orderId){
@@ -112,8 +112,8 @@ function updateInvestmentBalance(user, stockDatabase){
 
 function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase, stockDatabase) {
 
-    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"));
-    let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"));
+    let sellOrderArr = JSON.parse(fs.readFileSync("./database/orders/openSellOrders.json"));
+    let buyOrderArr = JSON.parse(fs.readFileSync("./database/orders/openBuyOrders.json"));
     let currentQuantity = parseInt(quantity);
 
     for(let i = 0; i < sellOrderArr.length; i++) {
@@ -345,8 +345,8 @@ function validateBuy(quantity, symbol, limitPrice, buyerUserName, usersDataBase,
 
 function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabase, stockDatabase) {
 
-    let buyOrderArr = JSON.parse(fs.readFileSync("../database/orders/openBuyOrders.json"))
-    let sellOrderArr = JSON.parse(fs.readFileSync("../database/orders/openSellOrders.json"))
+    let buyOrderArr = JSON.parse(fs.readFileSync("./database/orders/openBuyOrders.json"))
+    let sellOrderArr = JSON.parse(fs.readFileSync("./database/orders/openSellOrders.json"))
 
     let currentQuantity = parseInt(quantity);
 
@@ -561,19 +561,19 @@ function validateSell(quantity, symbol, limitPrice, sellerUserName, usersDatabas
     Write to buy order database
 */
 function updateBuyOrdersData(d){
-    fs.writeFileSync("../database/orders/openBuyOrders.json", JSON.stringify(d, null, 2));
+    fs.writeFileSync("./database/orders/openBuyOrders.json", JSON.stringify(d, null, 2));
 }
 /*
     Write to sell order database
 */
 function updateSellOrdersData(d){
-    fs.writeFileSync("../database/orders/openSellOrders.json", JSON.stringify(d, null, 2));
+    fs.writeFileSync("./database/orders/openSellOrders.json", JSON.stringify(d, null, 2));
 }
 /*
     Write to user database
 */
 function updateUserDataBase(usersDatabase){
-    fs.writeFileSync("../database/users/users.json", JSON.stringify(usersDatabase, null, 2));
+    fs.writeFileSync("./database/users/users.json", JSON.stringify(usersDatabase, null, 2));
 }
 /*
     Write to stock database
@@ -593,6 +593,6 @@ function updateStockDatabase(stockDatabase){
     stockDatabase["D35-C"].percentage = parseFloat(percentageChange.toFixed(2));
     stockDatabase["D35-C"].daily_range.high = stockDatabase["D35-C"].quote > stockDatabase["D35-C"].daily_range.high? stockDatabase["D35-C"].quote : stockDatabase["D35-C"].daily_range.high;
     stockDatabase["D35-C"].daily_range.low = stockDatabase["D35-C"].quote < stockDatabase["D35-C"].daily_range.high? stockDatabase["D35-C"].quote : stockDatabase["D35-C"].daily_range.low;
-    fs.writeFileSync("../database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
+    fs.writeFileSync("./database/stocks/data.json", JSON.stringify(stockDatabase, null, 2))
 }
 

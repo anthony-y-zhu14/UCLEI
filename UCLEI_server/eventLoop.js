@@ -14,12 +14,12 @@ module.exports = {
  10000); //rest for 1 minute
 
  function updateUserDataBase(users) {
-     fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
+     fs.writeFileSync("./database/users/users.json", JSON.stringify(users, null, 2));
  }
 
  function eventWatcher() {
-   let users = JSON.parse(fs.readFileSync("../database/users/users.json"));
-   const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+   let users = JSON.parse(fs.readFileSync("./database/users/users.json"));
+   const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
    let notifications = [];
 
    for(let user in users) {

@@ -7,7 +7,7 @@ const cookieParser = require('cookie-parser');
 const session=require('express-session');
 const e = require("express");
 
-const users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+const users = JSON.parse(fs.readFileSync("./database/users/users.json"));
 
 app.use(express.static(path.join(__dirname, '../')));
 app.use(cookieParser());
@@ -31,7 +31,7 @@ function isSessionValid(s, u){
 }
 
 function updateUserDataBase(u){
-    fs.writeFileSync("../database/users/users.json", JSON.stringify(u, null, 2));
+    fs.writeFileSync("./database/users/users.json", JSON.stringify(u, null, 2));
     console.log('saved!');
 }
 
@@ -234,7 +234,7 @@ app.post('/addWatchItem', (request, response) => {
 
 app.get("/stock-data", (request, response) => {
     if (isSessionValid(request.session, request.session.user)){
-        fs.readFile("../database/stocks/data.json", function(err, file){
+        fs.readFile("./database/stocks/data.json", function(err, file){
             let search = request.query['search'];
             let lis = JSON.parse(file);
             let data = [];
@@ -267,7 +267,7 @@ app.post('/buyStock', (request, response) => {
 
         function buyStock(quantity, symbol) {
 
-            fs.readFile("../database/stocks/data.json", function(err, file) {
+            fs.readFile("./database/stocks/data.json", function(err, file) {
                 let lis = JSON.parse(file);
                 let stockPrice = parseFloat(lis[symbol]["quote"]);
 
@@ -334,7 +334,7 @@ app.post('/sellStock', (request, response) => {
 
         function sellStock(quantity, symbol) {
 
-        fs.readFile("../database/stocks/data.json", function(err, file) {
+        fs.readFile("./database/stocks/data.json", function(err, file) {
             let lis = JSON.parse(file);
             let stock = lis[symbol];
             let stockPrice = parseFloat(lis[symbol]["quote"]);
@@ -366,7 +366,7 @@ app.post('/sellStock', (request, response) => {
 
 app.get('/stock-data-w', (request, response) => {
     if (isSessionValid(request.session, request.session.user)){
-        fs.readFile("../database/stocks/data.json", function(err, file){
+        fs.readFile("./database/stocks/data.json", function(err, file){
             let lis = JSON.parse(file);
             let data = [];
             response.setHeader("Content-Type", "application/JSON");

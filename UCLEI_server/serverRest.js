@@ -7,7 +7,7 @@ module.exports = {
  }
 
  function resetStock(yesterday){
-    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
     for (const stock in stockDatabase){
         console.log("stock symbol: " + stock + " has been reseted")
         stockDatabase[stock].prev_close =  stockDatabase[stock].quote;
@@ -24,7 +24,7 @@ module.exports = {
  }
 
  function resetOpenOrders(){
-    const users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+    const users = JSON.parse(fs.readFileSync("./database/users/users.json"));
     for(const username in users){
         delete users[username].openOrders;
         users[username].openOrders = [];

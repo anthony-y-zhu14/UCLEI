@@ -46,7 +46,7 @@ function isSessionValid(s, u){
 }
 
 function updateUserDataBase(){
-    fs.writeFileSync("../database/users/users.json", JSON.stringify(users, null, 2));
+    fs.writeFileSync("./database/users/users.json", JSON.stringify(users, null, 2));
     eventWatcher.updateUserDataBase(users);
 }
 
@@ -59,7 +59,7 @@ function updateUserDataBase(){
         - destroying cookie on logout
 **********************************************/
 app.post('/authentication', (req, res) => {
-    users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+    users = JSON.parse(fs.readFileSync("./database/users/users.json"));
     let data = "";
     req.on('data', (chunk) => {
         data = JSON.parse(chunk);
@@ -104,7 +104,7 @@ app.post('/authentication', (req, res) => {
 
 app.post('/register', (req, res) => {
 
-    users = JSON.parse(fs.readFileSync("../database/users/users.json"));
+    users = JSON.parse(fs.readFileSync("./database/users/users.json"));
 
     let data = "";
     req.on('data', (chunk) => {
@@ -267,7 +267,7 @@ app.post('/updateBalance', (req, res) => {
 
 app.get('/getWatchlist', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         users[req.session.user]['watchlist'].forEach(stock => {
             stock.quote = stockDatabase[stock.symbol].quote
             stock.volume = stockDatabase[stock.symbol].volume
@@ -283,7 +283,7 @@ app.get('/getWatchlist', (req, res) => {
 
 app.post('/addWatchItem', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -348,7 +348,7 @@ app.post('/delWatchItem', (req, res) => {
 
 app.get('/getEvents', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
+        const userDatabase = JSON.parse(fs.readFileSync("./database/users/users.json"));
         let data = JSON.stringify(userDatabase[req.session.user]['eventList']);
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/JSON");
@@ -378,7 +378,7 @@ app.get('/getNotified', (req, res) => {
 
 app.post('/addEventNotify', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -496,7 +496,7 @@ app.post('/updateEventNum', (req, res) => {
 
 app.post('/buyStock', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -545,7 +545,7 @@ app.post('/buyStock', (req, res) => {
 
 app.post('/sellStock', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         let data = "";
         req.on('data', (chunk) => {
             data = JSON.parse(chunk);
@@ -609,7 +609,7 @@ app.post('/cancelOrder', (req, res) => {
 
 app.get('/stock-data-w', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         let data = [];
         res.setHeader("Content-Type", "application/JSON");
         for(let j = 0; j < users[req.session.user]['watchlist'].length; j++) {
@@ -624,7 +624,7 @@ app.get('/stock-data-w', (req, res) => {
 
 app.get('/pop-stock-data', (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
 
         let data = [];
 
@@ -643,7 +643,7 @@ app.get('/pop-stock-data', (req, res) => {
 
 app.get("/stock-data", (req, res) => {
     if (isSessionValid(req.session, req.session.user)){
-        const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+        const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
         let search = req.query['search'];
         let data = [];
         res.setHeader("Content-Type", "application/JSON");
@@ -660,7 +660,7 @@ app.get("/stock-data", (req, res) => {
 });
 
 app.get("/all-stocks", (req, res) => {
-    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
     let data = [];
     res.setHeader("Content-Type", "application/JSON");
     data.push(stockDatabase);
@@ -674,7 +674,7 @@ Public API (call requests to this api using port 3001)
 ********************************************* */
 
 app.get("/stocks", (req, res) => {
-    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
     let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
     let min = parseFloat(req.query.minprice);
     let max = parseFloat(req.query.maxprice);
@@ -745,7 +745,7 @@ app.get("/stocks", (req, res) => {
 });
 
 app.get("/stocks/userActivity", (req, res) =>{
-    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
     let symbol = req.query.symbol? req.query.symbol.toUpperCase() : undefined;
     if (!stockDatabase[symbol]){
         res.write("<h3>This stock symbol doesn't exist in our database or you have entered an incorrect param.</h3>");
@@ -753,7 +753,7 @@ app.get("/stocks/userActivity", (req, res) =>{
         return;
     }
     let data = [];
-    const userDatabase = JSON.parse(fs.readFileSync("../database/users/users.json"));
+    const userDatabase = JSON.parse(fs.readFileSync("./database/users/users.json"));
 
     let startDate = req.query.startDate;
     let endDate = req.query.endDate;
@@ -820,7 +820,7 @@ app.get("/stocks/userActivity", (req, res) =>{
 });
 
 app.get("/stocks/history", (req, res) => {
-    const stockDatabase = JSON.parse(fs.readFileSync("../database/stocks/data.json"));
+    const stockDatabase = JSON.parse(fs.readFileSync("./database/stocks/data.json"));
     let symbol = req.query.symbol? req.query.symbol.toUpperCase(): undefined;
     if (!stockDatabase[symbol]){
         res.write("<h3>This stock symbol doesn't exist in our database or you have entered an incorrect param.</h3>");
