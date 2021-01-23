@@ -1,4 +1,5 @@
-# UCLEI---Stock-Trading-Platform-Sandbox
+# UCLEI
+Stock Trading Platform Sandbox
 
 UCLEI is a stock trading simulation website that provides a safe, easy-to-use sandbox environment for users to experience how stock market trading works.
 Simply create an account and you will be welcomed to the website and free to explore the excitement of stocking trading without consequence!
